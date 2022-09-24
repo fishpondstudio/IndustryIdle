@@ -1,5 +1,7 @@
 # Industry Idle
 
+![](https://cdn.cloudflare.steamstatic.com/steam/apps/1574000/ss_516ee1711516b0cf66b7748122b0fa74073dc36f.1920x1080.jpg)
+
 Industry Idle is an idle game that combines factory building, resource management and market trading. Design & build your base, expand & scale up your productions, improve & optimize your economy. Plus all the incremental game goodies: offline earnings, prestige to unlock more powerful upgrades.
 
 -   [Play on Steam](https://store.steampowered.com/app/1574000/Industry_Idle/)
