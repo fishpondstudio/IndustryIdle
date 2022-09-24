@@ -1,0 +1,4 @@
+export const GA_KEY = "";
+export const GA_SECRET = "";
+export const GD_GAME_ID = "";
+export const SAVE_FILE_KEY = "";
