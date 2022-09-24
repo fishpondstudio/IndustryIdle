@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "0c61fd0e-f7f8-41bb-9e1f-90b0698847f4",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 52,
+  "height": 49,
+  "platformSettings": {},
+  "subMetas": {
+    "BattleshipFactory": {
+      "ver": "1.0.6",
+      "uuid": "edf93f59-33ae-45ad-bee3-b7105d7c1920",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "0c61fd0e-f7f8-41bb-9e1f-90b0698847f4",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 52,
+      "height": 49,
+      "rawWidth": 52,
+      "rawHeight": 49,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

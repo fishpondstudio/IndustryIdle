@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "3d78ac15-5d14-49fb-9f9f-e32fc282086f",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 52,
+  "height": 53,
+  "platformSettings": {},
+  "subMetas": {
+    "IronMine": {
+      "ver": "1.0.6",
+      "uuid": "3430e5fb-a127-4d04-8b56-0bf49881fb18",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "3d78ac15-5d14-49fb-9f9f-e32fc282086f",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 52,
+      "height": 53,
+      "rawWidth": 52,
+      "rawHeight": 53,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

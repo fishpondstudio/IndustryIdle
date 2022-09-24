@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "b4f2029f-df68-41af-a98f-4092162c72fd",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 56,
+  "height": 45,
+  "platformSettings": {},
+  "subMetas": {
+    "TVStudioPlus": {
+      "ver": "1.0.6",
+      "uuid": "d24c471a-b835-44ca-b50d-9d1534c7e9ce",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "b4f2029f-df68-41af-a98f-4092162c72fd",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 56,
+      "height": 45,
+      "rawWidth": 56,
+      "rawHeight": 45,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

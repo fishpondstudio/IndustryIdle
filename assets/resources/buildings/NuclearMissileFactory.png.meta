@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "79ef8c8e-2df2-4030-864d-db0a54ae191e",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 65,
+  "height": 65,
+  "platformSettings": {},
+  "subMetas": {
+    "NuclearMissileFactory": {
+      "ver": "1.0.6",
+      "uuid": "96b47a37-44b7-4f38-928e-42762cf26338",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "79ef8c8e-2df2-4030-864d-db0a54ae191e",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 2.5,
+      "offsetY": 3.5,
+      "trimX": 11,
+      "trimY": 5,
+      "width": 48,
+      "height": 48,
+      "rawWidth": 65,
+      "rawHeight": 65,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

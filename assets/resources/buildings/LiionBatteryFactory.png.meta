@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "d45eaf9b-5cac-40ed-8f86-eeecdb1ea045",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 39,
+  "height": 53,
+  "platformSettings": {},
+  "subMetas": {
+    "LiionBatteryFactory": {
+      "ver": "1.0.6",
+      "uuid": "77308975-7dd4-4b3e-be63-9aae2f425ddc",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "d45eaf9b-5cac-40ed-8f86-eeecdb1ea045",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 39,
+      "height": 53,
+      "rawWidth": 39,
+      "rawHeight": 53,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

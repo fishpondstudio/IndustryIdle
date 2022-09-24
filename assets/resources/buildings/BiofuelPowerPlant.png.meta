@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "041bb3e2-e8cb-42ad-b785-82d13771ea38",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 52,
+  "height": 52,
+  "platformSettings": {},
+  "subMetas": {
+    "BiofuelPowerPlant": {
+      "ver": "1.0.6",
+      "uuid": "96290243-ae35-4436-b7b2-4da9c9b5d484",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "041bb3e2-e8cb-42ad-b785-82d13771ea38",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 52,
+      "height": 52,
+      "rawWidth": 52,
+      "rawHeight": 52,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

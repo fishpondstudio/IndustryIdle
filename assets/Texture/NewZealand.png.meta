@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "c506d6d4-4623-4df1-a393-e8896cea5b62",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 1265,
+  "height": 1453,
+  "platformSettings": {},
+  "subMetas": {
+    "NewZealand": {
+      "ver": "1.0.6",
+      "uuid": "dff40be3-a985-4d43-85ff-80e3e153bede",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "c506d6d4-4623-4df1-a393-e8896cea5b62",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 1742,
+      "height": 2000,
+      "rawWidth": 1742,
+      "rawHeight": 2000,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "d88dc9c3-2f89-41ab-acf0-c318bee68f08",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 54,
+  "height": 54,
+  "platformSettings": {},
+  "subMetas": {
+    "Farmland": {
+      "ver": "1.0.6",
+      "uuid": "fd1bf261-3e5d-4f99-9d52-8fe96b5ded7c",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "d88dc9c3-2f89-41ab-acf0-c318bee68f08",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 54,
+      "height": 54,
+      "rawWidth": 54,
+      "rawHeight": 54,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

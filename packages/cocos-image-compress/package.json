@@ -1,0 +1,7 @@
+{
+    "name": "image-compress",
+    "version": "0.0.1",
+    "description": "Compress your output file with pngquant and jpegtran",
+    "author": "Ruoyu Sun",
+    "main": "main.js"
+}

@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "28e8b78d-d0d8-4ee6-a091-2cce8b4f4cbb",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 35,
+  "height": 52,
+  "platformSettings": {},
+  "subMetas": {
+    "CoalGasificationPlant": {
+      "ver": "1.0.6",
+      "uuid": "2fd4ef6d-9f02-4dcd-8a7c-2f1e2a3c2b7e",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "28e8b78d-d0d8-4ee6-a091-2cce8b4f4cbb",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 35,
+      "height": 52,
+      "rawWidth": 35,
+      "rawHeight": 52,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

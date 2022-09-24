@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "5d363652-0817-4e12-94b6-11688532cda7",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 52,
+  "height": 52,
+  "platformSettings": {},
+  "subMetas": {
+    "GasPowerPlant": {
+      "ver": "1.0.6",
+      "uuid": "c36bc688-e13c-4d63-ba5d-49cfb9de6aba",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "5d363652-0817-4e12-94b6-11688532cda7",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 52,
+      "height": 52,
+      "rawWidth": 52,
+      "rawHeight": 52,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

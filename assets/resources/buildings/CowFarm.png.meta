@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "c87d5f2a-d1cc-4733-9d3a-41e66e36310f",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 54,
+  "height": 42,
+  "platformSettings": {},
+  "subMetas": {
+    "CowFarm": {
+      "ver": "1.0.6",
+      "uuid": "f5539777-1cae-48be-92c5-1ab117e831c9",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "c87d5f2a-d1cc-4733-9d3a-41e66e36310f",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 54,
+      "height": 42,
+      "rawWidth": 54,
+      "rawHeight": 42,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

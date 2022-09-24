@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "7a2c5198-7e0c-437c-871c-2c3999438617",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 52,
+  "height": 52,
+  "platformSettings": {},
+  "subMetas": {
+    "GuitarFactory": {
+      "ver": "1.0.6",
+      "uuid": "6ee4abc9-e67e-461b-ba93-70661d6ed814",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "7a2c5198-7e0c-437c-871c-2c3999438617",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 52,
+      "height": 52,
+      "rawWidth": 52,
+      "rawHeight": 52,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

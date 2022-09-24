@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "7cc91584-2380-4690-ba6f-41a686deb7bd",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 52,
+  "height": 52,
+  "platformSettings": {},
+  "subMetas": {
+    "OilWell": {
+      "ver": "1.0.6",
+      "uuid": "23c05055-5152-4f21-8904-5b037dfbbb26",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "7cc91584-2380-4690-ba6f-41a686deb7bd",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 52,
+      "height": 52,
+      "rawWidth": 52,
+      "rawHeight": 52,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

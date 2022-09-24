@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "f140c495-18b6-45e2-acca-ba43ec584855",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 55,
+  "height": 51,
+  "platformSettings": {},
+  "subMetas": {
+    "StealthFighterFactory": {
+      "ver": "1.0.6",
+      "uuid": "56bce2b5-2a49-4108-858e-7c6efa483ebd",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "f140c495-18b6-45e2-acca-ba43ec584855",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 55,
+      "height": 51,
+      "rawWidth": 55,
+      "rawHeight": 51,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

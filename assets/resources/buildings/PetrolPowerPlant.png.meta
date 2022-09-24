@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "b74eb286-9a7d-425a-973a-6510455d83d6",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 52,
+  "height": 52,
+  "platformSettings": {},
+  "subMetas": {
+    "PetrolPowerPlant": {
+      "ver": "1.0.6",
+      "uuid": "96bdba08-891c-49a5-91f8-db7487bdc657",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "b74eb286-9a7d-425a-973a-6510455d83d6",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 52,
+      "height": 52,
+      "rawWidth": 52,
+      "rawHeight": 52,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

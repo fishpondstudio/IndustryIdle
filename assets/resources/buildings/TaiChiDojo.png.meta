@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "5659fe81-0c46-438b-8aeb-b6a61116889b",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 56,
+  "height": 56,
+  "platformSettings": {},
+  "subMetas": {
+    "TaiChiDojo": {
+      "ver": "1.0.6",
+      "uuid": "4cb2ee79-df80-4d47-9d45-e2710a90b73f",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "5659fe81-0c46-438b-8aeb-b6a61116889b",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 56,
+      "height": 56,
+      "rawWidth": 56,
+      "rawHeight": 56,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

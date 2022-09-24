@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "407cc240-9afc-41d1-a6f9-e9279d927b63",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 54,
+  "height": 50,
+  "platformSettings": {},
+  "subMetas": {
+    "CristoRedentor": {
+      "ver": "1.0.6",
+      "uuid": "f0af86ad-479d-4b19-886a-6115eea68a0e",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "407cc240-9afc-41d1-a6f9-e9279d927b63",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 54,
+      "height": 50,
+      "rawWidth": 54,
+      "rawHeight": 50,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

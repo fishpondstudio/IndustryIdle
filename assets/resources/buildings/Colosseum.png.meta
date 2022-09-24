@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "56c5261a-ac97-48e5-84c9-9224487fa2c7",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 52,
+  "height": 40,
+  "platformSettings": {},
+  "subMetas": {
+    "Colosseum": {
+      "ver": "1.0.6",
+      "uuid": "8f8b53f7-b7e6-4484-a35f-c0032ee28df1",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "56c5261a-ac97-48e5-84c9-9224487fa2c7",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 52,
+      "height": 40,
+      "rawWidth": 52,
+      "rawHeight": 40,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

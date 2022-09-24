@@ -1,0 +1,98 @@
+{
+  "assets-sort-type": "name",
+  "collision-matrix": [
+    [
+      true,
+      true,
+      true,
+      true
+    ],
+    [
+      true,
+      true,
+      true,
+      true
+    ],
+    [
+      true,
+      true,
+      true,
+      true
+    ],
+    [
+      true,
+      true,
+      true,
+      false
+    ]
+  ],
+  "design-resolution-height": 640,
+  "design-resolution-width": 1136,
+  "excluded-modules": [
+    "AudioSource",
+    "Canvas Renderer",
+    "Collider",
+    "DragonBones",
+    "EditBox",
+    "Geom Utils",
+    "Intersection",
+    "Label Effect",
+    "Mask",
+    "Mesh",
+    "MotionStreak",
+    "Native Socket",
+    "Physics",
+    "PageView",
+    "PageViewIndicator",
+    "ProgressBar",
+    "ParticleSystem",
+    "RichText",
+    "Slider",
+    "ScrollBar",
+    "ScrollView",
+    "Spine Skeleton",
+    "StudioComponent",
+    "Toggle",
+    "TiledMap",
+    "VideoPlayer",
+    "WebView",
+    "3D",
+    "3D Primitive",
+    "3D Physics/cannon.js",
+    "3D Physics/Builtin",
+    "3D Particle",
+    "SafeArea"
+  ],
+  "facebook": {
+    "appID": "",
+    "audience": {
+      "enable": false
+    },
+    "enable": false,
+    "live": {
+      "enable": false
+    }
+  },
+  "fit-height": false,
+  "fit-width": true,
+  "group-list": [
+    "Default",
+    "World",
+    "Background",
+    "Player"
+  ],
+  "last-module-event-record-time": 1657378106752,
+  "simulator-orientation": false,
+  "simulator-resolution": {
+    "height": 640,
+    "width": 960
+  },
+  "use-customize-simulator": true,
+  "use-project-simulator-setting": false,
+  "migrate-history": [
+    "cloud-function"
+  ],
+  "preview-port": 7456,
+  "clear-simulator-cache": true,
+  "start-scene": "ce9fd079-471e-4d04-84fa-d3f4dc8a0dc1"
+}

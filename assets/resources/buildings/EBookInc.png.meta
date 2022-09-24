@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "428122a5-c086-4a1c-95a0-59ba289f5359",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 41,
+  "height": 55,
+  "platformSettings": {},
+  "subMetas": {
+    "EBookInc": {
+      "ver": "1.0.6",
+      "uuid": "6b30b423-8daa-4d81-8f65-899787582fc7",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "428122a5-c086-4a1c-95a0-59ba289f5359",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 41,
+      "height": 55,
+      "rawWidth": 41,
+      "rawHeight": 55,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

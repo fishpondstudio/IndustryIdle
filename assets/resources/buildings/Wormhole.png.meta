@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "8836461d-4091-4bbe-a64d-861bd74ca169",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 54,
+  "height": 54,
+  "platformSettings": {},
+  "subMetas": {
+    "Wormhole": {
+      "ver": "1.0.6",
+      "uuid": "6fe6fe89-9983-4cce-8b22-eace5886bcfd",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "8836461d-4091-4bbe-a64d-861bd74ca169",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 54,
+      "height": 54,
+      "rawWidth": 54,
+      "rawHeight": 54,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

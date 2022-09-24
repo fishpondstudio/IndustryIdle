@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "a7fa7d23-9325-4302-893e-998294e9a360",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 52,
+  "height": 49,
+  "platformSettings": {},
+  "subMetas": {
+    "LumberMill": {
+      "ver": "1.0.6",
+      "uuid": "14c91d65-15a9-4a9b-9ec8-bff756c0c707",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "a7fa7d23-9325-4302-893e-998294e9a360",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 52,
+      "height": 49,
+      "rawWidth": 52,
+      "rawHeight": 49,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

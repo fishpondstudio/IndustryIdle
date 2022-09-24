@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "6fb18424-29e9-4e83-a643-d7d3b5ed56f3",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 38,
+  "height": 55,
+  "platformSettings": {},
+  "subMetas": {
+    "DrinkFactory": {
+      "ver": "1.0.6",
+      "uuid": "7f43962e-0d5f-4ed1-a01c-3a5503010839",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "6fb18424-29e9-4e83-a643-d7d3b5ed56f3",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 38,
+      "height": 55,
+      "rawWidth": 38,
+      "rawHeight": 55,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

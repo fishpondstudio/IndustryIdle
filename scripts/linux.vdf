@@ -1,0 +1,21 @@
+"AppBuild"
+{
+	"AppID" "1574000" // your AppID
+	"Desc" "Linux Build" // internal description for this build
+	"SetLive" "beta"
+	"ContentRoot" "..\linux\" // root content folder, relative to location of this file
+	"BuildOutput" "..\output\" // build output folder for build logs and build cache files
+
+	"Depots"
+	{
+		"1574003" // your DepotID
+		{
+			"FileMapping"
+			{
+				"LocalPath" "*" // all files from contentroot folder
+				"DepotPath" "." // mapped into the root of the depot
+				"recursive" "1" // include all subfolders
+			}
+		}
+	}
+}

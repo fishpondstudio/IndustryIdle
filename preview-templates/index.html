@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="icon" href="app/editor/static/preview-templates/favicon.ico" />
+        <meta charset="utf-8" />
+        <title><%=title%></title>
+        <link rel="stylesheet" type="text/css" href="style.css" />
+        <meta
+            name="viewport"
+            content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1,viewport-fit=cover"
+        />
+    </head>
+
+    <body>
+        <canvas id="GameCanvas" oncontextmenu="event.preventDefault()" tabindex="0"></canvas>
+        <div id="splash">
+            <div class="progress-bar stripes">
+                <span style="width: 0%"></span>
+            </div>
+        </div>
+        <script src="settings.js" charset="utf-8"></script>
+        <script src="boot.js" charset="utf-8"></script>
+        <script src="/socket.io/socket.io.js" charset="utf-8"></script>
+        <script src="app/engine/bin/<%=cocos2d%>" charset="utf-8"></script>
+        <script src="preview-scripts/__quick_compile__.js" charset="utf-8"></script>
+    </body>
+</html>

@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "1046e5a2-fa3c-4a8b-aba7-4063c7b8ce34",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 55,
+  "height": 39,
+  "platformSettings": {},
+  "subMetas": {
+    "PowerBank": {
+      "ver": "1.0.6",
+      "uuid": "58c26733-eab5-4e55-b92c-c80585a80bd3",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "1046e5a2-fa3c-4a8b-aba7-4063c7b8ce34",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 55,
+      "height": 39,
+      "rawWidth": 55,
+      "rawHeight": 39,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

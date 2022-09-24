@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "79a66990-d4b7-4c04-8859-cb57357d8bf4",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 52,
+  "height": 52,
+  "platformSettings": {},
+  "subMetas": {
+    "SteelMill": {
+      "ver": "1.0.6",
+      "uuid": "e40c3d92-bb87-464a-a298-bb5ca0fe5a54",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "79a66990-d4b7-4c04-8859-cb57357d8bf4",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 52,
+      "height": 52,
+      "rawWidth": 52,
+      "rawHeight": 52,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "cd9bd58a-22bf-4bb8-a86f-52dacc130bdb",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 56,
+  "height": 46,
+  "platformSettings": {},
+  "subMetas": {
+    "QuantumComputerLab": {
+      "ver": "1.0.6",
+      "uuid": "bc00219e-bfac-482b-b17f-c2d26c17dd1f",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "cd9bd58a-22bf-4bb8-a86f-52dacc130bdb",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 56,
+      "height": 46,
+      "rawWidth": 56,
+      "rawHeight": 46,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

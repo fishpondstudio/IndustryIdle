@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "01fb87e8-c4e0-4469-91c9-fbd08301f3f4",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 55,
+  "height": 37,
+  "platformSettings": {},
+  "subMetas": {
+    "BitcoinMiner": {
+      "ver": "1.0.6",
+      "uuid": "f7c69705-cfa3-4543-b2fa-ac14b20dcb2c",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "01fb87e8-c4e0-4469-91c9-fbd08301f3f4",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 55,
+      "height": 37,
+      "rawWidth": 55,
+      "rawHeight": 37,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "c55974d5-d4f1-4719-8fdc-0bdd2b41282f",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 52,
+  "height": 53,
+  "platformSettings": {},
+  "subMetas": {
+    "TitaniumMine": {
+      "ver": "1.0.6",
+      "uuid": "0d9751c9-e2ff-4b86-9dc0-24e86fd4d8c5",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "c55974d5-d4f1-4719-8fdc-0bdd2b41282f",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 52,
+      "height": 53,
+      "rawWidth": 52,
+      "rawHeight": 53,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

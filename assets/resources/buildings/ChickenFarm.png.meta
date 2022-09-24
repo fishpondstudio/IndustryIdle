@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "06562b47-d300-4e06-9e31-880a1b5d0847",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 51,
+  "height": 54,
+  "platformSettings": {},
+  "subMetas": {
+    "ChickenFarm": {
+      "ver": "1.0.6",
+      "uuid": "5d43785f-5af0-48eb-8f14-11bef65bc909",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "06562b47-d300-4e06-9e31-880a1b5d0847",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 51,
+      "height": 54,
+      "rawWidth": 51,
+      "rawHeight": 54,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

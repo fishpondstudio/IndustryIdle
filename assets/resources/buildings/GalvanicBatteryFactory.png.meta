@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "e732d7d3-be94-422e-97e7-b50a135b5aa3",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 39,
+  "height": 52,
+  "platformSettings": {},
+  "subMetas": {
+    "GalvanicBatteryFactory": {
+      "ver": "1.0.6",
+      "uuid": "1eb5a16a-c208-4898-9f70-6f0d42d3bbc5",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "e732d7d3-be94-422e-97e7-b50a135b5aa3",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 39,
+      "height": 52,
+      "rawWidth": 39,
+      "rawHeight": 52,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

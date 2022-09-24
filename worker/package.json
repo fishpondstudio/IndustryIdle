@@ -1,0 +1,17 @@
+{
+  "name": "worker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "esbuild worker.ts --minify --bundle --outfile=../assets/Worker/worker.txt && curl http://localhost:7456/update-db"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^4.5.4",
+    "astar-typescript": "https://github.com/fishpondstudio/astar-typescript.git",
+    "esbuild": "^0.14.16",
+    "pathfinding": "^0.4.18"
+  }
+}

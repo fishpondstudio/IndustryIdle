@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "56a531fa-c51e-438a-aa70-fad921987367",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 52,
+  "height": 53,
+  "platformSettings": {},
+  "subMetas": {
+    "CopperMine": {
+      "ver": "1.0.6",
+      "uuid": "93808e63-d854-4075-b34c-654df5617745",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "56a531fa-c51e-438a-aa70-fad921987367",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 52,
+      "height": 53,
+      "rawWidth": 52,
+      "rawHeight": 53,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

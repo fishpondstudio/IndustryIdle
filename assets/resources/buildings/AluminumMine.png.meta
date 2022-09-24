@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "c3abeee1-e825-4bc0-bb16-f559db248628",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 52,
+  "height": 53,
+  "platformSettings": {},
+  "subMetas": {
+    "AluminumMine": {
+      "ver": "1.0.6",
+      "uuid": "2073585a-7c51-4eaa-a72e-f6ff2f4f6541",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "c3abeee1-e825-4bc0-bb16-f559db248628",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 52,
+      "height": 53,
+      "rawWidth": 52,
+      "rawHeight": 53,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
