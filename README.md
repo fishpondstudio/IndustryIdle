@@ -38,9 +38,9 @@ After that, you should be able to open the project in Cocos Creator and run the 
 
 Before you commit and submit a PR, make sure your code:
 
--   Do not have TypeScript compiler error
--   Do not have ESLint warnings
--   Are formatted by Prettier using the rule in the project
+-   does not have TypeScript compiler error
+-   does not have ESLint warnings
+-   is formatted by Prettier using the rule in the project
 
 # License
 
