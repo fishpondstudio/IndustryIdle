@@ -907,7 +907,6 @@ export function wholesaleUnlocked() {
 export function resourcesCanBeProduced(): ResourceSet {
     const result: ResourceSet = {};
     forEach(D.unlockedBuildings, (k) => {
-        const mine = isMine(k);
         const output = { ...BLD[k].staticOutput };
         if (BLD[k].recipes) {
             forEach(BLD[k].recipes(), (b) => {
@@ -918,13 +917,13 @@ export function resourcesCanBeProduced(): ResourceSet {
             if (!canPrice(r)) {
                 return;
             }
-            if (!mine) {
-                result[r] = true;
+            if (DEP[r]) {
+                if (MAP[D.map].deposits[r] > 0) {
+                    result[r] = true;
+                }
                 return;
             }
-            if (MAP[D.map].deposits[r] > 0) {
-                result[r] = true;
-            }
+            result[r] = true;
         });
     });
     if (D.unlockedBuildings.Farmland || D.unlockedBuildings.Greenhouse) {
