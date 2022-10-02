@@ -595,9 +595,9 @@ export class Policy {
                 RES[k].fuelCost *= 2;
             });
             forEach(BLD, (k) => {
-                forEach(BLD[k].staticInput, (r) => {
+                forEach(BLD[k].staticOutput, (r) => {
                     if (CROP[r]) {
-                        BLD[k].staticInput[r] *= 2;
+                        BLD[k].staticOutput[r] *= 2;
                     }
                 });
             });
