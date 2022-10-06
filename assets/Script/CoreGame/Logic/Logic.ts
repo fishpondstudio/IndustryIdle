@@ -908,7 +908,9 @@ export function resourcesCanBeProduced(): ResourceSet {
     const result: ResourceSet = {};
     forEach(D.unlockedBuildings, (k) => {
         const output = { ...BLD[k].staticOutput };
-        if (BLD[k].recipes) {
+        // Resource Explorer is special, it does not affect tech unlock, so we should exclude
+        // its recipes
+        if (BLD[k].recipes && k !== "ResourceExplorer") {
             forEach(BLD[k].recipes(), (b) => {
                 Object.assign(output, BLD[b].staticOutput);
             });
@@ -917,13 +919,13 @@ export function resourcesCanBeProduced(): ResourceSet {
             if (!canPrice(r)) {
                 return;
             }
-            if (DEP[r]) {
-                if (MAP[D.map].deposits[r] > 0) {
-                    result[r] = true;
-                }
+            if (!isMine(k)) {
+                result[r] = true;
                 return;
             }
-            result[r] = true;
+            if (MAP[D.map].deposits[r] > 0) {
+                result[r] = true;
+            }
         });
     });
     if (D.unlockedBuildings.Farmland || D.unlockedBuildings.Greenhouse) {
