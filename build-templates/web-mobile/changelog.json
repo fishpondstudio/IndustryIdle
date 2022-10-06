@@ -1,5 +1,11 @@
 [
     {
+        "version": "0.20.1",
+        "content": [
+            "Bugfix: Fix a bug where some buildings are not appearing in Research Lab on maps that meet the unlock requirement"
+        ]
+    },
+    {
         "version": "0.20.0",
         "content": [
             "Buildings with multiple recipes now shows an icon indicating current production recipe: we are still missing some icons for certain recipes. If you'd like to help add missing icons, contact me directly",
