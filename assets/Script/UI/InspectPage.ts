@@ -597,16 +597,31 @@ export function InspectPage(): m.Comp<{ xy: string }> {
                                 },
                                 "4"
                             ),
-                            m(
-                                ".mt5.text-m.blue.pointer",
-                                {
-                                    onclick: () => {
-                                        G.audio.playClick();
-                                        batchApply(entity, (e) => (e.turnOff = entity.turnOff));
+                            m(".row", [
+                                m(
+                                    ".mt5.text-m.blue.pointer",
+                                    {
+                                        onclick: () => {
+                                            G.audio.playClick();
+                                            batchApply(entity, (e) => (e.turnOff = entity.turnOff));
+                                        },
                                     },
-                                },
-                                t("ApplyToBatch", { batch: batchModeLabel() })
-                            ),
+                                    t("ApplyToBatch", { batch: batchModeLabel() })
+                                ),
+                                m(".f1"),
+                                m(
+                                    ".mt5.text-m",
+                                    {
+                                        class:
+                                            entity.turnOff === D.entityDefault.turnOff ? "text-desc" : "blue pointer",
+                                        onclick: () => {
+                                            G.audio.playClick();
+                                            D.entityDefault.turnOff = entity.turnOff;
+                                        },
+                                    },
+                                    t("SetAsDefault")
+                                ),
+                            ]),
                         ]),
                         ifTrue(building.power < 0, () => [
                             m(".hr"),
@@ -614,16 +629,33 @@ export function InspectPage(): m.Comp<{ xy: string }> {
                                 G.audio.playClick();
                                 entity.highPriority = !entity.highPriority;
                             }),
-                            m(
-                                ".mt5.text-m.blue.pointer",
-                                {
-                                    onclick: () => {
-                                        G.audio.playClick();
-                                        batchApply(entity, (e) => (e.highPriority = entity.highPriority));
+                            m(".row", [
+                                m(
+                                    ".mt5.text-m.blue.pointer",
+                                    {
+                                        onclick: () => {
+                                            G.audio.playClick();
+                                            batchApply(entity, (e) => (e.highPriority = entity.highPriority));
+                                        },
                                     },
-                                },
-                                t("ApplyToBatch", { batch: batchModeLabel() })
-                            ),
+                                    t("ApplyToBatch", { batch: batchModeLabel() })
+                                ),
+                                m(".f1"),
+                                m(
+                                    ".mt5.text-m",
+                                    {
+                                        class:
+                                            entity.highPriority === D.entityDefault.highPriority
+                                                ? "text-desc"
+                                                : "blue pointer",
+                                        onclick: () => {
+                                            G.audio.playClick();
+                                            D.entityDefault.highPriority = entity.highPriority;
+                                        },
+                                    },
+                                    t("SetAsDefault")
+                                ),
+                            ]),
                         ]),
                         ifTrue(canInput, () => [
                             m(".hr"),
@@ -655,16 +687,33 @@ export function InspectPage(): m.Comp<{ xy: string }> {
                                     )
                                 ),
                             ]),
-                            m(
-                                ".mt5.text-m.blue.pointer",
-                                {
-                                    onclick: () => {
-                                        G.audio.playClick();
-                                        batchApply(entity, (e) => (e.inputBuffer = entity.inputBuffer));
+                            m(".row", [
+                                m(
+                                    ".mt5.text-m.blue.pointer",
+                                    {
+                                        onclick: () => {
+                                            G.audio.playClick();
+                                            batchApply(entity, (e) => (e.inputBuffer = entity.inputBuffer));
+                                        },
                                     },
-                                },
-                                t("ApplyToBatch", { batch: batchModeLabel() })
-                            ),
+                                    t("ApplyToBatch", { batch: batchModeLabel() })
+                                ),
+                                m(".f1"),
+                                m(
+                                    ".mt5.text-m",
+                                    {
+                                        class:
+                                            entity.inputBuffer === D.entityDefault.inputBuffer
+                                                ? "text-desc"
+                                                : "blue pointer",
+                                        onclick: () => {
+                                            G.audio.playClick();
+                                            D.entityDefault.inputBuffer = entity.inputBuffer;
+                                        },
+                                    },
+                                    t("SetAsDefault")
+                                ),
+                            ]),
                             m(".hr"),
                             m(".two-col", [
                                 m(
@@ -702,19 +751,36 @@ export function InspectPage(): m.Comp<{ xy: string }> {
                                     )
                                 ),
                             ]),
-                            m(
-                                ".mt5.text-m.blue.pointer",
-                                {
-                                    onclick: () => {
-                                        G.audio.playClick();
-                                        batchApply(
-                                            entity,
-                                            (e) => (e.inputCapacityOverride = entity.inputCapacityOverride)
-                                        );
+                            m(".row", [
+                                m(
+                                    ".mt5.text-m.blue.pointer",
+                                    {
+                                        onclick: () => {
+                                            G.audio.playClick();
+                                            batchApply(
+                                                entity,
+                                                (e) => (e.inputCapacityOverride = entity.inputCapacityOverride)
+                                            );
+                                        },
                                     },
-                                },
-                                t("ApplyToBatch", { batch: batchModeLabel() })
-                            ),
+                                    t("ApplyToBatch", { batch: batchModeLabel() })
+                                ),
+                                m(".f1"),
+                                m(
+                                    ".mt5.text-m",
+                                    {
+                                        class:
+                                            entity.inputCapacityOverride === D.entityDefault.inputCapacityOverride
+                                                ? "text-desc"
+                                                : "blue pointer",
+                                        onclick: () => {
+                                            G.audio.playClick();
+                                            D.entityDefault.inputCapacityOverride = entity.inputCapacityOverride;
+                                        },
+                                    },
+                                    t("SetAsDefault")
+                                ),
+                            ]),
                             m(".hr"),
                             m(".two-col", [
                                 m("div", [
@@ -763,16 +829,33 @@ export function InspectPage(): m.Comp<{ xy: string }> {
                                 G.audio.playClick();
                                 entity.partialTransport = !entity.partialTransport;
                             }),
-                            m(
-                                ".mt5.text-m.blue.pointer",
-                                {
-                                    onclick: () => {
-                                        G.audio.playClick();
-                                        batchApply(entity, (e) => (e.partialTransport = entity.partialTransport));
+                            m(".row", [
+                                m(
+                                    ".mt5.text-m.blue.pointer",
+                                    {
+                                        onclick: () => {
+                                            G.audio.playClick();
+                                            batchApply(entity, (e) => (e.partialTransport = entity.partialTransport));
+                                        },
                                     },
-                                },
-                                t("ApplyToBatch", { batch: batchModeLabel() })
-                            ),
+                                    t("ApplyToBatch", { batch: batchModeLabel() })
+                                ),
+                                m(".f1"),
+                                m(
+                                    ".mt5.text-m",
+                                    {
+                                        class:
+                                            entity.partialTransport === D.entityDefault.partialTransport
+                                                ? "text-desc"
+                                                : "blue pointer",
+                                        onclick: () => {
+                                            G.audio.playClick();
+                                            D.entityDefault.partialTransport = entity.partialTransport;
+                                        },
+                                    },
+                                    t("SetAsDefault")
+                                ),
+                            ]),
                         ]),
                         ifTrue(canInput && hasDLC(DLC[1]), () => [
                             m(".hr"),
@@ -804,19 +887,36 @@ export function InspectPage(): m.Comp<{ xy: string }> {
                                     )
                                 ),
                             ]),
-                            m(
-                                ".mt5.text-m.blue.pointer",
-                                {
-                                    onclick: () => {
-                                        G.audio.playClick();
-                                        batchApply(
-                                            entity,
-                                            (e) => (e.inputOverrideFallback = entity.inputOverrideFallback)
-                                        );
+                            m(".row", [
+                                m(
+                                    ".mt5.text-m.blue.pointer",
+                                    {
+                                        onclick: () => {
+                                            G.audio.playClick();
+                                            batchApply(
+                                                entity,
+                                                (e) => (e.inputOverrideFallback = entity.inputOverrideFallback)
+                                            );
+                                        },
                                     },
-                                },
-                                t("ApplyToBatch", { batch: batchModeLabel() })
-                            ),
+                                    t("ApplyToBatch", { batch: batchModeLabel() })
+                                ),
+                                m(".f1"),
+                                m(
+                                    ".mt5.text-m",
+                                    {
+                                        class:
+                                            entity.inputOverrideFallback === D.entityDefault.inputOverrideFallback
+                                                ? "text-desc"
+                                                : "blue pointer",
+                                        onclick: () => {
+                                            G.audio.playClick();
+                                            D.entityDefault.inputOverrideFallback = entity.inputOverrideFallback;
+                                        },
+                                    },
+                                    t("SetAsDefault")
+                                ),
+                            ]),
                         ]),
                         ifTrue(canInput && (canOutput || building.power > 0), () => [
                             m(".hr"),

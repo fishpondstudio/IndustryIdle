@@ -423,6 +423,7 @@ export default class World extends cc.Component {
             return;
         }
         const entity = makeEntity(xy, building);
+        Object.assign(entity, D.entityDefault);
         entity.construction = status;
         D.buildingsToConstruct[xy] = entity;
         this.placeBuilding(entity);

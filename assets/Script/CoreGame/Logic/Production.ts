@@ -631,6 +631,9 @@ function qualifedForSupplyChainBooster(entity: Entity) {
     if (!entity) {
         return false;
     }
+    if (entity.turnOff) {
+        return false;
+    }
     if (isPolicyActive("ResourceExplorer2") && entity.type === "ResourceExplorer") {
         return true;
     }

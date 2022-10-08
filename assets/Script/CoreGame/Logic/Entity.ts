@@ -3,6 +3,7 @@ import { t } from "../../General/i18n";
 import { Buildings, ResourceNumberMap } from "../Buildings/BuildingDefinitions";
 import { Resources } from "../ResourceDefinitions";
 import { addDefenseModule, BASE_MODULE_MIN } from "../TowerDefense/DefenseModules";
+import { getEntityDefault } from "./EntityDefault";
 import { BLD, Weapon } from "./Logic";
 
 export function makeEntity(xy: string, type: keyof Buildings, resources: ResourceNumberMap = {}): Entity {
@@ -11,15 +12,10 @@ export function makeEntity(xy: string, type: keyof Buildings, resources: Resourc
         type,
         level: 1,
         resources,
-        turnOff: false,
         tickSec: 1,
         maxTile: 0,
-        highPriority: false,
-        partialTransport: false,
         inputOverride: {},
-        inputOverrideFallback: "skip",
-        inputBuffer: "auto",
-        inputCapacityOverride: "x1",
+        ...getEntityDefault(),
     };
     if (type === "Warehouse") {
         const e = entity as WarehouseEntity;

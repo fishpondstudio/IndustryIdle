@@ -10,7 +10,8 @@ import { CHANGELOG } from "../CoreGame/Changelog";
 import { COLORS } from "../CoreGame/ColorThemes";
 import { Grid } from "../CoreGame/GridHelper";
 import { ICrowdfunding } from "../CoreGame/Logic/Crowdfunding";
-import { Entity, PowerBankEntity } from "../CoreGame/Logic/Entity";
+import { Entity, EntityDefaultType, PowerBankEntity } from "../CoreGame/Logic/Entity";
+import { getEntityDefault } from "../CoreGame/Logic/EntityDefault";
 import { IOrder, IPolicyInfo, MAP } from "../CoreGame/Logic/Logic";
 import { IMarketNews } from "../CoreGame/MarketNews";
 import { Policy } from "../CoreGame/PolicyDefinitions";
@@ -333,6 +334,7 @@ export class GameData {
     hideResourcesInTopBar: ResourceSet = {};
     tickCount = 0;
     waveCount = 0;
+    entityDefault: EntityDefaultType = getEntityDefault();
 }
 
 export function hasDLC(dlc: DownloadableContent): boolean {
