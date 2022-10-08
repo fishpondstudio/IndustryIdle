@@ -1542,4 +1542,5 @@ export const FR = {
     QuantumComputerLab: "Laboratoire à Ordinateur Quantique",
     QuantumComputer: "Ordinateur Quantique",
     TVStudioPlus: "TV Studio+",
+    SetAsDefault: "Set as Default",
 };

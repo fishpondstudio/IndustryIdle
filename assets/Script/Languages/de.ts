@@ -1547,4 +1547,5 @@ export const DE = {
     QuantumComputerLab: "Quanten Computer Labor",
     QuantumComputer: "Quanten Computer",
     TVStudioPlus: "TV Studio+",
+    SetAsDefault: "Set as Default",
 };

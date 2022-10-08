@@ -1522,4 +1522,5 @@ export const ES = {
     QuantumComputerLab: "Quantum Computer Lab",
     QuantumComputer: "Quantum Computer",
     TVStudioPlus: "TV Studio+",
+    SetAsDefault: "Set as Default",
 };

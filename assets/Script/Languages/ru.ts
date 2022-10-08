@@ -1547,4 +1547,5 @@ export const RU = {
     QuantumComputerLab: "Лаборатория квантовых компьютеров",
     QuantumComputer: "Квантовый компьютер",
     TVStudioPlus: "ТВ Студия+",
+    SetAsDefault: "Set as Default",
 };

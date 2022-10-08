@@ -2,7 +2,9 @@
     {
         "version": "0.20.1",
         "content": [
-            "Bugfix: Fix a bug where some buildings are not appearing in Research Lab on maps that meet the unlock requirement"
+            "Bugfix: Fix a bug where some buildings are not appearing in Research Lab on maps that meet the unlock requirement",
+            "Bugfix: If a building is shut down, it will not be supply-chained boosted (boost will be given to other eligible buildings)",
+            "QoL: Add 'Set as Default' for production settings in building page"
         ]
     },
     {
