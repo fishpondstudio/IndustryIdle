@@ -44,6 +44,10 @@ Before you commit and submit a PR, make sure your code:
 -   does not have ESLint warnings
 -   is formatted by Prettier using the rule in the project
 
+## About Server Anti-Cheat
+
+To make development easy, the development code can connect to the game's trading server. However, the account will not be "authenticated" (meaning certain trading restrictions apply). Please also refrain from submitting test trades to the server as it will most likely causes anti-cheat flag.
+
 # License
 
 -   Game's source code is licensed under GNU General Public License v3.0.
