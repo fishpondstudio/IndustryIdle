@@ -4,13 +4,15 @@
 
 Industry Idle is an idle game that combines factory building, resource management and market trading. Design & build your base, expand & scale up your productions, improve & optimize your economy. Plus all the incremental game goodies: offline earnings, prestige to unlock more powerful upgrades.
 
--   [Play on Steam](https://store.steampowered.com/app/1574000/Industry_Idle/)
+-   [Play on Steam (Windows/Mac/Linux)](https://store.steampowered.com/app/1574000/Industry_Idle/)
 -   [Play on iOS](https://apps.apple.com/us/app/industry-idle-factory-tycoon/id1554773046)
 -   [Play on Android](https://play.google.com/store/apps/details?id=com.fishpondstudio.industryidle)
 -   [Play on Web](https://play.industryidle.com/)
 -   [Join Discord](https://discord.com/invite/xgNxpsM)
 
 # Get Involved
+
+Join our discord [#industry-idle-dev](https://discord.com/channels/631551126377857044/1036015139389984768) to discuss about the development
 
 ## Localization
 
