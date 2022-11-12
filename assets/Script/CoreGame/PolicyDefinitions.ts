@@ -330,6 +330,7 @@ export class Policy {
             BLD.CarFactory.staticInput.Bat =
                 (BLD.CarFactory.staticInput.Petrol ?? BLD.CarFactory.staticInput.Gas) * 0.5;
             delete BLD.CarFactory.staticInput.Petrol;
+            delete BLD.CarFactory.staticInput.Gas;
         },
     };
     FreeTransportToTradeCenter: IPolicy = {
