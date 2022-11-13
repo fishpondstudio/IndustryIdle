@@ -424,6 +424,9 @@ export default class World extends cc.Component {
         }
         const entity = makeEntity(xy, building);
         Object.assign(entity, D.entityDefault);
+        if (entity.type === "WindTurbine" || entity.type === "SolarPanel") {
+            entity.turnOff = false;
+        }        
         entity.construction = status;
         D.buildingsToConstruct[xy] = entity;
         this.placeBuilding(entity);
