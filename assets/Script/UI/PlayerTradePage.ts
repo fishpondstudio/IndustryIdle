@@ -56,6 +56,11 @@ let draftTrade: ILocalTrade;
 let resourceFilter: Partial<Record<ResourceFilter, true>> = {};
 let showResourceFilter = false;
 
+let showPriceFilter = false;
+let minPriceFilter = 0;
+let maxPriceFilter = 0;
+let playerNameFilter = "";
+
 export function PlayerTradePage(): m.Comp<{ docked: boolean; resources?: string }> {
     let announcement: string;
 
@@ -304,160 +309,218 @@ export function PlayerTradePage(): m.Comp<{ docked: boolean; resources?: string 
                     ]),
                     m(".box", [
                         m(".row", [
-                            m(
-                                "select.text-m",
-                                {
-                                    onchange: (e) => {
-                                        sideFilter = e.target.value;
-                                    },
-                                    style: {
-                                        margin: "-10px 0",
-                                    },
-                                },
-                                keysOf(sideFilters).map((k) =>
-                                    m(
-                                        "option",
-                                        {
-                                            key: k,
-                                            value: k,
-                                            selected: sideFilter === k,
-                                        },
-                                        sideFilters[k]
-                                    )
-                                )
-                            ),
-                            m(".f1"),
+                            m(".f1"),        
                             m(
                                 ".row.pointer.blue.ml10",
                                 {
-                                    onclick: () => (showResourceFilter = !showResourceFilter),
+                                    onclick: () => (showPriceFilter = !showPriceFilter),
                                 },
                                 [
-                                    iconB(showResourceFilter ? "close" : "filter_list", 20, 5, {}),
+                                    iconB(showPriceFilter ? "close" : "filter_list", 20, 5, {}),
                                     m(
                                         ".uppercase.text-s",
-                                        isResourceFilterEmpty
-                                            ? t("PlayerTradeFilterResources")
-                                            : t("PlayerTradeFilteringNResources", {
-                                                  n: sizeOf(resourceFilter),
-                                              })
+                                        "Filter Options"
                                     ),
                                 ]
-                            ),
-                        ]),
-                        ifTrue(showResourceFilter, () => {
-                            return m("div", [
-                                m(".hr.dashed"),
+                            ),                            
+                        ]),                        
+                        ifTrue(showPriceFilter, () => {
+                            return m("div", [    
+                                m(".hr"),
                                 m(".row", [
                                     m(
-                                        ".text-m.pointer.blue",
+                                        "select.text-m",
                                         {
-                                            onclick: () => {
-                                                resourceFilter = {};
-                                                showResourceFilter = false;
+                                            onchange: (e) => {
+                                                sideFilter = e.target.value;
+                                            },
+                                            style: {
+                                                margin: "-10px 0",
                                             },
                                         },
-                                        m("div", t("PlayerTradeFilterClear"))
+                                        keysOf(sideFilters).map((k) =>
+                                            m(
+                                                "option",
+                                                {
+                                                    key: k,
+                                                    value: k,
+                                                    selected: sideFilter === k,
+                                                },
+                                                sideFilters[k]
+                                            )
+                                        )
                                     ),
                                     m(".f1"),
                                     m(
-                                        ".text-m.pointer.blue",
+                                        ".row.pointer.blue.ml10",
                                         {
-                                            onclick: () => {
-                                                forEach(allResourceFilters, (k) => {
-                                                    if (T.res[k]) {
-                                                        resourceFilter[k] = true;
-                                                    }
-                                                });
-                                                showResourceFilter = false;
-                                            },
+                                            onclick: () => (showResourceFilter = !showResourceFilter),
                                         },
-                                        m("div", t("PlayerTradeFilterWhatIHave"))
+                                        [
+                                            iconB(showResourceFilter ? "close" : "filter_list", 20, 5, {}),
+                                            m(
+                                                ".uppercase.text-s",
+                                                isResourceFilterEmpty
+                                                    ? t("PlayerTradeFilterResources")
+                                                    : t("PlayerTradeFilteringNResources", {
+                                                            n: sizeOf(resourceFilter),
+                                                        })
+                                            ),
+                                        ]
                                     ),
                                 ]),
-                                keysOf(allResourceFilters)
-                                    .sort((a, b) => RES[a].name().localeCompare(RES[b].name()))
-                                    .map((res) => {
-                                        return [
-                                            m(".hr.dashed"),
+                                ifTrue(showResourceFilter, () => {
+                                    return m("div", [
+                                        m(".hr.dashed"),
+                                        m(".row", [
                                             m(
-                                                ".two-col.text-m.pointer",
+                                                ".text-m.pointer.blue",
                                                 {
                                                     onclick: () => {
-                                                        if (resourceFilter[res]) {
-                                                            delete resourceFilter[res];
-                                                        } else {
-                                                            resourceFilter[res] = true;
-                                                        }
+                                                        resourceFilter = {};
+                                                        showResourceFilter = false;
                                                     },
                                                 },
-                                                [
-                                                    m("div", RES[res].name()),
-                                                    resourceFilter[res]
-                                                        ? iconB(
-                                                              "check_box",
-                                                              24,
-                                                              0,
-                                                              {
-                                                                  margin: "-10px 0",
-                                                              },
-                                                              { class: "blue" }
-                                                          )
-                                                        : iconB(
-                                                              "check_box_outline_blank",
-                                                              24,
-                                                              0,
-                                                              {
-                                                                  margin: "-10px 0",
-                                                              },
-                                                              {
-                                                                  class: "text-desc",
-                                                              }
-                                                          ),
-                                                ]
+                                                m("div", t("PlayerTradeFilterClear"))
                                             ),
-                                        ];
-                                    }),
-                            ]);
-                        }),
-                        m(".hr.dashed"),
-                        m(".two-col", [
-                            m(".text-s.uppercase", t("PlayerTradePriceFilter")),
-                            m(
-                                "div",
-                                m(
-                                    "select.text-m",
-                                    {
-                                        onchange: (e) => {
-                                            priceFilter = e.target.value;
-                                        },
-                                        style: {
-                                            margin: "-10px 0",
-                                        },
-                                    },
-                                    keysOf(PriceFilters).map((k) =>
+                                            m(".f1"),
+                                            m(
+                                                ".text-m.pointer.blue",
+                                                {
+                                                    onclick: () => {
+                                                        forEach(allResourceFilters, (k) => {
+                                                            if (T.res[k]) {
+                                                                resourceFilter[k] = true;
+                                                            }
+                                                        });
+                                                        showResourceFilter = false;
+                                                    },
+                                                },
+                                                m("div", t("PlayerTradeFilterWhatIHave"))
+                                            ),
+                                        ]),
+                                        keysOf(allResourceFilters)
+                                            .sort((a, b) => RES[a].name().localeCompare(RES[b].name()))
+                                            .map((res) => {
+                                                return [
+                                                    m(".hr.dashed"),
+                                                    m(
+                                                        ".two-col.text-m.pointer",
+                                                        {
+                                                            onclick: () => {
+                                                                if (resourceFilter[res]) {
+                                                                    delete resourceFilter[res];
+                                                                } else {
+                                                                    resourceFilter[res] = true;
+                                                                }
+                                                            },
+                                                        },
+                                                        [
+                                                            m("div", RES[res].name()),
+                                                            resourceFilter[res]
+                                                                ? iconB(
+                                                                    "check_box",
+                                                                    24,
+                                                                    0,
+                                                                    {
+                                                                        margin: "-10px 0",
+                                                                    },
+                                                                    { class: "blue" }
+                                                                )
+                                                                : iconB(
+                                                                    "check_box_outline_blank",
+                                                                    24,
+                                                                    0,
+                                                                    {
+                                                                        margin: "-10px 0",
+                                                                    },
+                                                                    {
+                                                                        class: "text-desc",
+                                                                    }
+                                                                ),
+                                                        ]
+                                                    ),
+                                                ];
+                                            }),
+                                    ]);
+                                }),
+                                m(".hr.dashed"),
+                                m(".two-col", [
+                                    m(".text-s.uppercase", t("PlayerTradePriceFilter")),
+                                    m(
+                                        "div",
                                         m(
-                                            "option",
+                                            "select.text-m",
                                             {
-                                                key: k,
-                                                value: k,
-                                                selected: priceFilter === k,
+                                                onchange: (e) => {
+                                                    priceFilter = e.target.value;
+                                                },
+                                                style: {
+                                                    margin: "-10px 0",
+                                                },
                                             },
-                                            PriceFilters[k]()
+                                            keysOf(PriceFilters).map((k) =>
+                                                m(
+                                                    "option",
+                                                    {
+                                                        key: k,
+                                                        value: k,
+                                                        selected: priceFilter === k,
+                                                    },
+                                                    PriceFilters[k]()
+                                                )
+                                            )
                                         )
-                                    )
-                                )
-                            ),
-                        ]),
-                        m(".hr.dashed"),
-                        uiBoxToggleContent(
-                            m(".text-s.uppercase", t("PlayerTradeAutoClaim")),
-                            ClaimConfig.autoClaim,
-                            () => (ClaimConfig.autoClaim = !ClaimConfig.autoClaim),
-                            { style: { margin: "-10px 0" } },
-                            24
-                        ),
-                    ]),
+                                    ),
+                                ]),
+                                m(".hr.dashed"),
+                                m(".two-col", [
+                                    m(".text-s.uppercase", "Min Price"),
+                                    m("input", {
+                                        min: 0,
+                                        step: 1,
+                                        type: "number",
+                                        value: minPriceFilter,
+                                        oninput: (e) => {
+                                            minPriceFilter = parseInt(e.target.value, 10) || 0;
+                                        },
+                                    }),
+                                ]),
+                                m(".hr.dashed"),
+                                m(".two-col", [
+                                    m(".text-s.uppercase", "Max Price"),
+                                    m("input", {
+                                        min: 0,
+                                        step: 1,
+                                        type: "number",
+                                        value: maxPriceFilter,
+                                        oninput: (e) => {
+                                            maxPriceFilter = parseInt(e.target.value, 10) || 0;
+                                        },
+                                    }),
+                                ]),
+                                m(".hr.dashed"),
+                                m(".two-col", [
+                                    m(".text-s.uppercase", "Player Name"),
+                                    m("input.f1", {
+                                        type: "text",
+                                        value: playerNameFilter,
+                                        oninput: (e) => {
+                                            playerNameFilter = e.target.value.toLowerCase();
+                                        },
+                                    }),
+                                ]),
+                                m(".hr.dashed"),                        
+                                uiBoxToggleContent(
+                                    m(".text-s.uppercase", t("PlayerTradeAutoClaim")),
+                                    ClaimConfig.autoClaim,
+                                    () => (ClaimConfig.autoClaim = !ClaimConfig.autoClaim),
+                                    { style: { margin: "-10px 0" } },
+                                    24
+                                ),
+                            ])
+                        })
+                    ]),                        
                     m(
                         ".data-table",
                         m("table", [
@@ -491,6 +554,21 @@ export function PlayerTradePage(): m.Comp<{ docked: boolean; resources?: string 
                                     }
                                     const res = isResourceFilterEmpty ? true : resourceFilter[trade.resource];
                                     let p = true;
+                                    if (minPriceFilter > 0) {
+                                        if ( trade.price < minPriceFilter ) {
+                                            p = false;
+                                        }
+                                    }
+                                    if (maxPriceFilter > 0) {
+                                        if ( trade.price > maxPriceFilter ) {
+                                            p = false;
+                                        }
+                                    }
+                                    if (playerNameFilter.length > 0) {
+                                        if (trade.from.toLocaleLowerCase().includes(playerNameFilter) === false) {
+                                            p = false;
+                                        }
+                                    }				                                    
                                     if (priceFilter === "BestPriceOnly") {
                                         if (trade.side === "buy") {
                                             p = bestBids[trade.resource].id === trade.id;
