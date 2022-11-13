@@ -61,7 +61,10 @@ let minPriceFilter = 0;
 let maxPriceFilter = 0;
 let playerNameFilter = "";
 
-export function PlayerTradePage(): m.Comp<{ docked: boolean; resources?: string }> {
+export function PlayerTradePage(): m.Comp<{
+    docked: boolean;
+    resources?: string;
+}> {
     let announcement: string;
 
     function setTradeResource(res: keyof Resources) {
@@ -244,7 +247,10 @@ export function PlayerTradePage(): m.Comp<{ docked: boolean; resources?: string 
                                     price: "$" + nf(getPrice(draftTrade.resource)),
                                 }),
                                 ". ",
-                                t("PlayerTradeValidRange", { min: `$${nf(minPrice)}`, max: `$${nf(maxPrice)}` }),
+                                t("PlayerTradeValidRange", {
+                                    min: `$${nf(minPrice)}`,
+                                    max: `$${nf(maxPrice)}`,
+                                }),
                             ]),
                             m("div", nf(draftTrade.price)),
                         ]),
@@ -309,7 +315,7 @@ export function PlayerTradePage(): m.Comp<{ docked: boolean; resources?: string 
                     ]),
                     m(".box", [
                         m(".row", [
-                            m(".f1"),        
+                            m(".f1"),
                             m(
                                 ".row.pointer.blue.ml10",
                                 {
@@ -317,15 +323,12 @@ export function PlayerTradePage(): m.Comp<{ docked: boolean; resources?: string 
                                 },
                                 [
                                     iconB(showPriceFilter ? "close" : "filter_list", 20, 5, {}),
-                                    m(
-                                        ".uppercase.text-s",
-                                        "Filter Options"
-                                    ),
+                                    m(".uppercase.text-s", "Filter Options"),
                                 ]
-                            ),                            
-                        ]),                        
+                            ),
+                        ]),
                         ifTrue(showPriceFilter, () => {
-                            return m("div", [    
+                            return m("div", [
                                 m(".hr"),
                                 m(".row", [
                                     m(
@@ -363,8 +366,8 @@ export function PlayerTradePage(): m.Comp<{ docked: boolean; resources?: string 
                                                 isResourceFilterEmpty
                                                     ? t("PlayerTradeFilterResources")
                                                     : t("PlayerTradeFilteringNResources", {
-                                                            n: sizeOf(resourceFilter),
-                                                        })
+                                                          n: sizeOf(resourceFilter),
+                                                      })
                                             ),
                                         ]
                                     ),
@@ -419,25 +422,25 @@ export function PlayerTradePage(): m.Comp<{ docked: boolean; resources?: string 
                                                             m("div", RES[res].name()),
                                                             resourceFilter[res]
                                                                 ? iconB(
-                                                                    "check_box",
-                                                                    24,
-                                                                    0,
-                                                                    {
-                                                                        margin: "-10px 0",
-                                                                    },
-                                                                    { class: "blue" }
-                                                                )
+                                                                      "check_box",
+                                                                      24,
+                                                                      0,
+                                                                      {
+                                                                          margin: "-10px 0",
+                                                                      },
+                                                                      { class: "blue" }
+                                                                  )
                                                                 : iconB(
-                                                                    "check_box_outline_blank",
-                                                                    24,
-                                                                    0,
-                                                                    {
-                                                                        margin: "-10px 0",
-                                                                    },
-                                                                    {
-                                                                        class: "text-desc",
-                                                                    }
-                                                                ),
+                                                                      "check_box_outline_blank",
+                                                                      24,
+                                                                      0,
+                                                                      {
+                                                                          margin: "-10px 0",
+                                                                      },
+                                                                      {
+                                                                          class: "text-desc",
+                                                                      }
+                                                                  ),
                                                         ]
                                                     ),
                                                 ];
@@ -510,7 +513,7 @@ export function PlayerTradePage(): m.Comp<{ docked: boolean; resources?: string 
                                         },
                                     }),
                                 ]),
-                                m(".hr.dashed"),                        
+                                m(".hr.dashed"),
                                 uiBoxToggleContent(
                                     m(".text-s.uppercase", t("PlayerTradeAutoClaim")),
                                     ClaimConfig.autoClaim,
@@ -518,9 +521,9 @@ export function PlayerTradePage(): m.Comp<{ docked: boolean; resources?: string 
                                     { style: { margin: "-10px 0" } },
                                     24
                                 ),
-                            ])
-                        })
-                    ]),                        
+                            ]);
+                        }),
+                    ]),
                     m(
                         ".data-table",
                         m("table", [
@@ -555,12 +558,12 @@ export function PlayerTradePage(): m.Comp<{ docked: boolean; resources?: string 
                                     const res = isResourceFilterEmpty ? true : resourceFilter[trade.resource];
                                     let p = true;
                                     if (minPriceFilter > 0) {
-                                        if ( trade.price < minPriceFilter ) {
+                                        if (trade.price < minPriceFilter) {
                                             p = false;
                                         }
                                     }
                                     if (maxPriceFilter > 0) {
-                                        if ( trade.price > maxPriceFilter ) {
+                                        if (trade.price > maxPriceFilter) {
                                             p = false;
                                         }
                                     }
@@ -568,7 +571,7 @@ export function PlayerTradePage(): m.Comp<{ docked: boolean; resources?: string 
                                         if (trade.from.toLocaleLowerCase().includes(playerNameFilter) === false) {
                                             p = false;
                                         }
-                                    }				                                    
+                                    }
                                     if (priceFilter === "BestPriceOnly") {
                                         if (trade.side === "buy") {
                                             p = bestBids[trade.resource].id === trade.id;
@@ -876,7 +879,11 @@ export function PlayerTradePage(): m.Comp<{ docked: boolean; resources?: string 
     }
 }
 
-function ShowTaxCalculation(): m.Comp<{ resource: keyof Resources; amount: number; price: number }> {
+function ShowTaxCalculation(): m.Comp<{
+    resource: keyof Resources;
+    amount: number;
+    price: number;
+}> {
     let show = false;
     return {
         view: (vnode) => {

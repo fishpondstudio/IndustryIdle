@@ -1,5 +1,13 @@
 export const CHANGELOG = [
     {
+        version: "0.20.2",
+        content: [
+            "QoL: Add more purchase amount option in Trade Center (by @jimmyh77)",
+            "QoL: Allow filter player trade by price range and player name (by @jimmyh77)",
+            "Bugfix: Nikola Tesla policy in Detroit no longer requires nature gas (by @ryansb)",
+        ],
+    },
+    {
         version: "0.20.1",
         content: [
             "Bugfix: Fix a bug where some buildings are not appearing in Research Lab on maps that meet the unlock requirement",
@@ -7,7 +15,6 @@ export const CHANGELOG = [
             "QoL: Add 'Set as Default' for production settings in building page",
         ],
     },
-
     {
         version: "0.20.0",
         content: [
