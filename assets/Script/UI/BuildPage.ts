@@ -421,7 +421,7 @@ export function BuildPage(): m.Comp<{ xy: string }> {
                 label.node.color = cc
                     .color()
                     .fromHEX(colorScale(percent).hex("rgb"));
-                label.node.opacity = 55 + 255 * percent;
+                label.node.opacity = 55 + 200 * percent;
                 label.node.active = true;
             }
             else {
