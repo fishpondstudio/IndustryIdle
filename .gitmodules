@@ -1,6 +1,3 @@
 [submodule "native"]
 	path = native
 	url = git@github.com:fishpondstudio/IndustryIdle-Native.git
-[submodule "assets/Script/Config"]
-	path = assets/Script/Config
-	url = git@github.com:fishpondstudio/IndustryIdle-Config.git
