@@ -31,6 +31,8 @@ import {
     selectOf,
     sizeOf,
     truncate,
+    getFlagUrl,
+    CountryCode,
 } from "../General/Helper";
 import { t } from "../General/i18n";
 import { serverNow } from "../General/ServerClock";
@@ -38,6 +40,7 @@ import { CrazyGameAdBanner } from "./CrazyGameAdBanner";
 import { Desktop } from "./HudPage";
 import { getContainerClass, iconB, isMobile, uiBoxToggleContent, uiHeaderAction, uiHeaderActionBack } from "./UIHelper";
 import { hideAlert, routeTo, showAlert, showToast } from "./UISystem";
+import { flagToName } from "./ChooseFlagPage";
 
 type ResourceFilter = keyof Resources;
 type SideFilter = OrderSide | "";
@@ -60,6 +63,7 @@ let showPriceFilter = false;
 let minPriceFilter = 0;
 let maxPriceFilter = 0;
 let playerNameFilter = "";
+let playerFlagFilter = "";
 
 export function PlayerTradePage(): m.Comp<{
     docked: boolean;
@@ -514,6 +518,22 @@ export function PlayerTradePage(): m.Comp<{
                                     }),
                                 ]),
                                 m(".hr.dashed"),
+                                m(".two-col", [
+                                    m(".text-s.uppercase", "Player Flag"),
+                                    m(
+                                        ".text-center",
+                                        keysOf(CountryCode).map((k) => {
+                                            return m("img.player-trade-badge.pointer", {
+                                                    title: flagToName(k),
+                                                    src: getFlagUrl(k),
+                                                    onclick: () => {
+                                                        playerFlagFilter = k;
+                                                    },                                                    
+                                            });
+                                        })
+                                    ),
+                                ]),
+                                m(".hr.dashed"),
                                 uiBoxToggleContent(
                                     m(".text-s.uppercase", t("PlayerTradeAutoClaim")),
                                     ClaimConfig.autoClaim,
@@ -569,6 +589,11 @@ export function PlayerTradePage(): m.Comp<{
                                     }
                                     if (playerNameFilter.length > 0) {
                                         if (trade.from.toLocaleLowerCase().includes(playerNameFilter) === false) {
+                                            p = false;
+                                        }
+                                    }
+                                    if (playerFlagFilter !== "") {
+                                        if ( trade.flag !== playerFlagFilter) {
                                             p = false;
                                         }
                                     }
@@ -856,6 +881,14 @@ export function PlayerTradePage(): m.Comp<{
                                 : m("span.green", t("PlayerTradeAsk")),
                             " · ",
                             m("span", { title: playerName }, truncate(playerName, 12, 6)),
+                            ifTrue(!!trade.flag, () =>
+                                m("span", 
+                                    m("img.player-trade-badge", {
+                                        title: flagToName(trade.flag),
+                                        src: getFlagUrl(trade.flag),
+                                    })
+                                )
+                            )                          
                         ]),
                     ]
                 ),

@@ -1193,6 +1193,11 @@ a.blue {
     margin: 0 0 0 5px;
 }
 
+.player-trade-badge {
+    height: 13px;
+    margin: 0 0 0 5px;
+}
+
 .chat-desktop-container .header,
 .secondary-desktop-container .header {
     padding-right: var(--sair);

@@ -32,6 +32,7 @@ export interface ITrade {
     id: string;
     from: string;
     fromUserHash: string;
+    flag: string;
     side: OrderSide;
     resource: keyof Resources;
     amount: number;
@@ -85,6 +86,7 @@ export function newTrade(): ILocalTrade {
         fromUserId: D.persisted.userId,
         fromUserHash: calcUserHash(D.persisted.userId),
         from: D.persisted.userName,
+        flag: D.persisted.flag,
         resource: null,
         amount: 0,
         price: 0,
