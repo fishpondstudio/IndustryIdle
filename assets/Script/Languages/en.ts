@@ -1512,4 +1512,7 @@ export const EN = {
     QuantumComputer: "Quantum Computer",
     TVStudioPlus: "TV Studio+",
     SetAsDefault: "Set as Default",
+    OnlyShowPositiveModifiers: "Only show positive modifiers",
+    OnlyShowPositiveModifiersHint: "A checkbox next to a building in the list needs to be checked",
+    OnlyShowPositiveModifiersDesc: "Will show only positive tile modifiers with a building checkbox",
 };
