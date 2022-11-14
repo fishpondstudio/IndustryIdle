@@ -567,17 +567,17 @@ export function PlayerTradePage(): m.Comp<{
                                     }
                                     const res = isResourceFilterEmpty ? true : resourceFilter[trade.resource];
                                     let p = true;                                    
-                                    if ( maxResourceAmount != NaN && maxResourceAmount > 0 ) {
+                                    if (isFinite(maxResourceAmount) && maxResourceAmount > 0 ) {
                                         if ( trade.amount > maxResourceAmount ) {
                                             p = false;
                                         }
                                     }
-                                    if (minPriceFilter != NaN && minPriceFilter > 0) {
+                                    if (isFinite(minPriceFilter) && minPriceFilter > 0) {
                                         if (trade.price < minPriceFilter) {
                                             p = false;
                                         }
                                     }
-                                    if (maxPriceFilter != NaN && maxPriceFilter > 0) {
+                                    if (isFinite(maxPriceFilter) && maxPriceFilter > 0) {
                                         if (trade.price > maxPriceFilter) {
                                             p = false;
                                         }
