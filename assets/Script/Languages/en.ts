@@ -1512,4 +1512,8 @@ export const EN = {
     QuantumComputer: "Quantum Computer",
     TVStudioPlus: "TV Studio+",
     SetAsDefault: "Set as Default",
+    ClearTradesTitle: "Clear Trades",
+    ClearTradesDescription: "Are you sure you want to clear your trades?  This action will not return the cash or resources spent on these trades!",
+    ClearTradesNo: "Don't Clear My Trades",
+    ClearTradesYes: "Clear My Trades",
 };
