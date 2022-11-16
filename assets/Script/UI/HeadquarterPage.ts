@@ -508,35 +508,21 @@ export function HeadquarterPage(): m.Comp {
                             ".pointer",
                             {
                                 onclick: async () => {
-                                    showAlert(t("ClearTradesTitle1"), t("ClearTradesDescription1"), [
+                                    showAlert(t("ClearTradesTitle"), t("ClearTradesDescription"), [
                                         {
-                                            name: t("ClearTradesNo1"),
+                                            name: t("ClearTradesNo"),
                                             class: "outline"
                                         },
                                         {
-                                            name: t("ClearTradesYes1"),
+                                            name: t("ClearTradesYes"),
                                             class: "outline",
                                             action:async () => {                                                
-                                                showAlert(t("ClearTradesTitle2"), t("ClearTradesDescription2"), [
-                                                    {
-                                                        name: t("ClearTradesYes2"),
-                                                        class: "outline",
-                                                        action:async () => {                                                
-                                                            showLoader();
-                                                            try {
-                                                                await Promise.race([clearTrades(D.persisted.userId), resolveIn(2)]);
-                                                            } finally {
-                                                                reloadGame();
-                                                            }                                                
-                                                        }
-                                                    },
-                                                    {
-                                                        name: t("ClearTradesNo2"),
-                                                        class: "outline"
-                                                    },
-            
-                                                ]);
-            
+                                                showLoader();
+                                                try {
+                                                    await Promise.race([clearTrades(D.persisted.userId), resolveIn(2)]);
+                                                } finally {
+                                                    reloadGame();
+                                                }                                                            
                                             }
                                         },
                                     ]);
