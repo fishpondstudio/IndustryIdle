@@ -20,7 +20,7 @@ import EntityVisual from "./EntityVisual";
 import { gridEqual, gridToPosition, gridToString, stringToGrid, stringToPosition } from "./GridHelper";
 import { ConstructionStatus, Entity, makeEntity } from "./Logic/Entity";
 import { findByType } from "./Logic/Find";
-import { addResourceTo, BLD, canBuild, Deposit, getBuilderMoveSpeed, isMine, MAP, RES } from "./Logic/Logic";
+import { addResourceTo, BLD, buildingCanInput, canBuild, Deposit, getBuilderMoveSpeed, isMine, MAP, RES } from "./Logic/Logic";
 import { depositsToArray, IMap } from "./MapDefinitions";
 import BulletsPool from "./NodePools/BulletsPool";
 import DotsPool from "./NodePools/DotsPool";
@@ -424,9 +424,9 @@ export default class World extends cc.Component {
         }
         const entity = makeEntity(xy, building);
         Object.assign(entity, D.entityDefault);
-        if (entity.type === "WindTurbine" || entity.type === "SolarPanel") {
+        if (!buildingCanInput(entity) && BLD[entity.type].power >= 0) {
             entity.turnOff = false;
-        }        
+        }
         entity.construction = status;
         D.buildingsToConstruct[xy] = entity;
         this.placeBuilding(entity);
