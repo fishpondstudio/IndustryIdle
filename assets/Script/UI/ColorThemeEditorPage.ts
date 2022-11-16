@@ -69,6 +69,11 @@ export function ColorThemeEditorPage() {
                                                 delete D.persisted.colorThemeOverrides[k];
                                             }
                                         });
+                                        forEach(D.persisted.colorThemeOverrides, (k, v) => {
+                                            if (!(k in overrides)) {
+                                                delete D.persisted.colorThemeOverrides[k];
+                                            }
+                                        });
                                         await saveData();
                                         reloadGame();
                                     },
