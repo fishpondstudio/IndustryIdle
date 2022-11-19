@@ -511,24 +511,24 @@ export function HeadquarterPage(): m.Comp {
                                     showAlert(t("ClearTradesTitle"), t("ClearTradesDescription"), [
                                         {
                                             name: t("ClearTradesNo"),
-                                            class: "outline"
+                                            class: "outline",
                                         },
                                         {
                                             name: t("ClearTradesYes"),
-                                            class: "outline",
-                                            action:async () => {                                                
+                                            class: "outline red",
+                                            action: async () => {
                                                 showLoader();
                                                 try {
                                                     await Promise.race([clearTrades(D.persisted.userId), resolveIn(2)]);
                                                 } finally {
                                                     reloadGame();
-                                                }                                                            
-                                            }
+                                                }
+                                            },
                                         },
                                     ]);
                                 },
                             },
-                            t("ClearMyTrades")
+                            t("ClearMyTradesV2")
                         ),
                     ]),
                 ]),

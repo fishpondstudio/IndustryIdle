@@ -1054,7 +1054,6 @@ export const KR = {
         "소셜 네트워크 주식회사가 메타 주식회사로 변경되고 인터넷, 게임, 슈퍼컴퓨터, 비트코인, 도지코인을 소비합니다",
     MetaInc: "메타 주식회사",
     ImportSave: "세이브 가져오기",
-    ClearMyTrades: "Clear My Trades",
     SaveVersionTooNew:
         "세이브 파일 버전은 %{saveVersion}이지만, 현재 게임 버전은 %{gameVersion}입니다. 게임을 먼저 업데이트 해주세요.",
     LeaderboardByFlag: "플레이어 국기별 통계",
@@ -1486,4 +1485,12 @@ export const KR = {
     QuantumComputer: "Quantum Computer",
     TVStudioPlus: "TV Studio+",
     SetAsDefault: "Set as Default",
+    ClearTradesTitle: "Purge My Trades",
+    ClearTradesDescription:
+        "Cash and resources will NOT be refunded - only use this if you have stale trades stuck on the server",
+    ClearTradesNo: "Don't Purge",
+    ClearTradesYes: "Purge My Trades",
+    OnlyShowPositiveModifiers: "Only show positive tile modifiers",
+    OnlyShowPositiveModifiersHint: "Tick the checkbox on the left of the building to show tile modifiers on the map",
+    ClearMyTradesV2: "Purge My Trades",
 };

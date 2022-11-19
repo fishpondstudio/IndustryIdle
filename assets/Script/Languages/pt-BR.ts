@@ -1096,7 +1096,6 @@ export const PT_BR = {
         "A Rede social INK é renomeada para Meta INK e consome internet,jogo,supercomputador,bitcoin e dogecoin.",
     MetaInc: "Meta INK",
     ImportSave: "Importar Save",
-    ClearMyTrades: "Limpar minhas negociações",
     SaveVersionTooNew: "Seu save é de %{saveVersion},mas seu jogo é %{gameVersion}. Atualize seu jogo primeiro",
     LeaderboardByFlag: "Classificação por bandeira do jogador",
     LeaderboardByMap: "Classificação por Mapa",
@@ -1547,4 +1546,12 @@ export const PT_BR = {
     QuantumComputer: "Quantum Computer",
     TVStudioPlus: "TV Studio+",
     SetAsDefault: "Set as Default",
+    ClearTradesTitle: "Purge My Trades",
+    ClearTradesDescription:
+        "Cash and resources will NOT be refunded - only use this if you have stale trades stuck on the server",
+    ClearTradesNo: "Don't Purge",
+    ClearTradesYes: "Purge My Trades",
+    OnlyShowPositiveModifiers: "Only show positive tile modifiers",
+    OnlyShowPositiveModifiersHint: "Tick the checkbox on the left of the building to show tile modifiers on the map",
+    ClearMyTradesV2: "Purge My Trades",
 };

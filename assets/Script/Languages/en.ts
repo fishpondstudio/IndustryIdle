@@ -1077,7 +1077,6 @@ export const EN = {
         "Social Network Inc is renamed to Meta Inc and consumes internet, game, super computer, bitcoin and dogecoin instead",
     MetaInc: "Meta Inc",
     ImportSave: "Import Save",
-    ClearMyTrades: "Clear My Trades",
     SaveVersionTooNew:
         "Your save is from %{saveVersion} but your game is %{gameVersion}. Please update your game first",
     LeaderboardByFlag: "Tabluation By Player Flag",
@@ -1512,11 +1511,12 @@ export const EN = {
     QuantumComputer: "Quantum Computer",
     TVStudioPlus: "TV Studio+",
     SetAsDefault: "Set as Default",
-    ClearTradesTitle: "⛔ Clear My Trades ⛔",
-    ClearTradesDescription: "Are you sure you want to clear your trades?  This action will not return the cash or resources spent on these trades!",
-    ClearTradesNo: "Don't Clear My Trades",
-    ClearTradesYes: "Clear My Trades",    
-    OnlyShowPositiveModifiers: "Only show positive modifiers",
-    OnlyShowPositiveModifiersHint: "A checkbox next to a building in the list needs to be checked",
-    OnlyShowPositiveModifiersDesc: "Will show only positive tile modifiers with a building checkbox",
+    ClearTradesTitle: "Purge My Trades",
+    ClearTradesDescription:
+        "Cash and resources will NOT be refunded - only use this if you have stale trades stuck on the server",
+    ClearTradesNo: "Don't Purge",
+    ClearTradesYes: "Purge My Trades",
+    OnlyShowPositiveModifiers: "Only show positive tile modifiers",
+    OnlyShowPositiveModifiersHint: "Tick the checkbox on the left of the building to show tile modifiers on the map",
+    ClearMyTradesV2: "Purge My Trades",
 };

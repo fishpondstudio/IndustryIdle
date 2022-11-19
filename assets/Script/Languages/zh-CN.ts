@@ -1,6 +1,7 @@
 export const ZH_CN = {
     Translator: "译者",
-    TranslatorName: "LazySu, snewpeap, Orange233, YinTingChow, HagridThick, Kx1672, WUTONK, CarrlangCha, SonodaHanami, 5tanL",
+    TranslatorName:
+        "LazySu, snewpeap, Orange233, YinTingChow, HagridThick, Kx1672, WUTONK, CarrlangCha, SonodaHanami, 5tanL",
     Language: "语言",
     ThisLanguage: "简体中文",
     OK: "好的",
@@ -1028,7 +1029,6 @@ export const ZH_CN = {
     MetaRebrandingDesc: "社交网络公司更名为元宇宙(Meta)公司并且消耗互联网、游戏、超级计算机、比特币和狗狗币",
     MetaInc: "元宇宙(Meta)公司",
     ImportSave: "导入存档",
-    ClearMyTrades: "清除我的交易",
     SaveVersionTooNew: "你的存档保存自%{saveVersion}，但你的游戏是%{gameVersion}。请先更新你的游戏",
     LeaderboardByFlag: "根据玩家旗帜制表",
     LeaderboardByMap: "根据地图制表",
@@ -1439,4 +1439,12 @@ export const ZH_CN = {
     QuantumComputer: "量子计算机",
     TVStudioPlus: "电视台+",
     SetAsDefault: "设为默认",
+    ClearTradesTitle: "Purge My Trades",
+    ClearTradesDescription:
+        "Cash and resources will NOT be refunded - only use this if you have stale trades stuck on the server",
+    ClearTradesNo: "Don't Purge",
+    ClearTradesYes: "Purge My Trades",
+    OnlyShowPositiveModifiers: "Only show positive tile modifiers",
+    OnlyShowPositiveModifiersHint: "Tick the checkbox on the left of the building to show tile modifiers on the map",
+    ClearMyTradesV2: "Purge My Trades",
 };

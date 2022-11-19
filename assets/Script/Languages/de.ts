@@ -575,8 +575,7 @@ export const DE = {
     BookPublisherScience: "Wissenschaftsliteratur",
     BookPublisherScienceDesc: "Buchverläge produzieren Wissenschaft statt Kultur",
     BatteryFuelEconomy: "Wiederaufladbare Batterie",
-    BatteryFuelEconomyDesc:
-        "50% Kraftstoffkostenersparnis beim Transport von Batterien.",
+    BatteryFuelEconomyDesc: "50% Kraftstoffkostenersparnis beim Transport von Batterien.",
     ShowTheoreticalInputOutputCapacity: "Zeigt die theoretische Ein- und Ausgabekapazität an",
     SpecialTransportCost: "Ressourcen mit besonderen Transportkosten",
     FreeTransportCost: "Ressourcen mit kostenlosem Transport",
@@ -1001,15 +1000,13 @@ export const DE = {
     SwissUpgrade: "Schweizer Upgrade",
     SwissUpgradeDesc: "Schweizer Upgrades sind permanent und werden in die neue Stadt übertragen",
     SwissBoost: "Schweizer Boost",
-    SwissBoostDesc:
-        "Schweizer Boosts gelten nur für deine aktuelle Karte und verfallen bei einem Kartenneustart.",
+    SwissBoostDesc: "Schweizer Boosts gelten nur für deine aktuelle Karte und verfallen bei einem Kartenneustart.",
     ProductionMultipliers: "Produktionsmultiplikator",
     MultiplierMapUniqueBonus: "Einzigartiger Kartenbonus",
     MultiplierSwissUpgrade: "Schweizer Upgrade (Permanent)",
     MultiplierSwissBoost: "Schweizer Boost (Aktuelle Karte)",
     SwissBoostCostDivider: "Schweizer Boost Kostenteiler",
-    SwissBoostCostDividerDesc:
-        "Teile die Kosten für Schweizer Multiplikator- und Teilerboosts durch diesen Wert.",
+    SwissBoostCostDividerDesc: "Teile die Kosten für Schweizer Multiplikator- und Teilerboosts durch diesen Wert.",
     AirForceCommand: "Luftwaffenführung",
     AirForce: "Luftwaffe",
     StealthFighterFactory: "Tarnkappenbomberfabrik",
@@ -1103,7 +1100,6 @@ export const DE = {
         "Social Network Inc wird zu Meta Inc umbenannt und verbraucht stattdessen Internet, Computerspiele, Supercomputer, Bitcoin und Dogecoin.",
     MetaInc: "Meta Inc",
     ImportSave: "Spielstand importieren",
-    ClearMyTrades: "Spielstand zurücksetzen",
     SaveVersionTooNew:
         "Dein Speicherstand ist aus der Version %{saveVersion}. Dein Spiel nutzt aktuell die Version %{gameVersion}. Aktualisiere bitte zuerst dein Spiel.",
     LeaderboardByFlag: "Bewertung nach Spielerflagge",
@@ -1548,4 +1544,12 @@ export const DE = {
     QuantumComputer: "Quantencomputer",
     TVStudioPlus: "TV Studio+",
     SetAsDefault: "Als Standard festlegen",
+    ClearTradesTitle: "Purge My Trades",
+    ClearTradesDescription:
+        "Cash and resources will NOT be refunded - only use this if you have stale trades stuck on the server",
+    ClearTradesNo: "Don't Purge",
+    ClearTradesYes: "Purge My Trades",
+    OnlyShowPositiveModifiers: "Only show positive tile modifiers",
+    OnlyShowPositiveModifiersHint: "Tick the checkbox on the left of the building to show tile modifiers on the map",
+    ClearMyTradesV2: "Purge My Trades",
 };

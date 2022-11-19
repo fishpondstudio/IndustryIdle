@@ -1,4 +1,5 @@
 import { Buildings, ResourceNumberMap } from "../CoreGame/Buildings/BuildingDefinitions";
+import { getCurrentColor } from "../CoreGame/ColorThemes";
 import { stringToGrid } from "../CoreGame/GridHelper";
 import {
     BLD,
@@ -29,9 +30,8 @@ import { forEach, formatPercent, hasValue, ifTrue, keysOf, nf, safeGet } from ".
 import { t } from "../General/i18n";
 import { NativeSdk } from "../General/NativeSdk";
 import { shortcut } from "./Shortcut";
-import { iconB, leftOrRight, uiBuildingInputOutput, uiHeaderRoute, uiBoxToggleContent } from "./UIHelper";
+import { iconB, leftOrRight, uiBoxToggleContent, uiBuildingInputOutput, uiHeaderRoute } from "./UIHelper";
 import { routeTo, showToast } from "./UISystem";
-import { getCurrentColor } from "../CoreGame/ColorThemes";
 
 let lastBuilt: keyof Buildings;
 
@@ -155,28 +155,6 @@ export function BuildPage(): m.Comp<{ xy: string }> {
                     ),
                     depositNode,
                     m(".box", [
-                        ifTrue(selected !== null, () => [
-                            m("div",
-                                uiBoxToggleContent(
-                                    m(".text-s.uppercase", {
-                                        title: t("OnlyShowPositiveModifiersHint")
-                                    }, t("OnlyShowPositiveModifiers")),
-                                    onlyShowPositiveTiles,
-                                    () => {
-                                        onlyShowPositiveTiles = !onlyShowPositiveTiles;
-                                        //G.world.clearOverlay();
-                                        showTileModifiers(selected);
-                                    },
-                                    { style: { margin: "-10px 0" } },
-                                    24
-                                )
-                            ),
-                            m(".two-col.text-desc.text-s", [
-                                t("OnlyShowPositiveModifiersDesc"),
-                            ]),                            
-                            m(".hr"),                            
-                        ]),
-                        
                         m(
                             "div",
                             m("input", {
@@ -185,9 +163,24 @@ export function BuildPage(): m.Comp<{ xy: string }> {
                                 oninput: (e: InputEvent) => {
                                     keyword = (e.target as HTMLInputElement).value;
                                 },
-                                oncreate: ({dom}) => setTimeout(() => dom.focus()),
-                                onupdate: ({dom}) => setTimeout(() => dom.focus())
                             })
+                        ),
+                        m(".hr"),
+                        uiBoxToggleContent(
+                            m(
+                                ".text-s.uppercase",
+                                { title: t("OnlyShowPositiveModifiersHint") },
+                                t("OnlyShowPositiveModifiers")
+                            ),
+                            onlyShowPositiveTiles,
+                            () => {
+                                onlyShowPositiveTiles = !onlyShowPositiveTiles;
+                                if (selected !== null) {
+                                    showTileModifiers(selected);
+                                }
+                            },
+                            { style: { margin: "-10px 0" } },
+                            24
                         ),
                         keysOf(BLD)
                             .filter(
@@ -298,8 +291,8 @@ export function BuildPage(): m.Comp<{ xy: string }> {
                                                         selected = null;
                                                         G.world.clearOverlay();
                                                         return;
-                                                    }                    
-                                                    selected = c;                                
+                                                    }
+                                                    selected = c;
                                                     showTileModifiers(c);
                                                 },
                                             },
@@ -398,35 +391,28 @@ export function BuildPage(): m.Comp<{ xy: string }> {
         },
     };
 
-    function showTileModifiers(c: keyof Buildings, ) {
-
-        
+    function showTileModifiers(c: keyof Buildings) {
         const colorScale = chroma.scale([
             getCurrentColor().modifierOverlayMin.toHEX("#rrggbb"),
-            getCurrentColor().modifierOverlayMax.toHEX("#rrggbb")
+            getCurrentColor().modifierOverlayMax.toHEX("#rrggbb"),
         ]);
         G.world.forEachOverlay((xy, label) => {
             const modifier = getTileModifier(xy, c);
             let showTileModifier = (onlyShowPositiveTiles && modifier > 0) || !onlyShowPositiveTiles;
 
             if (showTileModifier) {
-                let maxVal = isPolicyActive("AdjacentBonusSquare")
-                    ? 0.15
-                    : 0.25;
+                let maxVal = isPolicyActive("AdjacentBonusSquare") ? 0.15 : 0.25;
                 if (isPolicyActive("DoubleTileModifier")) {
                     maxVal *= 2;
                 }
                 label.string = formatPercent(modifier);
                 const percent = (modifier + maxVal) / 2 / maxVal;
-                label.node.color = cc
-                    .color()
-                    .fromHEX(colorScale(percent).hex("rgb"));
+                label.node.color = cc.color().fromHEX(colorScale(percent).hex("rgb"));
                 label.node.opacity = 55 + 200 * percent;
                 label.node.active = true;
-            }
-            else {
+            } else {
                 label.node.active = false;
             }
-        });        
+        });
     }
 }

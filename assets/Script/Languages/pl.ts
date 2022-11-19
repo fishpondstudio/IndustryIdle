@@ -1091,7 +1091,6 @@ export const PL = {
         "Social Network Inc zmienia nazwę na Meta Inc i zamiast tego zużywa internet, grę, superkomputer, bitcoiny i dogecoiny",
     MetaInc: "Meta Inc",
     ImportSave: "Importuj Zapis",
-    ClearMyTrades: "Wyczyść Moje Transakcje",
     SaveVersionTooNew:
         "Twój zapis pochodzi z %{saveVersion}, ale Twoja gra to %{gameVersion}. Najpierw zaktualizuj swoją grę!",
     LeaderboardByFlag: "Tabela według flag graczy",
@@ -1526,4 +1525,12 @@ export const PL = {
     QuantumComputer: "Quantum Computer",
     TVStudioPlus: "TV Studio+",
     SetAsDefault: "Set as Default",
+    ClearTradesTitle: "Purge My Trades",
+    ClearTradesDescription:
+        "Cash and resources will NOT be refunded - only use this if you have stale trades stuck on the server",
+    ClearTradesNo: "Don't Purge",
+    ClearTradesYes: "Purge My Trades",
+    OnlyShowPositiveModifiers: "Only show positive tile modifiers",
+    OnlyShowPositiveModifiersHint: "Tick the checkbox on the left of the building to show tile modifiers on the map",
+    ClearMyTradesV2: "Purge My Trades",
 };

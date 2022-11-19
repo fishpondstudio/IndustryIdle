@@ -1098,7 +1098,6 @@ export const RU = {
         "Корпорация 'Социальная сеть' переименовывается в Корпорацию 'Мета' и потребляет Интернет, Игры, Супер компьютер, Биткоин и Догикоин",
     MetaInc: "Корпорация 'Мета'",
     ImportSave: "Импорт сохранения",
-    ClearMyTrades: "Очистить мои сделки",
     SaveVersionTooNew:
         "Ваше сохранение - для версии %{saveVersion}, но версия вашей игры %{gameVersion}. Пожалуйста, сначала обновите свою игру",
     LeaderboardByFlag: "Сортировка по флагам игроков",
@@ -1548,4 +1547,12 @@ export const RU = {
     QuantumComputer: "Квантовый компьютер",
     TVStudioPlus: "ТВ Студия+",
     SetAsDefault: "По умолчанию",
+    ClearTradesTitle: "Purge My Trades",
+    ClearTradesDescription:
+        "Cash and resources will NOT be refunded - only use this if you have stale trades stuck on the server",
+    ClearTradesNo: "Don't Purge",
+    ClearTradesYes: "Purge My Trades",
+    OnlyShowPositiveModifiers: "Only show positive tile modifiers",
+    OnlyShowPositiveModifiersHint: "Tick the checkbox on the left of the building to show tile modifiers on the map",
+    ClearMyTradesV2: "Purge My Trades",
 };
