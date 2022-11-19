@@ -501,6 +501,7 @@ export function PlayerTradePage(): m.Comp<{
                                             },
                                         }),
                                     ]),
+                                    m(".vr.dashed"),
                                     m(".two-col", [
                                         m(".text-s.uppercase", "Max Price"),
                                         m("input", {
@@ -510,7 +511,7 @@ export function PlayerTradePage(): m.Comp<{
                                                 maxPriceFilter = Number(e.target.value);
                                             },
                                         }),
-                                    ]),        
+                                    ]),
                                 ]),
                                 m(".hr.dashed"),
                                 m(".two-col", [
@@ -566,9 +567,9 @@ export function PlayerTradePage(): m.Comp<{
                                         return false;
                                     }
                                     const res = isResourceFilterEmpty ? true : resourceFilter[trade.resource];
-                                    let p = true;                                    
-                                    if (isFinite(maxResourceAmount) && maxResourceAmount > 0 ) {
-                                        if ( trade.amount > maxResourceAmount ) {
+                                    let p = true;
+                                    if (isFinite(maxResourceAmount) && maxResourceAmount > 0) {
+                                        if (trade.amount > maxResourceAmount) {
                                             p = false;
                                         }
                                     }

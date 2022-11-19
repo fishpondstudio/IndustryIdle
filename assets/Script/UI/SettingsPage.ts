@@ -37,7 +37,9 @@ export function SettingsPage(): m.Comp {
                                 ".pointer.text-desc.text-s.blue",
                                 {
                                     onclick: () =>
-                                        NativeSdk.openUrl("https://github.com/fishpondstudio/IndustryIdle-i18n"),
+                                        NativeSdk.openUrl(
+                                            "https://github.com/fishpondstudio/IndustryIdle/tree/main/assets/Script/Languages"
+                                        ),
                                 },
                                 t("HelpTranslateTheGame")
                             ),
@@ -435,6 +437,17 @@ export function SettingsPage(): m.Comp {
                     },
                     [
                         m("div", [m("div", t("ReadSteamGuideV2")), m(".text-desc.text-s", t("ReadSteamGuideV2Desc"))]),
+                        m(".blue.ml20", iconB("link", 30)),
+                    ]
+                ),
+                m(".hr"),
+                m(
+                    ".two-col.pointer",
+                    {
+                        onclick: () => NativeSdk.openUrl("https://github.com/fishpondstudio/IndustryIdle"),
+                    },
+                    [
+                        m("div", [m("div", t("OpenSource")), m(".text-desc.text-s", t("OpenSourceDesc"))]),
                         m(".blue.ml20", iconB("link", 30)),
                     ]
                 ),

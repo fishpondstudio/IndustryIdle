@@ -4,7 +4,10 @@ export const CHANGELOG = [
         content: [
             "QoL: Add more purchase amount option in Trade Center (by @jimmyh77)",
             "QoL: Allow filter player trade by price range and player name (by @jimmyh77)",
+            "QoL: Add warning for Purge My Trades (by @jimmyh77)",
+            "QoL: Add an option to show only positive tile modifiers (by @jimmyh77)",
             "Bugfix: Nikola Tesla policy in Detroit no longer requires nature gas (by @ryansb)",
+            "Bugfix: Wind Turbines and Solar Panels cannot be turned on when turned off by inheriting default settings (by @GrayTheWanderer)",
         ],
     },
     {

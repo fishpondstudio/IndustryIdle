@@ -19,11 +19,9 @@ if (!CC_EDITOR && !CC_DEBUG) {
             (a = d.createElement(s)),
             (m = d.getElementsByTagName(s)[0]);
         a.async = 1;
-        a.src = "https://download.gameanalytics.com/js/GameAnalytics-4.4.2.min.js";
+        a.src = "https://download.gameanalytics.com/js/GameAnalytics-4.4.5.min.js";
         m.parentNode.insertBefore(a, m);
     })(window, document);
-
-    // GameAnalytics("setEnabledInfoLog", CC_DEBUG);
     GameAnalytics("initialize", GA_KEY, GA_SECRET);
 }
 

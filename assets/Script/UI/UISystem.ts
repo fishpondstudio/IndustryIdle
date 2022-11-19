@@ -169,7 +169,6 @@ export function routeTo(r: keyof typeof UI_ROUTES, params: Record<string, string
 }
 
 export function urlTo(url: string) {
-    AYService.trackEvent(`ui_route_${url.substring(1).split("?")[0]}`);
     m.route.set(url);
 }
 
