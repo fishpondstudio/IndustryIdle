@@ -33,7 +33,7 @@ import { SettingsPage } from "./SettingsPage";
 import { SteamBackupComponent } from "./SteamBackupComponent";
 import { StreamingPage } from "./StreamingPage";
 import { iconB, leftOrRight, reloadGame, uiHeaderRoute } from "./UIHelper";
-import { routeTo, showLoader, showToast } from "./UISystem";
+import { routeTo, showAlert, showLoader, showToast } from "./UISystem";
 import { UserVerification } from "./UserVerification";
 
 const NAME_CHANGE_COOLDOWN_HOUR = 24;
@@ -508,15 +508,27 @@ export function HeadquarterPage(): m.Comp {
                             ".pointer",
                             {
                                 onclick: async () => {
-                                    showLoader();
-                                    try {
-                                        await Promise.race([clearTrades(D.persisted.userId), resolveIn(2)]);
-                                    } finally {
-                                        reloadGame();
-                                    }
+                                    showAlert(t("ClearTradesTitle"), t("ClearTradesDescription"), [
+                                        {
+                                            name: t("ClearTradesNo"),
+                                            class: "outline",
+                                        },
+                                        {
+                                            name: t("ClearTradesYes"),
+                                            class: "outline red",
+                                            action: async () => {
+                                                showLoader();
+                                                try {
+                                                    await Promise.race([clearTrades(D.persisted.userId), resolveIn(2)]);
+                                                } finally {
+                                                    reloadGame();
+                                                }
+                                            },
+                                        },
+                                    ]);
                                 },
                             },
-                            t("ClearMyTrades")
+                            t("ClearMyTradesV2")
                         ),
                     ]),
                 ]),

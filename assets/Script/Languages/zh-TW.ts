@@ -1029,7 +1029,6 @@ export const ZH_TW = {
     MetaRebrandingDesc: "將社群網路公司更名為元宇宙（Meta）公司並消耗網際網路、遊戲、超級電腦、比特幣和狗狗幣",
     MetaInc: "元宇宙（Meta）公司",
     ImportSave: "匯入存檔",
-    ClearMyTrades: "清除我的交易",
     SaveVersionTooNew: "你的存檔保存於 %{saveVersion}版本 但你的遊戲是 %{gameVersion}版本. 請更新你的遊戲",
     LeaderboardByFlag: "根據玩家旗幟製表",
     LeaderboardByMap: "根據地圖製表",
@@ -1441,4 +1440,14 @@ export const ZH_TW = {
     QuantumComputer: "量子電腦",
     TVStudioPlus: "TV Studio+",
     SetAsDefault: "Set as Default",
+    ClearTradesTitle: "Purge My Trades",
+    ClearTradesDescription:
+        "Cash and resources will NOT be refunded - only use this if you have stale trades stuck on the server",
+    ClearTradesNo: "Don't Purge",
+    ClearTradesYes: "Purge My Trades",
+    OnlyShowPositiveModifiers: "Only show positive tile modifiers",
+    OnlyShowPositiveModifiersHint: "Tick the checkbox on the left of the building to show tile modifiers on the map",
+    ClearMyTradesV2: "Purge My Trades",
+    OpenSource: "Contribute",
+    OpenSourceDesc: "Industry Idle is now open source. You can contribute to the development on Github",
 };

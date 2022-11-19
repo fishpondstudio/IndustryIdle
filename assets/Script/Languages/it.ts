@@ -1101,7 +1101,6 @@ export const IT = {
         "Le compagnie di social network sono ora chiamate Meta Inc, e consumano internet, giochi, super computer, Bitcoin, e Dogecoin",
     MetaInc: "Meta Inc",
     ImportSave: "Importa Salvataggio",
-    ClearMyTrades: "Cancella i miei scambi",
     SaveVersionTooNew:
         "Il tuo salvataggio è in %{saveVersion} ma il tuo gioco è in %{gameVersion}. Per favore aggiorna il tuo gioco",
     LeaderboardByFlag: "Tabulazione Per bandiera giocatore",
@@ -1548,4 +1547,14 @@ export const IT = {
     QuantumComputer: "Quantum Computer",
     TVStudioPlus: "TV Studio+",
     SetAsDefault: "Set as Default",
+    ClearTradesTitle: "Purge My Trades",
+    ClearTradesDescription:
+        "Cash and resources will NOT be refunded - only use this if you have stale trades stuck on the server",
+    ClearTradesNo: "Don't Purge",
+    ClearTradesYes: "Purge My Trades",
+    OnlyShowPositiveModifiers: "Only show positive tile modifiers",
+    OnlyShowPositiveModifiersHint: "Tick the checkbox on the left of the building to show tile modifiers on the map",
+    ClearMyTradesV2: "Purge My Trades",
+    OpenSource: "Contribute",
+    OpenSourceDesc: "Industry Idle is now open source. You can contribute to the development on Github",
 };

@@ -686,6 +686,18 @@ input[type="range"] {
     border-top-style: dashed;
 }
 
+.box .vr {
+    width: 1px;
+    border-left: 1px solid rgba(var(--foreground), 0.1);
+    align-self: stretch;
+    margin: -10px 0 -10px 10px;
+    padding: 0 10px 0 0;
+}
+
+.box .vr.dashed {
+    border-left-style: dashed;
+}
+
 .box .condensed {
     margin: -5px 0;
 }

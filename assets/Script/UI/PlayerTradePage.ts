@@ -60,6 +60,7 @@ let resourceFilter: Partial<Record<ResourceFilter, true>> = {};
 let showResourceFilter = false;
 
 let showPriceFilter = false;
+let maxResourceAmount = 0;
 let minPriceFilter = 0;
 let maxPriceFilter = 0;
 let playerNameFilter = "";
@@ -482,29 +483,39 @@ export function PlayerTradePage(): m.Comp<{
                                 ]),
                                 m(".hr.dashed"),
                                 m(".two-col", [
-                                    m(".text-s.uppercase", "Min Price"),
+                                    m(".text-s.uppercase", "Max Resource Amount"),
                                     m("input", {
-                                        min: 0,
-                                        step: 1,
-                                        type: "number",
-                                        value: minPriceFilter,
+                                        placeholder: 0,
+                                        type: "text",
                                         oninput: (e) => {
-                                            minPriceFilter = parseInt(e.target.value, 10) || 0;
+                                            maxResourceAmount = Number(e.target.value);
                                         },
                                     }),
                                 ]),
                                 m(".hr.dashed"),
-                                m(".two-col", [
-                                    m(".text-s.uppercase", "Max Price"),
-                                    m("input", {
-                                        min: 0,
-                                        step: 1,
-                                        type: "number",
-                                        value: maxPriceFilter,
-                                        oninput: (e) => {
-                                            maxPriceFilter = parseInt(e.target.value, 10) || 0;
-                                        },
-                                    }),
+                                m(".row", [
+                                    m(".two-col", [
+                                        m(".text-s.uppercase", "Min Price"),
+                                        m("input", {
+                                            placeholder: 0,
+                                            type: "text",
+                                            style: { "margin-right": "10px" },
+                                            oninput: (e) => {
+                                                minPriceFilter = Number(e.target.value);
+                                            },
+                                        }),
+                                    ]),
+                                    m(".vr.dashed"),
+                                    m(".two-col", [
+                                        m(".text-s.uppercase", "Max Price"),
+                                        m("input", {
+                                            placeholder: 0,
+                                            type: "text",
+                                            oninput: (e) => {
+                                                maxPriceFilter = Number(e.target.value);
+                                            },
+                                        }),
+                                    ]),
                                 ]),
                                 m(".hr.dashed"),
                                 m(".two-col", [
@@ -577,12 +588,17 @@ export function PlayerTradePage(): m.Comp<{
                                     }
                                     const res = isResourceFilterEmpty ? true : resourceFilter[trade.resource];
                                     let p = true;
-                                    if (minPriceFilter > 0) {
+                                    if (isFinite(maxResourceAmount) && maxResourceAmount > 0) {
+                                        if (trade.amount > maxResourceAmount) {
+                                            p = false;
+                                        }
+                                    }
+                                    if (isFinite(minPriceFilter) && minPriceFilter > 0) {
                                         if (trade.price < minPriceFilter) {
                                             p = false;
                                         }
                                     }
-                                    if (maxPriceFilter > 0) {
+                                    if (isFinite(maxPriceFilter) && maxPriceFilter > 0) {
                                         if (trade.price > maxPriceFilter) {
                                             p = false;
                                         }
