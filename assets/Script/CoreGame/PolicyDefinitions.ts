@@ -37,6 +37,16 @@ export class Policy {
             RES.Coal.fuelCost *= 1.5;
         },
     };
+    CopperMine2xOutput: IPolicy = {
+        name: () => t("CopperMine2xOutput"),
+        desc: () => t("CopperMine2xOutputDesc"),
+        cost: 2,
+        tick: () => {
+            scaleProduction("CopperMine", ["staticOutput"], 2);
+            BLD.CopperMine.power *= 1.5;
+            RES.Cu.fuelCost *= 1.5;
+        },
+    };
     AlMine2xOutput: IPolicy = {
         name: () => t("AlMine2xOutput"),
         desc: () => t("AlMine2xOutputDesc"),

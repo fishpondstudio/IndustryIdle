@@ -533,6 +533,8 @@ export const EN = {
     CoalMine2xOutputDesc: "Coal mines produce 2x coal but use 50% more power and coal transport costs 50% more fuel",
     AlMine2xOutput: "Aluminum Smelting",
     AlMine2xOutputDesc: "Aluminum mines produce 2x aluminum and use 2x power",
+    CopperMine2xOutput: "Copper Mining",
+    CopperMine2xOutputDesc: "Copper mines produce 2x copper but use 50% more power and copper transport costs 50% more fuel",
     LoggingCamp2xOutput: "Deforestation",
     LoggingCamp2xOutputDesc: "Logging camps produce 2x wood and wood transport costs 2x fuel",
     PowerBankLeft: "Power Bank",
