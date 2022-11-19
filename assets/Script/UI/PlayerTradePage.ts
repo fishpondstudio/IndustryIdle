@@ -64,7 +64,6 @@ let maxResourceAmount = 0;
 let minPriceFilter = 0;
 let maxPriceFilter = 0;
 let playerNameFilter = "";
-let playerFlagFilter = "";
 
 export function PlayerTradePage(): m.Comp<{
     docked: boolean;
@@ -529,22 +528,6 @@ export function PlayerTradePage(): m.Comp<{
                                     }),
                                 ]),
                                 m(".hr.dashed"),
-                                m(".two-col", [
-                                    m(".text-s.uppercase", "Player Flag"),
-                                    m(
-                                        ".text-center",
-                                        keysOf(CountryCode).map((k) => {
-                                            return m("img.player-trade-badge.pointer", {
-                                                    title: flagToName(k),
-                                                    src: getFlagUrl(k),
-                                                    onclick: () => {
-                                                        playerFlagFilter = k;
-                                                    },                                                    
-                                            });
-                                        })
-                                    ),
-                                ]),
-                                m(".hr.dashed"),
                                 uiBoxToggleContent(
                                     m(".text-s.uppercase", t("PlayerTradeAutoClaim")),
                                     ClaimConfig.autoClaim,
@@ -605,11 +588,6 @@ export function PlayerTradePage(): m.Comp<{
                                     }
                                     if (playerNameFilter.length > 0) {
                                         if (trade.from.toLocaleLowerCase().includes(playerNameFilter) === false) {
-                                            p = false;
-                                        }
-                                    }
-                                    if (playerFlagFilter !== "") {
-                                        if ( trade.flag !== playerFlagFilter) {
                                             p = false;
                                         }
                                     }

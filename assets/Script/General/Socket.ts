@@ -16,7 +16,6 @@ import { t } from "./i18n";
 import { isSteam, NativeSdk, steamworks } from "./NativeSdk";
 import { serverNow, setServerClock } from "./ServerClock";
 import { TypedEvent } from "./TypedEvent";
-import { CountryCode } from "../General/Helper";
 
 export interface IChatMessage extends IMessage {
     user: string;
@@ -304,12 +303,9 @@ export class Socket {
         }
         if (payload.flush) {
             this.activeTrades = payload.flush;
-            console.log("Here!!");
         } else {
-            console.log("Here1111!!");
             if (payload.add) {
                 forEach(payload.add, (k, v) => {
-                    v.flag = "MK";
                     this.activeTrades[k] = v;
                 });
             }
@@ -327,7 +323,6 @@ export class Socket {
         this.bestBids = {};
         this.resourceTrades = {};
         forEach(this.activeTrades, (id, trade) => {
-            trade.flag = "MK";
             if (trade.side === "buy") {
                 if (!this.bestBids[trade.resource] || trade.price > this.bestBids[trade.resource]) {
                     this.bestBids[trade.resource] = trade.price;
