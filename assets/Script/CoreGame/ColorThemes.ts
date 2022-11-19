@@ -21,6 +21,8 @@ class ColorThemes {
         orange: COLOR_ORANGE,
         panelBackgroundOverride: cc.color().fromHEX("#ffffff"),
         panelForegroundOverride: cc.color().fromHEX("#33333"),
+        modifierOverlayMin: cc.color().fromHEX("#ff7675"),
+        modifierOverlayMax: cc.color().fromHEX("#55efc4"),
     };
     Black: IColorTheme = {
         name: "Monokai",
@@ -33,6 +35,8 @@ class ColorThemes {
         red: COLOR_RED,
         green: COLOR_GREEN,
         orange: COLOR_ORANGE,
+        modifierOverlayMin: cc.color().fromHEX("#ff7675"),
+        modifierOverlayMax: cc.color().fromHEX("#55efc4"),
     };
     Dracula: IColorTheme = {
         name: "Dracula",
@@ -46,6 +50,8 @@ class ColorThemes {
         green: COLOR_GREEN,
         orange: COLOR_ORANGE,
         dlc: true,
+        modifierOverlayMin: cc.color().fromHEX("#ff7675"),
+        modifierOverlayMax: cc.color().fromHEX("#55efc4"),
     };
     SolarizedLight: IColorTheme = {
         name: "Solarized Light",
@@ -60,6 +66,8 @@ class ColorThemes {
         red: COLOR_RED,
         green: COLOR_GREEN,
         orange: COLOR_ORANGE,
+        modifierOverlayMin: cc.color().fromHEX("#ff7675"),
+        modifierOverlayMax: cc.color().fromHEX("#55efc4"),
     };
     SolarizedDark: IColorTheme = {
         name: "Solarized Dark",
@@ -73,6 +81,8 @@ class ColorThemes {
         green: COLOR_GREEN,
         orange: COLOR_ORANGE,
         dlc: true,
+        modifierOverlayMin: cc.color().fromHEX("#ff7675"),
+        modifierOverlayMax: cc.color().fromHEX("#55efc4"),
     };
     GithubLight: IColorTheme = {
         name: "Github Light",
@@ -88,6 +98,8 @@ class ColorThemes {
         barBackgroundOverride: cc.color(36, 41, 46),
         barForegroundOverride: cc.color(255, 255, 255),
         dlc: true,
+        modifierOverlayMin: cc.color().fromHEX("#ff7675"),
+        modifierOverlayMax: cc.color().fromHEX("#55efc4"),
     };
 }
 
@@ -109,6 +121,8 @@ export interface IColorTheme {
     panelBackgroundOverride?: cc.Color;
     panelForegroundOverride?: cc.Color;
     dlc?: boolean;
+    modifierOverlayMin?: cc.Color;
+    modifierOverlayMax?: cc.Color;
 }
 
 let color = COLORS.Blue;
