@@ -1530,4 +1530,6 @@ export const ES = {
     OnlyShowPositiveModifiers: "Only show positive tile modifiers",
     OnlyShowPositiveModifiersHint: "Tick the checkbox on the left of the building to show tile modifiers on the map",
     ClearMyTradesV2: "Purge My Trades",
+    OpenSource: "Contribute",
+    OpenSourceDesc: "Industry Idle is now open source. You can contribute to the development on Github",
 };
