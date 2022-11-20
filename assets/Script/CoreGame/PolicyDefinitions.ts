@@ -41,6 +41,7 @@ export class Policy {
         name: () => t("CopperMine2xOutput"),
         desc: () => t("CopperMine2xOutputDesc"),
         cost: 2,
+        available: () => ["Stockholm", "Hamburg", "Osaka", "SanJose", "RandomIsland"].includes(D.map),
         tick: () => {
             scaleProduction("CopperMine", ["staticOutput"], 2);
             BLD.CopperMine.power *= 1.5;
