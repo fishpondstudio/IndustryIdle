@@ -55,11 +55,16 @@ const PriceFilters: Record<PriceFilter, () => string> = {
 let draftTrade: ILocalTrade;
 let resourceFilter: Partial<Record<ResourceFilter, true>> = {};
 let showResourceFilter = false;
-
 let showPriceFilter = false;
-let maxResourceAmount = 0;
-let minPriceFilter = 0;
-let maxPriceFilter = 0;
+
+interface NumberFilter {
+    value: number;
+    text: string;
+}
+let maxResourceAmount: NumberFilter = { value: 0, text: "" };
+let minPriceFilter: NumberFilter = { value: 0, text: "" };
+let maxPriceFilter: NumberFilter = { value: 0, text: "" };
+
 let playerNameFilter = "";
 
 export function PlayerTradePage(): m.Comp<{
@@ -483,8 +488,9 @@ export function PlayerTradePage(): m.Comp<{
                                     m("input", {
                                         placeholder: 0,
                                         type: "text",
+                                        value: maxResourceAmount.text,
                                         oninput: (e) => {
-                                            maxResourceAmount = Number(e.target.value);
+                                            maxResourceAmount = { value: Number(e.target.value), text: e.target.value };
                                         },
                                     }),
                                 ]),
@@ -496,8 +502,9 @@ export function PlayerTradePage(): m.Comp<{
                                             placeholder: 0,
                                             type: "text",
                                             style: { "margin-right": "10px" },
+                                            value: minPriceFilter.text,
                                             oninput: (e) => {
-                                                minPriceFilter = Number(e.target.value);
+                                                minPriceFilter = { value: Number(e.target.value), text: e.target.value };
                                             },
                                         }),
                                     ]),
@@ -507,8 +514,9 @@ export function PlayerTradePage(): m.Comp<{
                                         m("input", {
                                             placeholder: 0,
                                             type: "text",
+                                            value: maxPriceFilter.text,
                                             oninput: (e) => {
-                                                maxPriceFilter = Number(e.target.value);
+                                                maxPriceFilter = { value: Number(e.target.value), text: e.target.value };
                                             },
                                         }),
                                     ]),
@@ -568,18 +576,18 @@ export function PlayerTradePage(): m.Comp<{
                                     }
                                     const res = isResourceFilterEmpty ? true : resourceFilter[trade.resource];
                                     let p = true;
-                                    if (isFinite(maxResourceAmount) && maxResourceAmount > 0) {
-                                        if (trade.amount > maxResourceAmount) {
+                                    if (isFinite(maxResourceAmount.value) && maxResourceAmount.value > 0) {
+                                        if (trade.amount > maxResourceAmount.value) {
                                             p = false;
                                         }
                                     }
-                                    if (isFinite(minPriceFilter) && minPriceFilter > 0) {
-                                        if (trade.price < minPriceFilter) {
+                                    if (isFinite(minPriceFilter.value) && minPriceFilter.value > 0) {
+                                        if (trade.price < minPriceFilter.value) {
                                             p = false;
                                         }
                                     }
-                                    if (isFinite(maxPriceFilter) && maxPriceFilter > 0) {
-                                        if (trade.price > maxPriceFilter) {
+                                    if (isFinite(maxPriceFilter.value) && maxPriceFilter.value > 0) {
+                                        if (trade.price > maxPriceFilter.value) {
                                             p = false;
                                         }
                                     }
