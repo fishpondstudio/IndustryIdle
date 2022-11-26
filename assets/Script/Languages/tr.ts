@@ -1,8 +1,8 @@
 export const TR = {
     Translator: "Translator",
     TranslatorName: "Graffien,Takipsizad",
-    Language: "Türkçe",
-    ThisLanguage: "English",
+    Language: "Lisan",
+    ThisLanguage: "Türkçe",
     OK: "Tamam",
     SteelMill: "Çelik fabrikası",
     StainlessSteelPlant: "Paslanmaz Çelik Fabrikası",

@@ -27,6 +27,7 @@ import { NL } from "../Languages/nl";
 import { PL } from "../Languages/pl";
 import { PT_BR } from "../Languages/pt-BR";
 import { RU } from "../Languages/ru";
+import { TR } from "../Languages/tr";
 import { VN } from "../Languages/vn";
 import { ZH_CN } from "../Languages/zh-CN";
 import { ZH_HK } from "../Languages/zh-HK";
@@ -171,8 +172,8 @@ export function syncFPSSetting() {
 }
 
 export const Languages = {
-    DE: DE,
     EN: EN,
+    DE: DE,
     ES: ES,
     FR: FR,
     JP: JP,
@@ -181,6 +182,7 @@ export const Languages = {
     PL: PL,
     PT_BR: PT_BR,
     RU: RU,
+    TR: TR,
     VN: VN,
     ZH_CN: ZH_CN,
     ZH_HK: ZH_HK,
