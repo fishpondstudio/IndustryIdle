@@ -33,4 +33,4 @@ Your changes will be reviewed and merged. If you have questions, please ask in D
 
 ## Add A New Language
 
-Please join Discord channel (https://discord.com/invite/xgNxpsM) and ping **FishPond#7427**. I will create a new language template for you
+Please join Discord channel (https://discord.com/invite/m5JWZtEKMZ) and ping **FishPond#7427**. I will create a new language template for you.
