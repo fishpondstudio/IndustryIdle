@@ -4,13 +4,13 @@ Base language is English and can be found in the list below
 
 ## Supported Languages:
 
-- English (base): https://github.com/fishpondstudio/IndustryIdle-i18n/blob/main/en.ts
-- German: https://github.com/fishpondstudio/IndustryIdle-i18n/blob/main/de.ts
-- French: https://github.com/fishpondstudio/IndustryIdle-i18n/blob/main/fr.ts
-- Russian: https://github.com/fishpondstudio/IndustryIdle-i18n/blob/main/ru.ts
-- Turkish: https://github.com/fishpondstudio/IndustryIdle-i18n/blob/main/tr.ts
-- Korean: https://github.com/fishpondstudio/IndustryIdle-i18n/blob/main/kr.ts
-- Spanish: https://github.com/fishpondstudio/IndustryIdle-i18n/blob/main/es.ts
+- English (base): https://github.com/fishpondstudio/IndustryIdle/tree/main/assets/Script/Languages/en.ts
+- German: https://github.com/fishpondstudio/IndustryIdle/tree/main/assets/Script/Languages/de.ts
+- French: https://github.com/fishpondstudio/IndustryIdle/tree/main/assets/Script/Languages/fr.ts
+- Russian: https://github.com/fishpondstudio/IndustryIdle/tree/main/assets/Script/Languages/ru.ts
+- Turkish: https://github.com/fishpondstudio/IndustryIdle/tree/main/assets/Script/Languages/tr.ts
+- Korean: https://github.com/fishpondstudio/IndustryIdle/tree/main/assets/Script/Languages/kr.ts
+- Spanish: https://github.com/fishpondstudio/IndustryIdle/tree/main/assets/Script/Languages/es.ts
 
 ## Edit Existing Translation
 
