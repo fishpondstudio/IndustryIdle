@@ -357,9 +357,6 @@ export const KR = {
     SeeTutorialAgain: "튜토리얼 재실행",
     HelpTranslateTheGame: "게임 번역을 도와주세요🌐",
     NextTutorial: "다음",
-    BackTutorial: "Back",
-    SkipTutorial: "Skip Tutorial",
-    ReturnTutorial: "Go Back",
     Tutorial1:
         "Industry Idle은 공장🏭을 짓고, 상품📦을 생산하고 돈💸을 벌 수 있는 <em>자원 관리</em> 게임입니다.<br><br> 시작하기 위해 몇 가지 기본 개념을 살펴 보겠습니다. 오래 걸리지 않아요, 약속해요.",
     Tutorial2:
@@ -370,7 +367,6 @@ export const KR = {
         "돈을 벌려면 무역 센터를 통해 자원을 내보내야 합니다. 이렇게 하려면 해당 리소스에 대해 <em>자동 판매</em>를 설정하기만 하면 됩니다. <br></br> 또한 무역 센터도 마찬가지입니다. <em>자원을 구입하면 가격이 상승</em>하고 자원을 판매하면 가격이 하락합니다. <br> <br> 시장은 <em>변덕스럽고</em> 가격📈은 정기적으로 변경됩니다.",
     Tutorial6:
         "새 건물을 건설하려면 먼저 <em>연구실🧪</em>에서 잠금을 해제해야 합니다. 연구실은 과학을 연구 점수로 전환합니다. <br><br>풍력 터빈(및 기타 발전소)은 동작 중일 때 소량의 과학을 생산합니다. 그리고 나중에 과학을 늘리기 위해 학교🏫 및 기타 전용 건물을 지을 수 있습니다. <br><br> 이제 모든 기본 사항을 배웠고 경제를 구축하기 시작하세요! 여기 약간의 <em>돈💸 </em>과 <em>휘발유⛽</em>로 시작해보세요.",
-    TutorialSkip: "Tutorial Skipped",
     WelcomePlay: "재생",
     WelcomePlayMuted: "재생 (🔇음악)",
     Chat: "채팅",

@@ -30,9 +30,6 @@ export function FirstTimePage(): m.Comp {
 
 const tutorials: m.Comp[] = [
     {
-        oninit: () => {
-            G.world.locate(stringToGrid(findByType("Headquarter").grid), true);
-        },
         view: () => {
             return m(".box.tutorial", [
                 m(".two-col", [
@@ -63,7 +60,6 @@ const tutorials: m.Comp[] = [
                 m(".hr"),
                 m.trust(t("Tutorial1")),
                 m(".action", [m("div", { onclick: () => index++ }, t("NextTutorial"))]),
-                m(".action", [m(".text-desc", { onclick: () => index = 8 }, t("SkipTutorial"))]),
             ]);
         },
     },
@@ -75,7 +71,6 @@ const tutorials: m.Comp[] = [
             return m(".box.tutorial", [
                 m.trust(t("Tutorial2")),
                 m(".action", [m("div", { onclick: () => index++ }, t("NextTutorial"))]),
-                m(".action", [m(".text-desc", { onclick: () => index-- }, t("BackTutorial"))]),
             ]);
         },
     },
@@ -87,7 +82,6 @@ const tutorials: m.Comp[] = [
             return m(".box.tutorial", [
                 m.trust(t("Tutorial3")),
                 m(".action", [m("div", { onclick: () => index++ }, t("NextTutorial"))]),
-                m(".action", [m(".text-desc", { onclick: () => index-- }, t("BackTutorial"))]),
             ]);
         },
     },
@@ -99,7 +93,6 @@ const tutorials: m.Comp[] = [
             return m(".box.tutorial", [
                 m.trust(t("Tutorial4P1")),
                 m(".action", [m("div", { onclick: () => index++ }, t("NextTutorial"))]),
-                m(".action", [m(".text-desc", { onclick: () => index-- }, t("BackTutorial"))]),
             ]);
         },
     },
@@ -111,7 +104,6 @@ const tutorials: m.Comp[] = [
             return m(".box.tutorial", [
                 m.trust(t("Tutorial4P2")),
                 m(".action", [m("div", { onclick: () => index++ }, t("NextTutorial"))]),
-                m(".action", [m(".text-desc", { onclick: () => index-- }, t("BackTutorial"))]),
             ]);
         },
     },
@@ -123,7 +115,6 @@ const tutorials: m.Comp[] = [
             return m(".box.tutorial", [
                 m.trust(t("Tutorial5")),
                 m(".action", [m("div", { onclick: () => index++ }, t("NextTutorial"))]),
-                m(".action", [m(".text-desc", { onclick: () => index-- }, t("BackTutorial"))]),
             ]);
         },
     },
@@ -135,7 +126,6 @@ const tutorials: m.Comp[] = [
             return m(".box.tutorial", [
                 m.trust(t("Tutorial5P2")),
                 m(".action", [m("div", { onclick: () => index++ }, t("NextTutorial"))]),
-                m(".action", [m(".text-desc", { onclick: () => index-- }, t("BackTutorial"))]),
             ]);
         },
     },
@@ -170,42 +160,6 @@ const tutorials: m.Comp[] = [
                         t("WelcomePlay")
                     ),
                 ]),
-                m(".action", [m(".text-desc", { onclick: () => index-- }, t("BackTutorial"))]),
-            ]);
-        },
-    },
-    {
-        oninit: () => {
-            G.world.locate(stringToGrid(findByType("Headquarter").grid), true);
-        },
-        view: () => {
-            return m(".box.tutorial", [
-                m.trust(t("TutorialSkip")),
-                m(".action", [
-                    m(
-                        ".text-desc",
-                        {
-                            onclick: () => {
-                                music = false;
-                                routeConfig.shouldChangeRoute = () => true;
-                                routeTo("/main");
-                            },
-                        },
-                        t("WelcomePlayMuted")
-                    ),
-                    m(
-                        "div",
-                        {
-                            onclick: () => {
-                                music = true;
-                                routeConfig.shouldChangeRoute = () => true;
-                                routeTo("/main");
-                            },
-                        },
-                        t("WelcomePlay")
-                    ),
-                ]),
-                m(".action", [m(".text-desc", { onclick: () => index = 0 }, t("ReturnTutorial"))]),
             ]);
         },
     },

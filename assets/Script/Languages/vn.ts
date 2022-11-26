@@ -360,9 +360,6 @@ export const VN = {
     SeeTutorialAgain: "Thực hiện lại hướng dẫn cách chơi",
     HelpTranslateTheGame: "Hãy giúp dịch thuật trò chơi🌐",
     NextTutorial: "Tiếp theo",
-    BackTutorial: "Back",
-    SkipTutorial: "Skip Tutorial",
-    ReturnTutorial: "Go Back",
     Tutorial1:
         "Industry Idle là một trò chơi <em>quản lý tài nguyên</em>, nơi bạn có thể xây nhà xưởng🏭, sản xuất hàng hóa📦 và kiếm tiền💸.<br><br>Hãy cùng tìm hiểu một vài khái niệm để giúp bạn khởi nghiệp. Sẽ không lâu đâu, ngoắc ngón tay hứa đó.",
     Tutorial2:
@@ -373,7 +370,6 @@ export const VN = {
         "Để kiếm tiền, bạn cần xuất khẩu tài nguyên thông qua Trung tâm Thương mại. Để làm việc này, chỉ cần bật <em>Tự động Bán hàng</em> cho tài nguyên mà bạn muốn bán.<br></br>Bạn cũng có thể mua tài nguyên từ Trung tâm Thương mại. Xin lưu ý, <em>nếu bạn mua một loại tài nguyên, bạn sẽ nâng giá thành</em> và nếu bạn bán tài nguyên, bạn sẽ hạ giá thành.<br><br>Thị trường liên tục <em>biến thiên</em> và giá cả📈 thường xuyên thay đổi.",
     Tutorial6:
         "Để xây các loại công trình mới, bạn cần mở khóa chúng trong <em>Viện nghiên cứu🧪</em>. Viện nghiên cứu cũng chuyển đổi điểm khoa học thành điểm nghiên cứu.<br><br>Điện gió của bạn (cũng như các dạng phát điện khác) liên tục sản sinh ra một lượng nhỏ điểm khoa học trong lúc vận hành. Về sau, bạn có thể xây trường học🏫 và các công trình chuyên môn khác để nâng sản lượng điểm khoa học.<br><br>Giờ bạn đã học được những điều cơ bản, hãy bắt đầu gây dựng nền kinh tế của bạn đi thôi! Đây là chút <em>tiền mặt💸</em> và <em>xăng⛽</em> để giúp bản khởi nghiệp.",
-    TutorialSkip: "Tutorial Skipped",
     WelcomePlay: "Chơi",
     WelcomePlayMuted: "Chơi (🔇Tắt nhạc)",
     Chat: "Chat",

@@ -372,9 +372,6 @@ export const FR = {
     SeeTutorialAgain: "Refaire le didacticiel",
     HelpTranslateTheGame: "Aide pour traduire le jeu🌐",
     NextTutorial: "Suivant",
-    BackTutorial: "Back",
-    SkipTutorial: "Skip Tutorial",
-    ReturnTutorial: "Go Back",
     Tutorial1:
         "Industry Idle est un jeu <em>de gestion des ressources</em> où vous construisez des usines🏭, produire des biens📦 et gagner de l'argent💸.<br><br>Passons en revue quelques concepts de base pour vous aider à bien démarrer - cela ne prendra pas longtemps, je le promets.",
     Tutorial2:
@@ -385,7 +382,6 @@ export const FR = {
         "Pour gagner de l'argent, vous devez exporter vos ressources via le centre d'échange. Pour ce faire, activez simplement <em>vente auto</em> pour cette ressource.<br></br>Vous pouvez également acheter des ressources au centre commercial. Se souvenir <em>si vous achetez une ressource, vous augmenterez le prix</em> et si vous vendez une ressource, vous réduirez le prix.<br><br>Le marché est <em>changant</em> et le prix📈 change régulièrement.",
     Tutorial6:
         "Pour construire de nouveaux bâtiments, vous devez d'abord le déverrouiller dans le <em>Laboratoire de recherche🧪</em>. Le laboratoire de recherche convertit également la science en points de recherche. <br><br>Votre éolienne (et d'autres centrales électriques) produit une petite quantité de science lorsqu'elle fonctionne. Et tu peux construire une école🏫 et d'autres bâtiments dédiés pour stimuler la science plus tard.<br><br>Maintenant que vous avez appris toutes les bases, commencez à bâtir votre économie! Voilà de <em>l'argent💸</em> et du <em>pétrole⛽</em> to give you a jump start.",
-    TutorialSkip: "Tutorial Skipped",
     WelcomePlay: "Jouer",
     WelcomePlayMuted: "Jouer (🔇Music)",
     Chat: "Discussion",

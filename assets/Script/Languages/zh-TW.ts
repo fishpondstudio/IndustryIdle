@@ -351,9 +351,6 @@ export const ZH_TW = {
     SeeTutorialAgain: "重設教學",
     HelpTranslateTheGame: "幫助翻譯遊戲🌐",
     NextTutorial: "下一步",
-    BackTutorial: "Back",
-    SkipTutorial: "Skip Tutorial",
-    ReturnTutorial: "Go Back",
     Tutorial1:
         "《閒置工業》是一款<em>資源管理</em>建造遊戲🏭，在這裡您可以建立工廠、生產商品📦並賺錢💸。<br><br>讓我們通過一些基本的概念介紹幫助讓您開始──這不會花很長時間，我保證",
     Tutorial2:
@@ -364,7 +361,6 @@ export const ZH_TW = {
         "為了賺錢，您需要透過貿易中心出口您的資源。為此，您只需要打開<em>該資源的</em>自動銷售。<br></br>您也可以從貿易中心購買資源。記住：<em>如果您購買某一種資源，您將抬高其價格</em>；如果您銷售某一種資源，您將拉低其價格。<br><br>市場<em>波動很大</em>，而且價格📈會定期更換。",
     Tutorial6:
         "要建造新建築物，您需要先在<em>研究實驗室🧪</em>中將其解鎖。研究實驗室還將科學轉換為研究點。<br><br>您的風力發電機（和其他發電廠）在運行時會產生少量科學。 您可以建造學校🏫和其他專用建築物來促進科學發展。<br><br>現在您已經了解到所有基礎知識，開始建立您的經濟吧！這裡有一些<em>現金💸</em>和<em>汽油⛽</em>作為您的啟動資金。",
-    TutorialSkip: "Tutorial Skipped",
     WelcomePlay: "開始遊戲",
     WelcomePlayMuted: "開始遊戲（🔇靜音）",
     Chat: "聊天",
