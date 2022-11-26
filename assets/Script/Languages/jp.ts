@@ -357,6 +357,9 @@ export const JP = {
     SeeTutorialAgain: "もう一度チュートリアルを見る",
     HelpTranslateTheGame: "翻訳改善にご協力お願いします(by初代翻訳者)",
     NextTutorial: "次のページ",
+    BackTutorial: "Back",
+    SkipTutorial: "Skip Tutorial",
+    ReturnTutorial: "Go Back",
     Tutorial1:
         "Industry Idleは、工場🏭を建てて、製品📦を生産し、資産を増やす<em>資源管理</em>ゲームです。 <br><br>まず、基本的なコンセプトを紹介しましょう",
     Tutorial2:
@@ -367,6 +370,7 @@ export const JP = {
         "また、トレードセンターから資源を購入することもできます。<br><br>市場は<em>流動的</em>で、価格📈は定期的に変化します",
     Tutorial6:
         "新しい施設を建てるには、まず<em>リサーチラボ🧪</em>でアンロックする必要があります。リサーチラボでは、科学をリサーチポイントに変換することもできます。<br><br>風力発電（およびその他の発電所）は、稼働すると少量の科学を生み出します。<br><br>風力発電(やその他の発電所)は、運転中に少量の科学を生成します。ここでは、<em>現金💸</em>と<em>ガソリン⛽</em>を使って、スタートダッシュを決めましょう",
+    TutorialSkip: "Tutorial Skipped",
     WelcomePlay: "ゲーム開始",
     WelcomePlayMuted: "ゲーム開始(🔇BGM OFF)",
     Chat: "チャット",
