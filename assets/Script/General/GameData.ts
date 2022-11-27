@@ -172,8 +172,8 @@ export function syncFPSSetting() {
 }
 
 export const Languages = {
-    EN: EN,
     DE: DE,
+    EN: EN,
     ES: ES,
     FR: FR,
     JP: JP,
