@@ -1361,6 +1361,7 @@ export const ZH_TW = {
     IndustryZoneMaxBuildingLevelDesc: "此工業園區內支持的最高建築物等級",
     IndustryZoneHelp: "工業園區如何運作?",
     IndustryZoneProductivityBoost: "工業園區 Plus",
+    IndustryZoneProductivityBoostDesc: "工業區的每層或每10等級都會為其中的建築物提供 10% 的產出提升",
     ExtraBuildingPermit: "額外建築許可證",
     ExtraBuildingPermitDesc: "增加當前地圖的建築許可證 - 不會增加建築許可證費用",
     PanelPositionDescV2: "在左側、右側或自動顯示側邊面板（取決於當前選擇的地塊）。 僅在橫向模式下工作",
@@ -1368,7 +1369,6 @@ export const ZH_TW = {
     PanelHeightDesc: "選擇面板的高度。 僅在移動設備上以直向模式工作。 需要重新加載",
     AllowPortraitMode: "啟用直向模式",
     AllowPortraitModeDesc: "這將啟用直向模式（實驗性），畫面將根據手機的傳感器和設置旋轉",
-    IndustryZoneProductivityBoostDesc: "工業區的每層或每10等級都會為其中的建築物提供 10% 的產出提升",
     Auckland: "奧克蘭(Auckland)",
     AucklandBonus:
         "<li>新西蘭所有礦場所有礦場都位於地圖中心區域</li><li>獨特建築:水力發電廠</li><li>獨特的政策:礦場加速器</li><li>獨特政策:電動魚池</li><li>魚池可以建在任何瓷磚上</li>",

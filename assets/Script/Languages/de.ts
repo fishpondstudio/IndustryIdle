@@ -1456,6 +1456,8 @@ export const DE = {
     IndustryZoneMaxBuildingLevelDesc: "Max. Gebäudestufe, die von dieser Industriezone beeinflusst wird",
     IndustryZoneHelp: "Wie funktionieren Industriezonen?",
     IndustryZoneProductivityBoost: "Industriezonen Plus",
+    IndustryZoneProductivityBoostDesc:
+        "Alle 10 Level einer Industriezone erzeugen einen 10% Ausgabeboost für zugehörige Gebäude",
     ExtraBuildingPermit: "Zusätzliche Baugenehmigungen",
     ExtraBuildingPermitDesc:
         "Kaufe zusätzliche Baugenehmigungen für deine aktuelle Karte - Dies wird die Kostenkurve nicht erhöhen",
@@ -1467,8 +1469,6 @@ export const DE = {
     AllowPortraitMode: "Aktiviere Porträtmodus",
     AllowPortraitModeDesc:
         "Aktiviert den Porträtmodus (experimentell). Der Bildschirm wird, basierend auf den Sensoren und Einstellungen deines mobilen Gerätes, gedreht.",
-    IndustryZoneProductivityBoostDesc:
-        "Alle 10 Level einer Industriezone erzeugen einen 10% Ausgabeboost für zugehörige Gebäude",
     Auckland: "Auckland",
     AucklandBonus:
         "<li>All Ressourcenvorkommen sammeln sich in der Form Neuseelands im Kartenzentrum.</li><li>Einzigartiges Gebäude: Wasserkraftwerk</li><li>Einzigartige Richtlinie: Minenverstärker</li><li>Einzigartige Richtlinie: Elektrischer Fischteich</li><li>Fish Ponds können auf jeder Zelle gebaut werden</li>",

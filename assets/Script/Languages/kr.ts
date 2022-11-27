@@ -1400,6 +1400,8 @@ export const KR = {
     IndustryZoneMaxBuildingLevelDesc: "Max level of buildings supported within this Industry Zone",
     IndustryZoneHelp: "산업구역은 어떻게 작용하나요?",
     IndustryZoneProductivityBoost: "Industry Zone Plus",
+    IndustryZoneProductivityBoostDesc:
+        "Every tier, 10 levels, of an Industry Zone provides 10% output boost to buildings in the zone; requires all buildings in the zone to be working",
     ExtraBuildingPermit: "추가 건축 허가증 발급",
     ExtraBuildingPermitDesc: "건축 허가를 추가로 가지고 시작합니다 - 이로 인한 건축 허가 비용 증가분은 없습니다",
     PanelPositionDescV2:
@@ -1409,8 +1411,6 @@ export const KR = {
     AllowPortraitMode: "Enable Portrait Mode",
     AllowPortraitModeDesc:
         "This will enable portrait mode (experimental), the screen will rotate based on your phone's sensor and settings",
-    IndustryZoneProductivityBoostDesc:
-        "Every tier or every 10 level of an Industry Zone provide 10% output boost to buildings in it",
     Auckland: "Auckland",
     AucklandBonus:
         "<li>All deposits are found in a New Zealand shaped area at the center of the map</li><li>Unique Building: Hydro Power Plant</li><li>Unique Policy: Mine Booster</li><li>Unique Policy: Electric Fish Pond</li><li>Fish ponds can be built on any tiles</li>",

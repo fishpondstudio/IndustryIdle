@@ -1451,6 +1451,8 @@ export const PT_BR = {
     IndustryZoneMaxBuildingLevelDesc: "Nível máximo de edifícios suportados nesta zona industrial",
     IndustryZoneHelp: "Como funciona a Zona da Indústria?",
     IndustryZoneProductivityBoost: "Zona Industrial Plus",
+    IndustryZoneProductivityBoostDesc:
+        "Cada nível ou cada 10 níveis de uma Zona da Indústria fornecem 10% de aumento de produção para edifícios nela",
     ExtraBuildingPermit: "Licença Extra de Construção",
     ExtraBuildingPermitDesc:
         "Adicione alvarás de construção extras ao seu mapa atual - isso não aumentará a curva de custo",
@@ -1462,8 +1464,6 @@ export const PT_BR = {
     AllowPortraitMode: "Ativar modo retrato (Beta)",
     AllowPortraitModeDesc:
         "Isso ativará o modo retrato (experimental), a tela girará com base no sensor e nas configurações do seu telefone",
-    IndustryZoneProductivityBoostDesc:
-        "Cada nível ou cada 10 níveis de uma Zona da Indústria fornecem 10% de aumento de produção para edifícios nela",
     Auckland: "Auckland",
     AucklandBonus:
         "<li>Todos os depósitos são encontrados em uma área em forma de Nova Zelândia no centro do mapa</li><li>Edifício único: Usina Hidrelétrica</li><li>Política exclusiva: Mine Booster</li><li>Política Única: Lagoa de Peixes Elétrico</li><li>Os tanques de peixes podem ser construídos em qualquer ladrilho</li>",

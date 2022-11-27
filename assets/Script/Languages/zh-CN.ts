@@ -1359,6 +1359,7 @@ export const ZH_CN = {
     IndustryZoneMaxBuildingLevelDesc: "该工业区内支持的最大建筑物级别",
     IndustryZoneHelp: "工业区运作指南",
     IndustryZoneProductivityBoost: "工业区+",
+    IndustryZoneProductivityBoostDesc: "工业区的每层或每10等级都会为其中的建筑提供10%的产出提升",
     ExtraBuildingPermit: "额外建筑许可证",
     ExtraBuildingPermitDesc: "在当前地图上添加额外的建筑许可证——这不会增加成本",
     PanelPositionDescV2: "在左边、右边或自动显示侧板（取决于当前选定的地块）。只在横向模式下工作",
@@ -1366,7 +1367,6 @@ export const ZH_CN = {
     PanelHeightDesc: "选择面板的高度。只在移动设备上的竖屏模式下工作（需要重新加载）",
     AllowPortraitMode: "启用竖屏模式",
     AllowPortraitModeDesc: "如果启用竖屏模式，屏幕将根据手机的传感器和设置旋转（实验性功能）",
-    IndustryZoneProductivityBoostDesc: "工业区的每层或每10等级都会为其中的建筑提供10%的产出提升",
     Auckland: "新西兰(Auckland)",
     AucklandBonus:
         "<li>新西兰所有矿场所有矿场都位于地图中心区域</li><li>独特建筑:水力发电厂</li><li>独特的政策:矿场加速器</li><li>独特政策:电动鱼池</li><li>鱼池可以建在任何瓷砖上</li>",
