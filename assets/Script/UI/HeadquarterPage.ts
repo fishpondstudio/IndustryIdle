@@ -231,6 +231,11 @@ export function HeadquarterPage(): m.Comp {
                             m(".f1", [m("div", t("PatchNotes")), m(".text-desc.text-s", t("PatchNotesDesc"))]),
                             m(".ml10.blue", iconB("arrow_forward")),
                         ]),
+                        m(".hr"),
+                        m(".row.pointer", { onclick: () => routeTo("/game-settings") }, [
+                            m(".f1", [m("div", t("GameSetting")), m(".text-desc.text-s", t("GameSettingDesc"))]),
+                            m(".ml10.green", iconB("arrow_forward")),
+                        ]),
                         ifTrue(hasSteamWebSignIn() && !isSteamWebSignedIn(), () => [
                             m(".hr"),
                             m(
@@ -446,7 +451,6 @@ export function HeadquarterPage(): m.Comp {
                             ),
                         ]),
                     ]),
-                    m(SettingsPage),
                     m(".box", [
                         m(".title", t("ExpansionPacks")),
                         m(".hr"),

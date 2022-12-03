@@ -22,6 +22,7 @@ import { LeaderboardPage } from "./LeaderboardPage";
 import { MainPage } from "./MainPage";
 import { PatchNotesPage } from "./PatchNotesPage";
 import { PlayerTradePage } from "./PlayerTradePage";
+import { SettingsPage } from "./SettingsPage";
 import { OnKeydown } from "./Shortcut";
 import { SwissBoostPage } from "./SwissBoostPage";
 import { SwissUpgradePage } from "./SwissUpgradePage";
@@ -213,6 +214,7 @@ export const UI_ROUTES = {
     "/choose-flag": ChooseFlagPage,
     "/achievements": AchievementsPage,
     "/patch-notes": PatchNotesPage,
+    "/game-settings": SettingsPage,
     "/conglomerate": ConglomeratePage,
 };
 
