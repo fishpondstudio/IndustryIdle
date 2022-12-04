@@ -248,6 +248,9 @@ export class PersistedData {
     colorThemeOverrides: Record<string, string> = {};
     resourceMovement: ResourceMovement = "show";
     extraBuildingPermit = 0;
+    autoClaimTradeOrder = false;
+    disableBuildWarningPowerBank  = false;
+    disableBuildWarningResourceBooster  = false;
     constructor() {
         this.userName = `${this.userId.substr(0, 6).toUpperCase()}`;
         this.panelPosition = isIOS() || isAndroid() ? "auto" : "right";

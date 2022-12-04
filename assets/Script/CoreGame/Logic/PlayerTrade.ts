@@ -359,7 +359,7 @@ export function taxCalculation(params: ITaxCalculable) {
 }
 
 export const ClaimConfig = {
-    autoClaim: false,
+    autoClaim: D.persisted.autoClaimTradeOrder,
     claimed: {},
 };
 

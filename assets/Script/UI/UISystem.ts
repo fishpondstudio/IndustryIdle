@@ -23,6 +23,10 @@ import { MainPage } from "./MainPage";
 import { PatchNotesPage } from "./PatchNotesPage";
 import { PlayerTradePage } from "./PlayerTradePage";
 import { SettingsPage } from "./SettingsPage";
+import { DisplaySettingsPage } from "./DisplaySettingsPage";
+import { AudioSettingsPage } from "./AudioSettingsPage";
+import { GameplaySettingsPage } from "./GameplaySettingsPage";
+import { InputSettingsPage } from "./InputSettingsPage";
 import { OnKeydown } from "./Shortcut";
 import { SwissBoostPage } from "./SwissBoostPage";
 import { SwissUpgradePage } from "./SwissUpgradePage";
@@ -215,6 +219,10 @@ export const UI_ROUTES = {
     "/achievements": AchievementsPage,
     "/patch-notes": PatchNotesPage,
     "/game-settings": SettingsPage,
+    "/audio-settings": AudioSettingsPage,
+    "/display-settings": DisplaySettingsPage,
+    "/gameplay-settings": GameplaySettingsPage,
+    "/input-settings": InputSettingsPage,
     "/conglomerate": ConglomeratePage,
 };
 

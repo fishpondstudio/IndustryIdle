@@ -486,6 +486,20 @@ export function HeadquarterPage(): m.Comp {
                             ),
                         ]),
                     ]),
+                    m(".box", [
+                        m(".title", t("GameGuides")),
+                        m(".hr"),
+                        m(
+                            ".two-col.pointer",
+                            {
+                                onclick: () => NativeSdk.openUrl("https://steamcommunity.com/app/1574000/guides/"),
+                            },
+                            [
+                                m("div", [m("div", t("ReadSteamGuideV2")), m(".text-desc.text-s", t("ReadSteamGuideV2Desc"))]),
+                                m(".blue.ml20", iconB("link", 30)),
+                            ]
+                        ),
+                    ]),
                     ifTrue(isSteam(), () => m(SteamBackupComponent)),
                     m(".box", [
                         m(".title", t("Credits")),

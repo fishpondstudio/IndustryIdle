@@ -7,7 +7,7 @@ import { getOrSet, hasValue, ifTrue, nf, numberSign } from "../General/Helper";
 import { t } from "../General/i18n";
 import { isAndroid, isIOS } from "../General/NativeSdk";
 import { ChatPage, getChatHead } from "./ChatPage";
-import { standbyModeAvailable } from "./SettingsPage";
+import { standbyModeAvailable } from "./DisplaySettingsPage";
 import { Streaming } from "./StreamingPage";
 import { iconB, leftOrRight, switchScene } from "./UIHelper";
 import { routeTo, showStandby, showToast } from "./UISystem";

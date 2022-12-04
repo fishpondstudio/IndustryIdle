@@ -184,7 +184,7 @@ export function PowerBankDefinition(): BuildingItem {
         canBuildOnTile: () => true,
         desc: () => t("PowerBankBuildDesc"),
         buildOnTileWarning: (xy) => {
-            if (!isPowerBankWorking(stringToGrid(xy))) {
+            if (!D.persisted.disableBuildWarningPowerBank && !isPowerBankWorking(stringToGrid(xy))) {
                 return t("PowerBankNotWorking");
             }
             return null;
@@ -268,7 +268,7 @@ export function ResourceBoosterDefinition(): BuildingItem {
         panel: ResourceBoosterPanel,
         canBuildOnTile: () => true,
         buildOnTileWarning: (xy) => {
-            if (getBoostableBuildings(stringToGrid(xy)).length <= 0) {
+            if (!D.persisted.disableBuildWarningResourceBooster && getBoostableBuildings(stringToGrid(xy)).length <= 0) {
                 return t("ResourceBoosterNotWorking");
             }
             return null;

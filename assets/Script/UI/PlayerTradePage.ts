@@ -532,14 +532,6 @@ export function PlayerTradePage(): m.Comp<{
                                         },
                                     }),
                                 ]),
-                                m(".hr.dashed"),
-                                uiBoxToggleContent(
-                                    m(".text-s.uppercase", t("PlayerTradeAutoClaim")),
-                                    ClaimConfig.autoClaim,
-                                    () => (ClaimConfig.autoClaim = !ClaimConfig.autoClaim),
-                                    { style: { margin: "-10px 0" } },
-                                    24
-                                ),
                             ]);
                         }),
                     ]),

@@ -965,6 +965,7 @@ export const EN = {
     IndustryZoneNotWorkingDesc:
         "All of its adjacent buildings should form a supply chain, are max Level %{level} and are not part of other industry zones",
     PlayerTradeAutoClaim: "Automatically claim filled trades",
+    PlayerTradeAutoClaimDesc: "Automatically claim all filled trades from the player market.",
     MusifyInc: "Musify Inc",
     WebflixInc: "Webflix Inc",
     CloudStreaming: "Cloud Streaming",
@@ -1522,6 +1523,7 @@ export const EN = {
     OpenSource: "Contribute",
     OpenSourceDesc: "Industry Idle is now open source. You can contribute to the development on Github",
 
+    GameGuides: "Game Guides",
     GameSetting: "Settings",
     GameSettingDesc: "Configure the game to best suit you.",
     GameSettingGeneral: "General",

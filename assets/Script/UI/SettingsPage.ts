@@ -1,26 +1,9 @@
-import { COLORS } from "../CoreGame/ColorThemes";
-import {
-    clearTrades,
-    D,
-    FontSizeScalingOptions,
-    G,
-    GameData,
-    hasAnyDlc,
-    Languages,
-    PanelPositionOptions,
-    PortraitPanelHeightOptions,
-    ResourceMovementOptions,
-    saveData,
-    saveDataOverride,
-    ScrollSensitivity,
-    ScrollSensitivityOptions,
-    syncFPSSetting,
-} from "../General/GameData";
+import { D, G, Languages } from "../General/GameData";
 import { ifTrue, keysOf, mapOf } from "../General/Helper";
 import { t } from "../General/i18n";
-import { isAndroid, isIOS, isSteam, NativeSdk, steamworks } from "../General/NativeSdk";
-import { leftOrRight, iconB, reloadGame, saveAndQuit, uiBoxToggle, uiHeaderActionBack, uiBoxToggleContent } from "./UIHelper";
-import { hideAlert, routeTo, showAlert, showLoader, showStandby, showToast } from "./UISystem";
+import { isAndroid, isIOS, NativeSdk } from "../General/NativeSdk";
+import { leftOrRight, iconB, uiBoxToggle, uiHeaderActionBack, uiBoxToggleContent } from "./UIHelper";
+import { routeTo } from "./UISystem";
 
 export function SettingsPage(): m.Component {
     return {
@@ -105,23 +88,8 @@ export function SettingsPage(): m.Component {
                                 m(".ml20.blue", iconB("link", 30)),
                             ]),
                         ]),
-                        m(".hr"),
-                        m(
-                            ".two-col.pointer",
-                            {
-                                onclick: () => NativeSdk.openUrl("https://steamcommunity.com/app/1574000/guides/"),
-                            },
-                            [
-                                m("div", [m("div", t("ReadSteamGuideV2")), m(".text-desc.text-s", t("ReadSteamGuideV2Desc"))]),
-                                m(".blue.ml20", iconB("link", 30)),
-                            ]
-                        ),
                  ]),
             ]);
         },
     };
-}
-
-export function standbyModeAvailable() {
-    return isSteam() || CC_DEBUG;
 }
