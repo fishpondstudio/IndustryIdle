@@ -26,7 +26,7 @@ export function InputSettingsPage(): m.Component {
     return {
         view: () => {
             return m("div.modal", { class: leftOrRight() }, [
-                uiHeaderActionBack(t("GameSettingInput"), () => routeTo("/game-settings")),
+                uiHeaderActionBack(t("GameSettingInput"), () => routeTo("/settings")),
                 m(".scrollable", [
                     m(".box.gamesettings", [
                         m(".title", t("GameSettingInput")),

@@ -16,7 +16,7 @@ export function GameplaySettingsPage(): m.Component {
     return {
         view: () => {
             return m("div.modal", { class: leftOrRight() }, [
-                uiHeaderActionBack(t("GameSettingGameplay"), () => routeTo("/game-settings")),
+                uiHeaderActionBack(t("GameSettingGameplay"), () => routeTo("/settings")),
                 m(".scrollable", [
                     m(".box.gameplaysettings", [
                         m(".title", t("GameSettingGameplay")),

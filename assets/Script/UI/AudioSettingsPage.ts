@@ -7,7 +7,7 @@ export function AudioSettingsPage(): m.Component {
     return {
         view: () => {
             return m("div.modal", { class: leftOrRight() }, [
-                uiHeaderActionBack(t("GameSettingAudio"), () => routeTo("/game-settings")),
+                uiHeaderActionBack(t("GameSettingAudio"), () => routeTo("/settings")),
                 m(".scrollable", [
                     m(".box.gamesettings", [
                         m(".title", t("GameSettingAudio")),

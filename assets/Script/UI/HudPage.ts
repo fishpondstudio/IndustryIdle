@@ -196,7 +196,7 @@ function renderToolbar() {
             m(
                 ".item.pointer",
                 {
-                    onclick: () => G.world.routeTo(G.headquarter.grid),
+                    onclick: () => routeTo("/settings"),
                 },
                 "⚙️"
             ),
@@ -215,7 +215,10 @@ function renderToolbar() {
             m(
                 ".item.pointer",
                 {
-                    onclick: () => G.world.goBackToHq(),
+                    onclick: () => {
+                        G.world.goBackToHq();
+                        routeTo("/hq");
+                    },
                 },
                 "🏠"
             ),

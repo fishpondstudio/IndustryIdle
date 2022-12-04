@@ -22,7 +22,7 @@ export function DisplaySettingsPage(): m.Component {
     return {
         view: () => {
             return m("div.modal", { class: leftOrRight() }, [
-                uiHeaderActionBack(t("GameSettingDisplay"), () => routeTo("/game-settings")),
+                uiHeaderActionBack(t("GameSettingDisplay"), () => routeTo("/settings")),
                 m(".scrollable", [
                     m(".box.gamesettings", [
                         m(".title", t("GameSettingDisplay")),
