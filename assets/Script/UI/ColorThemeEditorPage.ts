@@ -4,6 +4,7 @@ import { D, G, saveData } from "../General/GameData";
 import { camelCaseToDash, forEach, ifTrue, mapOf, sizeOf } from "../General/Helper";
 import { t } from "../General/i18n";
 import { leftOrRight, reloadGame, uiHeaderActionBack } from "./UIHelper";
+import { routeTo } from "./UISystem";
 
 export function ColorThemeEditorPage() {
     const overrides: Record<string, string> = JSON.parse(JSON.stringify(D.persisted.colorThemeOverrides));
@@ -11,7 +12,7 @@ export function ColorThemeEditorPage() {
         view: () => {
             const color = COLORS[D.persisted.colorTheme];
             return m("div.modal", { class: leftOrRight() }, [
-                uiHeaderActionBack(t("ColorThemeEditor"), () => G.world.routeTo(G.headquarter.grid)),
+                uiHeaderActionBack(t("ColorThemeEditor"), () => routeTo("/display-settings")),
                 m(".scrollable", [
                     m(".box", [
                         m(".title", m("div", color.name)),

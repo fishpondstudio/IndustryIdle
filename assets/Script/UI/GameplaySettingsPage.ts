@@ -1,4 +1,3 @@
-import { ClaimConfig } from "../CoreGame/Logic/PlayerTrade";
 import {
     clearTrades,
     D,
@@ -19,7 +18,7 @@ export function GameplaySettingsPage(): m.Component {
             return m("div.modal", { class: leftOrRight() }, [
                 uiHeaderActionBack(t("GameSettingGameplay"), () => routeTo("/game-settings")),
                 m(".scrollable", [
-                    m(".box.gamesettings", [
+                    m(".box.gameplaysettings", [
                         m(".title", t("GameSettingGameplay")),
                         m(".hr"),
                         uiBoxToggle(
@@ -48,6 +47,9 @@ export function GameplaySettingsPage(): m.Component {
                             G.audio.playClick();
                             D.persisted.autoClaimTradeOrder = !D.persisted.autoClaimTradeOrder;
                         }),
+                    ]),
+                    m(".box.singleplayermode", [
+                        m(".title", t("GameSettingSinglePlayerMode")),
                         m(".hr"),
                         uiBoxToggle(t("LeaderboardOptOut"), t("LeaderboardOptOutDescV2"), D.persisted.leaderboardOptOut, () => {
                             G.audio.playClick();
@@ -88,7 +90,7 @@ export function GameplaySettingsPage(): m.Component {
                                 ]);
                             }
                         }),
-                 ]),
+                    ]),
             ]);
         },
     };

@@ -10,12 +10,11 @@ import {
     PortraitPanelHeightOptions,
     ResourceMovementOptions,
     saveData,
-    saveDataOverride,//?
     syncFPSSetting,
 } from "../General/GameData";
 import { ifTrue, keysOf, mapOf } from "../General/Helper";
 import { t } from "../General/i18n";
-import { isSteam, NativeSdk, steamworks } from "../General/NativeSdk"; //?steamworks
+import { isSteam, NativeSdk } from "../General/NativeSdk";
 import { leftOrRight, iconB, reloadGame, uiBoxToggle, uiHeaderActionBack, uiBoxToggleContent } from "./UIHelper";
 import { routeTo, showLoader, showStandby, showToast } from "./UISystem";
 
@@ -97,64 +96,6 @@ export function DisplaySettingsPage(): m.Component {
                                 )
                             ),
                         ]),
-                        ifTrue(hasAnyDlc(), () => [
-                            m(".hr"),
-                            uiBoxToggle(
-                                t("HideRewardAd"),
-                                [m("div", t("HideRewardAdDesc")), m(".orange", t("RequireAnyExpansionPack"))],
-                                D.persisted.hideRewardAd,
-                                () => {
-                                    if (hasAnyDlc()) {
-                                        G.audio.playClick();
-                                        D.persisted.hideRewardAd = !D.persisted.hideRewardAd;
-                                    } else {
-                                        G.audio.playError();
-                                        showToast(t("RequireAnyExpansionPackDesc"));
-                                    }
-                                }
-                            ),
-                        ]),
-                        ifTrue(hasAnyDlc(), () => [
-                            m(".hr"),
-                            uiBoxToggle(
-                                t("HideDiscordBanner"),
-                                [m("div", t("HideDiscordBannerDesc")), m(".orange", t("RequireAnyExpansionPack"))],
-                                D.persisted.hideDiscordBanner,
-                                () => {
-                                    if (hasAnyDlc()) {
-                                        G.audio.playClick();
-                                        D.persisted.hideDiscordBanner = !D.persisted.hideDiscordBanner;
-                                    } else {
-                                        G.audio.playError();
-                                        showToast(t("RequireAnyExpansionPackDesc"));
-                                    }
-                                }
-                            ),
-                        ]),
-                        m(".hr"),
-                        uiBoxToggle(
-                            t("HideChat"),
-                            [
-                                t("HideChatDescV2"),
-                                m(
-                                    "span.blue.pointer",
-                                    {
-                                        onclick: () => NativeSdk.openUrl("https://fishpondstudio.com/tos.txt"),
-                                    },
-                                    t("HideChatDescV2ToS")
-                                ),
-                            ],
-                            D.persisted.hideChat,
-                            () => {
-                                G.audio.playClick();
-                                D.persisted.hideChat = !D.persisted.hideChat;
-                            }
-                        ),
-                        m(".hr"),
-                        uiBoxToggle(t("HideChatMentions"), t("HideChatMentionsDesc"), D.persisted.hideChatMentions, () => {
-                            G.audio.playClick();
-                            D.persisted.hideChatMentions = !D.persisted.hideChatMentions;
-                        }),
                         m(".hr"),
                         m(".two-col", [
                             m("div", [m("div", t("PanelPosition")), m(".text-s.text-desc", t("PanelPositionDescV2"))]),
@@ -252,60 +193,122 @@ export function DisplaySettingsPage(): m.Component {
                                 )
                             ),
                         ]),
-                        m(".hr"),
-                        m(".two-col", [
-                            m("div", m("div", [m("div", t("ColorTheme")), m(".text-desc.text-s", t("ColorThemeDesc"))])),
-                            m(
-                                ".ml20",
-                                m(
-                                    "select.text-m",
-                                    {
-                                        onchange: async (e) => {
-                                            showLoader();
-                                            D.persisted.colorTheme = e.target.value;
-                                            await saveData();
-                                            reloadGame();
-                                        },
-                                    },
-                                    keysOf(COLORS)
-                                        .filter((c) => (hasAnyDlc() ? true : !COLORS[c].dlc))
-                                        .map((k) =>
-                                            m(
-                                                "option",
-                                                {
-                                                    key: k,
-                                                    value: k,
-                                                    selected: D.persisted.colorTheme === k,
-                                                },
-                                                COLORS[k].name
-                                            )
-                                        )
-                                )
+                    ]),
+                    m(".box.hidefromview", [
+                        m(".title", t("GameSettingHideElements")),
+                        ifTrue(hasAnyDlc(), () => [
+                            m(".hr"),
+                            uiBoxToggle(
+                                t("HideRewardAd"),
+                                [m("div", t("HideRewardAdDesc")), m(".orange", t("RequireAnyExpansionPack"))],
+                                D.persisted.hideRewardAd,
+                                () => {
+                                    if (hasAnyDlc()) {
+                                        G.audio.playClick();
+                                        D.persisted.hideRewardAd = !D.persisted.hideRewardAd;
+                                    } else {
+                                        G.audio.playError();
+                                        showToast(t("RequireAnyExpansionPackDesc"));
+                                    }
+                                }
+                            ),
+                            m(".hr"),
+                            uiBoxToggle(
+                                t("HideDiscordBanner"),
+                                [m("div", t("HideDiscordBannerDesc")), m(".orange", t("RequireAnyExpansionPack"))],
+                                D.persisted.hideDiscordBanner,
+                                () => {
+                                    if (hasAnyDlc()) {
+                                        G.audio.playClick();
+                                        D.persisted.hideDiscordBanner = !D.persisted.hideDiscordBanner;
+                                    } else {
+                                        G.audio.playError();
+                                        showToast(t("RequireAnyExpansionPackDesc"));
+                                    }
+                                }
                             ),
                         ]),
                         m(".hr"),
-                        m(
-                            ".two-col.pointer",
-                            {
-                                onclick: () => routeTo("/color-theme-editor"),
-                            },
+                        uiBoxToggle(
+                            t("HideChat"),
                             [
+                                t("HideChatDescV2"),
                                 m(
-                                    "div",
-                                    m("div", [
-                                        m("div", t("ColorThemeEditor")),
-                                        m(
-                                            ".text-desc.text-s",
-                                            t("ColorThemeEditorDesc", {
-                                                num: Object.keys(D.persisted.colorThemeOverrides).length,
-                                            })
-                                        ),
-                                    ])
+                                    "span.blue.pointer",
+                                    {
+                                        onclick: () => NativeSdk.openUrl("https://fishpondstudio.com/tos.txt"),
+                                    },
+                                    t("HideChatDescV2ToS")
                                 ),
-                                m(".ml20.blue", iconB("arrow_forward", 30)),
-                            ]
+                            ],
+                            D.persisted.hideChat,
+                            () => {
+                                G.audio.playClick();
+                                D.persisted.hideChat = !D.persisted.hideChat;
+                            }
                         ),
-                 ]),
+                        m(".hr"),
+                        uiBoxToggle(t("HideChatMentions"), t("HideChatMentionsDesc"), D.persisted.hideChatMentions, () => {
+                            G.audio.playClick();
+                            D.persisted.hideChatMentions = !D.persisted.hideChatMentions;
+                        }),
+                    ]),
+                    m(".box.colortheme", [
+                        m(".title", t("ColorTheme")),
+                            m(".hr"),
+                            m(".two-col", [
+                                m("div", m("div", [m("div", t("ColorTheme")), m(".text-desc.text-s", t("ColorThemeDesc"))])),
+                                m(
+                                    ".ml20",
+                                    m(
+                                        "select.text-m",
+                                        {
+                                            onchange: async (e) => {
+                                                showLoader();
+                                                D.persisted.colorTheme = e.target.value;
+                                                await saveData();
+                                                reloadGame();
+                                            },
+                                        },
+                                        keysOf(COLORS)
+                                            .filter((c) => (hasAnyDlc() ? true : !COLORS[c].dlc))
+                                            .map((k) =>
+                                                m(
+                                                    "option",
+                                                    {
+                                                        key: k,
+                                                        value: k,
+                                                        selected: D.persisted.colorTheme === k,
+                                                    },
+                                                    COLORS[k].name
+                                                )
+                                            )
+                                    )
+                                ),
+                            ]),
+                            m(".hr"),
+                            m(
+                                ".two-col.pointer",
+                                {
+                                    onclick: () => routeTo("/color-theme-editor"),
+                                },
+                                [
+                                    m(
+                                        "div",
+                                        m("div", [
+                                            m("div", t("ColorThemeEditor")),
+                                            m(
+                                                ".text-desc.text-s",
+                                                t("ColorThemeEditorDesc", {
+                                                    num: Object.keys(D.persisted.colorThemeOverrides).length,
+                                                })
+                                            ),
+                                        ])
+                                    ),
+                                    m(".ml20.blue", iconB("arrow_forward", 30)),
+                                ]
+                            ),
+                    ]),
             ]);
         },
     };

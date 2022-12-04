@@ -14,13 +14,13 @@ export function SettingsPage(): m.Component {
                     m(".box",
                         m(".title", t("GameSetting")),
                         m(".hr"),
-                        m(".row.pointer", { onclick: () => routeTo("/display-settings") }, [
-                            m(".f1", [m("div", t("GameSettingDisplay"))]),
+                        m(".row.pointer", { onclick: () => routeTo("/audio-settings") }, [
+                            m(".f1", [m("div", t("GameSettingAudio"))]),
                             m(".ml10.green", iconB("arrow_forward")),
                         ]),
                         m(".hr"),
-                        m(".row.pointer", { onclick: () => routeTo("/audio-settings") }, [
-                            m(".f1", [m("div", t("GameSettingAudio"))]),
+                        m(".row.pointer", { onclick: () => routeTo("/display-settings") }, [
+                            m(".f1", [m("div", t("GameSettingDisplay"))]),
                             m(".ml10.green", iconB("arrow_forward")),
                         ]),
                         m(".hr"),

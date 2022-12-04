@@ -1523,16 +1523,20 @@ export const EN = {
     OpenSource: "Contribute",
     OpenSourceDesc: "Industry Idle is now open source. You can contribute to the development on Github",
 
+
     GameGuides: "Game Guides",
     GameSetting: "Settings",
     GameSettingDesc: "Configure the game to best suit you.",
     GameSettingGeneral: "General",
     GameSettingDisplay: "Display",
+    GameSettingHideElements: "Hide From View"
     GameSettingAudio: "Audio",
     GameSettingGameplay: "Gameplay",
-    GameSettingInput: "Input",
+    GameSettingSinglePlayerMode: "Single Player Mode"
     GameSettingBuildWarningPowerBank: 'Disable Warning: Power Banks',
     GameSettingBuildWarningPowerBankDesc: 'Disable the build warning when trying to place a Power Bank not adjacent to a power generator.',    
     GameSettingBuildWarningResourceBooster: 'Disable Warning: Resource Boosters',
     GameSettingBuildWarningResourceBoosterDesc: 'Disable the build warning when trying to place a Resource Booster not adjacent to a mine.',
+    GameSettingInput: "Input",
+
 };
