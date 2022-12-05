@@ -79,7 +79,6 @@ export function SettingsPage(): m.Component {
                                     )
                                 ),
                             ]),
-                            m(".hr"),
                         ifTrue(D.map === "Oslo", () => [
                             m(".hr"),
                             m(".two-col.pointer", { onclick: () => routeTo("/first-time") }, [
