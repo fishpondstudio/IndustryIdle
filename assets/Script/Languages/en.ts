@@ -964,7 +964,7 @@ export const EN = {
     IndustryZoneMaxBuildingLevel: "Max Building Level",
     IndustryZoneNotWorkingDesc:
         "All of its adjacent buildings should form a supply chain, are max Level %{level} and are not part of other industry zones",
-    PlayerTradeAutoClaim: "Automatically claim filled trades",
+    PlayerTradeAutoClaim: "Automatically Claim Filled Trades",
     PlayerTradeAutoClaimDesc: "Automatically claim all filled trades from the player market.",
     MusifyInc: "Musify Inc",
     WebflixInc: "Webflix Inc",
@@ -1522,21 +1522,19 @@ export const EN = {
     ClearMyTradesV2: "Purge My Trades",
     OpenSource: "Contribute",
     OpenSourceDesc: "Industry Idle is now open source. You can contribute to the development on Github",
-
-
     GameGuides: "Game Guides",
     GameSetting: "Settings",
     GameSettingDesc: "Configure the game to best suit you.",
     GameSettingGeneral: "General",
     GameSettingDisplay: "Display",
-    GameSettingHideElements: "Hide From View"
+    GameSettingHideElements: "Hide From View",
     GameSettingAudio: "Audio",
     GameSettingGameplay: "Gameplay",
-    GameSettingSinglePlayerMode: "Single Player Mode"
-    GameSettingBuildWarningPowerBank: 'Disable Warning: Power Banks',
-    GameSettingBuildWarningPowerBankDesc: 'Disable the build warning when trying to place a Power Bank not adjacent to a power generator.',    
-    GameSettingBuildWarningResourceBooster: 'Disable Warning: Resource Boosters',
-    GameSettingBuildWarningResourceBoosterDesc: 'Disable the build warning when trying to place a Resource Booster not adjacent to a mine.',
+    GameSettingSinglePlayerMode: "Single Player Mode",
+    GameSettingBuildWarningPowerBank: "Disable Warning: Power Banks",
+    GameSettingBuildWarningPowerBankDesc: "Disable the build warning when trying to place a Power Bank not adjacent to a power generator.",    
+    GameSettingBuildWarningResourceBooster: "Disable Warning: Resource Boosters",
+    GameSettingBuildWarningResourceBoosterDesc: "Disable the build warning when trying to place a Resource Booster not adjacent to a mine.",
     GameSettingInput: "Input",
 
 };
