@@ -16,23 +16,23 @@ export function SettingsPage(): m.Component {
                         m(".hr"),
                         m(".row.pointer", { onclick: () => routeTo("/audio-settings") }, [
                             m(".f1", [m("div", t("GameSettingAudio"))]),
-                            m(".ml10.green", iconB("arrow_forward")),
+                            m(".ml10.blue", iconB("arrow_forward")),
                         ]),
                         m(".hr"),
                         m(".row.pointer", { onclick: () => routeTo("/display-settings") }, [
                             m(".f1", [m("div", t("GameSettingDisplay"))]),
-                            m(".ml10.green", iconB("arrow_forward")),
+                            m(".ml10.blue", iconB("arrow_forward")),
                         ]),
                         m(".hr"),
                         m(".row.pointer", { onclick: () => routeTo("/gameplay-settings") }, [
                             m(".f1", [m("div", t("GameSettingGameplay"))]),
-                            m(".ml10.green", iconB("arrow_forward")),
+                            m(".ml10.blue", iconB("arrow_forward")),
                         ]),
                         ifTrue(!isIOS() && !isAndroid(), () => [                   
                             m(".hr"),
                             m(".row.pointer", { onclick: () => routeTo("/input-settings") }, [
                                 m(".f1", [m("div", t("GameSettingInput"))]),
-                                m(".ml10.green", iconB("arrow_forward")),
+                                m(".ml10.blue", iconB("arrow_forward")),
                             ]),
                         ]),
 
