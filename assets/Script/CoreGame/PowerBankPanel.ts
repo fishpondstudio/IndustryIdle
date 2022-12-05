@@ -19,7 +19,7 @@ export function PowerBankPanel(): m.Component<{ entity: Entity }> {
                 m(".box", [
                     m(".two-col", [
                         m("div", m("div", t("PowerBankChargeSpeed"))),
-                        m("div", t("PerSecond", { time: nf(chargeSpeed) + "W" })),
+                        m("div", `${nf(chargeSpeed)}W`),
                     ]),
                     m(".hr.dashed"),
                     m(
