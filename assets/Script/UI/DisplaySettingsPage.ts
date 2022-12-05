@@ -309,7 +309,7 @@ export function DisplaySettingsPage(): m.Component {
                                 ]
                             ),
                     ]),
-            ]);
+                ]);
         },
     };
 }

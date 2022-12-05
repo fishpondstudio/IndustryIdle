@@ -65,8 +65,8 @@ export function InputSettingsPage(): m.Component {
                                 ),
                             ]),
                         ]),
-                 ]),
-            ]);
+                    ]),
+                ]);
         },
     };
 }

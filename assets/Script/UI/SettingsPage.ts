@@ -35,7 +35,6 @@ export function SettingsPage(): m.Component {
                                 m(".ml10.blue", iconB("arrow_forward")),
                             ]),
                         ]),
-
                     ),
                     m(".box.gamesettings", [
                         m(".title", t("GameSettingGeneral")),
@@ -88,8 +87,8 @@ export function SettingsPage(): m.Component {
                                 m(".ml20.blue", iconB("link", 30)),
                             ]),
                         ]),
-                 ]),
-            ]);
+                    ]),
+                ]);
         },
     };
 }

@@ -91,7 +91,7 @@ export function GameplaySettingsPage(): m.Component {
                             }
                         }),
                     ]),
-            ]);
+                ]);
         },
     };
 }

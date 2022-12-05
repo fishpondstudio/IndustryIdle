@@ -22,8 +22,8 @@ export function AudioSettingsPage(): m.Component {
                                 D.persisted.music = !D.persisted.music;
                                 G.audio.syncMusicSetting();
                             }),
-                 ]),
-            ]);
+                    ]),
+                ]);
         },
     };
 }
