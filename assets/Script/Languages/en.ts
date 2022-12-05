@@ -1536,5 +1536,4 @@ export const EN = {
     GameSettingBuildWarningResourceBooster: "Disable Warning: Resource Boosters",
     GameSettingBuildWarningResourceBoosterDesc: "Disable the build warning when trying to place a Resource Booster not adjacent to a mine.",
     GameSettingInput: "Input",
-
 };
