@@ -1536,4 +1536,10 @@ export const EN = {
     GameSettingBuildWarningResourceBooster: "Disable Warning: Resource Boosters",
     GameSettingBuildWarningResourceBoosterDesc: "Disable the build warning when trying to place a Resource Booster not adjacent to a mine.",
     GameSettingInput: "Input",
+//dev: REMOVE THIS LINE PRIOR TO SUBMITTING PULL REQUESTS.
+    GameSettingVolumeControl: "Volume Control",
+    GameSettingMusicVolume: "Music Volume",
+    GameSettingMusicVolumeDesc: "Controls the volume the background music is played at.",    
+    GameSettingSFXClickVolume: "Sound Effects Volume",
+    GameSettingSFXClickVolumeDesc: "Controls the volume the sound effects are played at.",
 };

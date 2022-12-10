@@ -184,6 +184,29 @@ export function uiBoxToggleContent(
     ]);
 }
 
+export function uiBoxRangeSlider(
+    title: m.Children,
+    desc: m.Children,
+    defaultVal: number,
+    min: number,
+    max: number,
+    step: number,
+    onInput: () => void,
+    hotkey: string = null
+) {
+    return m("box", [ 
+        [m("div", [hotkey ? shortcut(hotkey, "", " ") : null, title]), m(".text-s.text-desc", desc)],
+        m("input", {
+            type: "range",
+            defaultValue: defaultVal;
+            min: min;
+            max: max;
+            step: step;
+            oninput: onInput;
+        }),
+    ]);
+}
+
 export function uiBuildingInputOutput(b: keyof Buildings) {
     const output = { ...BLD[b].staticOutput } as Record<string, number>;
     if (BLD[b].power > 0) {
