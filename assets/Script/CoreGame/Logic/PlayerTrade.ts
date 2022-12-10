@@ -18,7 +18,7 @@ import {
 import { getPrice } from "./Price";
 import { getOutputAmount } from "./Production";
 
-export type OrderStatus = "open" | "filled" | "closed";
+type OrderStatus = "open" | "filled" | "closed" | "cancelled";
 export type OrderSide = "buy" | "sell";
 
 export interface ILocalTrade extends ITradeRequest {
@@ -225,7 +225,7 @@ export async function cancelTrade(trade: ILocalTrade) {
     try {
         const newTrade: ILocalTrade = {
             ...trade,
-            status: "closed",
+            status: "cancelled",
         };
         await G.socket.send(signTrade(newTrade));
         trade = newTrade;

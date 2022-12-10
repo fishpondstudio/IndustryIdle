@@ -1556,5 +1556,6 @@ export const RU = {
     OnlyShowPositiveModifiersHint: "Установите флажок слева от здания, чтобы показать модификаторы плитки на карте",
     ClearMyTradesV2: "Очистить мои сделки",
     OpenSource: "Внести свой вклад",
-    OpenSourceDesc: "Industry Idle теперь с открытым исходным кодом. Вы можете внести свой вклад в разработку на Github",
+    OpenSourceDesc:
+        "Industry Idle теперь с открытым исходным кодом. Вы можете внести свой вклад в разработку на Github",
 };
