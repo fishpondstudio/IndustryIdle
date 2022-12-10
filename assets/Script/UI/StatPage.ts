@@ -97,7 +97,7 @@ export function StatPage(): m.Comp<{ entity: Entity; docked: boolean }> {
                                 m(".text-s.text-desc", t("PowerRequired")),
                             ]),
                             m(".f1", [
-                                m("div", `${nf(getPowerBankLeft(), true)}W`),
+                                m("div", `${nf(getPowerBankLeft(), true)}J`),
                                 m(".text-s.text-desc", t("PowerBankLeft")),
                             ]),
                         ]),

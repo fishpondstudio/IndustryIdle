@@ -19,7 +19,7 @@ export function PowerBankPanel(): m.Component<{ entity: Entity }> {
                 m(".box", [
                     m(".two-col", [
                         m("div", m("div", t("PowerBankChargeSpeed"))),
-                        m("div", t("PerSecond", { time: nf(chargeSpeed) + "W" })),
+                        m("div", `${nf(chargeSpeed)}W`),
                     ]),
                     m(".hr.dashed"),
                     m(
@@ -33,7 +33,7 @@ export function PowerBankPanel(): m.Component<{ entity: Entity }> {
                     m(".sep5"),
                     m(".two-col.text-m.text-desc", [
                         m("div", t("PowerBankPowerLeft")),
-                        m("div", `${nf(entity.powerLeft)}W/${nf(total)}W (${formatPercent(entity.powerLeft / total)})`),
+                        m("div", `${nf(entity.powerLeft)}J/${nf(total)}J (${formatPercent(entity.powerLeft / total)})`),
                     ]),
                 ]),
             ];
