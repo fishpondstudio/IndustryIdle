@@ -1537,9 +1537,17 @@ export const EN = {
     GameSettingBuildWarningResourceBoosterDesc: "Disable the build warning when trying to place a Resource Booster not adjacent to a mine.",
     GameSettingInput: "Input",
 //dev: REMOVE THIS LINE PRIOR TO SUBMITTING PULL REQUESTS.
+    TBA: "TBA", // TMP 
     GameSettingVolumeControl: "Volume Control",
     GameSettingMusicVolume: "Music Volume",
-    GameSettingMusicVolumeDesc: "Controls the volume the background music is played at.",    
-    GameSettingSFXClickVolume: "Sound Effects Volume",
-    GameSettingSFXClickVolumeDesc: "Controls the volume the sound effects are played at.",
+    GameSettingMusicVolumeDesc: "Controls the volume the background music is played at.", 
+    GameSettingSFXVolume: "Sound Effects Volume",
+    GameSettingSFXVolumeDesc: "Controls the volume the sound effects are played at.",
+    GameSettingSFXEnableOverride: "Enable SFX volume overrides",
+    GameSettingSFXClick: "Click Volume Override",
+    GameSettingSFXGold: "Claim Offline Earnings Volume Override",
+    GameSettingSFXError: "Error Volume Override",
+    GameSettingSFXKaching: "'Ka-ching' Volume Override",
+    GameSettingSFXPowerup: "New Wholesale Order Volume Override",
+    GameSettingSFXBubble: "Chat Mention (@) Volume Override",
 };

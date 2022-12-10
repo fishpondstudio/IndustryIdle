@@ -59,7 +59,7 @@ export class AudioController {
     }
 
     public syncMusicSetting() {
-        cc.audioEngine.setMusicVolume(D.persisted.music ? 0.25 : 0);
+        cc.audioEngine.setMusicVolume(D.persisted.music ? D.persisted.musicVolume : 0);
     }
 
     public playMusic() {

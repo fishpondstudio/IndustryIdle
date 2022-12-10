@@ -187,6 +187,7 @@ export function uiBoxToggleContent(
 export function uiBoxRangeSlider(
     title: m.Children,
     desc: m.Children,
+    id: string,
     defaultVal: number,
     min: number,
     max: number,
@@ -198,6 +199,7 @@ export function uiBoxRangeSlider(
         [m("div", [hotkey ? shortcut(hotkey, "", " ") : null, title]), m(".text-s.text-desc", desc)],
         m("input", {
             type: "range",
+            id: id;
             defaultValue: defaultVal;
             min: min;
             max: max;

@@ -201,6 +201,15 @@ export class PersistedData {
     fps30 = false;
     sound = true;
     music = false;
+    isSFXVolumeOverride = false;
+    musicVolume = 0.25;
+    sfxVolume = 0.25;
+    sfxBubbleVolume = 0.25;
+    sfxClickVolume = 0.25;
+    sfxErrorVolume = 0.25;
+    sfxGoldVolume = 0.25;
+    sfxKachingVolume = 0.25;
+    sfxPowerupVolume = 0.25;
     panelPosition: PanelPosition = "auto";
     panelHeight: PanelHeight = "60";
     offlineEarningMinutes = 60 * 4;
