@@ -504,7 +504,10 @@ export function PlayerTradePage(): m.Comp<{
                                             style: { "margin-right": "10px" },
                                             value: minPriceFilter.text,
                                             oninput: (e) => {
-                                                minPriceFilter = { value: Number(e.target.value), text: e.target.value };
+                                                minPriceFilter = {
+                                                    value: Number(e.target.value),
+                                                    text: e.target.value,
+                                                };
                                             },
                                         }),
                                     ]),
@@ -516,7 +519,10 @@ export function PlayerTradePage(): m.Comp<{
                                             type: "text",
                                             value: maxPriceFilter.text,
                                             oninput: (e) => {
-                                                maxPriceFilter = { value: Number(e.target.value), text: e.target.value };
+                                                maxPriceFilter = {
+                                                    value: Number(e.target.value),
+                                                    text: e.target.value,
+                                                };
                                             },
                                         }),
                                     ]),
@@ -654,6 +660,7 @@ export function PlayerTradePage(): m.Comp<{
                                     class: "outline",
                                     action: async () => {
                                         try {
+                                            console.log(trade);
                                             G.audio.playClick();
                                             await cancelTrade(trade);
                                             showToast(t("CancelTradeSuccess"));
