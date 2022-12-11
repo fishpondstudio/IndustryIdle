@@ -6,6 +6,9 @@ import { routeTo } from "./UISystem";
 
 export function AudioSettingsPage(): m.Component {
     return {
+        oncreate: () => {
+            document.getElementById("sfxVolumeSilder").disabled = D.persisted.isSFXVolumeOverride;
+        },
         view: () => {
             return m("div.modal", { class: leftOrRight() }, [
                 uiHeaderActionBack(t("GameSettingAudio"), () => routeTo("/settings")),
@@ -29,6 +32,8 @@ export function AudioSettingsPage(): m.Component {
                                 D.persisted.isSFXVolumeOverride,
                                 () => {
                                     D.persisted.isSFXVolumeOverride = !D.persisted.isSFXVolumeOverride;
+                                    document.getElementById("sfxVolumeSilder").disabled = D.persisted.isSFXVolumeOverride;
+
                                 },
                                 { style: "margin: -10px 0" },
                                 24
@@ -42,7 +47,7 @@ export function AudioSettingsPage(): m.Component {
                                 t("GameSettingMusicVolumeDesc"),
                                 "musicVolumeSilder",
                                 (D.persisted.musicVolume * 100),
-                                0,
+                                1,
                                 100,
                                 1, 
                                 (e) => {
@@ -56,7 +61,7 @@ export function AudioSettingsPage(): m.Component {
                                 t("GameSettingSFXVolumeDesc"),
                                 "sfxVolumeSilder",
                                 (D.persisted.sfxVolume * 100), 
-                                0,
+                                1,
                                 100,
                                 1, 
                                 (e) => {
@@ -67,19 +72,6 @@ export function AudioSettingsPage(): m.Component {
                     ifTrue(D.persisted.isSFXVolumeOverride, () => [
                         m(".box.volumeoverride", [
                             m(".title", t("GameSettingSFXVolumeOverride")),
-                                m(".hr"),
-                                uiBoxRangeSlider(
-                                    t("GameSettingSFXLevelup"), 
-                                    t("GameSettingSFXLevelupDesc"),
-                                    "LevelupVolumeSilder",
-                                    (D.persisted.sfxLevelupVolume * 100), 
-                                    0, 
-                                    100,
-                                    1, 
-                                    (e) => {
-                                        D.persisted.sfxLevelupVolume = (e.currentTarget.value * 0.01);
-                                    }
-                                ),
                                 m(".hr"),
                                 uiBoxRangeSlider(
                                     t("GameSettingSFXBubble"), 
@@ -108,6 +100,32 @@ export function AudioSettingsPage(): m.Component {
                                 ),
                                 m(".hr"),
                                 uiBoxRangeSlider(
+                                    t("GameSettingSFXKaching"), 
+                                    t("GameSettingSFXKachingDesc"),
+                                    "kachingVolumeSilder",
+                                    (D.persisted.sfxKachingVolume * 100), 
+                                    0, 
+                                    100,
+                                    1, 
+                                    (e) => {
+                                        D.persisted.sfxKachingVolume = (e.currentTarget.value * 0.01);
+                                    }
+                                ),
+                                m(".hr"),
+                                uiBoxRangeSlider(
+                                    t("GameSettingSFXPowerup"), 
+                                    t("GameSettingSFXPowerupDesc"),
+                                    "powerupVolumeSilder", 
+                                    (D.persisted.sfxPowerupVolume * 100), 
+                                    0, 
+                                    100,
+                                    1, 
+                                    (e) => {
+                                        D.persisted.sfxPowerupVolume = (e.currentTarget.value * 0.01);
+                                    }
+                                ),
+                                m(".hr"),
+                                uiBoxRangeSlider(
                                     t("GameSettingSFXCompleted"),
                                     t("GameSettingSFXCompletedDesc"), 
                                     "clickVolumeSilder", 
@@ -117,19 +135,6 @@ export function AudioSettingsPage(): m.Component {
                                     1, 
                                     (e) => {
                                         D.persisted.sfxCompletedVolume = (e.currentTarget.value * 0.01);
-                                    }
-                                ),
-                                m(".hr"),
-                                uiBoxRangeSlider(
-                                    t("GameSettingSFXError"), 
-                                    t("GameSettingSFXErrorDesc"),
-                                    "errorVolumeSilder",
-                                    (D.persisted.sfxErrorVolume * 100),
-                                    0,
-                                    100,
-                                    1, 
-                                    (e) => {
-                                        D.persisted.sfxErrorVolume = (e.currentTarget.value * 0.01);
                                     }
                                 ),
                                 m(".hr"),
@@ -160,28 +165,28 @@ export function AudioSettingsPage(): m.Component {
                                 ),
                                 m(".hr"),
                                 uiBoxRangeSlider(
-                                    t("GameSettingSFXKaching"), 
-                                    t("GameSettingSFXKachingDesc"),
-                                    "kachingVolumeSilder",
-                                    (D.persisted.sfxKachingVolume * 100), 
-                                    0, 
+                                    t("GameSettingSFXError"), 
+                                    t("GameSettingSFXErrorDesc"),
+                                    "errorVolumeSilder",
+                                    (D.persisted.sfxErrorVolume * 100),
+                                    0,
                                     100,
                                     1, 
                                     (e) => {
-                                        D.persisted.sfxKachingVolume = (e.currentTarget.value * 0.01);
+                                        D.persisted.sfxErrorVolume = (e.currentTarget.value * 0.01);
                                     }
                                 ),
                                 m(".hr"),
                                 uiBoxRangeSlider(
-                                    t("GameSettingSFXPowerup"), 
-                                    t("GameSettingSFXPowerupDesc"),
-                                    "powerupVolumeSilder", 
-                                    (D.persisted.sfxPowerupVolume * 100), 
+                                    t("GameSettingSFXLevelup"), 
+                                    t("GameSettingSFXLevelupDesc"),
+                                    "LevelupVolumeSilder",
+                                    (D.persisted.sfxLevelupVolume * 100), 
                                     0, 
                                     100,
                                     1, 
                                     (e) => {
-                                        D.persisted.sfxPowerupVolume = (e.currentTarget.value * 0.01);
+                                        D.persisted.sfxLevelupVolume = (e.currentTarget.value * 0.01);
                                     }
                                 ),
                         ]),
