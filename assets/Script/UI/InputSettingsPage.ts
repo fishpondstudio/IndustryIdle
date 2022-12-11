@@ -9,7 +9,7 @@ export function InputSettingsPage(): m.Component {
             return m("div.modal", { class: leftOrRight() }, [
                 uiHeaderActionBack(t("GameSettingInput"), () => routeTo("/settings")),
                 m(".scrollable", [
-                    m(".box.gamesettings", [
+                    m(".box.inputsettings", [
                         m(".title", t("GameSettingInput")),
                         m(".hr"),
                         m(".two-col", [
