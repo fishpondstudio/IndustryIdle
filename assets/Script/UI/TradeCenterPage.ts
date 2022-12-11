@@ -267,7 +267,7 @@ export function TradeCenterPage(): m.Comp<{ docked: boolean }> {
                                                                 class: getCash() >= cost ? "blue" : "text-desc",
                                                                 onclick: () => {
                                                                     if (tryBuyOrSell(r, buyAmount)) {
-                                                                        G.audio.playEffect(G.audio.kaching);
+                                                                        G.audio.playKaching();
                                                                     } else {
                                                                         G.audio.playError();
                                                                         showToast(t("NotEnoughCash"));

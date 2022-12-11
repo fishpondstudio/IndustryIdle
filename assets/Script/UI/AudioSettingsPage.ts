@@ -34,7 +34,7 @@ export function AudioSettingsPage(): m.Component {
                                 24
                             ),
                     ]),
-                    m(".box.volume", [
+                    m(".box.volumesettings", [
                         m(".title", t("GameSettingVolumeControl")),
                             m(".hr"),
                             uiBoxRangeSlider(
@@ -64,7 +64,24 @@ export function AudioSettingsPage(): m.Component {
                                     G.audio.syncMusicSetting();
                                 }
                             ),
-                            ifTrue(D.persisted.isSFXVolumeOverride, () => [
+                    ]),
+                    ifTrue(D.persisted.isSFXVolumeOverride, () => [
+                        m(".box.volumeoverride", [
+                            m(".title", t("GameSettingSFXVolumeOverride")),
+                                m(".hr"),
+                                uiBoxRangeSlider(
+                                    t("GameSettingSFXLevelup"), 
+                                    null,
+                                    "LevelupVolumeSilder",
+                                    (D.persisted.sfxLevelupVolume * 100), 
+                                    0, 
+                                    100,
+                                    1, 
+                                    (e) => {
+                                        D.persisted.sfxLevelupVolume = (e.currentTarget.value * 0.01);
+                                        G.audio.syncMusicSetting();
+                                    }
+                                ),
                                 m(".hr"),
                                 uiBoxRangeSlider(
                                     t("GameSettingSFXBubble"), 
@@ -95,6 +112,20 @@ export function AudioSettingsPage(): m.Component {
                                 ),
                                 m(".hr"),
                                 uiBoxRangeSlider(
+                                    t("GameSettingSFXCompleted"),
+                                    null, 
+                                    "clickVolumeSilder", 
+                                    (D.persisted.sfxCompletedVolume * 100),
+                                    0,
+                                    100,
+                                    1, 
+                                    (e) => {
+                                        D.persisted.sfxCompletedVolume = (e.currentTarget.value * 0.01);
+                                        G.audio.syncMusicSetting();
+                                    }
+                                ),
+                                m(".hr"),
+                                uiBoxRangeSlider(
                                     t("GameSettingSFXError"), 
                                     null,
                                     "errorVolumeSilder",
@@ -104,6 +135,20 @@ export function AudioSettingsPage(): m.Component {
                                     1, 
                                     (e) => {
                                         D.persisted.sfxErrorVolume = (e.currentTarget.value * 0.01);
+                                        G.audio.syncMusicSetting();
+                                    }
+                                ),
+                                m(".hr"),
+                                uiBoxRangeSlider(
+                                    t("GameSettingSFXFreeChest"), 
+                                    null,
+                                    "freechestVolumeSilder",
+                                    (D.persisted.sfxFreeChestVolume * 100), 
+                                    0, 
+                                    100,
+                                    1, 
+                                    (e) => {
+                                        D.persisted.sfxFreeChestVolume = (e.currentTarget.value * 0.01);
                                         G.audio.syncMusicSetting();
                                     }
                                 ),
@@ -123,20 +168,6 @@ export function AudioSettingsPage(): m.Component {
                                 ),
                                 m(".hr"),
                                 uiBoxRangeSlider(
-                                    t("GameSettingSFXPowerup"), 
-                                    null,
-                                    "powerupVolumeSilder", 
-                                    (D.persisted.sfxPowerupVolume * 100), 
-                                    0, 
-                                    100,
-                                    1, 
-                                    (e) => {
-                                        D.persisted.sfxPowerupVolume = (e.currentTarget.value * 0.01);
-                                        G.audio.syncMusicSetting();
-                                    }
-                                ),
-                                m(".hr"),
-                                uiBoxRangeSlider(
                                     t("GameSettingSFXKaching"), 
                                     null,
                                     "kachingVolumeSilder",
@@ -149,10 +180,24 @@ export function AudioSettingsPage(): m.Component {
                                         G.audio.syncMusicSetting();
                                     }
                                 ),
-                            ]),
-
+                                m(".hr"),
+                                uiBoxRangeSlider(
+                                    t("GameSettingSFXPowerup"), 
+                                    null,
+                                    "powerupVolumeSilder", 
+                                    (D.persisted.sfxPowerupVolume * 100), 
+                                    0, 
+                                    100,
+                                    1, 
+                                    (e) => {
+                                        D.persisted.sfxPowerupVolume = (e.currentTarget.value * 0.01);
+                                        G.audio.syncMusicSetting();
+                                    }
+                                ),
                         ]),
-                ]);
+                    ]),
+                ]),
+            ]);
         },
     };
 }

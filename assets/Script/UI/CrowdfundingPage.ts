@@ -78,7 +78,7 @@ function renderCf(id: string) {
                         ]);
                     }
                     cf.value += amount * D.price[r.resource].price;
-                    G.audio.playEffect(G.audio.kaching);
+                    G.audio.playKaching();
                     showToast(
                         t("PledgeSuccessful", {
                             amount: `${nf(amount)} ${RES[r.resource].name()}`,
@@ -236,7 +236,7 @@ function renderCf(id: string) {
                             return;
                         }
                         delete D.crowdfunding[id];
-                        G.audio.playEffect(G.audio.kaching);
+                        G.audio.playKaching();
                         addCash(cfReward);
                         showToast(
                             t("CrowdfundingClaimSuccessful", {

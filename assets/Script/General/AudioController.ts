@@ -23,32 +23,40 @@ export class AudioController {
     }
 
     public playBubble() {
-        this.playEffect(this.bubble, D.persisted.sfxBubbleVolume);
+        this.playEffect(this.bubble, D.persisted.isSFXVolumeOverride ? D.persisted.sfxBubbleVolume : D.persisted.sfxVolume);
     }
 
     public playClick() {
-        this.playEffect(this.click, D.persisted.sfxClickVolume);
+        this.playEffect(this.click, D.persisted.isSFXVolumeOverride ? D.persisted.sfxClickVolume : D.persisted.sfxVolume);
+    }
+
+    public playCompleted() {
+        this.playEffect(this.completed, D.persisted.isSFXVolumeOverride ? D.persisted.sfxCompletedVolume : D.persisted.sfxVolume);
     }
 
     public playError() {
-        this.playEffect(this.error, D.persisted.sfxErrorVolume);
+        this.playEffect(this.error, D.persisted.isSFXVolumeOverride ? D.persisted.sfxErrorVolume : D.persisted.sfxVolume);
     }
-    
+
+    public playFreeChest() {
+        this.playEffect(this.freechest, D.persisted.isSFXVolumeOverride ? D.persisted.sfxFreeChestVolume : D.persisted.sfxVolume);
+    }
+
     public playGold() {
-        this.playEffect(this.gold, D.persisted.sfxGoldVolume);
+        this.playEffect(this.gold, D.persisted.isSFXVolumeOverride ? D.persisted.sfxGoldVolume : D.persisted.sfxVolume);
     }
 
     public playKaching() {
-        this.playEffect(this.kaching, D.persisted.sfxKachingVolume);
+        this.playEffect(this.kaching, D.persisted.isSFXVolumeOverride ? D.persisted.sfxKachingVolume : D.persisted.sfxVolume);
     }
 
     public playPowerUp() {
-        this.playEffect(this.levelup, D.persisted.sfxPowerupVolume);
+        this.playEffect(this.levelup, D.persisted.isSFXVolumeOverride ? D.persisted.sfxPowerupVolume : D.persisted.sfxVolume);
     }    
 
-    // public playLevelUp() {
-    //     this.playEffect(this.levelup, D.persisted.sfxLevelupVolume);
-    // }
+    public playLevelUp() {
+        this.playEffect(this.levelup, D.persisted.isSFXVolumeOverride ? D.persisted.sfxLevelupVolume : D.persisted.sfxVolume);
+    }
 
     public load(): Promise<void> {
         if (getDebugUrlParams().fastload) {

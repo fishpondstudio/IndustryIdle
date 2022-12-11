@@ -350,7 +350,7 @@ export class Socket {
         }
         this.chatMessages.push(processChatMessage(payload));
         if (!D.persisted.hideChatMentions && mentionsMe(payload)) {
-            G.audio.playEffect(G.audio.bubble);
+            G.audio.playBubble();
             showToast(t("NewMessageMentions", { message: payload.message }));
         }
         this.onChatUpdate.emit();

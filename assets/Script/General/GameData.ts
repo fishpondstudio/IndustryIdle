@@ -206,9 +206,12 @@ export class PersistedData {
     sfxVolume = 0.25;
     sfxBubbleVolume = 0.25;
     sfxClickVolume = 0.25;
+    sfxCompletedVolume = 0.25;
     sfxErrorVolume = 0.25;
+    sfxFreeChestVolume = 0.25;
     sfxGoldVolume = 0.25;
     sfxKachingVolume = 0.25;
+    sfxLevelupVolume  = 0.25;
     sfxPowerupVolume = 0.25;
     panelPosition: PanelPosition = "auto";
     panelHeight: PanelHeight = "60";

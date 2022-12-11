@@ -559,7 +559,7 @@ export function tickAchievements() {
     forEach(ACH, (k, v) => {
         if (!achieved[k] && v.achieved()) {
             achieved[k] = { achieved: true, claimed: false };
-            G.audio.playEffect(G.audio.levelup);
+            G.audio.playLevelUp();
             showToast(t("AchievementsToast", { name: v.name() }));
             NativeSdk.activateAchievement(k);
         }

@@ -832,7 +832,7 @@ export function PlayerTradePage(): m.Comp<{
                         try {
                             await acceptTrade(trade);
                             lastAcceptTradeAt = serverNow();
-                            G.audio.playEffect(G.audio.kaching);
+                            G.audio.playKaching();
                             showToast(
                                 t("AcceptTradeSuccessV2", {
                                     cashOrResource:
