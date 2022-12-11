@@ -1535,9 +1535,6 @@ export const EN = {
     GameSettingBuildWarningPowerBankDesc: "Disable the build warning when trying to place a Power Bank not adjacent to a power generator.",    
     GameSettingBuildWarningResourceBooster: "Disable Warning: Resource Boosters",
     GameSettingBuildWarningResourceBoosterDesc: "Disable the build warning when trying to place a Resource Booster not adjacent to a mine.",
-    GameSettingInput: "Input",
-//dev: REMOVE THIS LINE PRIOR TO SUBMITTING PULL REQUESTS.
-    TBA: "TBA", // TMP 
     GameSettingVolumeControl: "Volume Control",
     GameSettingMusicVolume: "Music Volume",
     GameSettingMusicVolumeDesc: "Controls the volume the background music is played at.", 
@@ -1563,4 +1560,5 @@ export const EN = {
     GameSettingSFXPowerupDesc: "Volume control for the sound effect that can be heard when you receive a new Wholesale Order.",
     GameSettingSFXBubble: "Chat Mention",
     GameSettingSFXBubbleDesc: "The sound effect that can be heard when you are mentioned '@' in chat.",
+    GameSettingInput: "Input",
 };
