@@ -1,26 +1,7 @@
-import { COLORS } from "../CoreGame/ColorThemes";
-import {
-    clearTrades,
-    D,
-    FontSizeScalingOptions,
-    G,
-    GameData,
-    hasAnyDlc,
-    Languages,
-    PanelPositionOptions,
-    PortraitPanelHeightOptions,
-    ResourceMovementOptions,
-    saveData,
-    saveDataOverride,
-    ScrollSensitivity,
-    ScrollSensitivityOptions,
-    syncFPSSetting,
-} from "../General/GameData";
-import { ifTrue, keysOf, mapOf } from "../General/Helper";
+import { D,G, ScrollSensitivity, ScrollSensitivityOptions } from "../General/GameData";
 import { t } from "../General/i18n";
-import { isAndroid, isIOS, isSteam, NativeSdk, steamworks } from "../General/NativeSdk";
-import { leftOrRight, iconB, reloadGame, saveAndQuit, uiBoxToggle, uiHeaderActionBack, uiBoxToggleContent } from "./UIHelper";
-import { hideAlert, routeTo, showAlert, showLoader, showStandby, showToast } from "./UISystem";
+import { leftOrRight, uiHeaderActionBack } from "./UIHelper";
+import { routeTo } from "./UISystem";
 
 export function InputSettingsPage(): m.Component {
     return {
@@ -30,43 +11,42 @@ export function InputSettingsPage(): m.Component {
                 m(".scrollable", [
                     m(".box.gamesettings", [
                         m(".title", t("GameSettingInput")),
-                        ifTrue(!isIOS() && !isAndroid(), () => [
-                            m(".hr"),
-                            m(".two-col", [
+                        m(".hr"),
+                        m(".two-col", [
+                            m(
+                                "div",
+                                m("div", [
+                                    m("div", t("MousewheelSensitivity")),
+                                    m(".text-desc.text-s", t("MousewheelSensitivityDesc")),
+                                ])
+                            ),
+                            m(
+                                ".ml20",
                                 m(
-                                    "div",
-                                    m("div", [
-                                        m("div", t("MousewheelSensitivity")),
-                                        m(".text-desc.text-s", t("MousewheelSensitivityDesc")),
-                                    ])
-                                ),
-                                m(
-                                    ".ml20",
-                                    m(
-                                        "select.text-m",
-                                        {
-                                            onchange: async (e) => {
-                                                G.audio.playClick();
-                                                D.persisted.scrollSensitivity = parseFloat(e.target.value) as ScrollSensitivity;
-                                            },
+                                    "select.text-m",
+                                    {
+                                        onchange: async (e) => {
+                                            G.audio.playClick();
+                                            D.persisted.scrollSensitivity = parseFloat(e.target.value) as ScrollSensitivity;
                                         },
-                                        ScrollSensitivityOptions.map((k) =>
-                                            m(
-                                                "option",
-                                                {
-                                                    key: k,
-                                                    value: k,
-                                                    selected: D.persisted.scrollSensitivity === k,
-                                                },
-                                                `${k}x`
-                                            )
+                                    },
+                                    ScrollSensitivityOptions.map((k) =>
+                                        m(
+                                            "option",
+                                            {
+                                                key: k,
+                                                value: k,
+                                                selected: D.persisted.scrollSensitivity === k,
+                                            },
+                                            `${k}x`
                                         )
                                     )
-                                ),
-                            ]),
+                                )
+                            ),
                         ]),
                     ]),
-                ]);
+                ]),
+            ]);
         },
     };
 }

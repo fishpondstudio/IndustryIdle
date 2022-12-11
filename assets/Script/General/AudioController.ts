@@ -51,7 +51,7 @@ export class AudioController {
     }
 
     public playPowerUp() {
-        this.playEffect(this.levelup, D.persisted.isSFXVolumeOverride ? D.persisted.sfxPowerupVolume : D.persisted.sfxVolume);
+        this.playEffect(this.powerup, D.persisted.isSFXVolumeOverride ? D.persisted.sfxPowerupVolume : D.persisted.sfxVolume);
     }    
 
     public playLevelUp() {

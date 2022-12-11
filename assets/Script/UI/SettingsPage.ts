@@ -87,7 +87,8 @@ export function SettingsPage(): m.Component {
                             ]),
                         ]),
                     ]),
-                ]);
+                ]),
+            ]);
         },
     };
 }

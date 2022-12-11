@@ -1,13 +1,4 @@
-import {
-    clearTrades,
-    D,
-    G,
-    GameData,
-    PanelPositionOptions,
-    PortraitPanelHeightOptions,
-    ResourceMovementOptions,
-    saveDataOverride,
-} from "../General/GameData";
+import { clearTrades, D, G, GameData, saveDataOverride } from "../General/GameData";
 import { t } from "../General/i18n";
 import { leftOrRight, reloadGame, uiBoxToggle, uiHeaderActionBack } from "./UIHelper";
 import { routeTo, showAlert, showLoader } from "./UISystem";
@@ -91,7 +82,8 @@ export function GameplaySettingsPage(): m.Component {
                             }
                         }),
                     ]),
-                ]);
+                ])
+            ]);
         },
     };
 }
