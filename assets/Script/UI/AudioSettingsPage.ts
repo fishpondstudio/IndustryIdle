@@ -58,7 +58,11 @@ export function AudioSettingsPage(): m.Component {
                                 (D.persisted.sfxVolume * 100), 
                                 0,
                                 100,
-                                1
+                                1, 
+                                (e) => {
+                                    D.persisted.sfxVolume = (e.currentTarget.value * 0.01);
+                                    G.audio.syncMusicSetting();
+                                }
                             ),
                             ifTrue(D.persisted.isSFXVolumeOverride, () => [
                                 m(".hr"),
@@ -69,7 +73,11 @@ export function AudioSettingsPage(): m.Component {
                                     (D.persisted.sfxBubbleVolume * 100), 
                                     0,
                                     100,
-                                    1
+                                    1, 
+                                    (e) => {
+                                        D.persisted.sfxBubbleVolume = (e.currentTarget.value * 0.01);
+                                        G.audio.syncMusicSetting();
+                                    }
                                 ),
                                 m(".hr"),
                                 uiBoxRangeSlider(
@@ -79,7 +87,11 @@ export function AudioSettingsPage(): m.Component {
                                     (D.persisted.sfxClickVolume * 100),
                                     0,
                                     100,
-                                    1
+                                    1, 
+                                    (e) => {
+                                        D.persisted.sfxClickVolume = (e.currentTarget.value * 0.01);
+                                        G.audio.syncMusicSetting();
+                                    }
                                 ),
                                 m(".hr"),
                                 uiBoxRangeSlider(
@@ -89,7 +101,11 @@ export function AudioSettingsPage(): m.Component {
                                     (D.persisted.sfxErrorVolume * 100),
                                     0,
                                     100,
-                                    1
+                                    1, 
+                                    (e) => {
+                                        D.persisted.sfxErrorVolume = (e.currentTarget.value * 0.01);
+                                        G.audio.syncMusicSetting();
+                                    }
                                 ),
                                 m(".hr"),
                                 uiBoxRangeSlider(
@@ -99,7 +115,11 @@ export function AudioSettingsPage(): m.Component {
                                     (D.persisted.sfxGoldVolume * 100), 
                                     0, 
                                     100,
-                                    1 
+                                    1, 
+                                    (e) => {
+                                        D.persisted.sfxGoldVolume = (e.currentTarget.value * 0.01);
+                                        G.audio.syncMusicSetting();
+                                    }
                                 ),
                                 m(".hr"),
                                 uiBoxRangeSlider(
@@ -109,7 +129,11 @@ export function AudioSettingsPage(): m.Component {
                                     (D.persisted.sfxPowerupVolume * 100), 
                                     0, 
                                     100,
-                                    1 
+                                    1, 
+                                    (e) => {
+                                        D.persisted.sfxPowerupVolume = (e.currentTarget.value * 0.01);
+                                        G.audio.syncMusicSetting();
+                                    }
                                 ),
                                 m(".hr"),
                                 uiBoxRangeSlider(
@@ -119,7 +143,11 @@ export function AudioSettingsPage(): m.Component {
                                     (D.persisted.sfxKachingVolume * 100), 
                                     0, 
                                     100,
-                                    1 
+                                    1, 
+                                    (e) => {
+                                        D.persisted.sfxKachingVolume = (e.currentTarget.value * 0.01);
+                                        G.audio.syncMusicSetting();
+                                    }
                                 ),
                             ]),
 

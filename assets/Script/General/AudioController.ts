@@ -22,13 +22,33 @@ export class AudioController {
         }
     }
 
+    public playBubble() {
+        this.playEffect(this.bubble, D.persisted.sfxBubbleVolume);
+    }
+
     public playClick() {
-        this.playEffect(this.click);
+        this.playEffect(this.click, D.persisted.sfxClickVolume);
     }
 
     public playError() {
-        this.playEffect(this.error);
+        this.playEffect(this.error, D.persisted.sfxErrorVolume);
     }
+    
+    public playGold() {
+        this.playEffect(this.gold, D.persisted.sfxGoldVolume);
+    }
+
+    public playKaching() {
+        this.playEffect(this.kaching, D.persisted.sfxKachingVolume);
+    }
+
+    public playPowerUp() {
+        this.playEffect(this.levelup, D.persisted.sfxPowerupVolume);
+    }    
+
+    // public playLevelUp() {
+    //     this.playEffect(this.levelup, D.persisted.sfxLevelupVolume);
+    // }
 
     public load(): Promise<void> {
         if (getDebugUrlParams().fastload) {
