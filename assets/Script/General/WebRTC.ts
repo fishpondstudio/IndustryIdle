@@ -16,7 +16,7 @@ export function initWebRTC() {
             if (Streaming.public) {
                 Streaming.broadcastTo[message.key].connection = await sendOffer(message.key);
             } else {
-                G.audio.playEffect(G.audio.bubble);
+                G.audio.playBubble();
                 showToast(t("StreamingPlayerRequested", { player: message.user?.name }));
             }
             return;

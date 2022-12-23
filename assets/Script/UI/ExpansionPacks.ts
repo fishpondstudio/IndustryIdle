@@ -74,7 +74,7 @@ function DLCBanner(): m.Comp<{ dlc: DownloadableContent; product: IProductInfo }
                                         showToast(t("PurchaseSteamContinue"));
                                     } else {
                                         addPurchases(result);
-                                        G.audio.playEffect(G.audio.kaching);
+                                        G.audio.playKaching();
                                         showToast(t("PurchaseSuccess"));
                                     }
                                 } catch (error) {

@@ -38,7 +38,7 @@ export function AchievementsPage(): m.Component {
                                             ".blue.ml20.pointer",
                                             {
                                                 onclick: () => {
-                                                    G.audio.playEffect(G.audio.kaching);
+                                                    G.audio.playKaching();
                                                     if (!achieved[k].claimed) {
                                                         showToast(
                                                             t("AchievementsRewardToast", {

@@ -16,7 +16,7 @@ export class EntityFlying extends cc.Component {
         const originalScale = n.scale;
         n.scale = 0;
         n.opacity = 0;
-        G.audio.playEffect(G.audio.gold);
+        G.audio.playGold();
         cc.tween(n)
             .to(0.2, { scale: originalScale, opacity: 255 }, { easing: cc.easing.quadIn })
             .parallel(

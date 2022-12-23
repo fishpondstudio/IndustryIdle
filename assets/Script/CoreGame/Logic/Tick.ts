@@ -341,7 +341,7 @@ export function tickOrder(now: number) {
         T.lastOrderAt = now;
         const order = generateOrder();
         D.orders.unshift(order);
-        G.audio.playEffect(G.audio.powerup);
+        G.audio.playPowerUp();
         showToast(t("NewOrder", { from: order.name }));
     }
 }

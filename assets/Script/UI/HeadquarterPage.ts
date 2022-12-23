@@ -231,6 +231,11 @@ export function HeadquarterPage(): m.Comp {
                             m(".f1", [m("div", t("PatchNotes")), m(".text-desc.text-s", t("PatchNotesDesc"))]),
                             m(".ml10.blue", iconB("arrow_forward")),
                         ]),
+                        m(".hr"),
+                        m(".row.pointer", { onclick: () => routeTo("/settings") }, [
+                            m(".f1", [m("div", t("GameSetting")), m(".text-desc.text-s", t("GameSettingDesc"))]),
+                            m(".ml10.blue", iconB("arrow_forward")),
+                        ]),
                         ifTrue(hasSteamWebSignIn() && !isSteamWebSignedIn(), () => [
                             m(".hr"),
                             m(
@@ -446,7 +451,6 @@ export function HeadquarterPage(): m.Comp {
                             ),
                         ]),
                     ]),
-                    m(SettingsPage),
                     m(".box", [
                         m(".title", t("ExpansionPacks")),
                         m(".hr"),
@@ -481,6 +485,20 @@ export function HeadquarterPage(): m.Comp {
                                 t("RestorePurchases")
                             ),
                         ]),
+                    ]),
+                    m(".box", [
+                        m(".title", t("GameGuides")),
+                        m(".hr"),
+                        m(
+                            ".two-col.pointer",
+                            {
+                                onclick: () => NativeSdk.openUrl("https://steamcommunity.com/app/1574000/guides/"),
+                            },
+                            [
+                                m("div", [m("div", t("ReadSteamGuideV2")), m(".text-desc.text-s", t("ReadSteamGuideV2Desc"))]),
+                                m(".blue.ml20", iconB("link", 30)),
+                            ]
+                        ),
                     ]),
                     ifTrue(isSteam(), () => m(SteamBackupComponent)),
                     m(".box", [

@@ -201,6 +201,18 @@ export class PersistedData {
     fps30 = false;
     sound = true;
     music = false;
+    isSFXVolumeOverride = false;
+    musicVolume = 0.25;
+    sfxVolume = 0.25;
+    sfxBubbleVolume = 0.25;
+    sfxClickVolume = 0.25;
+    sfxCompletedVolume = 0.25;
+    sfxErrorVolume = 0.25;
+    sfxFreeChestVolume = 0.25;
+    sfxGoldVolume = 0.25;
+    sfxKachingVolume = 0.25;
+    sfxLevelupVolume  = 0.25;
+    sfxPowerupVolume = 0.25;
     panelPosition: PanelPosition = "auto";
     panelHeight: PanelHeight = "60";
     offlineEarningMinutes = 60 * 4;
@@ -248,6 +260,9 @@ export class PersistedData {
     colorThemeOverrides: Record<string, string> = {};
     resourceMovement: ResourceMovement = "show";
     extraBuildingPermit = 0;
+    autoClaimTradeOrder = false;
+    disableBuildWarningPowerBank  = false;
+    disableBuildWarningResourceBooster  = false;
     constructor() {
         this.userName = `${this.userId.substr(0, 6).toUpperCase()}`;
         this.panelPosition = isIOS() || isAndroid() ? "auto" : "right";

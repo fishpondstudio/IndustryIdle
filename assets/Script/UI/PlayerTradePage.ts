@@ -538,14 +538,6 @@ export function PlayerTradePage(): m.Comp<{
                                         },
                                     }),
                                 ]),
-                                m(".hr.dashed"),
-                                uiBoxToggleContent(
-                                    m(".text-s.uppercase", t("PlayerTradeAutoClaim")),
-                                    ClaimConfig.autoClaim,
-                                    () => (ClaimConfig.autoClaim = !ClaimConfig.autoClaim),
-                                    { style: { margin: "-10px 0" } },
-                                    24
-                                ),
                             ]);
                         }),
                     ]),
@@ -840,7 +832,7 @@ export function PlayerTradePage(): m.Comp<{
                         try {
                             await acceptTrade(trade);
                             lastAcceptTradeAt = serverNow();
-                            G.audio.playEffect(G.audio.kaching);
+                            G.audio.playKaching();
                             showToast(
                                 t("AcceptTradeSuccessV2", {
                                     cashOrResource:

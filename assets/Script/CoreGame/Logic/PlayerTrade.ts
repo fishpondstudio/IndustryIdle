@@ -359,7 +359,7 @@ export function taxCalculation(params: ITaxCalculable) {
 }
 
 export const ClaimConfig = {
-    autoClaim: false,
+    autoClaim: D.persisted.autoClaimTradeOrder,
     claimed: {},
 };
 
@@ -379,7 +379,7 @@ export function onMyTradesUpdate(myOldTrades: Record<string, ILocalTrade>, myNew
     } else {
         const count = getClaimableTradeCount(myNewTrades);
         if (count > getClaimableTradeCount(myOldTrades)) {
-            G.audio.playEffect(G.audio.completed);
+            G.audio.playCompleted();
             showToast(t("PlayerTradeToClaim", { num: count }));
         }
     }
@@ -388,7 +388,7 @@ export function onMyTradesUpdate(myOldTrades: Record<string, ILocalTrade>, myNew
 export async function claimTradeUI(trade: ILocalTrade) {
     try {
         await claimTrade(trade);
-        G.audio.playEffect(G.audio.kaching);
+        G.audio.playKaching();
         showToast(
             t("ClaimTradeSuccessV2", {
                 cashOrResource:

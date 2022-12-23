@@ -8,7 +8,7 @@ export default class ResourceAnimation extends cc.Component {
 
     public play(onStep: () => void, steps: number) {
         const mid = cc.v3(cc.winSize.width / 2, cc.winSize.height / 2);
-        G.audio.playEffect(G.audio.freechest);
+        G.audio.playFreeChest();
         for (let i = 0; i < steps; i++) {
             const g = cc.instantiate(this.node);
             g.parent = this.node.parent;
@@ -37,7 +37,7 @@ export default class ResourceAnimation extends cc.Component {
                 )
                 .call(() => {
                     onStep();
-                    G.audio.playEffect(G.audio.gold);
+                    G.audio.playGold();
                 })
                 .start();
         }

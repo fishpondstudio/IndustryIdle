@@ -7,7 +7,7 @@ import { getOrSet, hasValue, ifTrue, nf, numberSign } from "../General/Helper";
 import { t } from "../General/i18n";
 import { isAndroid, isIOS } from "../General/NativeSdk";
 import { ChatPage, getChatHead } from "./ChatPage";
-import { standbyModeAvailable } from "./SettingsPage";
+import { standbyModeAvailable } from "./DisplaySettingsPage";
 import { Streaming } from "./StreamingPage";
 import { iconB, leftOrRight, switchScene } from "./UIHelper";
 import { routeTo, showStandby, showToast } from "./UISystem";
@@ -196,7 +196,7 @@ function renderToolbar() {
             m(
                 ".item.pointer",
                 {
-                    onclick: () => G.world.routeTo(G.headquarter.grid),
+                    onclick: () => routeTo("/settings"),
                 },
                 "⚙️"
             ),
@@ -215,7 +215,10 @@ function renderToolbar() {
             m(
                 ".item.pointer",
                 {
-                    onclick: () => G.world.goBackToHq(),
+                    onclick: () => {
+                        G.world.goBackToHq();
+                        routeTo("/hq");
+                    },
                 },
                 "🏠"
             ),

@@ -154,7 +154,7 @@ export function WholesaleCenterPage(): m.Comp {
                                                     return;
                                                 }
                                                 if (tryDeductResources(o.resources)) {
-                                                    G.audio.playEffect(G.audio.kaching);
+                                                    G.audio.playKaching();
                                                     addCash(reward);
                                                     G.policyCenter.resources.PP =
                                                         (G.policyCenter.resources.PP ?? 0) + o.policyPoints;
