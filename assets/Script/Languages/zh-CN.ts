@@ -923,6 +923,7 @@ export const ZH_CN = {
     IndustryZoneMaxBuildingLevel: "最大建筑等级",
     IndustryZoneNotWorkingDesc: "工业园的所有相邻建筑物应形成供应链，不超过%{level}级，且不是其他工业园的一部分",
     PlayerTradeAutoClaim: "自动领取目前已完成的交易",
+    PlayerTradeAutoClaimDesc: "Automatically claim all filled trades from the player market.",
     MusifyInc: "缪播(Musify)公司",
     WebflixInc: "网飞(Webflix)公司",
     CloudStreaming: "云游戏",
@@ -1449,4 +1450,52 @@ export const ZH_CN = {
     ClearMyTradesV2: "Purge My Trades",
     OpenSource: "Contribute",
     OpenSourceDesc: "Industry Idle is now open source. You can contribute to the development on Github",
+    GameGuides: "Game Guides",
+    GameSetting: "Settings",
+    GameSettingDesc: "Configure the game to best suit you.",
+    GameSettingGeneral: "General",
+    GameSettingDisplay: "Display",
+    GameSettingHideElements: "Hide From View",
+    GameSettingAudio: "Audio",
+    GameSettingGameplay: "Gameplay",
+    GameSettingSinglePlayerMode: "Single Player Mode",
+    GameSettingBuildWarningPowerBank: "Disable Warning: Power Banks",
+    GameSettingBuildWarningPowerBankDesc:
+        "Disable the build warning when trying to place a Power Bank not adjacent to a power generator.",
+    GameSettingBuildWarningResourceBooster: "Disable Warning: Resource Boosters",
+    GameSettingBuildWarningResourceBoosterDesc:
+        "Disable the build warning when trying to place a Resource Booster not adjacent to a mine.",
+    GameSettingVolumeControl: "Volume Control",
+    GameSettingMusicVolume: "Music Volume",
+    GameSettingMusicVolumeDesc: "Controls the volume the background music is played at.",
+    GameSettingSFXVolume: "Sound Effects Volume",
+    GameSettingSFXVolumeOverride: "Sound Effect Volume Override",
+    GameSettingSFXVolumeDesc: "Controls the volume the sound effects are played at.",
+    GameSettingSFXEnableOverride: "Enable SFX volume overrides",
+    GameSettingSFXClick: "Click",
+    GameSettingSFXClickDesc:
+        "Volume control for the sound effect that can be heard when you clicking on different things.",
+    GameSettingSFXCompleted: "Trade Filled",
+    GameSettingSFXCompletedDesc:
+        "The sound effect that can be heard when you receive a new claimable trade via the player market.",
+    GameSettingSFXFreeChest: "Claim Offline Earnings",
+    GameSettingSFXFreeChestDesc:
+        "Volume control for the initial sound effect that can be heard when claiming offline earnings.",
+    GameSettingSFXGold: "Coin Clink",
+    GameSettingSFXGoldDesc:
+        "Volume control for the sound effect of coins clinking that can be heard near the end of the claim offline earnings animation.",
+    GameSettingSFXError: "Error",
+    GameSettingSFXErrorDesc:
+        "Volume control for the sound effect that can be heard when you when you attempt an action that cannot be completed or if an error as occurred.",
+    GameSettingSFXKaching: "Ka-ching",
+    GameSettingSFXKachingDesc:
+        "Volume control for the sound effect that can be heard in a wide variety of contexts. Most commonly when claiming profits from CrowdFunding, Player Trade and the Wholesale Center.",
+    GameSettingSFXLevelup: "Achievement Unlocked",
+    GameSettingSFXLevelupDesc: "Volume control for the sound effect that can be heard when you unlock an achievement.",
+    GameSettingSFXPowerup: "New Wholesale Order",
+    GameSettingSFXPowerupDesc:
+        "Volume control for the sound effect that can be heard when you receive a new Wholesale Order.",
+    GameSettingSFXBubble: "Chat Mention",
+    GameSettingSFXBubbleDesc: "The sound effect that can be heard when you are mentioned '@' in chat.",
+    GameSettingInput: "Input",
 };

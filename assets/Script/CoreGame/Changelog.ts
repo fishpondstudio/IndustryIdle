@@ -1,5 +1,9 @@
 export const CHANGELOG = [
     {
+        version: "0.20.3",
+        content: ["QoL: New settings menu (by @GrayTheWanderer)"],
+    },
+    {
         version: "0.20.2",
         content: [
             "QoL: Add more purchase amount option in Trade Center (by @jimmyh77)",
