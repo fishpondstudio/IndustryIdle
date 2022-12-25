@@ -1,8 +1,8 @@
 import { D, G, ScrollSensitivity, ScrollSensitivityOptions } from "../General/GameData";
-import { forEach, getHotkeyDef, hasValue, HOTKEY_DEFS, keysOf, ifTrue, mapOf } from "../General/Helper";
+import { forEach, getHotkeyDef, hasValue, HOTKEY_DEFS, keysOf } from "../General/Helper";
 import { Shortcut } from "../General/Hotkey";
 import { t } from "../General/i18n";
-import { iconB, leftOrRight, uiHotkeyConfig, uiHeaderActionBack } from "./UIHelper";
+import { iconB, leftOrRight, uiHotkeySetting, uiHeaderActionBack } from "./UIHelper";
 import { routeTo, showToast } from "./UISystem";
 
 export function InputSettingsPage(): m.Component {
@@ -83,20 +83,15 @@ export function InputSettingsPage(): m.Component {
     }
 
     function updateHotkeyStatus() : void {
-        console.log('InputSettingsPage.::updateHotkeyStatus');//dev
-
         let keysOfHotKeyDefs = keysOf(HOTKEY_DEFS);
         let elementId: string;
-
         for(var i = 0; i < keysOfHotKeyDefs.length; i++) {
             elementId = keysOfHotKeyDefs[i]+"-hotkeyTitle";
-            // [dev] Error prevention: allows access to InputSetingsPage (without throwing errors) when a new hotkey
-            // has been defined (@HOTKEY_DEFS) but no corrisponding settings element exists yet.
-            // to do: add hidden attr to defs? to allow for nonconfigurable hotskeys? (use cases: dev\debug\testing)
+            // Prevents thrown errors in intances where a hotkey definition exists (@HOTKEY_DEFS) but no 
+            // corrisponding uiHotkeySetting element. 
             if(!hasValue(document.getElementById(elementId))) { 
                 continue; 
-            } 
-
+            }
             if(isHotkeyCollision(getHotkeyDef(keysOfHotKeyDefs[i]))) {
                 updateSettingTitle(invalid, keysOfHotKeyDefs[i]);
                 if(settingTitle != document.getElementById(elementId).innerHTML) {
@@ -146,7 +141,7 @@ export function InputSettingsPage(): m.Component {
         },
         oncreate: () => {
             // use case: on reload of a save with hotkey collisions that exited the game while on InputSettingsPage
-            // and before InputSettingsage::resolveCollisions() could be called.
+            // and before resolveCollisions() could be called.
             updateHotkeyStatus();
         },
         onupdate: () => {
@@ -199,27 +194,25 @@ export function InputSettingsPage(): m.Component {
                     m(".box.hotkeys", [
                         m(".title", t("GameSettingHotkey")),
                         m(".hr"),
-                        uiHotkeyConfig(t("SwissShop"), "ui-swiss-shop"),
+                        uiHotkeySetting(t("SwissShop"), "ui-swiss-shop"),
                         m(".hr"),
-                        uiHotkeyConfig(t("WholesaleCenter"), "ui-wholesale-center"),
+                        uiHotkeySetting(t("WholesaleCenter"), "ui-wholesale-center"),
                         m(".hr"),
-                        uiHotkeyConfig(t("CentralBank"), "ui-central-bank"),
+                        uiHotkeySetting(t("CentralBank"), "ui-central-bank"),
                         m(".hr"),
-                        uiHotkeyConfig(t("ResearchLab"), "ui-research"),
+                        uiHotkeySetting(t("ResearchLab"), "ui-research"),
                         m(".hr"),
-                        uiHotkeyConfig(t("Headquarter"), "ui-hq"),
+                        uiHotkeySetting(t("Headquarter"), "ui-hq"),
                         m(".hr"),
-                        uiHotkeyConfig(t("TradeCenter"), "ui-trade-center"),
+                        uiHotkeySetting(t("TradeCenter"), "ui-trade-center"),
                         m(".hr"),
-                        uiHotkeyConfig(t("PlayerTrade"), "ui-player-trade"),
+                        uiHotkeySetting(t("PlayerTrade"), "ui-player-trade"),
                         m(".hr"),
-                        uiHotkeyConfig(t("StatisticsBureau"), "ui-stats"),
+                        uiHotkeySetting(t("StatisticsBureau"), "ui-stats"),
                         m(".hr"),
-                        uiHotkeyConfig(t("PolicyCenter"), "ui-policy-center"),
+                        uiHotkeySetting(t("PolicyCenter"), "ui-policy-center"),
                         m(".hr"),
-                        uiHotkeyConfig(t("LogisticsDepartment"), "ui-logistics-department"),
-                        m(".hr"),
-                        uiHotkeyConfig(t("typoTest"), "ui-typoTest"),
+                        uiHotkeySetting(t("LogisticsDepartment"), "ui-logistics-department"),
                     ]),
                 ]),
             ]);

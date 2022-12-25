@@ -1,4 +1,3 @@
-import { isAndroid, isIOS } from "../General/NativeSdk";
 import { TypedEvent } from "../General/TypedEvent";
 
 export const OnKeyDownEvent = new TypedEvent<KeyboardEvent>();
@@ -15,10 +14,9 @@ export function OnKeyDown(e: KeyboardEvent) {
         return;
     }
 
-    // see: UIHelper::uiHotkey 
+    // numerical keys [0-9] are 'reserved' for use by data-shortcut 
     const dom: Element = document.querySelector(`[data-shortcut="${key.toLowerCase()}-${e.ctrlKey}-${e.shiftKey}-${e.altKey}"]`);
 
-    // where present; 'data-shortcut'(s) supersede Hotkey def events
     if (dom) {
         e.stopPropagation();
         dom.dispatchEvent(new Event("click"));

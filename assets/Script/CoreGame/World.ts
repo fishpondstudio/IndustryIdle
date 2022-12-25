@@ -73,7 +73,6 @@ export default class World extends cc.Component {
     }
 
     protected override start() {
-        console.log("Start");
         this.initHotkeys();
         this.createMap();
 
@@ -570,11 +569,7 @@ export default class World extends cc.Component {
         }
     }
 
-    public registerHotkeys() : void {
-        console.log(
-            'World.registerHotkeys: D.persisted.hotkeyOverrides: ' +
-            JSON.stringify(D.persisted.hotkeyOverrides)
-        ); // Dev      
+    public registerHotkeys() : void {    
         if(hasValue(this._hotkeys)){
             delete this._hotkeys;
         }
@@ -678,20 +673,15 @@ export default class World extends cc.Component {
     private initHotkeys() : void {
         this.registerHotkeys();
         OnKeyDownEvent.on((e) => {  
-            console.log('World::OnKeyDownEvent: e.key: '+e.key.toLowerCase()+' shiftKey: '+e.shiftKey+' ctrlKey: '+e.ctrlKey+' altKey: '+e.altKey); // dev
             for(var i = 0; i < this._hotkeys.length; i++) {
                 if(!this._hotkeys[i].hasExecuted && this._hotkeys[i].key === e.key.toLowerCase() && 
                     this._hotkeys[i].ctrlKey == e.ctrlKey && this._hotkeys[i].shiftKey == e.shiftKey && 
                     this._hotkeys[i].altKey == e.altKey) {
                     this._hotkeys[i].onExecute();
-                    if(this._hotkeys[i].key.includes("arrow")) {
-                        this._hotkeys[i].hasExecuted = false;
-                    }
                 }
             }
         });
-        OnKeyUpEvent.on((e) => { 
-            console.log('World::OnKeyDownEvent: e.key: '+e.key.toLowerCase()+' shiftKey: '+e.shiftKey+' ctrlKey: '+e.ctrlKey+' altKey: '+e.altKey); // dev
+        OnKeyUpEvent.on((e) => {
             for(var i = 0; i < this._hotkeys.length; i++) {
                 if(this._hotkeys[i].hasExecuted) {
                     this._hotkeys[i].hasExecuted = false;

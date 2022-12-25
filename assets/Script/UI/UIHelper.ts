@@ -223,10 +223,31 @@ export function uiBoxRangeSlider(
     );
 }
 
-export function uiHotkeyConfig(title: m.Children, keyOfHotkey: string) {
+// [originally: Shortcut::shortcut(key: string | number, pre = "", post = ""): string {}]
+// refactored and updated for Hotkey update 
+export function uiHotkey(shortcut: Shortcut, pre = "", post = "")
+: string {
+    if (isIOS() || isAndroid()) {
+        return "";
+    }
+    let finalShortcutOutput: string = "";
+    if(shortcut.ctrlKey) {
+        finalShortcutOutput += "Ctrl+";
+    }
+    if(shortcut.shiftKey) {
+        finalShortcutOutput += "Shift+";
+    }
+    if(shortcut.altKey) {
+        finalShortcutOutput += "Alt+";
+    }
+    finalShortcutOutput += shortcut.key.toUpperCase();
+    return `${pre}[${finalShortcutOutput}]${post}`;
+}
+
+export function uiHotkeySetting(title: m.Children, keyOfHotkey: string) {
     if(!hasValue(HOTKEY_DEFS[keyOfHotkey])) {
         return m("div", [
-            m("div", { style: "color: red" }, 'uiHotkeyConfig::SOFT_ERROR'),
+            m("div", { style: "color: red" }, 'uiHotkeySetting::SOFT_ERROR'),
             m(
                 ".text-desc.text-s", 
                 '@param keyOfHotkey: string; ['+keyOfHotkey+'] No matching definition found in HOTKEY_DEFS.'
@@ -256,8 +277,7 @@ export function uiHotkeyConfig(title: m.Children, keyOfHotkey: string) {
     
     function protectReservedModifer(hotkeyDef: Shortcut, modKey: string) : boolean {
         // Prevents the user defining a key combination that is reserved by the OS and or Browser.
-        // Safe / Protected from Intercept: Ctrl+N, Ctrl+Shift+N, Ctrl+T, Ctrl+Shift+N, Ctrl+W, 
-        // Ctrl+Shift+W, Ctrl+Shift+Escape, Ctrl+Alt-Delete, Alt+F4, Escape, F11
+        // Safe / Protected from Intercept: Ctrl+N, Ctrl+Shift+N, Ctrl+T, Ctrl+Shift+N, Ctrl+W, Ctrl+Shift+W
         switch(hotkeyDef.key) {
             case "n":
                 isCtrlProtected = isShiftProtected = true;
@@ -311,7 +331,7 @@ export function uiHotkeyConfig(title: m.Children, keyOfHotkey: string) {
         switch(modKey) {
             // if an override exists compare values against D.persisted.hotkeyOverrides[keyOfHotkey]
             // else compare values against HOTKEY_DEFS[keyOfHotkey]. protectReservedModifer method
-            // prevents attempted use of OS / Browser reserved shortcuts. 
+            // prevents attempted use of OS / Browser reserved shortcuts in-game. 
             case "Control":
                 return protectReservedModifer(getHotkeyDef(keyOfHotkey), "Control") ? true : false;
             case "Shift":
@@ -862,23 +882,3 @@ export const InputOverrideFallbackOptions: Record<InputOverrideFallback, () => s
     drain: () => t("BuildingSourceFallbackDrain"),
     auto: () => t("BuildingSourceFallbackAuto"),
 };
-
-// refactored and updated for Hotkey update [originally: Shortcut::shortcut(key: string | number, pre = "", post = ""): string {}]
-export function uiHotkey(shortcut: Shortcut, pre = "", post = "")
-: string {
-    if (isIOS() || isAndroid()) {
-        return "";
-    }
-    let finalShortcutOutput: string = "";
-    if(shortcut.ctrlKey) {
-        finalShortcutOutput += "Ctrl+";
-    }
-    if(shortcut.shiftKey) {
-        finalShortcutOutput += "Shift+";
-    }
-    if(shortcut.altKey) {
-        finalShortcutOutput += "Alt+";
-    }
-    finalShortcutOutput += shortcut.key.toUpperCase();
-    return `${pre}[${finalShortcutOutput}]${post}`;
-}
