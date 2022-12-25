@@ -1570,6 +1570,6 @@ export const EN = {
     GameSettingHotkeyCtrl: "CtrlKey",
     GameSettingHotkeyShift: "ShiftKey",
     GameSettingHotkeyAlt: "Altkey",
-    GameSettingHotkeyToastResolveCollision: "Hotkey definition collisions have been reset to game defaults.",
+    GameSettingHotkeyToastResolveCollision: "Hotkey collisions have been reset to game defaults.",
     GameSettingHotkeyToastReservedHotkey: "Invalid key combination. Attempted key combination is reserved by your browser and or operating system.",
 };
