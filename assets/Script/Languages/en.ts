@@ -1572,11 +1572,4 @@ export const EN = {
     GameSettingHotkeyAlt: "Altkey",
     GameSettingHotkeyToastResolveCollision: "Hotkey definition collisions have been reset to game defaults.",
     GameSettingHotkeyToastReservedHotkey: "Invalid key combination. Attempted key combination is reserved by your browser and or operating system.",
-//dev: REMOVE THIS LINE PRIOR TO SUBMITTING PULL REQUESTS.
-    TBA: "TBA", // TMP
-    // GameSettingsHotkeyHQ: "Headquarter Panel",
-    // GameSettingsHotkeyResearch: "Research Panel",
-    // ResetToDefault: "Reset to Default",
-    //GameSettingHotkeyTip0: "❗ Hotkey collision detected. One or more of your hotkeys are set to the same shortcut value.",
-    //GameSettingHotkeyTip5: "If using [Shift] + any numeric key [0-9], QWERTY Keyboard layout is assumed. [1:!], [2:@], [3:#], [4:$], [5:%], [6:^], [7:&], [8:*], [9:(], [0:)]",
 };
