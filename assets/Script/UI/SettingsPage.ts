@@ -2,7 +2,7 @@ import { D, G, Languages } from "../General/GameData";
 import { ifTrue, keysOf, mapOf } from "../General/Helper";
 import { t } from "../General/i18n";
 import { isAndroid, isIOS, NativeSdk } from "../General/NativeSdk";
-import { leftOrRight, iconB, uiBoxToggle, uiHeaderActionBack, uiBoxToggleContent } from "./UIHelper";
+import { leftOrRight, iconB, uiBoxToggle, uiHeaderActionBack, uiBoxToggleContent, uiHotkey } from "./UIHelper";
 import { routeTo } from "./UISystem";
 
 export function SettingsPage(): m.Component {
@@ -14,26 +14,69 @@ export function SettingsPage(): m.Component {
                     m(".box",
                         m(".title", t("GameSetting")),
                         m(".hr"),
-                        m(".row.pointer", { onclick: () => routeTo("/audio-settings") }, [
-                            m(".f1", [m("div", t("GameSettingAudio"))]),
-                            m(".ml10.blue", iconB("arrow_forward")),
-                        ]),
+                        m(".row.pointer", 
+                            { 
+                                "data-shortcut": "1-false-false-false", onclick: () => routeTo("/audio-settings") 
+                            }, 
+                            [
+                                m(".f1", 
+                                    m("div", [
+                                        uiHotkey({key: "1", ctrlKey: false, shiftKey: false, altKey: false}, "", " "), 
+                                        t("GameSettingAudio")
+                                    ])
+                                ),
+                                m(".ml10.blue", iconB("arrow_forward")),
+                            ]
+                        ),
                         m(".hr"),
-                        m(".row.pointer", { onclick: () => routeTo("/display-settings") }, [
-                            m(".f1", [m("div", t("GameSettingDisplay"))]),
-                            m(".ml10.blue", iconB("arrow_forward")),
-                        ]),
+                        m(".row.pointer", 
+                            { 
+                                "data-shortcut": "2-false-false-false", 
+                                onclick: () => routeTo("/display-settings") 
+                            }, 
+                            [
+                                m(".f1", 
+                                    m("div", [
+                                        uiHotkey({key: "2", ctrlKey: false, shiftKey: false, altKey: false}, "", " "), 
+                                        t("GameSettingDisplay")
+                                    ])
+                                ),
+                                m(".ml10.blue", iconB("arrow_forward")),
+                            ]
+                        ),
                         m(".hr"),
-                        m(".row.pointer", { onclick: () => routeTo("/gameplay-settings") }, [
-                            m(".f1", [m("div", t("GameSettingGameplay"))]),
-                            m(".ml10.blue", iconB("arrow_forward")),
-                        ]),
+                        m(".row.pointer", 
+                            { 
+                                "data-shortcut": "3-false-false-false", 
+                                onclick: () => routeTo("/gameplay-settings") 
+                            }, 
+                            [
+                                m(".f1", 
+                                    m("div", [
+                                        uiHotkey({key: "3", ctrlKey: false, shiftKey: false, altKey: false}, "", " "), 
+                                        t("GameSettingGameplay")
+                                    ])
+                                ),
+                                m(".ml10.blue", iconB("arrow_forward")),
+                            ]
+                        ),
                         ifTrue(!isIOS() && !isAndroid(), () => [                   
                             m(".hr"),
-                            m(".row.pointer", { onclick: () => routeTo("/input-settings") }, [
-                                m(".f1", [m("div", t("GameSettingInput"))]),
-                                m(".ml10.blue", iconB("arrow_forward")),
-                            ]),
+                            m(".row.pointer", 
+                                { 
+                                    "data-shortcut": "4-false-false-false", 
+                                    onclick: () => routeTo("/input-settings") 
+                                }, 
+                                [
+                                    m(".f1", 
+                                        m("div", [
+                                            uiHotkey({key: "4", ctrlKey: false, shiftKey: false, altKey: false}, "", " "), 
+                                            t("GameSettingInput")
+                                        ])
+                                    ),
+                                    m(".ml10.blue", iconB("arrow_forward")),
+                                ]
+                            ),
                         ]),
                     ),
                     m(".box.gamesettings", [

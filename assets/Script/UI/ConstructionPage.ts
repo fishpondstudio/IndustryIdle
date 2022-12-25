@@ -11,8 +11,7 @@ import {
 import { D, G } from "../General/GameData";
 import { capitalize, ifTrue, nf } from "../General/Helper";
 import { t } from "../General/i18n";
-import { shortcut } from "./Shortcut";
-import { iconB, leftOrRight, uiHeaderRoute } from "./UIHelper";
+import { iconB, leftOrRight, uiHeaderRoute, uiHotkey } from "./UIHelper";
 import { routeTo, showToast } from "./UISystem";
 
 export function ConstructionPage(): m.Comp<{ xy: string }> {
@@ -85,10 +84,13 @@ export function ConstructionPage(): m.Comp<{ xy: string }> {
                                             showToast(t("NotEnoughCash"));
                                         }
                                     },
-                                    "data-shortcut": "1",
+                                    "data-shortcut": "1-false-false-false",
                                 },
                                 [
-                                    m("div", shortcut(1, "", " ") + t("ConstructionStart")),
+                                    m("div", [
+                                        uiHotkey({key: "1", ctrlKey: false, shiftKey: false, altKey: false} "", " "), 
+                                        t("ConstructionStart")
+                                    ]),
                                     m("div", [
                                         m("div", "$" + nf(buildingCost())),
                                         ifTrue(permitCost > 0, () =>
@@ -120,7 +122,10 @@ export function ConstructionPage(): m.Comp<{ xy: string }> {
                                     "data-shortcut": "0",
                                 },
                                 [
-                                    m("div", shortcut("0", "", " ") + t("ConstructionCancel")),
+                                    m("div", [
+                                        uiHotkey({key: "0", ctrlKey: false, shiftKey: false, altKey: false} "", " "), 
+                                        t("ConstructionCancel")
+                                    ]),
                                     m("div", ["+$", nf(entity.construction === "unpaid" ? 0 : buildingCost())]),
                                 ]
                             ),

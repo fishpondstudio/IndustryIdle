@@ -49,8 +49,7 @@ import { t } from "../General/i18n";
 import { BuildingInputPanel } from "./BuildingInputPanel";
 import { CrazyGameAdBanner } from "./CrazyGameAdBanner";
 import { MoveBuildingPanel } from "./MoveBuildingPanel";
-import { shortcut } from "./Shortcut";
-import { iconB, InputOverrideFallbackOptions, leftOrRight, uiBoxToggle, uiHeaderRoute } from "./UIHelper";
+import { iconB, InputOverrideFallbackOptions, leftOrRight, uiBoxToggle, uiHeaderRoute, uiHotkey } from "./UIHelper";
 import { hideAlert, routeTo, showAlert, showToast } from "./UISystem";
 
 let showAllModifiers = false;
@@ -431,7 +430,7 @@ export function InspectPage(): m.Comp<{ xy: string }> {
                                     ".two-col.pointer",
                                     {
                                         class: getCash() >= upgradeCost ? "blue" : "text-desc",
-                                        "data-shortcut": shortcutKey,
+                                        "data-shortcut": shortcutKey.toString()+"-false-false-false",
                                         onclick: () => {
                                             if (trySpendCash(getBuildingUpgradeCost())) {
                                                 entity.level += n;
@@ -443,7 +442,19 @@ export function InspectPage(): m.Comp<{ xy: string }> {
                                         },
                                     },
                                     [
-                                        m("div", `${shortcut(shortcutKey, "", " ")}${t("Upgrade")} x${n}`),
+                                        m("div", [
+                                            `${uiHotkey(
+                                                {
+                                                    key: shortcutKey.toString(), 
+                                                    ctrlKey: false, 
+                                                    shiftKey: false, 
+                                                    altKey: false
+                                                }, 
+                                                "", 
+                                                " "
+                                            )}
+                                            ${t("Upgrade")} x${n}`
+                                        ]),
                                         m(".ml20", `$${nf(upgradeCost)}`),
                                     ]
                                 ),
@@ -1033,7 +1044,7 @@ export function InspectPage(): m.Comp<{ xy: string }> {
                             m(
                                 ".two-col.red.pointer",
                                 {
-                                    "data-shortcut": "9",
+                                    "data-shortcut": "9-false-false-false",
                                     onclick: () => {
                                         G.audio.playClick();
                                         if (entity.level > 1) {
@@ -1043,7 +1054,7 @@ export function InspectPage(): m.Comp<{ xy: string }> {
                                     },
                                 },
                                 [
-                                    m("div", [shortcut("9", "", " "), t("DowngradeBuilding")]),
+                                    m("div", [uiHotkey({key: "9", ctrlKey: false, shiftKey: false, altKey: false}, "", " "), t("DowngradeBuilding")]),
                                     m("div", `+$${nf(downgradeRefund())}`),
                                 ]
                             ),
@@ -1052,7 +1063,7 @@ export function InspectPage(): m.Comp<{ xy: string }> {
                         m(
                             ".two-col.red.pointer",
                             {
-                                "data-shortcut": "0",
+                                "data-shortcut": "0-false-false-false",
                                 onclick: () => {
                                     if (T.currentWaveStatus === "inProgress") {
                                         G.audio.playError();
@@ -1066,7 +1077,7 @@ export function InspectPage(): m.Comp<{ xy: string }> {
                                     }
                                 },
                             },
-                            [m("div", [shortcut("0", "", " "), t("SellBuilding")]), m("div", `+$${nf(sellRefund())}`)]
+                            [m("div", [uiHotkey({key: "0", ctrlKey: false, shiftKey: false, altKey: false}, "", " "), t("SellBuilding")]), m("div", `+$${nf(sellRefund())}`)]
                         ),
                         m(".hr"),
                         m(

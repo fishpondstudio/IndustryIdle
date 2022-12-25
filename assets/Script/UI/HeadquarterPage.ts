@@ -32,7 +32,7 @@ import { ImportExportPanel } from "./ImportExport";
 import { SettingsPage } from "./SettingsPage";
 import { SteamBackupComponent } from "./SteamBackupComponent";
 import { StreamingPage } from "./StreamingPage";
-import { iconB, leftOrRight, reloadGame, uiHeaderRoute } from "./UIHelper";
+import { iconB, leftOrRight, reloadGame, uiHeaderRoute, uiHotkey } from "./UIHelper";
 import { routeTo, showAlert, showLoader, showToast } from "./UISystem";
 import { UserVerification } from "./UserVerification";
 
@@ -189,8 +189,13 @@ export function HeadquarterPage(): m.Comp {
                         m(UserVerification),
                         ifTrue(navigator.onLine, () => [
                             m(".hr"),
-                            m(".row.pointer", { onclick: () => routeTo("/choose-flag") }, [
-                                m(".f1", [m("div", t("PlayerCountryFlag"))]),
+                            m(".row.pointer", { "data-shortcut": "2-false-false-false", onclick: () => routeTo("/choose-flag") }, [
+                                m(".f1", 
+                                    m("div", [
+                                        uiHotkey({key: "2", ctrlKey: false, shiftKey: false, altKey: false}, "", " "), 
+                                        t("PlayerCountryFlag")
+                                    ])
+                                ),
                                 m(
                                     ".mr10",
                                     m("img.country-flag", {
@@ -205,9 +210,12 @@ export function HeadquarterPage(): m.Comp {
                             ]),
                         ]),
                         m(".hr"),
-                        m(".row.pointer", { onclick: () => routeTo("/achievements") }, [
+                        m(".row.pointer", { "data-shortcut": "3-false-false-false", onclick: () => routeTo("/achievements") }, [
                             m(".f1", [
-                                m("div", t("Achievements")),
+                                m("div", [
+                                    uiHotkey({key: "3", ctrlKey: false, shiftKey: false, altKey: false}, "", " "), 
+                                    t("Achievements")
+                                ]),
                                 m(
                                     ".text-desc.text-s",
                                     t("AchievementsDesc", {
@@ -221,19 +229,37 @@ export function HeadquarterPage(): m.Comp {
                         ]),
                         ifTrue(!D.persisted.leaderboardOptOut && navigator.onLine, () => [
                             m(".hr"),
-                            m(".row.pointer", { onclick: () => routeTo("/leaderboard") }, [
-                                m(".f1", [m("div", t("Leaderboard")), m(".text-desc.text-s", t("LeaderboardDescV2"))]),
+                            m(".row.pointer", { "data-shortcut": "4-false-false-false", onclick: () => routeTo("/leaderboard") }, [
+                                m(".f1", [
+                                    m("div", [
+                                        uiHotkey({key: "4", ctrlKey: false, shiftKey: false, altKey: false}, "", " "), 
+                                        t("Leaderboard")
+                                    ]), 
+                                    m(".text-desc.text-s", t("LeaderboardDescV2"))
+                                ]),
                                 m(".ml10.blue", iconB("arrow_forward")),
                             ]),
                         ]),
                         m(".hr"),
-                        m(".row.pointer", { onclick: () => routeTo("/patch-notes") }, [
-                            m(".f1", [m("div", t("PatchNotes")), m(".text-desc.text-s", t("PatchNotesDesc"))]),
+                        m(".row.pointer", { "data-shortcut": "5-false-false-false", onclick: () => routeTo("/patch-notes") }, [
+                            m(".f1", [
+                                m("div", [
+                                    uiHotkey({key: "5", ctrlKey: false, shiftKey: false, altKey: false}, "", " "), 
+                                    t("PatchNotes")
+                                ]), 
+                                m(".text-desc.text-s", t("PatchNotesDesc"))
+                            ]),
                             m(".ml10.blue", iconB("arrow_forward")),
                         ]),
                         m(".hr"),
-                        m(".row.pointer", { onclick: () => routeTo("/settings") }, [
-                            m(".f1", [m("div", t("GameSetting")), m(".text-desc.text-s", t("GameSettingDesc"))]),
+                        m(".row.pointer", { "data-shortcut": "6-false-false-false" ,onclick: () => routeTo("/settings") }, [
+                            m(".f1", [
+                                m("div", [
+                                    uiHotkey({key: "6", ctrlKey: false, shiftKey: false, altKey: false}, "", " "), 
+                                    t("GameSetting")
+                                ]), 
+                                m(".text-desc.text-s", t("GameSettingDesc"))
+                            ]),
                             m(".ml10.blue", iconB("arrow_forward")),
                         ]),
                         ifTrue(hasSteamWebSignIn() && !isSteamWebSignedIn(), () => [

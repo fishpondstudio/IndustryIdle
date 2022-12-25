@@ -18,12 +18,23 @@ import {
 } from "../CoreGame/Logic/Logic";
 import { getInputAmount, getOutputAmount, getUpgradeMultiplier } from "../CoreGame/Logic/Production";
 import { SCENES } from "../General/Constants";
-import { D, DLC, G, hasDLC, PersistedData, saveData, SwissBoosts, T } from "../General/GameData";
+import { 
+    D,
+    DLC,
+    G,
+    hasDLC,
+    PersistedData, 
+    saveData,
+    SwissBoosts,
+    T 
+} from "../General/GameData";
 import {
     firstKeyOf,
     forEach,
+    getHotkeyDef,
     getOrSet,
     hasValue,
+    HOTKEY_DEFS,
     ifTrue,
     keysOf,
     mapOf,
@@ -33,9 +44,9 @@ import {
 } from "../General/Helper";
 import { t } from "../General/i18n";
 import { isAndroid, isIOS, isSteam, NativeSdk, steamworks } from "../General/NativeSdk";
+import { Shortcut } from "../General/Hotkey";
 import { Desktop } from "./HudPage";
 import { isDataLoaded } from "./ResourceLoader";
-import { shortcut } from "./Shortcut";
 import { hideLoader, routeTo, showLoader, showToast, UI_ROUTES } from "./UISystem";
 
 export function icon(name: string, size = 24, marginRight = 0, additionalStyle = {}, additionalAttrs = {}) {
@@ -75,10 +86,10 @@ export function uiHeaderAction(title: m.Children, onClose: () => void, onDock?: 
     return m(".header", [
         title,
         m(".mi.close", {
-            "data-shortcut": "escape",
+            "data-shortcut": "escape-false-false-false",
             onclick: onClose,
         }),
-        ifTrue(!!onDock, () => m(".mi.dock.left", { onclick: onDock })),
+        ifTrue(!!onDock, () => m(".mi.dock.left", { "data-shortcut": "-", onclick: onDock })),
     ]);
 }
 
@@ -86,7 +97,7 @@ export function uiHeaderActionBack(title: m.Children, onClose: () => void, onDoc
     return m(".header", [
         title,
         m(".mi.back", {
-            "data-shortcut": "escape",
+            "data-shortcut": "escape-false-false-false",
             onclick: onClose,
         }),
         ifTrue(!!onDock, () => m(".mi.dock.right", { onclick: onDock })),
@@ -154,13 +165,15 @@ export function uiBoxToggle(
     desc: m.Children,
     value: boolean,
     onAction: () => void,
-    hotkey: string = null
+    shortcut: {key: string, ctrlKey: boolean, shiftKey: boolean, altKey: boolean}
 ) {
     return uiBoxToggleContent(
-        [m("div", [hotkey ? shortcut(hotkey, "", " ") : null, title]), m(".text-s.text-desc", desc)],
+        [
+            m("div", [shortcut ? uiHotkey(shortcut, "", " ") : null, title]), m(".text-s.text-desc", desc)
+        ],
         value,
         onAction,
-        { "data-shortcut": hotkey }
+        { "data-shortcut": [shortcut ? (shortcut.key+"-"+shortcut.ctrlKey+"-"+shortcut.shiftKey+"-"+shortcut.altKey) : ""}
     );
 }
 
@@ -196,7 +209,8 @@ export function uiBoxRangeSlider(
     hotkey: string = null
 ) {
     return m("box", [ 
-        [m("div", [hotkey ? shortcut(hotkey, "", " ") : null, title]), m(".text-s.text-desc", desc)],
+        m("div", title), 
+        m(".text-s.text-desc", desc)],
         m("input", {
             type: "range",
             id: id;
@@ -206,6 +220,251 @@ export function uiBoxRangeSlider(
             step: step;
             oninput: onInput;
         }),
+    );
+}
+
+export function uiHotkeyConfig(title: m.Children, keyOfHotkey: string) {
+    if(!hasValue(HOTKEY_DEFS[keyOfHotkey])) {
+        return m("div", [
+            m("div", { style: "color: red" }, 'uiHotkeyConfig::SOFT_ERROR'),
+            m(
+                ".text-desc.text-s", 
+                '@param keyOfHotkey: string; ['+keyOfHotkey+'] No matching definition found in HOTKEY_DEFS.'
+            ),
+        ])
+    }
+
+    const VaildHotkeyOptions = [ // numeric keys [0-9] 'reserved' for use by data-shortcut / uiHotkey
+    "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", 
+    "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"
+    ] as const;
+
+    let settingTitle: string = "[❓] "+title;
+    let keyOptionsId: string = keyOfHotkey+"-keyOptions";
+    let hotkeyRootId: string = keyOfHotkey+"-hotkeySetting";
+    let hotkeyTitleId: string = keyOfHotkey+"-hotkeyTitle";
+    let hotkeyModifiersId: string = keyOfHotkey+"-hotkeyModifiers";
+    let ctrlBoxId: string = keyOfHotkey+"-ctrlBox";
+    let shiftBoxId: string = keyOfHotkey+"-shiftBox";
+    let altBoxId: string = keyOfHotkey+"-altBox";
+    let resetId: string = keyOfHotkey+"-hotkeyReset";
+    let checkboxCSS: string = "width: initial;";
+    let labelCSS: string = "text-transform: uppercase; font-size: 0.85rem; margin-left: 4px; margin-right: 8px;";
+    let isCtrlProtected: boolean = false;
+    let isShiftProtected: boolean = false;
+    let isAltProtected: boolean = false;
+    
+    function protectReservedModifer(hotkeyDef: Shortcut, modKey: string) : boolean {
+        // Prevents the user defining a key combination that is reserved by the OS and or Browser.
+        // Safe / Protected from Intercept: Ctrl+N, Ctrl+Shift+N, Ctrl+T, Ctrl+Shift+N, Ctrl+W, 
+        // Ctrl+Shift+W, Ctrl+Shift+Escape, Ctrl+Alt-Delete, Alt+F4, Escape, F11
+        switch(hotkeyDef.key) {
+            case "n":
+                isCtrlProtected = isShiftProtected = true;
+                isAltProtected = false;
+                switch(modKey)
+                {
+                    case "Control":
+                    case "Shift":
+                        return false;
+                    case "Alt":
+                        return hotkeyDef.altKey;
+                }
+            case "t":
+                isCtrlProtected = true;
+                isShiftProtected = isAltProtected = false;
+                switch(modKey)
+                {
+                    case "Control":
+                        return false;
+                    case "Shift":
+                        return hotkeyDef.shiftKey;
+                    case "Alt":
+                        return hotkeyDef.altKey;
+                }
+            case "w":
+                isCtrlProtected = isShiftProtected = true;
+                isAltProtected = false;
+                switch(modKey)
+                {
+                    case "Control":
+                    case "Shift":
+                        return false;
+                    case "Alt":
+                        return hotkeyDef.altKey;
+                }
+            default:
+                isCtrlProtected = isShiftProtected = isAltProtected = false;
+                switch(modKey)
+                {
+                    case "Control":
+                        return hotkeyDef.ctrlKey;
+                    case "Shift":
+                        return hotkeyDef.shiftKey;
+                    case "Alt":
+                        return hotkeyDef.altKey;
+                }
+        }
+    }
+
+    function getKeyModifierState(modKey: string) : boolean {
+        switch(modKey) {
+            // if an override exists compare values against D.persisted.hotkeyOverrides[keyOfHotkey]
+            // else compare values against HOTKEY_DEFS[keyOfHotkey]. protectReservedModifer method
+            // prevents attempted use of OS / Browser reserved shortcuts. 
+            case "Control":
+                return protectReservedModifer(getHotkeyDef(keyOfHotkey), "Control") ? true : false;
+            case "Shift":
+                return protectReservedModifer(getHotkeyDef(keyOfHotkey), "Shift") ? true : false;
+            case "Alt":
+                return protectReservedModifer(getHotkeyDef(keyOfHotkey), "Alt") ? true : false;
+        }
+        return false;
+    }
+
+    function ifDefaultConvertToOverride() : void {
+        if(!hasValue(D.persisted.hotkeyOverrides[keyOfHotkey])) {
+            D.persisted.hotkeyOverrides[keyOfHotkey] = { 
+                key: HOTKEY_DEFS[keyOfHotkey].key, 
+                ctrlKey: getKeyModifierState("Control"), 
+                shiftKey: getKeyModifierState("Shift"), 
+                altKey: getKeyModifierState("Alt")
+            };
+        } 
+    }
+
+    function removeHotkeyOverride() : void {
+        if(hasValue(D.persisted.hotkeyOverrides[keyOfHotkey])) {
+            isCtrlProtected = isShiftProtected = isAltProtected = false;
+            delete D.persisted.hotkeyOverrides[keyOfHotkey];
+            G.world.registerHotkeys();
+        }
+    }
+
+    function isEqualToDefault() : boolean {
+        if(D.persisted.hotkeyOverrides[keyOfHotkey].key === HOTKEY_DEFS[keyOfHotkey].key &&
+            D.persisted.hotkeyOverrides[keyOfHotkey].ctrlKey == HOTKEY_DEFS[keyOfHotkey].ctrlKey &&
+            D.persisted.hotkeyOverrides[keyOfHotkey].shiftKey == HOTKEY_DEFS[keyOfHotkey].shiftKey &&
+            D.persisted.hotkeyOverrides[keyOfHotkey].altKey == HOTKEY_DEFS[keyOfHotkey].altKey) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    return m(".two-col", { id: hotkeyRootId }, [
+        m("div", { id: "left-col" }, [
+            m("div", { id: hotkeyTitleId }, settingTitle),
+            m("div", { id: hotkeyModifiersId }, [
+                m(".sep10"),
+                m("input", {
+                    type: "checkbox",
+                    style: checkboxCSS,
+                    id: ctrlBoxId,
+                    checked: getKeyModifierState("Control"),
+                    oninput: (e) => {
+                        if(isCtrlProtected) {
+                            showToast(t("GameSettingHotkeyToastReservedHotkey"));
+                            G.audio.playError();
+                            return;
+                        }
+                        G.audio.playClick();
+                        ifDefaultConvertToOverride();
+                        D.persisted.hotkeyOverrides[keyOfHotkey].ctrlKey = !D.persisted.hotkeyOverrides[keyOfHotkey].ctrlKey;
+                        if(isEqualToDefault()) {
+                            removeHotkeyOverride();
+                        }
+                        G.world.registerHotkeys();
+                    },
+                }),
+                m("label", { for: ctrlBoxId, style: labelCSS, }, t("GameSettingHotkeyCtrl")),
+                m("input", {
+                    type: "checkbox",
+                    style: checkboxCSS,
+                    id: shiftBoxId,
+                    checked: getKeyModifierState("Shift"),
+                    oninput: (e) => {
+                        if(isShiftProtected) {
+                            showToast(t("GameSettingHotkeyToastReservedHotkey"));
+                            G.audio.playError();
+                            return;
+                        }
+                        G.audio.playClick();
+                        ifDefaultConvertToOverride();
+                        D.persisted.hotkeyOverrides[keyOfHotkey].shiftKey = !D.persisted.hotkeyOverrides[keyOfHotkey].shiftKey;
+                        if(isEqualToDefault()) {
+                            removeHotkeyOverride();
+                        }
+                        G.world.registerHotkeys();
+                    },
+                }),
+                m("label", { for: shiftBoxId, style: labelCSS, }, t("GameSettingHotkeyShift")),
+                m("input", {
+                    type: "checkbox",
+                    style: checkboxCSS,
+                    id: altBoxId,
+                    checked: getKeyModifierState("Alt"),
+                    oninput: (e) => {
+                        if(isAltProtected) {
+                            showToast(t("GameSettingHotkeyToastReservedHotkey"));
+                            G.audio.playError();
+                            return;
+                        }
+                        G.audio.playClick();
+                        ifDefaultConvertToOverride();
+                        D.persisted.hotkeyOverrides[keyOfHotkey].altKey = !D.persisted.hotkeyOverrides[keyOfHotkey].altKey;
+                        if(isEqualToDefault()) {
+                            removeHotkeyOverride();
+                        }
+                        G.world.registerHotkeys();
+                    },
+                }), 
+                m("label", { for: altBoxId, style: labelCSS, }, t("GameSettingHotkeyAlt")),
+            ]),
+        ]),
+        m("div", { id: "right-col" },
+            m("select.text-m",
+                {
+                    id: keyOptionsId,
+                    onchange: async (e) => {
+                        G.audio.playClick();
+                        D.persisted.hotkeyOverrides[keyOfHotkey] = { 
+                            key: e.target.value, 
+                            ctrlKey: false, 
+                            shiftKey: false, 
+                            altKey: false
+                        };
+                        if(isEqualToDefault()) {
+                            removeHotkeyOverride();
+                        }
+                        G.world.registerHotkeys();
+                    },
+                },
+                VaildHotkeyOptions.map((k) =>
+                    m(
+                        "option",
+                        {
+                            key: k,
+                            value: k,
+                            selected: getHotkeyDef(keyOfHotkey).key === k,
+                        },
+                        `${k.toUpperCase()}`
+                    )
+                )
+            ),
+            m("div", { id: resetId }, [
+                m(".sep10"),
+                m(".mt5.text-m",
+                    {
+                        class: hasValue(D.persisted.hotkeyOverrides[keyOfHotkey]) ? "blue pointer" : "text-desc",
+                        onclick: () => {
+                            removeHotkeyOverride();
+                        },
+                    },
+                    t("ColorThemeEditorReset")
+                ),
+            ]),
+        ),
     ]);
 }
 
@@ -356,7 +615,7 @@ export function uiBuildingBasicInfo(entity: Entity) {
                     ".two-col.pointer",
                     {
                         class: getCash() >= upgradeCost ? "blue" : "text-desc",
-                        "data-shortcut": shortcutKey,
+                        "data-shortcut": shortcutKey.toString()+"-false-false-false",
                         onclick: () => {
                             if (trySpendCash(getBuildingUpgradeCost())) {
                                 entity.level += n;
@@ -369,7 +628,7 @@ export function uiBuildingBasicInfo(entity: Entity) {
                         },
                     },
                     [
-                        m("div", `${shortcut(shortcutKey, "", " ")}${t("Upgrade")} x${n}`),
+                        m("div", `${uiHotkey({key: shortcutKey.toString(), ctrlKey: false, shiftKey: false, altKey: false}, "", " ")}${t("Upgrade")} x${n}`),
                         m(".ml20", `$${nf(upgradeCost)}`),
                     ]
                 ),
@@ -603,3 +862,23 @@ export const InputOverrideFallbackOptions: Record<InputOverrideFallback, () => s
     drain: () => t("BuildingSourceFallbackDrain"),
     auto: () => t("BuildingSourceFallbackAuto"),
 };
+
+// refactored and updated for Hotkey update [originally: Shortcut::shortcut(key: string | number, pre = "", post = ""): string {}]
+export function uiHotkey(shortcut: Shortcut, pre = "", post = "")
+: string {
+    if (isIOS() || isAndroid()) {
+        return "";
+    }
+    let finalShortcutOutput: string = "";
+    if(shortcut.ctrlKey) {
+        finalShortcutOutput += "Ctrl+";
+    }
+    if(shortcut.shiftKey) {
+        finalShortcutOutput += "Shift+";
+    }
+    if(shortcut.altKey) {
+        finalShortcutOutput += "Alt+";
+    }
+    finalShortcutOutput += shortcut.key.toUpperCase();
+    return `${pre}[${finalShortcutOutput}]${post}`;
+}
