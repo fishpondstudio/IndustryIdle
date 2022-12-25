@@ -119,7 +119,7 @@ export function ConstructionPage(): m.Comp<{ xy: string }> {
                                 ".two-col.red.pointer",
                                 {
                                     onclick: cancelConstruction,
-                                    "data-shortcut": "0",
+                                    "data-shortcut": "0-false-false-false",
                                 },
                                 [
                                     m("div", [

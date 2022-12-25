@@ -89,7 +89,7 @@ export function uiHeaderAction(title: m.Children, onClose: () => void, onDock?: 
             "data-shortcut": "escape-false-false-false",
             onclick: onClose,
         }),
-        ifTrue(!!onDock, () => m(".mi.dock.left", { "data-shortcut": "-", onclick: onDock })),
+        ifTrue(!!onDock, () => m(".mi.dock.left", { "data-shortcut": "--false-false-false", onclick: onDock })),
     ]);
 }
 
