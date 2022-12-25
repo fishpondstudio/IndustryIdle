@@ -42,9 +42,4 @@ export class TypedEvent<T> {
     pipe = (te: TypedEvent<T>): Disposable => {
         return this.on((e) => te.emit(e));
     };
-
-    flush = () : void => {
-        this.listeners = [];
-        this.listenersOncer = [];
-    };
 }
