@@ -3,7 +3,6 @@ import {
     acceptTrade,
     addTrade,
     cancelTrade,
-    ClaimConfig,
     claimTradeUI,
     getMarketCapTaxCreditPercent,
     getOrderSides,
