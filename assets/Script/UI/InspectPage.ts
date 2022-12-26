@@ -1,6 +1,6 @@
 import { buildingHasColor, getBuildingColor, resetBuildingColor, setBuildingColor } from "../CoreGame/ColorThemes";
 import { stringToGrid } from "../CoreGame/GridHelper";
-import { batchApply, batchModeLabel, doBatchUpgrade, getBatchUpgradeEstimate } from "../CoreGame/Logic/BatchMode";
+import { batchApply, batchModeLabel, doBatchDowngrade, doBatchUpgrade, getBatchDowngradeEstimate, getBatchUpgradeEstimate } from "../CoreGame/Logic/BatchMode";
 import { getInput, getOutput, InputBufferTypes, InputCapacityOverrideTypes } from "../CoreGame/Logic/Entity";
 import {
     BLD,
@@ -556,6 +556,49 @@ export function InspectPage(): m.Comp<{ xy: string }> {
                                 m("div", t("BatchUpgradeToLevelX", { level: entity.level })),
                             ]
                         ),
+                        m(".hr"),
+                        m(
+                            ".pointer.blue.two-col",
+                            {
+                                onclick: () => {
+                                    const { count, gain } = getBatchDowngradeEstimate(entity, entity.level);
+                                    showAlert(
+                                        `${t("DowngradeBuilding")} ${batchModeLabel()} ${t("BatchUpgradeToLevelX", {
+                                            level: entity.level,
+                                        })}`,
+                                        t("BatchOperationGainDesc", { number: count, gain: nf(gain) }),
+                                        [
+                                            { name: t("Cancel"), class: "outline" },
+                                            {
+                                                name: t("DowngradeBuilding"),
+                                                class: "outline",
+                                                action: () => {
+                                                    const { success, fail, gain } = doBatchDowngrade(
+                                                        entity,
+                                                        entity.level
+                                                    );
+                                                    G.audio.playClick();
+                                                    showToast(
+                                                        t("BatchOperationGainResult", {
+                                                            success,
+                                                            fail,
+                                                            gain: nf(gain),
+                                                        })
+                                                    );
+                                                    hideAlert();
+                                                    m.redraw();
+                                                },
+                                            },
+                                        ]
+                                    );
+                                },
+                            },
+                            [
+                                m("div", `${t("DowngradeBuilding")} ${batchModeLabel()}`),
+                                m("div", t("BatchUpgradeToLevelX", { level: entity.level })),
+                            ]
+                        ),
+//dev
                     ]),
                     m(".box", [
                         m(".title", t("ProductionSettings")),
