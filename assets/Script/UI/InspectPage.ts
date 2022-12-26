@@ -606,7 +606,7 @@ export function InspectPage(): m.Comp<{ xy: string }> {
                                     G.audio.playClick();
                                     entity.turnOff = !entity.turnOff;
                                 },
-                                "4"
+                                {key: "4", ctrlKey: false, shiftKey: false, altKey: false}
                             ),
                             m(".row", [
                                 m(
