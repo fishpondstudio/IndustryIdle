@@ -223,10 +223,7 @@ export function uiBoxRangeSlider(
     );
 }
 
-// [originally: Shortcut::shortcut(key: string | number, pre = "", post = ""): string {}]
-// refactored and updated for Hotkey update 
-export function uiHotkey(shortcut: Shortcut, pre = "", post = "")
-: string {
+export function uiHotkey(shortcut: Shortcut, pre = "", post = "") : string {
     if (isIOS() || isAndroid()) {
         return "";
     }
