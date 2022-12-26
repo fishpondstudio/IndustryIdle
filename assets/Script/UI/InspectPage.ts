@@ -366,7 +366,7 @@ export function InspectPage(): m.Comp<{ xy: string }> {
                                 },
                                 [
                                     m(".f1", [
-                                        m("div", t("BuildingProfit")),
+                                        m("div", t("BuildingProfit")+" ("+t("AutoSell")+")"),
                                         m(
                                             ".text-s.blue",
                                             showProfitBreakdown ? t("HideBreakdown") : t("ShowBreakdown")
