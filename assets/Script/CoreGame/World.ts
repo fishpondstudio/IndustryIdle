@@ -62,8 +62,8 @@ export default class World extends cc.Component {
     private overlayTextQueue: (() => void)[] = [];
     private hasOverlay = false;
     private _hotkeys: Hotkey[] = [];
-    private _onKeyDownListener: Function; 
-    private _onKeyUpListener: Function; 
+    private _onKeyDownCallBack: Function; 
+    private _onKeyUpCallBack: Function; 
 
     public get hotkeys() : Hotkey[] {
         return this._hotkeys;
@@ -121,8 +121,8 @@ export default class World extends cc.Component {
     }
 
     protected override onDestroy(){
-        this._onKeyDownListener.dispose();
-        this._onKeyUpListener.dispose();
+        this._onKeyDownCallBack.dispose();
+        this._onKeyUpCallBack.dispose();
     }
 
     private enableMapEditMode() {
@@ -674,7 +674,7 @@ export default class World extends cc.Component {
 
     private initHotkeys() : void {
         this.registerHotkeys();
-        this._onKeyDownListener = OnKeyDownEvent.on((e) => {  
+        this._onKeyDownCallBack = OnKeyDownEvent.on((e) => {  
             for(var i = 0; i < this._hotkeys.length; i++) {
                 if(!this._hotkeys[i].hasExecuted && this._hotkeys[i].key === e.key.toLowerCase() && 
                     this._hotkeys[i].ctrlKey == e.ctrlKey && this._hotkeys[i].shiftKey == e.shiftKey && 
@@ -683,7 +683,7 @@ export default class World extends cc.Component {
                 }
             }
         });
-        this._onKeyUpListener = OnKeyUpEvent.on((e) => {
+        this._onKeyUpCallBack = OnKeyUpEvent.on((e) => {
             for(var i = 0; i < this._hotkeys.length; i++) {
                 if(this._hotkeys[i].hasExecuted) {
                     this._hotkeys[i].hasExecuted = false;
