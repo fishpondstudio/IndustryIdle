@@ -47,9 +47,9 @@ export const Streaming: IStreamingConfig = {
 };
 
 let mediaRecorder: MediaRecorder;
+let minimizeStreaming: boolean = false;
 
 export function StreamingPage(): m.Comp {
-    let minimizeStreaming: boolean = false;
     return {
         view: (vnode) => {
             if (isIOS() || isAndroid()) {

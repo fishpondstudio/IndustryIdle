@@ -37,6 +37,9 @@ import { routeTo, showAlert, showLoader, showToast } from "./UISystem";
 import { UserVerification } from "./UserVerification";
 
 const NAME_CHANGE_COOLDOWN_HOUR = 24;
+let minimizeHighlightAll: boolean = false;
+let minimizeBuildingPermit: boolean = false;
+let minimizeExpansionPacks: boolean = false;
 
 export function startWebLogin() {
     const popup = window.open(`${API_HOST}/steam`, "_blank", "popup");
@@ -52,10 +55,6 @@ export function startWebLogin() {
 export function HeadquarterPage(): m.Comp {
     let editingName = false;
     let newName: string;
-    let minimizeStreaming = false;
-    let minimizeHighlightAll = false;
-    let minimizeBuildingPermit = false;
-    let minimizeExpansionPacks = false;
     return {
         oninit: () => {
             newName = D.persisted.userName;
