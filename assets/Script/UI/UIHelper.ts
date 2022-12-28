@@ -224,7 +224,7 @@ export function uiBoxRangeSlider(
 }
 
 export function uiHotkey(shortcut: Shortcut, pre = "", post = "") : string {
-    if (isIOS() || isAndroid()) {
+    if (D.persisted.hideHotkeySubmenuLabels || isIOS() || isAndroid()) {
         return "";
     }
     let finalShortcutOutput: string = "";

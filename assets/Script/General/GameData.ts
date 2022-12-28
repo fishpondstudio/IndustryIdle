@@ -241,6 +241,7 @@ export class PersistedData {
     hideDiscordBanner = false;
     hideChat = isIOS();
     hideChatMentions = false;
+    hideHotkeySubmenuLabels = false;
     buildingColors: Partial<Record<keyof Buildings, string>> = {};
     dlc: Partial<Record<DownloadableContent, boolean>> = {};
     userId = uuidv4();

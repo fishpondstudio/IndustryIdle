@@ -1572,4 +1572,6 @@ export const EN = {
     GameSettingHotkeyAlt: "Altkey",
     GameSettingHotkeyToastResolveCollision: "Hotkey collisions have been reset to game defaults.",
     GameSettingHotkeyToastReservedHotkey: "Invalid key combination. Attempted key combination is reserved by your browser and or operating system.",
+    GameSettingHideSubmenuHotkey: "Hide Sub-menu Hotkey Labels",
+    GameSettingHideSubmenuHotkeyDesc: "Hides all sub-menu hotkey labels, while still allowing navigation through sub-menus using hotkeys.",
 };
