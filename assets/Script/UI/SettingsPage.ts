@@ -1,8 +1,8 @@
 import { D, G, Languages } from "../General/GameData";
 import { ifTrue, keysOf, mapOf } from "../General/Helper";
 import { t } from "../General/i18n";
-import { isAndroid, isIOS, NativeSdk } from "../General/NativeSdk";
-import { leftOrRight, iconB, uiBoxToggle, uiHeaderActionBack, uiBoxToggleContent, uiHotkey } from "./UIHelper";
+import { NativeSdk } from "../General/NativeSdk";
+import { leftOrRight, iconB, isMobile, uiBoxToggle, uiHeaderActionBack, uiBoxToggleContent, uiHotkey } from "./UIHelper";
 import { routeTo } from "./UISystem";
 
 export function SettingsPage(): m.Component {
@@ -60,7 +60,7 @@ export function SettingsPage(): m.Component {
                                 m(".ml10.blue", iconB("arrow_forward")),
                             ]
                         ),
-                        ifTrue(!isIOS() && !isAndroid(), () => [                   
+                        ifTrue(!isMobile(), () => [                   
                             m(".hr"),
                             m(".row.pointer", 
                                 { 
