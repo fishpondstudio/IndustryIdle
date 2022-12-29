@@ -15,7 +15,7 @@ import {
 } from "../General/Helper";
 import { OnKeyDownEvent, OnKeyUpEvent } from "../General/KeyboardEventListener";
 import { isMapEditMode, routeTo } from "../UI/UISystem";
-import { isPanelOnLeft } from "../UI/UIHelper";
+import { isMobile, isPanelOnLeft } from "../UI/UIHelper";
 import { Buildings, ResourceNumberMap } from "./Buildings/BuildingDefinitions";
 import { safeSaveToSteamCloud } from "./CloudSave";
 import { DOT_OPACITY_HIGHLIGHT, getCurrentColor } from "./ColorThemes";
@@ -75,7 +75,10 @@ export default class World extends cc.Component {
     }
 
     protected override start() {
-        this.initHotkeys();
+        if(!isMobile()) {
+                this.initHotkeys();
+        }
+        
         this.createMap();
 
         forEach(D.buildings, (xy, entity) => {
@@ -121,8 +124,10 @@ export default class World extends cc.Component {
     }
 
     protected override onDestroy(){
-        this._onKeyDownCallBack.dispose();
-        this._onKeyUpCallBack.dispose();
+        if(!isMobile()) {
+                this._onKeyDownCallBack.dispose();
+                this._onKeyUpCallBack.dispose();
+        }
     }
 
     private enableMapEditMode() {
