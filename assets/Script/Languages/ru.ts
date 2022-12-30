@@ -981,7 +981,7 @@ export const RU = {
     IndustryZoneNotWorkingDesc:
         "Все соседние здания должны образовывать цепочку поставок, иметь максимальный уровень %{level} и не являться частью других промышленных зон",
     PlayerTradeAutoClaim: "Автоматическое завершение исполненных сделок",
-    PlayerTradeAutoClaimDesc: "Automatically claim all filled trades from the player market.",
+    PlayerTradeAutoClaimDesc: "Автоматическое завершение всех заполненных сделок на рынке игроков.",
     MusifyInc: "Корпорация 'Musify'",
     WebflixInc: "Корпорация 'Webflix'",
     CloudStreaming: "Облачный стриминг",
@@ -1561,7 +1561,7 @@ export const RU = {
         "Industry Idle теперь с открытым исходным кодом. Вы можете внести свой вклад в разработку на Github",
     GameGuides: "Игровые руководства",
     GameSetting: "Настройки",
-    GameSettingDesc: "Настройте игру под себя.",
+    GameSettingDesc: "Настройте игру под себя",
     GameSettingGeneral: "Общие",
     GameSettingDisplay: "Дисплей",
     GameSettingHideElements: "Скрыть от просмотра",
@@ -1611,5 +1611,6 @@ export const RU = {
     PlayerTradesShowHistory: "Показать последние сделки игроков",
     PlayerTradesHistory: "Последние сделки игроков",
     PlayerTradeFillBy: "Заполнено",
+    PlayerTradeCancelled: "Отменено",
     FormatTimeAgo: "%{time} назад",
 };
