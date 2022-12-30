@@ -47,6 +47,7 @@ export const Streaming: IStreamingConfig = {
 };
 
 let mediaRecorder: MediaRecorder;
+let minimizeStreaming: boolean = false;
 
 export function StreamingPage(): m.Comp {
     return {
@@ -56,160 +57,186 @@ export function StreamingPage(): m.Comp {
             }
             const audienceCount = sizeOf(Streaming.broadcastTo);
             return m(".box", [
-                m(".title", t("StreamingSettings")),
-                ifTrue(Streaming.canRecord, () => [
-                    m(".hr"),
-                    ifTrue(!isRecording(), () => [
-                        m(".two-col.pointer", { onclick: startRecord }, [
-                            m(".blue", t("StreamingStartRecord")),
-                            m(".red", iconB("radio_button_checked")),
-                        ]),
-                        m(".hr"),
-                        m(".two-col.pointer", { onclick: startCameraSequence }, [
-                            m("div", [
-                                m("div", t("StreamingRecordCamera")),
-                                m(".text-desc.text-s", t("StreamingRecordCameraDesc")),
-                            ]),
-                            m(".blue.ml20", iconB("movie")),
-                        ]),
-                    ]),
-                    ifTrue(isRecording(), () =>
-                        m(
-                            ".two-col.pointer",
-                            {
-                                onclick: async () => {
-                                    saveAs(await stopRecord());
-                                },
-                            },
-                            [m(".blue", t("StreamingStopRecord")), m(".red", iconB("stop_circle"))]
-                        )
-                    ),
-                ]),
-                m(".hr"),
-                uiBoxToggle(
-                    t("StreamingMakeMeDiscoverable"),
-                    t("StreamingMakeMeDiscoverableDesc"),
-                    Streaming.on,
-                    async () => {
-                        try {
-                            Streaming.on = !Streaming.on;
-                            if (Streaming.on) {
-                                if (!Streaming.stream) {
-                                    Streaming.stream = cc.game.canvas.captureStream(30);
-                                }
-                            }
-                            const r = await fetch(`${API_HOST}/stream?status=${Streaming.on ? "on" : "off"}`, {
-                                method: "post",
-                                headers: { "X-User-Id": D.persisted.userId },
-                            });
-                            if (r.status !== 200) {
-                                throw new Error(r.statusText);
-                            }
-                            const json = await r.json();
-                            Streaming.on = !!json.streaming;
-                            if (json.token) {
-                                Streaming.token = json.token;
-                            }
-                        } catch (error) {
-                            showToast(t("GeneralServerErrorMessage", { error: error?.message }));
-                        }
-                    }
-                ),
-                ifTrue(Streaming.on, () => {
-                    return [
-                        m(".hr"),
-                        uiBoxToggle(t("StreamAutoApprove"), t("StreamAutoApproveDesc"), Streaming.public, () => {
-                            Streaming.public = !Streaming.public;
-                        }),
-                    ];
-                }),
-                ifTrue(audienceCount > 0, () => [
-                    m(".hr"),
-                    m(".title.two-col", [m("div", t("StreamingAudience")), m("div", audienceCount)]),
-                ]),
-                mapOf(Streaming.broadcastTo, (key, audience) => {
-                    const user = audience.user;
-                    let action: m.Children = null;
-                    if (hasValue(audience.connection)) {
-                        action = m(
-                            ".pointer.red",
-                            {
-                                title: t("StreamingStopStreamDesc"),
-                                onclick: () => {
-                                    delete Streaming.broadcastTo[key];
-                                    audience.connection.close();
-                                },
-                            },
-                            t("StreamingStop")
-                        );
-                    } else {
-                        action = [
+                m(".title", [
+                    m(".two-col", [
+                        m("div",
                             m(
-                                ".pointer.blue",
-                                {
-                                    onclick: async () => {
-                                        audience.connection = await sendOffer(key);
-                                    },
-                                },
-                                t("StreamingAcceptStream")
-                            ),
-                            m(
-                                ".pointer.blue.ml10",
+                                "td.pointer",
                                 {
                                     onclick: () => {
-                                        delete Streaming.broadcastTo[key];
-                                        audience.connection?.close();
-                                        sendSignal(key, { reject: true, user: getStreamingUser() });
+                                        minimizeStreaming = !minimizeStreaming;
                                     },
                                 },
-                                t("StreamingRejectStream")
+                                minimizeStreaming
+                                    ? iconB("add_circle_outline", 18, 0, {}, { class: "blue mv-10" })
+                                    : iconB(
+                                          "remove_circle_outline",
+                                          18,
+                                          0,
+                                          {},
+                                          { class: "text-desc mv-10" }
+                                      )
                             ),
+                        ),
+                        m("div", {style: "margin-left: 8px;"}, t("StreamingSettings")),
+                        m("div", " ")
+                    ])
+                ]),
+                ifTrue(!minimizeStreaming, () => [
+                    ifTrue(Streaming.canRecord, () => [
+                        m(".hr"),
+                        ifTrue(!isRecording(), () => [
+                            m(".two-col.pointer", { onclick: startRecord }, [
+                                m(".blue", t("StreamingStartRecord")),
+                                m(".red", iconB("radio_button_checked")),
+                            ]),
+                            m(".hr"),
+                            m(".two-col.pointer", { onclick: startCameraSequence }, [
+                                m("div", [
+                                    m("div", t("StreamingRecordCamera")),
+                                    m(".text-desc.text-s", t("StreamingRecordCameraDesc")),
+                                ]),
+                                m(".blue.ml20", iconB("movie")),
+                            ]),
+                        ]),
+                        ifTrue(isRecording(), () =>
+                            m(
+                                ".two-col.pointer",
+                                {
+                                    onclick: async () => {
+                                        saveAs(await stopRecord());
+                                    },
+                                },
+                                [m(".blue", t("StreamingStopRecord")), m(".red", iconB("stop_circle"))]
+                            )
+                        ),
+                    ]),
+                    m(".hr"),
+                    uiBoxToggle(
+                        t("StreamingMakeMeDiscoverable"),
+                        t("StreamingMakeMeDiscoverableDesc"),
+                        Streaming.on,
+                        async () => {
+                            try {
+                                Streaming.on = !Streaming.on;
+                                if (Streaming.on) {
+                                    if (!Streaming.stream) {
+                                        Streaming.stream = cc.game.canvas.captureStream(30);
+                                    }
+                                }
+                                const r = await fetch(`${API_HOST}/stream?status=${Streaming.on ? "on" : "off"}`, {
+                                    method: "post",
+                                    headers: { "X-User-Id": D.persisted.userId },
+                                });
+                                if (r.status !== 200) {
+                                    throw new Error(r.statusText);
+                                }
+                                const json = await r.json();
+                                Streaming.on = !!json.streaming;
+                                if (json.token) {
+                                    Streaming.token = json.token;
+                                }
+                            } catch (error) {
+                                showToast(t("GeneralServerErrorMessage", { error: error?.message }));
+                            }
+                        }
+                    ),
+                    ifTrue(Streaming.on, () => {
+                        return [
+                            m(".hr"),
+                            uiBoxToggle(t("StreamAutoApprove"), t("StreamAutoApproveDesc"), Streaming.public, () => {
+                                Streaming.public = !Streaming.public;
+                            }),
                         ];
-                    }
-                    return [
+                    }),
+                    ifTrue(audienceCount > 0, () => [
                         m(".hr"),
-                        m(".row.text-m.uppercase", [
-                            m("div", user.name),
-                            ifTrue(!!user.flag, () =>
-                                m("img.chat-badge", {
-                                    title: flagToName(user.flag),
-                                    src: getFlagUrl(user.flag),
-                                })
-                            ),
-                            ifTrue(user.dlc > 0, () =>
-                                m("img.chat-badge", {
-                                    title: t("OwnDLC", { number: user.dlc }),
-                                    src: getResourceUrl(`images/Exp${user.dlc}.png`),
-                                })
-                            ),
-                            m(".f1"),
-                            action,
-                        ]),
-                    ];
-                }),
-                ifTrue(sizeOf(Streaming.users) > 0, () => [m(".hr"), m(".title", t("StreamingAvailableStreams"))]),
-                mapOf(Streaming.users, (token, user) => {
-                    return [
-                        m(".hr"),
-                        m(".row.text-m.uppercase", [
-                            m("div", user.name),
-                            ifTrue(!!user.flag, () =>
-                                m("img.chat-badge", {
-                                    title: flagToName(user.flag),
-                                    src: getFlagUrl(user.flag),
-                                })
-                            ),
-                            ifTrue(user.dlc > 0, () =>
-                                m("img.chat-badge", {
-                                    title: t("OwnDLC", { number: user.dlc }),
-                                    src: getResourceUrl(`images/Exp${user.dlc}.png`),
-                                })
-                            ),
-                            m(".f1"),
-                            getStreamerAction(token, user),
-                        ]),
-                    ];
-                }),
+                        m(".title.two-col", [m("div", t("StreamingAudience")), m("div", audienceCount)]),
+                    ]),
+                    mapOf(Streaming.broadcastTo, (key, audience) => {
+                        const user = audience.user;
+                        let action: m.Children = null;
+                        if (hasValue(audience.connection)) {
+                            action = m(
+                                ".pointer.red",
+                                {
+                                    title: t("StreamingStopStreamDesc"),
+                                    onclick: () => {
+                                        delete Streaming.broadcastTo[key];
+                                        audience.connection.close();
+                                    },
+                                },
+                                t("StreamingStop")
+                            );
+                        } else {
+                            action = [
+                                m(
+                                    ".pointer.blue",
+                                    {
+                                        onclick: async () => {
+                                            audience.connection = await sendOffer(key);
+                                        },
+                                    },
+                                    t("StreamingAcceptStream")
+                                ),
+                                m(
+                                    ".pointer.blue.ml10",
+                                    {
+                                        onclick: () => {
+                                            delete Streaming.broadcastTo[key];
+                                            audience.connection?.close();
+                                            sendSignal(key, { reject: true, user: getStreamingUser() });
+                                        },
+                                    },
+                                    t("StreamingRejectStream")
+                                ),
+                            ];
+                        }
+                        return [
+                            m(".hr"),
+                            m(".row.text-m.uppercase", [
+                                m("div", user.name),
+                                ifTrue(!!user.flag, () =>
+                                    m("img.chat-badge", {
+                                        title: flagToName(user.flag),
+                                        src: getFlagUrl(user.flag),
+                                    })
+                                ),
+                                ifTrue(user.dlc > 0, () =>
+                                    m("img.chat-badge", {
+                                        title: t("OwnDLC", { number: user.dlc }),
+                                        src: getResourceUrl(`images/Exp${user.dlc}.png`),
+                                    })
+                                ),
+                                m(".f1"),
+                                action,
+                            ]),
+                        ];
+                    }),
+                    ifTrue(sizeOf(Streaming.users) > 0, () => [m(".hr"), m(".title", t("StreamingAvailableStreams"))]),
+                    mapOf(Streaming.users, (token, user) => {
+                        return [
+                            m(".hr"),
+                            m(".row.text-m.uppercase", [
+                                m("div", user.name),
+                                ifTrue(!!user.flag, () =>
+                                    m("img.chat-badge", {
+                                        title: flagToName(user.flag),
+                                        src: getFlagUrl(user.flag),
+                                    })
+                                ),
+                                ifTrue(user.dlc > 0, () =>
+                                    m("img.chat-badge", {
+                                        title: t("OwnDLC", { number: user.dlc }),
+                                        src: getResourceUrl(`images/Exp${user.dlc}.png`),
+                                    })
+                                ),
+                                m(".f1"),
+                                getStreamerAction(token, user),
+                            ]),
+                        ];
+                    }),
+                ]),
             ]);
         },
     };
