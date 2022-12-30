@@ -168,7 +168,7 @@ export function BuildPage(): m.Comp<{ xy: string }> {
                         m(".hr"),
                         uiBoxToggleContent(
                             m("div.two-col", [
-                                m("div.blue.text-m.pointer", { style: "margin-right: 4px;", title: t("OnlyShowPositiveModifiersHint") }, "💡"),
+                                m("div.blue.text-m.cursor-help", { style: "margin-right: 4px;", title: t("OnlyShowPositiveModifiersHint") }, "💡"),
                                 m(".text-s.uppercase", t("OnlyShowPositiveModifiers"))
                             ]),
                             onlyShowPositiveTiles,
