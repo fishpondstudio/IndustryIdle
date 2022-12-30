@@ -1574,4 +1574,9 @@ export const EN = {
     GameSettingHotkeyToastReservedHotkey: "Invalid key combination. Attempted key combination is reserved by your browser and or operating system.",
     GameSettingHideSubmenuHotkey: "Hide Sub-menu Hotkey Labels",
     GameSettingHideSubmenuHotkeyDesc: "Hides all sub-menu hotkey labels, while still allowing navigation through sub-menus using hotkeys.",
+    PlayerTradesShowHistory: "Show Past Player Trades",
+    PlayerTradesHistory: "Past Player Trades",
+    PlayerTradeFillBy: "Fill By",
+    PlayerTradeCancelled: "Cancelled",
+    FormatTimeAgo: "%{time} ago",
 };

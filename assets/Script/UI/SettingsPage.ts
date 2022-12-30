@@ -1,6 +1,8 @@
 import { D, G, Languages } from "../General/GameData";
 import { ifTrue, keysOf, mapOf } from "../General/Helper";
 import { t } from "../General/i18n";
+import { isAndroid, isIOS, NativeSdk } from "../General/NativeSdk";
+import { iconB, leftOrRight, uiHeaderActionBack } from "./UIHelper";
 import { NativeSdk } from "../General/NativeSdk";
 import { leftOrRight, iconB, isMobile, uiBoxToggle, uiHeaderActionBack, uiBoxToggleContent, uiHotkey } from "./UIHelper";
 import { routeTo } from "./UISystem";
@@ -45,39 +47,17 @@ export function SettingsPage(): m.Component {
                             ]
                         ),
                         m(".hr"),
-                        m(".row.pointer", 
-                            { 
-                                "data-shortcut": "3-false-false-false", 
-                                onclick: () => routeTo("/gameplay-settings") 
-                            }, 
-                            [
-                                m(".f1", 
-                                    m("div", [
-                                        uiHotkey({key: "3", ctrlKey: false, shiftKey: false, altKey: false}, "", " "), 
-                                        t("GameSettingGameplay")
-                                    ])
-                                ),
-                                m(".ml10.blue", iconB("arrow_forward")),
-                            ]
-                        ),
-                        ifTrue(!isMobile(), () => [                   
-                            m(".hr"),
-                            m(".row.pointer", 
-                                { 
-                                    "data-shortcut": "4-false-false-false", 
-                                    onclick: () => routeTo("/input-settings") 
-                                }, 
-                                [
-                                    m(".f1", 
-                                        m("div", [
-                                            uiHotkey({key: "4", ctrlKey: false, shiftKey: false, altKey: false}, "", " "), 
-                                            t("GameSettingInput")
-                                        ])
-                                    ),
-                                    m(".ml10.blue", iconB("arrow_forward")),
-                                ]
-                            ),
+                        m(".row.pointer", { onclick: () => routeTo("/gameplay-settings") }, [
+                            m(".f1", [m("div", t("GameSettingGameplay"))]),
+                            m(".ml10.blue", iconB("arrow_forward")),
                         ]),
+                        ifTrue(!isIOS() && !isAndroid(), () => [
+                            m(".hr"),
+                            m(".row.pointer", { onclick: () => routeTo("/input-settings") }, [
+                                m(".f1", [m("div", t("GameSettingInput"))]),
+                                m(".ml10.blue", iconB("arrow_forward")),
+                            ]),
+                        ])
                     ),
                     m(".box.gamesettings", [
                         m(".title", t("GameSettingGeneral")),

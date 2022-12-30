@@ -29,6 +29,7 @@ import { LogisticsDepartmentPage } from "./LogisticsDepartmentPage";
 import { LeaderboardPage } from "./LeaderboardPage";
 import { MainPage } from "./MainPage";
 import { PatchNotesPage } from "./PatchNotesPage";
+import { PlayerTradeHistoryPage } from "./PlayerTradeHistoryPage";
 import { PlayerTradePage } from "./PlayerTradePage";
 import { PolicyCenterPage } from "./PolicyCenterPage";
 import { SettingsPage } from "./SettingsPage";
@@ -242,6 +243,7 @@ export const UI_ROUTES = {
     "/stats": StatPage,
     "/policy-center": PolicyCenterPage,
     "/logistics-department": LogisticsDepartmentPage,
+    "/player-trade-history": PlayerTradeHistoryPage,
 };
 
 let toastTimeoutId: number = null;
