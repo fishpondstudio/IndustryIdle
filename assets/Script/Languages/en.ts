@@ -1575,4 +1575,7 @@ export const EN = {
     PlayerTradeFillBy: "Fill By",
     PlayerTradeCancelled: "Cancelled",
     FormatTimeAgo: "%{time} ago",
+    SafteyLock: "Safety Lock",
+    SafteyLockTip: "When enabled, locks the upgrade button to prevent miss-clicks.",
+    SafetyLockToast: "Safety lock is On. Turn off safety lock, located near the top of the UI Panel, to purchase this upgrade.",
 };

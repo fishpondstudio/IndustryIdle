@@ -1,13 +1,16 @@
-import { D, G } from "../General/GameData";
-import { formatPercent, nf } from "../General/Helper";
+import { D, DLC, G, hasDLC } from "../General/GameData";
+import { formatPercent, ifTrue, nf } from "../General/Helper";
 import { t } from "../General/i18n";
 import {
     leftOrRight,
     uiHeaderActionBack,
+    uiBoxToggleContent,
     uiSwissBoostBoxContent,
     uiSwissBoostToggleBox,
     uiSwissMoneyBlock,
 } from "./UIHelper";
+
+let isSafetyLocked: boolean = true;
 
 export function SwissBoostPage(): m.Comp {
     return {
@@ -15,7 +18,21 @@ export function SwissBoostPage(): m.Comp {
             return m(".modal", { class: leftOrRight() }, [
                 uiHeaderActionBack(t("SwissBoost"), () => G.world.routeTo(G.swissShop.grid)),
                 m("div.scrollable", [
-                    m(".box", [uiSwissMoneyBlock(), m(".hr"), m(".banner.blue.text-m", t("SwissBoostDesc"))]),
+                    m(".box", [
+                        uiSwissMoneyBlock(), 
+                        m(".hr.dashed"),
+                        uiBoxToggleContent(
+                            m(".uppercase.text-s.text-desc.cursor-help", {title: t("SafteyLockTip")}, t("SafteyLock")),
+                            isSafetyLocked,
+                            () => {
+                                isSafetyLocked = !isSafetyLocked;
+                            },
+                            { style: { margin: "-10px 0" } },
+                            24
+                        ),
+                        m(".hr"), 
+                        m(".banner.blue.text-m", t("SwissBoostDesc")),   
+                    ]),
                     uiSwissBoostBoxContent(
                         t("ProductionMultiplier"),
                         t("ProductionMultiplierDesc"),
@@ -25,7 +42,8 @@ export function SwissBoostPage(): m.Comp {
                         1.5,
                         1,
                         100 / D.persisted.swissBoostCostDivider,
-                        100
+                        100,
+                        isSafetyLocked
                     ),
                     uiSwissBoostBoxContent(
                         t("AutoSellCapacityMultiplierV2"),
@@ -36,7 +54,8 @@ export function SwissBoostPage(): m.Comp {
                         1.5,
                         1,
                         100 / D.persisted.swissBoostCostDivider,
-                        25
+                        25,
+                        isSafetyLocked
                     ),
                     uiSwissBoostBoxContent(
                         t("BuildingUpgradeCostDivider"),
@@ -47,7 +66,8 @@ export function SwissBoostPage(): m.Comp {
                         1.5,
                         1,
                         100 / D.persisted.swissBoostCostDivider,
-                        100
+                        100,
+                        isSafetyLocked
                     ),
                     uiSwissBoostBoxContent(
                         t("BuildingPermitCostDivider"),
@@ -58,7 +78,8 @@ export function SwissBoostPage(): m.Comp {
                         1.5,
                         1,
                         50 / D.persisted.swissBoostCostDivider,
-                        100
+                        100,
+                        isSafetyLocked
                     ),
                     uiSwissBoostBoxContent(
                         t("ExtraBuildingPermit"),
@@ -69,7 +90,8 @@ export function SwissBoostPage(): m.Comp {
                         1.5,
                         1,
                         50 / D.persisted.swissBoostCostDivider,
-                        100
+                        100,
+                        isSafetyLocked
                     ),
                     uiSwissBoostBoxContent(
                         t("ExtraTradeQuota"),
@@ -80,7 +102,8 @@ export function SwissBoostPage(): m.Comp {
                         1.5,
                         1,
                         50 / D.persisted.swissBoostCostDivider,
-                        9
+                        9,
+                        isSafetyLocked
                     ),
                     uiSwissBoostBoxContent(
                         t("IndustryZoneMultiplierSwissBoost"),
@@ -91,28 +114,35 @@ export function SwissBoostPage(): m.Comp {
                         1.5,
                         0.5,
                         50 / D.persisted.swissBoostCostDivider,
-                        100
+                        100,
+                        isSafetyLocked
                     ),
                     uiSwissBoostToggleBox(
                         t("WholesaleCenterOrderFasterV2"),
                         t("WholesaleCenterOrderFasterDesc"),
                         100,
-                        "wholesaleUpgrade1"
+                        "wholesaleUpgrade1",
+                        isSafetyLocked
+
                     ),
                     uiSwissBoostToggleBox(
                         t("OfflineResearchSwissBoost"),
                         t("OfflineResearchSwissBoostDesc"),
                         100,
-                        "offlineResearch"
+                        "offlineResearch",
+                        isSafetyLocked
                     ),
                     uiSwissBoostToggleBox(
                         t("ResourceExplorerAll"),
                         t("ResourceExplorerAllDesc"),
                         100,
-                        "resourceExplorerAllDeposits"
+                        "resourceExplorerAllDeposits",
+                        isSafetyLocked
                     ),
-                    uiSwissBoostToggleBox(t("ProduceAllCrops"), t("ProduceAllCropsDesc"), 100, "produceAllCrops"),
-                    uiSwissBoostToggleBox(t("ResearchAgreement"), t("ResearchAgreementDesc"), 100, "researchAgreement"),
+                    ifTrue(hasDLC(DLC[2]), () => [
+                        uiSwissBoostToggleBox(t("ProduceAllCrops"), t("ProduceAllCropsDesc"), 100, "produceAllCrops", isSafetyLocked),
+                    ]),
+                    uiSwissBoostToggleBox(t("ResearchAgreement"), t("ResearchAgreementDesc"), 100, "researchAgreement", isSafetyLocked),
                 ]),
             ]);
         },
