@@ -55,10 +55,16 @@ export function PlayerTradeHistoryPage(): m.Comp {
                                               ]),
                                           ]),
                                           m("td.r", [
-                                              m(
-                                                  ".text-m",
-                                                  m("span", { title: trade.fillBy }, truncate(trade.fillBy, 12, 6))
-                                              ),
+                                              trade.status === "cancelled"
+                                                  ? m(".text-m.red", t("PlayerTradeCancelled"))
+                                                  : m(
+                                                        ".text-m",
+                                                        m(
+                                                            "span",
+                                                            { title: trade.fillBy },
+                                                            truncate(trade.fillBy, 12, 6)
+                                                        )
+                                                    ),
                                               m(
                                                   ".text-desc.text-s",
                                                   t("FormatTimeAgo", { time: formatHM(Date.now() - trade.timestamp) })
