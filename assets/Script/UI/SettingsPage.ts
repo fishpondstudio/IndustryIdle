@@ -82,6 +82,17 @@ export function SettingsPage(): m.Component {
                                 )
                             ),
                         ]),
+                        m(".hr"),
+                        m(
+                            ".two-col.pointer",
+                            {
+                                onclick: () => NativeSdk.openUrl("https://github.com/fishpondstudio/IndustryIdle"),
+                            },
+                            [
+                                m("div", [m("div", t("OpenSource")), m(".text-desc.text-s", t("OpenSourceDesc"))]),
+                                m(".blue.ml20", iconB("link", 30)),
+                            ]
+                        ),
                         ifTrue(D.map === "Oslo", () => [
                             m(".hr"),
                             m(".two-col.pointer", { onclick: () => routeTo("/first-time") }, [
