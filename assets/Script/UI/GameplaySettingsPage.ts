@@ -1,7 +1,7 @@
 import { clearTrades, D, G, GameData, saveDataOverride } from "../General/GameData";
 import { t } from "../General/i18n";
 import { leftOrRight, reloadGame, uiBoxToggle, uiHeaderActionBack } from "./UIHelper";
-import { routeTo, showAlert, showLoader } from "./UISystem";
+import { hideAlert, routeTo, showAlert, showLoader } from "./UISystem";
 
 export function GameplaySettingsPage(): m.Component {
     return {
@@ -15,8 +15,8 @@ export function GameplaySettingsPage(): m.Component {
                         uiBoxToggle(
                             t("GameSettingBuildWarningPowerBank"),
                             t("GameSettingBuildWarningPowerBankDesc"),
-                                D.persisted.disableBuildWarningPowerBank,
-                                
+                            D.persisted.disableBuildWarningPowerBank,
+
                             () => {
                                 G.audio.playClick();
                                 D.persisted.disableBuildWarningPowerBank = !D.persisted.disableBuildWarningPowerBank;
@@ -26,63 +26,74 @@ export function GameplaySettingsPage(): m.Component {
                         uiBoxToggle(
                             t("GameSettingBuildWarningResourceBooster"),
                             t("GameSettingBuildWarningResourceBoosterDesc"),
-                                D.persisted.disableBuildWarningResourceBooster,
-                                
+                            D.persisted.disableBuildWarningResourceBooster,
+
                             () => {
                                 G.audio.playClick();
-                                D.persisted.disableBuildWarningResourceBooster = !D.persisted.disableBuildWarningResourceBooster;
+                                D.persisted.disableBuildWarningResourceBooster =
+                                    !D.persisted.disableBuildWarningResourceBooster;
                             }
                         ),
                         m(".hr"),
-                        uiBoxToggle(t("PlayerTradeAutoClaim"), t("PlayerTradeAutoClaimDesc"), D.persisted.autoClaimTradeOrder, () => {
-                            G.audio.playClick();
-                            D.persisted.autoClaimTradeOrder = !D.persisted.autoClaimTradeOrder;
-                        }),
+                        uiBoxToggle(
+                            t("PlayerTradeAutoClaim"),
+                            t("PlayerTradeAutoClaimDesc"),
+                            D.persisted.autoClaimTradeOrder,
+                            () => {
+                                G.audio.playClick();
+                                D.persisted.autoClaimTradeOrder = !D.persisted.autoClaimTradeOrder;
+                            }
+                        ),
                     ]),
                     m(".box.singleplayermode", [
                         m(".title", t("GameSettingSinglePlayerMode")),
                         m(".hr"),
-                        uiBoxToggle(t("LeaderboardOptOut"), t("LeaderboardOptOutDescV2"), D.persisted.leaderboardOptOut, () => {
-                            G.audio.playClick();
-                            if (D.persisted.leaderboardOptOut) {
-                                showAlert(t("LeaderboardOptIn"), t("LeaderboardOptInDesc"), [
-                                    {
-                                        class: "outline",
-                                        name: t("Cancel"),
-                                    },
-                                    {
-                                        class: "outline red",
-                                        name: t("OptIn"),
-                                        action: () => {
-                                            G.audio.playClick();
-                                            hideAlert();
-                                            showLoader();
-                                            clearTrades(D.persisted.userId);
-                                            saveDataOverride(new GameData()).then(() => reloadGame());
+                        uiBoxToggle(
+                            t("LeaderboardOptOut"),
+                            t("LeaderboardOptOutDescV2"),
+                            D.persisted.leaderboardOptOut,
+                            () => {
+                                G.audio.playClick();
+                                if (D.persisted.leaderboardOptOut) {
+                                    showAlert(t("LeaderboardOptIn"), t("LeaderboardOptInDesc"), [
+                                        {
+                                            class: "outline",
+                                            name: t("Cancel"),
                                         },
-                                    },
-                                ]);
-                            } else {
-                                showAlert(t("LeaderboardOptOut"), t("LeaderboardOptOutDescV2"), [
-                                    {
-                                        class: "outline",
-                                        name: t("Cancel"),
-                                    },
-                                    {
-                                        class: "outline red",
-                                        name: t("OptOut"),
-                                        action: () => {
-                                            G.audio.playClick();
-                                            clearTrades(D.persisted.userId);
-                                            D.persisted.leaderboardOptOut = !D.persisted.leaderboardOptOut;
-                                            hideAlert();
+                                        {
+                                            class: "outline red",
+                                            name: t("OptIn"),
+                                            action: () => {
+                                                G.audio.playClick();
+                                                hideAlert();
+                                                showLoader();
+                                                clearTrades(D.persisted.userId);
+                                                saveDataOverride(new GameData()).then(() => reloadGame());
+                                            },
                                         },
-                                    },
-                                ]);
+                                    ]);
+                                } else {
+                                    showAlert(t("LeaderboardOptOut"), t("LeaderboardOptOutDescV2"), [
+                                        {
+                                            class: "outline",
+                                            name: t("Cancel"),
+                                        },
+                                        {
+                                            class: "outline red",
+                                            name: t("OptOut"),
+                                            action: () => {
+                                                G.audio.playClick();
+                                                clearTrades(D.persisted.userId);
+                                                D.persisted.leaderboardOptOut = !D.persisted.leaderboardOptOut;
+                                                hideAlert();
+                                            },
+                                        },
+                                    ]);
+                                }
                             }
-                        }),
+                        ),
                     ]),
-                ])
+                ]),
             ]);
         },
     };

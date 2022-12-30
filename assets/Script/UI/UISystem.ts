@@ -26,6 +26,7 @@ import { InspectPage } from "./InspectPage";
 import { LeaderboardPage } from "./LeaderboardPage";
 import { MainPage } from "./MainPage";
 import { PatchNotesPage } from "./PatchNotesPage";
+import { PlayerTradeHistoryPage } from "./PlayerTradeHistoryPage";
 import { PlayerTradePage } from "./PlayerTradePage";
 import { SettingsPage } from "./SettingsPage";
 import { OnKeydown } from "./Shortcut";
@@ -226,6 +227,7 @@ export const UI_ROUTES = {
     "/gameplay-settings": GameplaySettingsPage,
     "/input-settings": InputSettingsPage,
     "/conglomerate": ConglomeratePage,
+    "/player-trade-history": PlayerTradeHistoryPage,
 };
 
 let toastTimeoutId: number = null;
