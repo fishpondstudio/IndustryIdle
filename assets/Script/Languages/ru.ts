@@ -1607,4 +1607,8 @@ export const RU = {
     GameSettingSFXBubble: "Упоминание в чате",
     GameSettingSFXBubbleDesc: "Звуковой эффект, который можно услышать при упоминании вас через '@' в чате.",
     GameSettingInput: "Ввод",
+    PlayerTradesShowHistory: "Показать последние сделки игроков",
+    PlayerTradesHistory: "Последние сделки игроков",
+    PlayerTradeFillBy: "Заполнено",
+    FormatTimeAgo: "%{time} назад",
 };

@@ -3,7 +3,6 @@ import {
     acceptTrade,
     addTrade,
     cancelTrade,
-    ClaimConfig,
     claimTradeUI,
     getMarketCapTaxCreditPercent,
     getOrderSides,
@@ -36,7 +35,7 @@ import { t } from "../General/i18n";
 import { serverNow } from "../General/ServerClock";
 import { CrazyGameAdBanner } from "./CrazyGameAdBanner";
 import { Desktop } from "./HudPage";
-import { getContainerClass, iconB, isMobile, uiBoxToggleContent, uiHeaderAction, uiHeaderActionBack } from "./UIHelper";
+import { getContainerClass, iconB, isMobile, uiHeaderAction, uiHeaderActionBack } from "./UIHelper";
 import { hideAlert, routeTo, showAlert, showToast } from "./UISystem";
 
 type ResourceFilter = keyof Resources;
@@ -628,6 +627,11 @@ export function PlayerTradePage(): m.Comp<{
                                     return renderRow(trade, actionForTrade(trade));
                                 }),
                         ])
+                    ),
+                    m(
+                        ".box.pointer.text-m.uppercase.blue",
+                        { onclick: () => routeTo("/player-trade-history") },
+                        t("PlayerTradesShowHistory")
                     ),
                 ]),
             ]);

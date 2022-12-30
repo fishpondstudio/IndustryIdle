@@ -1605,4 +1605,8 @@ export const PT_BR = {
     GameSettingSFXBubble: "Chat Mention",
     GameSettingSFXBubbleDesc: "The sound effect that can be heard when you are mentioned '@' in chat.",
     GameSettingInput: "Input",
+    PlayerTradesShowHistory: "Show Past Player Trades",
+    PlayerTradesHistory: "Past Player Trades",
+    PlayerTradeFillBy: "Fill By",
+    FormatTimeAgo: "%{time} ago",
 };

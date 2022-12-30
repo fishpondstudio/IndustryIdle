@@ -29,7 +29,6 @@ import { serverNow } from "../General/ServerClock";
 import { CrazyGameAdBanner } from "./CrazyGameAdBanner";
 import { ExpansionPackPanel } from "./ExpansionPacks";
 import { ImportExportPanel } from "./ImportExport";
-import { SettingsPage } from "./SettingsPage";
 import { SteamBackupComponent } from "./SteamBackupComponent";
 import { StreamingPage } from "./StreamingPage";
 import { iconB, leftOrRight, reloadGame, uiHeaderRoute } from "./UIHelper";
@@ -495,7 +494,10 @@ export function HeadquarterPage(): m.Comp {
                                 onclick: () => NativeSdk.openUrl("https://steamcommunity.com/app/1574000/guides/"),
                             },
                             [
-                                m("div", [m("div", t("ReadSteamGuideV2")), m(".text-desc.text-s", t("ReadSteamGuideV2Desc"))]),
+                                m("div", [
+                                    m("div", t("ReadSteamGuideV2")),
+                                    m(".text-desc.text-s", t("ReadSteamGuideV2Desc")),
+                                ]),
                                 m(".blue.ml20", iconB("link", 30)),
                             ]
                         ),

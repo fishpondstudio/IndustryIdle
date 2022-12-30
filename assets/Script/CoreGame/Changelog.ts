@@ -1,7 +1,7 @@
 export const CHANGELOG = [
     {
         version: "0.20.3",
-        content: ["QoL: New settings menu (by @GrayTheWanderer)"],
+        content: ["Add a page showing past player trades (@FishPond)", "QoL: New settings menu (by @GrayTheWanderer)"],
     },
     {
         version: "0.20.2",
