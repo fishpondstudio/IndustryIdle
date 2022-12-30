@@ -1522,5 +1522,6 @@ export const ZH_HK = {
     PlayerTradesShowHistory: "Show Past Player Trades",
     PlayerTradesHistory: "Past Player Trades",
     PlayerTradeFillBy: "Fill By",
+    PlayerTradeCancelled: "Cancelled",
     FormatTimeAgo: "%{time} ago",
 };

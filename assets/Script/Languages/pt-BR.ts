@@ -1608,5 +1608,6 @@ export const PT_BR = {
     PlayerTradesShowHistory: "Show Past Player Trades",
     PlayerTradesHistory: "Past Player Trades",
     PlayerTradeFillBy: "Fill By",
+    PlayerTradeCancelled: "Cancelled",
     FormatTimeAgo: "%{time} ago",
 };
