@@ -358,19 +358,16 @@ export function taxCalculation(params: ITaxCalculable) {
     };
 }
 
-export const ClaimConfig = {
-    autoClaim: D.persisted.autoClaimTradeOrder,
-    claimed: {},
-};
 
+export const Claimed = {};
 export function onMyTradesUpdate(myOldTrades: Record<string, ILocalTrade>, myNewTrades: Record<string, ILocalTrade>) {
     // How this works:
     // claimTrade will cause this handler to be called again. So we only fill one trade and return
     // this will ensure all fill trade requests have the valid trade token
-    if (ClaimConfig.autoClaim) {
+    if (D.persisted.autoClaimTradeOrder) {
         forEach(myNewTrades, (id, trade) => {
-            if (trade.status === "filled" && !ClaimConfig.claimed[id]) {
-                ClaimConfig.claimed[id] = true;
+            if (trade.status === "filled" && !Claimed[id]) {
+                Claimed[id] = true;
                 claimTradeUI(trade);
                 return true;
             }
