@@ -1611,5 +1611,6 @@ export const RU = {
     PlayerTradesShowHistory: "Показать последние сделки игроков",
     PlayerTradesHistory: "Последние сделки игроков",
     PlayerTradeFillBy: "Заполнено",
+    PlayerTradeCancelled: "Cancelled",
     FormatTimeAgo: "%{time} назад",
 };
