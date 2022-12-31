@@ -29,7 +29,6 @@ import { serverNow } from "../General/ServerClock";
 import { CrazyGameAdBanner } from "./CrazyGameAdBanner";
 import { ExpansionPackPanel } from "./ExpansionPacks";
 import { ImportExportPanel } from "./ImportExport";
-import { SettingsPage } from "./SettingsPage";
 import { SteamBackupComponent } from "./SteamBackupComponent";
 import { StreamingPage } from "./StreamingPage";
 import { iconB, leftOrRight, reloadGame, uiHeaderRoute } from "./UIHelper";
@@ -37,6 +36,9 @@ import { routeTo, showAlert, showLoader, showToast } from "./UISystem";
 import { UserVerification } from "./UserVerification";
 
 const NAME_CHANGE_COOLDOWN_HOUR = 24;
+let minimizeHighlightAll: boolean = false;
+let minimizeBuildingPermit: boolean = false;
+let minimizeExpansionPacks: boolean = false;
 
 export function startWebLogin() {
     const popup = window.open(`${API_HOST}/steam`, "_blank", "popup");
@@ -252,238 +254,318 @@ export function HeadquarterPage(): m.Comp {
                     ),
                     m(StreamingPage),
                     m(".box", [
-                        m(".title", t("HighlightBuildings")),
-                        m(".hr"),
-                        m(
-                            ".two-col.pointer",
-                            {
-                                onclick: () => {
-                                    G.audio.playClick();
-                                    showToast(
-                                        t("NBuildingsAreHighlighted", {
-                                            n: G.world.highlightBuildings((v) => v.entity.turnOff, []),
-                                        })
-                                    );
-                                },
-                            },
-                            [m(".text-desc.text-m", t("HighlightTurnedOff")), m(".ml20", "🔍")]
-                        ),
-                        m(".hr"),
-                        m(
-                            ".two-col.pointer",
-                            {
-                                onclick: () => {
-                                    G.audio.playClick();
-                                    showToast(
-                                        t("NBuildingsAreHighlighted", {
-                                            n: G.world.highlightBuildings((v) => v.entity.inputBuffer === "auto", []),
-                                        })
-                                    );
-                                },
-                            },
-                            [m(".text-desc.text-m", t("HighlightStockpileModeOn")), m(".ml20", "🔍")]
-                        ),
-                        m(".hr"),
-                        m(
-                            ".two-col.pointer",
-                            {
-                                onclick: () => {
-                                    G.audio.playClick();
-                                    showToast(
-                                        t("NBuildingsAreHighlighted", {
-                                            n: G.world.highlightBuildings((v) => v.entity.tickSec > 1, []),
-                                        })
-                                    );
-                                },
-                            },
-                            [m(".text-desc.text-m", t("HighlightProductionCycleNotDefault")), m(".ml20", "🔍")]
-                        ),
-                        m(".hr"),
-                        m(
-                            ".two-col.pointer",
-                            {
-                                onclick: () => {
-                                    G.audio.playClick();
-                                    showToast(
-                                        t("NBuildingsAreHighlighted", {
-                                            n: G.world.highlightBuildings((v) => v.entity.maxTile > 0, []),
-                                        })
-                                    );
-                                },
-                            },
-                            [m(".text-desc.text-m", t("HighlightMaxInputDistanceNotDefault")), m(".ml20", "🔍")]
-                        ),
-                        m(".hr"),
-                        m(
-                            ".two-col.pointer",
-                            {
-                                onclick: () => {
-                                    G.audio.playClick();
-                                    showToast(
-                                        t("NBuildingsAreHighlighted", {
-                                            n: G.world.highlightBuildings((v) => !isProfitable(v), []),
-                                        })
-                                    );
-                                },
-                            },
-                            [m(".text-desc.text-m", t("HighlightNotMakingProfit")), m(".ml20", "🔍")]
-                        ),
-                        m(".hr"),
-                        m(
-                            ".two-col.pointer",
-                            {
-                                onclick: () => {
-                                    G.audio.playClick();
-                                    showToast(
-                                        t("NBuildingsAreHighlighted", {
-                                            n: G.world.highlightBuildings((v) => hasValue(v.entity.construction), []),
-                                        })
-                                    );
-                                },
-                            },
-                            [m(".text-desc.text-m", t("HighlightUnderConstruction")), m(".ml20", "🔍")]
-                        ),
-                        m(".hr"),
-                        m(
-                            ".two-col.pointer",
-                            {
-                                onclick: () => {
-                                    G.audio.playClick();
-                                    showToast(
-                                        t("NBuildingsAreHighlighted", {
-                                            n: G.world.highlightBuildings(
-                                                (v) => canBuild(v.entity.type) && v.entity.level < 10,
-                                                []
-                                            ),
-                                        })
-                                    );
-                                },
-                            },
-                            [m(".text-desc.text-m", t("HighlightUnderLevel10")), m(".ml20", "🔍")]
-                        ),
-                        m(".hr"),
-                        m(
-                            ".two-col.pointer",
-                            {
-                                onclick: () => {
-                                    G.audio.playClick();
-                                    showToast(
-                                        t("NBuildingsAreHighlighted", {
-                                            n: G.world.highlightBuildings(
-                                                (v) => canBuild(v.entity.type) && v.entity.level < 20,
-                                                []
-                                            ),
-                                        })
-                                    );
-                                },
-                            },
-                            [m(".text-desc.text-m", t("HighlightUnderLevel20")), m(".ml20", "🔍")]
-                        ),
-                        m(".hr"),
-                        m(
-                            ".two-col.pointer",
-                            {
-                                onclick: () => {
-                                    G.audio.playClick();
-                                    showToast(
-                                        t("NBuildingsAreHighlighted", {
-                                            n: G.world.highlightBuildings(
-                                                (v) => canBuild(v.entity.type) && v.entity.level < 30,
-                                                []
-                                            ),
-                                        })
-                                    );
-                                },
-                            },
-                            [m(".text-desc.text-m", t("HighlightUnderLevel30")), m(".ml20", "🔍")]
-                        ),
-                    ]),
-                    m(".box", [
-                        m(".two-col", [
-                            m("div", [m("div", t("MaxBuilders")), m(".text-desc.text-s", t("MaxBuildersDesc"))]),
-                            m(".text-desc", nf(D.persisted.maxBuilders)),
-                        ]),
-                        m(".hr"),
-                        m(".two-col", [
-                            m("div", [
-                                m("div", t("BuildingPermit")),
-                                m(
-                                    ".text-s.text-desc",
-                                    t("BuildingPermitDesc", {
-                                        amount: buildingPermit,
-                                        amountBuilt: buildingCount,
-                                        amountLeft: buildingPermit - buildingCount,
-                                    })
-                                ),
-                            ]),
-                            m(".ml10.blue", nf(buildingPermit)),
-                        ]),
-                        [1, 5, 10].map((l) => {
-                            const getCost = () => getBuildingPermitCost(l);
-                            const cost = getCost();
-                            return [
-                                m(".hr"),
-                                m(
-                                    ".two-col.pointer",
-                                    {
-                                        class: getCash() >= cost ? "blue" : "text-desc",
-                                        onclick: () => {
-                                            if (trySpendCash(getCost())) {
-                                                G.audio.playClick();
-                                                D.buildingPermit += l;
-                                            } else {
-                                                showToast(t("NotEnoughCash"));
-                                                G.audio.playError();
-                                            }
-                                        },
-                                    },
-                                    [m("div", `${t("BuyPermit")} x${l}`), m("div", `$${nf(cost)}`)]
-                                ),
-                            ];
-                        }),
-                        ifTrue(mapExtraPermit > 0, () => [
-                            m(".hr"),
-                            m(
-                                ".banner.blue.text-m",
-                                t("MapExtraPermitDesc", {
-                                    number: mapExtraPermit,
-                                })
-                            ),
-                        ]),
-                    ]),
-                    m(".box", [
-                        m(".title", t("ExpansionPacks")),
-                        m(".hr"),
-                        m(".two-col", [
-                            m("div", t("ExpansionPack1")),
-                            hasDLC(DLC[0]) ? m(".green", iconB("check_circle")) : m(".red", iconB("cancel")),
-                        ]),
-                        ifTrue(hasDLC(DLC[1]), () => [
-                            m(".hr"),
+                        m(".title", [
                             m(".two-col", [
-                                m("div", t("ExpansionPack2")),
-                                hasDLC(DLC[1]) ? m(".green", iconB("check_circle")) : m(".red", iconB("cancel")),
-                            ]),
+                                m("div",
+                                    m(
+                                        "td.pointer",
+                                        {
+                                            onclick: () => {
+                                                minimizeHighlightAll = !minimizeHighlightAll;
+                                            },
+                                        },
+                                        minimizeHighlightAll
+                                            ? iconB("add_circle_outline", 18, 0, {}, { class: "blue mv-10" })
+                                            : iconB(
+                                                  "remove_circle_outline",
+                                                  18,
+                                                  0,
+                                                  {},
+                                                  { class: "text-desc mv-10" }
+                                              )
+                                    ),
+                                ),
+                                m("div", {style: "margin-left: 8px;"}, t("HighlightBuildings")),
+                                m("div", " ")
+                            ])
                         ]),
-                        m(".action", [
+                        ifTrue(!minimizeHighlightAll,  () => [
+                            m(".hr"),
                             m(
-                                "div",
+                                ".two-col.pointer",
                                 {
                                     onclick: () => {
                                         G.audio.playClick();
-                                        NativeSdk.restorePurchases()
-                                            .then((purchases) => {
-                                                syncPurchases(purchases);
-                                                m.redraw();
-                                                showToast(t("RestorePurchasesSuccess"));
+                                        showToast(
+                                            t("NBuildingsAreHighlighted", {
+                                                n: G.world.highlightBuildings((v) => v.entity.turnOff, []),
                                             })
-                                            .catch(() => {
-                                                showToast(t("RestorePurchasesFailed"));
-                                            });
+                                        );
                                     },
                                 },
-                                t("RestorePurchases")
+                                [m(".text-desc.text-m", t("HighlightTurnedOff")), m(".ml20", "🔍")]
                             ),
+                            m(".hr"),
+                            m(
+                                ".two-col.pointer",
+                                {
+                                    onclick: () => {
+                                        G.audio.playClick();
+                                        showToast(
+                                            t("NBuildingsAreHighlighted", {
+                                                n: G.world.highlightBuildings((v) => v.entity.inputBuffer === "auto", []),
+                                            })
+                                        );
+                                    },
+                                },
+                                [m(".text-desc.text-m", t("HighlightStockpileModeOn")), m(".ml20", "🔍")]
+                            ),
+                            m(".hr"),
+                            m(
+                                ".two-col.pointer",
+                                {
+                                    onclick: () => {
+                                        G.audio.playClick();
+                                        showToast(
+                                            t("NBuildingsAreHighlighted", {
+                                                n: G.world.highlightBuildings((v) => v.entity.tickSec > 1, []),
+                                            })
+                                        );
+                                    },
+                                },
+                                [m(".text-desc.text-m", t("HighlightProductionCycleNotDefault")), m(".ml20", "🔍")]
+                            ),
+                            m(".hr"),
+                            m(
+                                ".two-col.pointer",
+                                {
+                                    onclick: () => {
+                                        G.audio.playClick();
+                                        showToast(
+                                            t("NBuildingsAreHighlighted", {
+                                                n: G.world.highlightBuildings((v) => v.entity.maxTile > 0, []),
+                                            })
+                                        );
+                                    },
+                                },
+                                [m(".text-desc.text-m", t("HighlightMaxInputDistanceNotDefault")), m(".ml20", "🔍")]
+                            ),
+                            m(".hr"),
+                            m(
+                                ".two-col.pointer",
+                                {
+                                    onclick: () => {
+                                        G.audio.playClick();
+                                        showToast(
+                                            t("NBuildingsAreHighlighted", {
+                                                n: G.world.highlightBuildings((v) => !isProfitable(v), []),
+                                            })
+                                        );
+                                    },
+                                },
+                                [m(".text-desc.text-m", t("HighlightNotMakingProfit")), m(".ml20", "🔍")]
+                            ),
+                            m(".hr"),
+                            m(
+                                ".two-col.pointer",
+                                {
+                                    onclick: () => {
+                                        G.audio.playClick();
+                                        showToast(
+                                            t("NBuildingsAreHighlighted", {
+                                                n: G.world.highlightBuildings((v) => hasValue(v.entity.construction), []),
+                                            })
+                                        );
+                                    },
+                                },
+                                [m(".text-desc.text-m", t("HighlightUnderConstruction")), m(".ml20", "🔍")]
+                            ),
+                            m(".hr"),
+                            m(
+                                ".two-col.pointer",
+                                {
+                                    onclick: () => {
+                                        G.audio.playClick();
+                                        showToast(
+                                            t("NBuildingsAreHighlighted", {
+                                                n: G.world.highlightBuildings(
+                                                    (v) => canBuild(v.entity.type) && v.entity.level < 10,
+                                                    []
+                                                ),
+                                            })
+                                        );
+                                    },
+                                },
+                                [m(".text-desc.text-m", t("HighlightUnderLevel10")), m(".ml20", "🔍")]
+                            ),
+                            m(".hr"),
+                            m(
+                                ".two-col.pointer",
+                                {
+                                    onclick: () => {
+                                        G.audio.playClick();
+                                        showToast(
+                                            t("NBuildingsAreHighlighted", {
+                                                n: G.world.highlightBuildings(
+                                                    (v) => canBuild(v.entity.type) && v.entity.level < 20,
+                                                    []
+                                                ),
+                                            })
+                                        );
+                                    },
+                                },
+                                [m(".text-desc.text-m", t("HighlightUnderLevel20")), m(".ml20", "🔍")]
+                            ),
+                            m(".hr"),
+                            m(
+                                ".two-col.pointer",
+                                {
+                                    onclick: () => {
+                                        G.audio.playClick();
+                                        showToast(
+                                            t("NBuildingsAreHighlighted", {
+                                                n: G.world.highlightBuildings(
+                                                    (v) => canBuild(v.entity.type) && v.entity.level < 30,
+                                                    []
+                                                ),
+                                            })
+                                        );
+                                    },
+                                },
+                                [m(".text-desc.text-m", t("HighlightUnderLevel30")), m(".ml20", "🔍")]
+                            ),
+                        ]),
+                    ]),
+                    m(".box", [
+                        m(".title", [
+                            m(".two-col", [
+                                m("div",
+                                    m(
+                                        "td.pointer",
+                                        {
+                                            onclick: () => {
+                                                minimizeBuildingPermit = !minimizeBuildingPermit;
+                                            },
+                                        },
+                                        minimizeBuildingPermit
+                                            ? iconB("add_circle_outline", 18, 0, {}, { class: "blue mv-10" })
+                                            : iconB(
+                                                  "remove_circle_outline",
+                                                  18,
+                                                  0,
+                                                  {},
+                                                  { class: "text-desc mv-10" }
+                                              )
+                                    ),
+                                ),
+                                m("div", {style: "margin-left: 8px;"}, t("BuildingPermit")),
+                                m("div", " ")
+                            ])
+                        ]),
+                        ifTrue(!minimizeBuildingPermit,  () => [
+                            m(".hr"),
+                            m(".two-col", [
+                                m("div", [m("div", t("MaxBuilders")), m(".text-desc.text-s", t("MaxBuildersDesc"))]),
+                                m(".text-desc", nf(D.persisted.maxBuilders)),
+                            ]),
+                            m(".hr"),
+                            m(".two-col", [
+                                m("div", [
+                                    m("div", t("BuildingPermit")),
+                                    m(
+                                        ".text-s.text-desc",
+                                        t("BuildingPermitDesc", {
+                                            amount: buildingPermit,
+                                            amountBuilt: buildingCount,
+                                            amountLeft: buildingPermit - buildingCount,
+                                        })
+                                    ),
+                                ]),
+                                m(".ml10.blue", nf(buildingPermit)),
+                            ]),
+                            [1, 5, 10].map((l) => {
+                                const getCost = () => getBuildingPermitCost(l);
+                                const cost = getCost();
+                                return [
+                                    m(".hr"),
+                                    m(
+                                        ".two-col.pointer",
+                                        {
+                                            class: getCash() >= cost ? "blue" : "text-desc",
+                                            onclick: () => {
+                                                if (trySpendCash(getCost())) {
+                                                    G.audio.playClick();
+                                                    D.buildingPermit += l;
+                                                } else {
+                                                    showToast(t("NotEnoughCash"));
+                                                    G.audio.playError();
+                                                }
+                                            },
+                                        },
+                                        [m("div", `${t("BuyPermit")} x${l}`), m("div", `$${nf(cost)}`)]
+                                    ),
+                                ];
+                            }),
+                            ifTrue(mapExtraPermit > 0, () => [
+                                m(".hr"),
+                                m(
+                                    ".banner.blue.text-m",
+                                    t("MapExtraPermitDesc", {
+                                        number: mapExtraPermit,
+                                    })
+                                ),
+                            ]),
+                        ]),
+                    ]),
+                    m(".box", [
+                        m(".title", [
+                            m(".two-col", [
+                                m("div",
+                                    m(
+                                        "td.pointer",
+                                        {
+                                            onclick: () => {
+                                                minimizeExpansionPacks = !minimizeExpansionPacks;
+                                            },
+                                        },
+                                        minimizeExpansionPacks
+                                            ? iconB("add_circle_outline", 18, 0, {}, { class: "blue mv-10" })
+                                            : iconB(
+                                                  "remove_circle_outline",
+                                                  18,
+                                                  0,
+                                                  {},
+                                                  { class: "text-desc mv-10" }
+                                              )
+                                    ),
+                                ),
+                                m("div", {style: "margin-left: 8px;"}, t("ExpansionPacks")),
+                                m("div", " ")
+                            ])
+                        ]),
+                        ifTrue(!minimizeExpansionPacks,  () => [
+                            m(".hr"),
+                            m(".two-col", [
+                                m("div", t("ExpansionPack1")),
+                                hasDLC(DLC[0]) ? m(".green", iconB("check_circle")) : m(".red", iconB("cancel")),
+                            ]),
+                            ifTrue(hasDLC(DLC[1]), () => [
+                                m(".hr"),
+                                m(".two-col", [
+                                    m("div", t("ExpansionPack2")),
+                                    hasDLC(DLC[1]) ? m(".green", iconB("check_circle")) : m(".red", iconB("cancel")),
+                                ]),
+                            ]),
+                            m(".action", [
+                                m(
+                                    "div",
+                                    {
+                                        onclick: () => {
+                                            G.audio.playClick();
+                                            NativeSdk.restorePurchases()
+                                                .then((purchases) => {
+                                                    syncPurchases(purchases);
+                                                    m.redraw();
+                                                    showToast(t("RestorePurchasesSuccess"));
+                                                })
+                                                .catch(() => {
+                                                    showToast(t("RestorePurchasesFailed"));
+                                                });
+                                        },
+                                    },
+                                    t("RestorePurchases")
+                                ),
+                            ]),
                         ]),
                     ]),
                     m(".box", [
@@ -495,7 +577,10 @@ export function HeadquarterPage(): m.Comp {
                                 onclick: () => NativeSdk.openUrl("https://steamcommunity.com/app/1574000/guides/"),
                             },
                             [
-                                m("div", [m("div", t("ReadSteamGuideV2")), m(".text-desc.text-s", t("ReadSteamGuideV2Desc"))]),
+                                m("div", [
+                                    m("div", t("ReadSteamGuideV2")),
+                                    m(".text-desc.text-s", t("ReadSteamGuideV2Desc")),
+                                ]),
                                 m(".blue.ml20", iconB("link", 30)),
                             ]
                         ),
