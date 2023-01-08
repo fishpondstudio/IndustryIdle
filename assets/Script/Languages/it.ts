@@ -1501,7 +1501,8 @@ export const IT = {
     NewsEffectx2V2: "Conferenza Stampa",
     NewsEffectx2DescV2: "Tutte le novità del mercato sono il 50% più efficaci",
     AutoSellCapacityMultiplierV2: "Extra capacità della vendita automatica",
-    AutoSellCapacityMultiplierDescV2: "Questo ti darà capacità extra della vendita automatica in cima alla tua capacità esistente",
+    AutoSellCapacityMultiplierDescV2:
+        "Questo ti darà capacità extra della vendita automatica in cima alla tua capacità esistente",
     AutoSellCapacity: "Capacità della vendità automatica",
     AutoSellCapacityDescV2:
         "Massima quantità i risorse che la vendità automatica può processare al sedondo, per risorsa, misurata come percentuale della tua produzone totale di quella risorsa",
@@ -1515,19 +1516,19 @@ export const IT = {
     AchievementAuckland1000Desc: "Ottieni 1000 franchi svizzeri a Auckland in una sola volta",
     ExternalManageYourSave: "Importa e esporta il tuo salvataggio",
     ExternalManageYourSaveDesc:
-         "Per via di limitazioni tecniche, importare ed esportare il tuo salvataggio deve essere eseguito dal sito ufficiale del gioco",
+        "Per via di limitazioni tecniche, importare ed esportare il tuo salvataggio deve essere eseguito dal sito ufficiale del gioco",
     MREPlant: "Pianta -pasto pronto da consumare-",
     PlayerTradeTaxCreditProduction: "Credito d'imposta: Produzione",
     PlayerTradeTaxCreditProductionDescV2:
-         "Questo credito d'imposta è basato sulla quantità di %{res} che hai prodotto dall'ultimo aggiornamento del mercato. Hai prodotto %{produced} e hai scambiato %{used}",
+        "Questo credito d'imposta è basato sulla quantità di %{res} che hai prodotto dall'ultimo aggiornamento del mercato. Hai prodotto %{produced} e hai scambiato %{used}",
     PlayerTradeTaxCreditMarketCap: "Credito d'imposta: Capitalizzazione di mercato",
     PlayerTradeTaxCreditMarketCapDesc:
-         "Questo credito d'imposta è il %{percentage} della tua capitalizzazione di mercato, può essere migliorato via upgrade svizzeri/boost. La quantità totale di credito è di %{total} e ne hai usato %{used}",
+        "Questo credito d'imposta è il %{percentage} della tua capitalizzazione di mercato, può essere migliorato via upgrade svizzeri/boost. La quantità totale di credito è di %{total} e ne hai usato %{used}",
     PlayerTradeGrossTradeValue: "Valore commerciale lordo",
     PlayerTradeTaxableValue: "Valore tassabile",
     PlayerTradeTaxRate: "Altiquota fiscale",
     PlayerTradeTaxRateDesc:
-          "l'altiquota fiscale è basata sulla differenza di prezzo tra il prezzo locale e questo scambio - l'altiquota fiscale è progressiva. 0% ~ 50%: 0.5% per ogni differenza dell'1%; 50% ~ 75%: 1% per ogni differenza dell'1%; 75% ~ 100%: 2% per ogni differenza dell' 1%",
+        "l'altiquota fiscale è basata sulla differenza di prezzo tra il prezzo locale e questo scambio - l'altiquota fiscale è progressiva. 0% ~ 50%: 0.5% per ogni differenza dell'1%; 50% ~ 75%: 1% per ogni differenza dell'1%; 75% ~ 100%: 2% per ogni differenza dell' 1%",
     PlayerTradeTaxPayable: "tassa pagabile",
     PlayerTradeTradeValueAfterTax: "Valore dello scambio dopo le tasse",
     PlayerTradeShowTaxCalculation: "Mostra calcolo tasse",
@@ -1539,9 +1540,10 @@ export const IT = {
     InputBufferTypeStockpile: "Scorta",
     InputBuffer: "Buffer delle risorse di input",
     InputBufferDesc:
-         "Massimo numero di cicli di produzione da tenere nel magazzino prima che questa struttura non trasporti più quel prodotto. Automatico significa utilizzare la predizione per mantenere un buffer minimo che consente la produzione costante. Scorta significa sempre trasportare le risorse di input indipenentemente dalla grandezza del magazzino",
+        "Massimo numero di cicli di produzione da tenere nel magazzino prima che questa struttura non trasporti più quel prodotto. Automatico significa utilizzare la predizione per mantenere un buffer minimo che consente la produzione costante. Scorta significa sempre trasportare le risorse di input indipenentemente dalla grandezza del magazzino",
     InputCapacityOverride: "Override della capacità di input",
-    InputCapacityOverrideDesc: "Pero ogni ciclo di produzione, trasporta il %{percent} delle risorse necessarie per la produzione",
+    InputCapacityOverrideDesc:
+        "Pero ogni ciclo di produzione, trasporta il %{percent} delle risorse necessarie per la produzione",
     PumpkinSpiceLatte: "Bevanza speziata alla zucca",
     PumpkinPie: "Torta di zucca",
     QuantumComputerLab: "Laboratorio Computer quantici",
@@ -1554,7 +1556,8 @@ export const IT = {
     ClearTradesNo: "NON pulire",
     ClearTradesYes: "Pulisci i miei scambi",
     OnlyShowPositiveModifiers: "Mostra solo modificatori delle caselle",
-    OnlyShowPositiveModifiersHint: "Spunta la casella di controllo alla sinistra della struttura per mostrare i modificatori delle caselle sulla mappa",
+    OnlyShowPositiveModifiersHint:
+        "Spunta la casella di controllo alla sinistra della struttura per mostrare i modificatori delle caselle sulla mappa",
     ClearMyTradesV2: "Pulisci i miei scambi ",
     OpenSource: "Contribuisci",
     OpenSourceDesc: "Industry Idle è ora open source. Puoi contribuire allo sviluppo su Github",
@@ -1579,10 +1582,9 @@ export const IT = {
     GameSettingSFXVolume: "Volume effetti sonori",
     GameSettingSFXVolumeOverride: "oltrpassa il Volume degli effetti sonori",
     GameSettingSFXVolumeDesc: "Controlla il volume a cui vengono emessi gli effetti sonori.",
-    GameSettingSFXEnableOverride: "Attiva l'override del volume degli effetti sonori.",  
+    GameSettingSFXEnableOverride: "Attiva l'override del volume degli effetti sonori.",
     GameSettingSFXClick: "Click",
-    GameSettingSFXClickDesc:
-        "Controllo del volume dell'effetto sonoro che senti quando selezioni diversi oggetti.",
+    GameSettingSFXClickDesc: "Controllo del volume dell'effetto sonoro che senti quando selezioni diversi oggetti.",
     GameSettingSFXCompleted: "Scambio Riempito",
     GameSettingSFXCompletedDesc:
         "Il suono che senti quando ricevi un nuovo scambio accettabile dal mercato degli scambi.",
@@ -1599,12 +1601,14 @@ export const IT = {
     GameSettingSFXKachingDesc:
         "Controllo del volume per l'effetto sonoro che viene emesso in diversi contesti più comunemente quando ottieni i profitti del CrowdFunding, degli scambi tra giocatori e dal centro delle vendite.",
     GameSettingSFXLevelup: "Obiettivo sbloccato ",
-    GameSettingSFXLevelupDesc: "Controllo del volume per l' effetto sonoro che viene emesso quando sblocchi un obiettivo.",
+    GameSettingSFXLevelupDesc:
+        "Controllo del volume per l' effetto sonoro che viene emesso quando sblocchi un obiettivo.",
     GameSettingSFXPowerup: "Nuovo ordine dal centro delle vendite",
     GameSettingSFXPowerupDesc:
         "Controllo del volume per l'effetto sonoro che viene emesso quando ricevi un nuovo ordine dal centro delle vendite.",
     GameSettingSFXBubble: "Menzione in chat",
-    GameSettingSFXBubbleDesc: "Controllo del volume per l'effetto sonoro che viene emesso quando vieni menzionato '@' in chat.",
+    GameSettingSFXBubbleDesc:
+        "Controllo del volume per l'effetto sonoro che viene emesso quando vieni menzionato '@' in chat.",
     GameSettingInput: "Input",
     PlayerTradesShowHistory: "Mostra scambi tra giocatori passati",
     PlayerTradesHistory: "Scambi tra giocatori passati",

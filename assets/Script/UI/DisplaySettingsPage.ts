@@ -12,8 +12,16 @@ import {
 } from "../General/GameData";
 import { ifTrue, keysOf, mapOf } from "../General/Helper";
 import { t } from "../General/i18n";
-import { isSteam, NativeSdk } from "../General/NativeSdk";
-import { leftOrRight, iconB, reloadGame, uiBoxToggle, uiHeaderActionBack, uiBoxToggleContent } from "./UIHelper";
+import { isSteam, NativeSdk, steamworks } from "../General/NativeSdk";
+import {
+    iconB,
+    leftOrRight,
+    reloadGame,
+    saveAndQuit,
+    uiBoxToggle,
+    uiBoxToggleContent,
+    uiHeaderActionBack,
+} from "./UIHelper";
 import { routeTo, showLoader, showStandby, showToast } from "./UISystem";
 
 export function DisplaySettingsPage(): m.Component {
@@ -24,183 +32,217 @@ export function DisplaySettingsPage(): m.Component {
                 m(".scrollable", [
                     m(".box.displaysettings", [
                         m(".title", t("GameSettingDisplay")),
+                        m(".hr"),
+                        uiBoxToggle(
+                            t("UseScientificNotation"),
+                            t("UseScientificNotationDesc"),
+                            D.persisted.useScientificNotation,
+                            () => {
+                                G.audio.playClick();
+                                D.persisted.useScientificNotation = !D.persisted.useScientificNotation;
+                            }
+                        ),
+                        m(".hr"),
+                        uiBoxToggle(t("FPS30"), t("FPS30Desc"), D.persisted.fps30, () => {
+                            G.audio.playClick();
+                            D.persisted.fps30 = !D.persisted.fps30;
+                            syncFPSSetting();
+                        }),
+                        m(".hr"),
+                        uiBoxToggle(
+                            t("YAxisStartsFromZero"),
+                            t("YAxisStartsFromZeroDesc"),
+                            D.persisted.yAxisStartsFromZero,
+                            () => {
+                                G.audio.playClick();
+                                D.persisted.yAxisStartsFromZero = !D.persisted.yAxisStartsFromZero;
+                            }
+                        ),
+                        m(".hr"),
+                        uiBoxToggle(t("ShowSupplyChain"), t("ShowSupplyChainDesc"), D.persisted.showSupplyChain, () => {
+                            G.audio.playClick();
+                            D.persisted.showSupplyChain = !D.persisted.showSupplyChain;
+                        }),
+                        ifTrue(isSteam(), () => [
                             m(".hr"),
                             uiBoxToggle(
-                                t("UseScientificNotation"),
-                                t("UseScientificNotationDesc"),
-                                D.persisted.useScientificNotation,
+                                t("SettingsFullScreen"),
+                                t("SettingsFullScreenDesc"),
+                                D.persisted.fullscreen,
                                 () => {
-                                    G.audio.playClick();
-                                    D.persisted.useScientificNotation = !D.persisted.useScientificNotation;
+                                    D.persisted.fullscreen = !D.persisted.fullscreen;
+                                    steamworks.setFullScreen(D.persisted.fullscreen);
                                 }
                             ),
                             m(".hr"),
-                            uiBoxToggle(t("FPS30"), t("FPS30Desc"), D.persisted.fps30, () => {
-                                G.audio.playClick();
-                                D.persisted.fps30 = !D.persisted.fps30;
-                                syncFPSSetting();
-                            }),
-                            m(".hr"),
-                            uiBoxToggle(
-                                t("YAxisStartsFromZero"),
-                                t("YAxisStartsFromZeroDesc"),
-                                D.persisted.yAxisStartsFromZero,
-                                () => {
-                                    G.audio.playClick();
-                                    D.persisted.yAxisStartsFromZero = !D.persisted.yAxisStartsFromZero;
-                                }
-                            ),
-                            m(".hr"),
-                            uiBoxToggle(t("ShowSupplyChain"), t("ShowSupplyChainDesc"), D.persisted.showSupplyChain, () => {
-                                G.audio.playClick();
-                                D.persisted.showSupplyChain = !D.persisted.showSupplyChain;
-                            }),
-                            ifTrue(standbyModeAvailable(), () => [
-                                m(".hr"),
-                                m(".two-col", [
-                                    m("div", [m("div", t("StandbyMode")), m(".text-desc.text-s", t("StandbyModeDesc"))]),
-                                    m(
-                                        ".blue.ml20.pointer",
-                                        {
-                                            onclick: showStandby,
-                                        },
-                                        iconB("mode_standby", 30)
-                                    ),
-                                ]),
-                                m(".sep10"),
-                                uiBoxToggleContent(
-                                    m(".text-s.uppercase", t("SettingsShowInToolbar")),
-                                    D.persisted.showStandbyModeInToolbar,
-                                    () => {
-                                        D.persisted.showStandbyModeInToolbar = !D.persisted.showStandbyModeInToolbar;
+                            m(".two-col", [
+                                m("div", [m("div", t("SaveAndExit")), m(".text-desc.text-s", t("SaveAndExitDesc"))]),
+                                m(
+                                    ".blue.ml20.pointer",
+                                    {
+                                        onclick: saveAndQuit,
                                     },
-                                    { style: "margin: -10px 0" },
-                                    24
+                                    iconB("exit_to_app", 30)
                                 ),
                             ]),
+                        ]),
+                        ifTrue(standbyModeAvailable(), () => [
                             m(".hr"),
                             m(".two-col", [
-                                m("div", [m("div", t("ResourceMovement")), m(".text-s.text-desc", t("ResourceMovementDesc"))]),
+                                m("div", [m("div", t("StandbyMode")), m(".text-desc.text-s", t("StandbyModeDesc"))]),
                                 m(
-                                    ".ml20",
-                                    m(
-                                        "select.text-m",
-                                        {
-                                            onchange: (e) => {
-                                                D.persisted.resourceMovement = e.target.value;
-                                            },
-                                        },
-                                        mapOf(ResourceMovementOptions, (key, label) =>
-                                            m(
-                                                "option",
-                                                {
-                                                    key: key,
-                                                    value: key,
-                                                    selected: D.persisted.resourceMovement === key,
-                                                },
-                                                label()
-                                            )
-                                        )
-                                    )
+                                    ".blue.ml20.pointer",
+                                    {
+                                        onclick: showStandby,
+                                    },
+                                    iconB("mode_standby", 30)
                                 ),
                             ]),
-                            m(".hr"),
-                            m(".two-col", [
-                                m("div", [m("div", t("PanelPosition")), m(".text-s.text-desc", t("PanelPositionDescV2"))]),
+                            m(".sep10"),
+                            uiBoxToggleContent(
+                                m(".text-s.uppercase", t("SettingsShowInToolbar")),
+                                D.persisted.showStandbyModeInToolbar,
+                                () => {
+                                    D.persisted.showStandbyModeInToolbar = !D.persisted.showStandbyModeInToolbar;
+                                },
+                                { style: "margin: -10px 0" },
+                                24
+                            ),
+                        ]),
+                        m(".hr"),
+                        m(".two-col", [
+                            m("div", [
+                                m("div", t("ResourceMovement")),
+                                m(".text-s.text-desc", t("ResourceMovementDesc")),
+                            ]),
+                            m(
+                                ".ml20",
                                 m(
-                                    ".ml20",
-                                    m(
-                                        "select.text-m",
-                                        {
-                                            onchange: (e) => {
-                                                D.persisted.panelPosition = e.target.value;
-                                            },
+                                    "select.text-m",
+                                    {
+                                        onchange: (e) => {
+                                            D.persisted.resourceMovement = e.target.value;
                                         },
-                                        mapOf(PanelPositionOptions, (k, label) =>
-                                            m(
-                                                "option",
-                                                {
-                                                    key: k,
-                                                    value: k,
-                                                    selected: D.persisted.panelPosition === k,
-                                                },
-                                                label()
-                                            )
+                                    },
+                                    mapOf(ResourceMovementOptions, (key, label) =>
+                                        m(
+                                            "option",
+                                            {
+                                                key: key,
+                                                value: key,
+                                                selected: D.persisted.resourceMovement === key,
+                                            },
+                                            label()
                                         )
                                     )
-                                ),
-                            ]),
-                            m(".hr"),
-                            uiBoxToggle(t("AllowPortraitMode"), t("AllowPortraitModeDesc"), D.persisted.allowPortrait, async () => {
+                                )
+                            ),
+                        ]),
+                        m(".hr"),
+                        m(".two-col", [
+                            m("div", [m("div", t("PanelPosition")), m(".text-s.text-desc", t("PanelPositionDescV2"))]),
+                            m(
+                                ".ml20",
+                                m(
+                                    "select.text-m",
+                                    {
+                                        onchange: (e) => {
+                                            D.persisted.panelPosition = e.target.value;
+                                        },
+                                    },
+                                    mapOf(PanelPositionOptions, (k, label) =>
+                                        m(
+                                            "option",
+                                            {
+                                                key: k,
+                                                value: k,
+                                                selected: D.persisted.panelPosition === k,
+                                            },
+                                            label()
+                                        )
+                                    )
+                                )
+                            ),
+                        ]),
+                        m(".hr"),
+                        uiBoxToggle(
+                            t("AllowPortraitMode"),
+                            t("AllowPortraitModeDesc"),
+                            D.persisted.allowPortrait,
+                            async () => {
                                 G.audio.playClick();
                                 D.persisted.allowPortrait = !D.persisted.allowPortrait;
                                 await saveData();
                                 NativeSdk.allowPortrait(D.persisted.allowPortrait);
-                            }),
-                            m(".hr"),
-                            ifTrue(D.persisted.allowPortrait, () => [
-                                m(".two-col", [
-                                    m("div", [m("div", t("PanelHeight")), m(".text-s.text-desc", t("PanelHeightDesc"))]),
-                                    m(
-                                        ".ml20",
-                                        m(
-                                            "select.text-m",
-                                            {
-                                                onchange: async (e) => {
-                                                    showLoader();
-                                                    D.persisted.panelHeight = e.target.value;
-                                                    await saveData();
-                                                    reloadGame();
-                                                },
-                                            },
-                                            mapOf(PortraitPanelHeightOptions, (k, label) =>
-                                                m(
-                                                    "option",
-                                                    {
-                                                        key: k,
-                                                        value: k,
-                                                        selected: D.persisted.panelHeight === k,
-                                                    },
-                                                    label
-                                                )
-                                            )
-                                        )
-                                    ),
-                                ]),
-                            m(".hr"),
-                            ]),
+                            }
+                        ),
+                        m(".hr"),
+                        ifTrue(D.persisted.allowPortrait, () => [
                             m(".two-col", [
-                                m(
-                                    "div",
-                                    m("div", [m("div", t("FontSizeScaling")), m(".text-desc.text-s", t("FontSizeScalingDesc"))])
-                                ),
+                                m("div", [m("div", t("PanelHeight")), m(".text-s.text-desc", t("PanelHeightDesc"))]),
                                 m(
                                     ".ml20",
                                     m(
                                         "select.text-m",
                                         {
                                             onchange: async (e) => {
-                                                G.audio.playClick();
                                                 showLoader();
-                                                D.persisted.fontSizeScaling = e.target.value;
+                                                D.persisted.panelHeight = e.target.value;
                                                 await saveData();
                                                 reloadGame();
                                             },
                                         },
-                                        FontSizeScalingOptions.map((k) =>
+                                        mapOf(PortraitPanelHeightOptions, (k, label) =>
                                             m(
                                                 "option",
                                                 {
                                                     key: k,
                                                     value: k,
-                                                    selected: D.persisted.fontSizeScaling === k,
+                                                    selected: D.persisted.panelHeight === k,
                                                 },
-                                                `${k}x`
+                                                label
                                             )
                                         )
                                     )
                                 ),
                             ]),
+                            m(".hr"),
+                        ]),
+                        m(".two-col", [
+                            m(
+                                "div",
+                                m("div", [
+                                    m("div", t("FontSizeScaling")),
+                                    m(".text-desc.text-s", t("FontSizeScalingDesc")),
+                                ])
+                            ),
+                            m(
+                                ".ml20",
+                                m(
+                                    "select.text-m",
+                                    {
+                                        onchange: async (e) => {
+                                            G.audio.playClick();
+                                            showLoader();
+                                            D.persisted.fontSizeScaling = e.target.value;
+                                            await saveData();
+                                            reloadGame();
+                                        },
+                                    },
+                                    FontSizeScalingOptions.map((k) =>
+                                        m(
+                                            "option",
+                                            {
+                                                key: k,
+                                                value: k,
+                                                selected: D.persisted.fontSizeScaling === k,
+                                            },
+                                            `${k}x`
+                                        )
+                                    )
+                                )
+                            ),
+                        ]),
                     ]),
                     m(".box.hidefromview", [
                         m(".title", t("GameSettingHideElements")),
@@ -256,66 +298,74 @@ export function DisplaySettingsPage(): m.Component {
                             }
                         ),
                         m(".hr"),
-                        uiBoxToggle(t("HideChatMentions"), t("HideChatMentionsDesc"), D.persisted.hideChatMentions, () => {
-                            G.audio.playClick();
-                            D.persisted.hideChatMentions = !D.persisted.hideChatMentions;
-                        }),
+                        uiBoxToggle(
+                            t("HideChatMentions"),
+                            t("HideChatMentionsDesc"),
+                            D.persisted.hideChatMentions,
+                            () => {
+                                G.audio.playClick();
+                                D.persisted.hideChatMentions = !D.persisted.hideChatMentions;
+                            }
+                        ),
                     ]),
                     m(".box.colortheme", [
                         m(".title", t("ColorTheme")),
-                            m(".hr"),
-                            m(".two-col", [
-                                m("div", m("div", [m("div", t("ColorTheme")), m(".text-desc.text-s", t("ColorThemeDesc"))])),
-                                m(
-                                    ".ml20",
-                                    m(
-                                        "select.text-m",
-                                        {
-                                            onchange: async (e) => {
-                                                showLoader();
-                                                D.persisted.colorTheme = e.target.value;
-                                                await saveData();
-                                                reloadGame();
-                                            },
-                                        },
-                                        keysOf(COLORS)
-                                            .filter((c) => (hasAnyDlc() ? true : !COLORS[c].dlc))
-                                            .map((k) =>
-                                                m(
-                                                    "option",
-                                                    {
-                                                        key: k,
-                                                        value: k,
-                                                        selected: D.persisted.colorTheme === k,
-                                                    },
-                                                    COLORS[k].name
-                                                )
-                                            )
-                                    )
-                                ),
-                            ]),
-                            m(".hr"),
+                        m(".hr"),
+                        m(".two-col", [
                             m(
-                                ".two-col.pointer",
-                                {
-                                    onclick: () => routeTo("/color-theme-editor"),
-                                },
-                                [
-                                    m(
-                                        "div",
-                                        m("div", [
-                                            m("div", t("ColorThemeEditor")),
-                                            m(
-                                                ".text-desc.text-s",
-                                                t("ColorThemeEditorDesc", {
-                                                    num: Object.keys(D.persisted.colorThemeOverrides).length,
-                                                })
-                                            ),
-                                        ])
-                                    ),
-                                    m(".ml20.blue", iconB("arrow_forward", 30)),
-                                ]
+                                "div",
+                                m("div", [m("div", t("ColorTheme")), m(".text-desc.text-s", t("ColorThemeDesc"))])
                             ),
+                            m(
+                                ".ml20",
+                                m(
+                                    "select.text-m",
+                                    {
+                                        onchange: async (e) => {
+                                            showLoader();
+                                            D.persisted.colorTheme = e.target.value;
+                                            await saveData();
+                                            reloadGame();
+                                        },
+                                    },
+                                    keysOf(COLORS)
+                                        .filter((c) => (hasAnyDlc() ? true : !COLORS[c].dlc))
+                                        .map((k) =>
+                                            m(
+                                                "option",
+                                                {
+                                                    key: k,
+                                                    value: k,
+                                                    selected: D.persisted.colorTheme === k,
+                                                },
+                                                COLORS[k].name
+                                            )
+                                        )
+                                )
+                            ),
+                        ]),
+                        m(".hr"),
+                        m(
+                            ".two-col.pointer",
+                            {
+                                onclick: () => routeTo("/color-theme-editor"),
+                            },
+                            [
+                                m(
+                                    "div",
+                                    m("div", [
+                                        m("div", t("ColorThemeEditor")),
+                                        m(
+                                            ".text-desc.text-s",
+                                            t("ColorThemeEditorDesc", {
+                                                num: Object.keys(D.persisted.colorThemeOverrides).length,
+                                            })
+                                        ),
+                                    ])
+                                ),
+                                m(".ml20.blue", iconB("arrow_forward", 30)),
+                            ]
+                        ),
                     ]),
                 ]),
             ]);
