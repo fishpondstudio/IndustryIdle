@@ -1206,7 +1206,10 @@ export const EN = {
     Hotdog: "Hotdog",
     BatchOperationDesc:
         "This will apply to %{number} buildings(s). Estimated cost is $%{cost}. Do you want to continue?",
+    BatchOperationGainDesc:
+        "This will apply to %{number} buildings(s). Estimated refund is $%{gain}. Do you want to continue?",
     BatchOperationResult: "Batch operation result: success: %{success}, fail: %{fail}, total cost: $%{cost}",
+    BatchOperationGainResult: "Batch operation result: success: %{success}, fail: %{fail}, total earned: $%{gain}",
     StreamingMakeMeDiscoverable: "Make Me Discoverable",
     StreamingMakeMeDiscoverableDesc:
         "Allow other players to watch your gameplay. The connection is peer to peer and only your gameplay is streamed. Microphone or Webcam will not be accessed.",

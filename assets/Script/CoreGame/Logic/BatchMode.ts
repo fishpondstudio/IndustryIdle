@@ -2,7 +2,7 @@ import { BatchModeOptions, D, G } from "../../General/GameData";
 import { firstKeyOf, forEach, sizeOf } from "../../General/Helper";
 import { gridToString, stringToGrid } from "../GridHelper";
 import { Entity } from "./Entity";
-import { forEachBuildingOfType, getCostForBuilding, getUpgradeCost, trySpendCash } from "./Logic";
+import { forEachBuildingOfType, getCostForBuilding, getDowngradeCost, getUpgradeCost, getSellRefundPercentage, trySpendCash, refundCash } from "./Logic";
 
 export function getAdjacentIncludeSelf(entity: Entity): Record<string, true> {
     const result: Record<string, true> = { [entity.grid]: true };
@@ -72,6 +72,18 @@ export function getBatchUpgradeEstimate(entity: Entity, toLevel: number): { coun
     return { count, cost };
 }
 
+export function getBatchDowngradeEstimate(entity: Entity, toLevel: number): { count: number; gain: number } {
+    let count = 0;
+    let gain = 0;
+    batchApply(entity, (e) => {
+        if (e.type === entity.type && e.level > toLevel) {
+            count++;
+            gain += getDowngradeCost(e.level, e.level - toLevel, (l) => Math.min(D.cashSpent, getCostForBuilding(e.type, l) * getSellRefundPercentage()));
+        }
+    });
+    return { count, gain };
+}
+
 export function doBatchUpgrade(entity: Entity, toLevel: number): { success: number; fail: number; cost: number } {
     let success = 0;
     let fail = 0;
@@ -88,5 +100,21 @@ export function doBatchUpgrade(entity: Entity, toLevel: number): { success: numb
             }
         }
     });
-    return { fail, success, cost };
+    return { success, fail, cost };
+}
+
+export function doBatchDowngrade(entity: Entity, toLevel: number) : { success: number; fail: number; gain: number } {
+    let success = 0;
+    let fail = 0;
+    let gain = 0;
+    batchApply(entity, (e) => {
+        if (e.type === entity.type && e.level > toLevel) {            
+            const toRefund = getDowngradeCost(e.level, e.level - toLevel, (l) => Math.min(D.cashSpent, getCostForBuilding(entity.type, l) * getSellRefundPercentage()));
+            refundCash(toRefund);
+            success++;
+            gain += toRefund;
+            e.level = toLevel;
+        }
+    });
+    return { success, fail, gain };
 }
