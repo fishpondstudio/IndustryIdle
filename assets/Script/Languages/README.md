@@ -4,13 +4,21 @@ Base language is English and can be found in the list below
 
 ## Supported Languages:
 
-- English (base): https://github.com/fishpondstudio/IndustryIdle-i18n/blob/main/en.ts
-- German: https://github.com/fishpondstudio/IndustryIdle-i18n/blob/main/de.ts
-- French: https://github.com/fishpondstudio/IndustryIdle-i18n/blob/main/fr.ts
-- Russian: https://github.com/fishpondstudio/IndustryIdle-i18n/blob/main/ru.ts
-- Turkish: https://github.com/fishpondstudio/IndustryIdle-i18n/blob/main/tr.ts
-- Korean: https://github.com/fishpondstudio/IndustryIdle-i18n/blob/main/kr.ts
-- Spanish: https://github.com/fishpondstudio/IndustryIdle-i18n/blob/main/es.ts
+- English (base): https://github.com/fishpondstudio/IndustryIdle/tree/main/assets/Script/Languages/en.ts
+- German: https://github.com/fishpondstudio/IndustryIdle/tree/main/assets/Script/Languages/de.ts
+- Spanish: https://github.com/fishpondstudio/IndustryIdle/tree/main/assets/Script/Languages/es.ts
+- French: https://github.com/fishpondstudio/IndustryIdle/tree/main/assets/Script/Languages/fr.ts
+- Japanese: https://github.com/fishpondstudio/IndustryIdle/tree/main/assets/Script/Languages/jp.ts
+- Korean: https://github.com/fishpondstudio/IndustryIdle/tree/main/assets/Script/Languages/kr.ts
+- Dutch: https://github.com/fishpondstudio/IndustryIdle/tree/main/assets/Script/Languages/nl.ts
+- Polish: https://github.com/fishpondstudio/IndustryIdle/tree/main/assets/Script/Languages/pl.ts
+- Portuguese (BR): https://github.com/fishpondstudio/IndustryIdle/tree/main/assets/Script/Languages/pt-BR.ts
+- Russian: https://github.com/fishpondstudio/IndustryIdle/tree/main/assets/Script/Languages/ru.ts
+- Turkish: https://github.com/fishpondstudio/IndustryIdle/tree/main/assets/Script/Languages/tr.ts
+- Vietnamese: https://github.com/fishpondstudio/IndustryIdle/tree/main/assets/Script/Languages/vn.ts
+- Chinese (Simplified): https://github.com/fishpondstudio/IndustryIdle/tree/main/assets/Script/Languages/zh-CN.ts
+- Chinese (Cantonese): https://github.com/fishpondstudio/IndustryIdle/tree/main/assets/Script/Languages/zh-HK.ts
+- Chinese (Traditional): https://github.com/fishpondstudio/IndustryIdle/tree/main/assets/Script/Languages/zh-TW.ts
 
 ## Edit Existing Translation
 
@@ -33,4 +41,4 @@ Your changes will be reviewed and merged. If you have questions, please ask in D
 
 ## Add A New Language
 
-Please join Discord channel (https://discord.com/invite/xgNxpsM) and ping **FishPond#7427**. I will create a new language template for you
+Please join Discord channel (https://discord.com/invite/m5JWZtEKMZ) and ping **FishPond#7427**. I will create a new language template for you.
