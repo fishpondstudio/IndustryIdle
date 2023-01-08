@@ -30,6 +30,8 @@ import {
     selectOf,
     sizeOf,
     truncate,
+    getFlagUrl,
+    CountryCode,
 } from "../General/Helper";
 import { t } from "../General/i18n";
 import { serverNow } from "../General/ServerClock";
@@ -37,6 +39,7 @@ import { CrazyGameAdBanner } from "./CrazyGameAdBanner";
 import { Desktop } from "./HudPage";
 import { getContainerClass, iconB, isMobile, uiHeaderAction, uiHeaderActionBack } from "./UIHelper";
 import { hideAlert, routeTo, showAlert, showToast } from "./UISystem";
+import { flagToName } from "./ChooseFlagPage";
 
 type ResourceFilter = keyof Resources;
 type SideFilter = OrderSide | "";
@@ -883,6 +886,14 @@ export function PlayerTradePage(): m.Comp<{
                                 : m("span.green", t("PlayerTradeAsk")),
                             " · ",
                             m("span", { title: playerName }, truncate(playerName, 12, 6)),
+                            ifTrue(!!trade.flag, () =>
+                                m("span", 
+                                    m("img.player-trade-badge", {
+                                        title: flagToName(trade.flag),
+                                        src: getFlagUrl(trade.flag),
+                                    })
+                                )
+                            )                          
                         ]),
                     ]
                 ),
