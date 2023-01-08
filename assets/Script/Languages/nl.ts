@@ -363,6 +363,9 @@ export const NL = {
     SeeTutorialAgain: "Doe de Tutorial opnieuw",
     HelpTranslateTheGame: "Help het spel vertalen🌐",
     NextTutorial: "Volgende",
+    BackTutorial: "Back",
+    SkipTutorial: "Skip Tutorial",
+    ReturnTutorial: "Go Back",
     Tutorial1:
         "Industry Idle is een <em>goederen management</em> spel waar je fabrieken bouwt🏭, goederen produceert📦 en geld verdient💸.<br><br>Laat ons door wat basic concepten gaan om je op weg te helpen - Dit gaat niet lang duren, beloofd!",
     Tutorial2:
@@ -373,6 +376,7 @@ export const NL = {
         "Om geld te verdienen, moet je je goederen exporteren via het handelscentrum. Om dit te doen, activeer je gewoon de <em>automatische verkoop</em> voor deze goederen.<br></br>Je kan ook goederen kopen van het handelscentrum. Onthoud <em>Als je goederen koopt, drijf je de prijs omhoog</em> en als je goederen verkoopt, drijf je de prijs naar beneden.<br><br>De markt is <em>grillig</em> en de prijs veranderd geregeld.",
     Tutorial6:
         "Om nieuwe gebouwen te bouwen, moet je deze eerst vrijspelen in het <em>onderzoeks laboratorium🧪</em>. Het onderzoeks laboratorium converteert ook wetenschapspunten naar onderzoekspunten.<br><br>Je wind turbine (en andere energie centrales) produceren een klein aantal wetenschap wanneer ze aan staan. En je kan een school bouwen🏫 en andere toegewijde gebouwen om je wetenschap later te verhogen.<br><br>Nu dat je al de basics hebt geleerd, start je met je economie op te bouwen.! Hier is wat <em>cash💸</em> en <em>petroleum⛽</em> om je een goede start te geven.",
+    TutorialSkip: "Tutorial Skipped",
     WelcomePlay: "Afspelen",
     WelcomePlayMuted: "Afspelen (🔇Muziek)",
     Chat: "Chat",

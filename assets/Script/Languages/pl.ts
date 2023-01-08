@@ -364,6 +364,9 @@ export const PL = {
     SeeTutorialAgain: "Ponów samouczek",
     HelpTranslateTheGame: "Pomóż przetłumaczyć grę🌐",
     NextTutorial: "Następny",
+    BackTutorial: "Back",
+    SkipTutorial: "Skip Tutorial",
+    ReturnTutorial: "Go Back",
     Tutorial1:
         "Przemysł w którym <em>zarządzasz zasobami</em> gra, w której budujesz fabryki 🏭, produkujesz towary 📦 i zarabiasz pieniądze 💸.<br><br>Przejdźmy przez kilka podstawowych pojęć, aby zacząć – to nie potrwa długo, obiecuję⏲.",
     Tutorial2:
@@ -374,6 +377,7 @@ export const PL = {
         "Aby zarabiać pieniądze, musisz wyeksportować swoje zasoby za pośrednictwem centrum handlowego. Aby to zrobić, po prostu włącz <em>automatyczną Sprzedaż</em> dla tego zasobu.<br></br>Surowce można również kupić w centrum handlowym. Pamiętaj <em>jeśli kupisz zasoby, podniesiesz cenę</em>a jeśli sprzedasz zasoby, obniżysz cenę.<br><br>Rynek jest <em>zmienny</em> jak i cena📈zmienia się regularnie.",
     Tutorial6:
         "Aby budować nowe budynki, musisz je najpierw odblokować w <em>laboratorium badawczym🧪</em>. Laboratorium badawcze przekształca również naukę w punkty badawcze.<br><br>Twoja turbina wiatrowa (i inne elektrownie) wytwarzają niewielką ilość nauki podczas pracy. Możesz zbudować szkołę🏫 i inne dedykowane budynki, aby później wzmocnić naukę.<br><br>Teraz nauczyłeś się wszystkich podstaw, zacznij budować swoją gospodarkę! Oto kilka drobnych <em>złotych💸</em> oraz <em>kilka litrów benzyny⛽</em> aby dać ci szybki start.",
+    TutorialSkip: "Tutorial Skipped",
     WelcomePlay: "Graj",
     WelcomePlayMuted: "Włącz/Wyłącz (🔇muzykę)",
     Chat: "Czat",
