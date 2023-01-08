@@ -146,6 +146,7 @@ export class Socket {
             resourceValuationForReference: allResourcesValueForReference(),
             buildingValuation: D.cashSpent,
             map: D.map,
+            price: D.price,
             mapCreatedAt: D.mapCreatedAt,
             buildingCount: sizeOf(D.buildings),
             dlc: sizeOf(D.persisted.dlc),
