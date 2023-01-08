@@ -1229,8 +1229,11 @@ export const RU = {
     Hotdog: "Хотдог",
     BatchOperationDesc:
         "Это будет применено к %{number} зданию(-ям). Примерная стоимость составляет $%{cost}. Вы хотите продолжить?",
+    BatchOperationGainDesc:
+        "This will apply to %{number} buildings(s). Estimated refund is $%{gain}. Do you want to continue?",
     BatchOperationResult:
         "Результат групповой операции: успешно: %{success}, неудачно: %{fail}, общая стоимость: $%{cost}",
+    BatchOperationGainResult: "Batch operation result: success: %{success}, fail: %{fail}, total earned: $%{gain}",
     StreamingMakeMeDiscoverable: "Сделать меня видимым",
     StreamingMakeMeDiscoverableDesc:
         "Позволяет другим игрокам наблюдать за вашим игровым процессом. Соединение является P2P и транслируется только ваш игровой процесс. Доступ к микрофону или веб-камере не предоставляется",

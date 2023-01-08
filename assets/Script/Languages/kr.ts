@@ -1180,7 +1180,10 @@ export const KR = {
     Sausage: "소시지",
     Hotdog: "핫도그",
     BatchOperationDesc: "%{number}개의 건물에 적용될 것입니다. 그대로 진행하시겠습니까?",
+    BatchOperationGainDesc:
+        "This will apply to %{number} buildings(s). Estimated refund is $%{gain}. Do you want to continue?",
     BatchOperationResult: "Your batch operation has completed for %{success} buildings(s)",
+    BatchOperationGainResult: "Batch operation result: success: %{success}, fail: %{fail}, total earned: $%{gain}",
     StreamingMakeMeDiscoverable: "Make Me Discoverable",
     StreamingMakeMeDiscoverableDesc:
         "Allow other players to watch your gameplay. The connection is peer to peer and only your gameplay is streamed. Microphone or webcam will not be accessed",

@@ -1238,7 +1238,10 @@ export const FR = {
     Sausage: "Saucisses",
     Hotdog: "Hotdog",
     BatchOperationDesc: "This will apply to %{number} buildings(s). Do you want to continue?",
+    BatchOperationGainDesc:
+        "This will apply to %{number} buildings(s). Estimated refund is $%{gain}. Do you want to continue?",
     BatchOperationResult: "Your batch operation has completed for %{success} buildings(s)",
+    BatchOperationGainResult: "Batch operation result: success: %{success}, fail: %{fail}, total earned: $%{gain}",
     StreamingMakeMeDiscoverable: "Me rendre Visible",
     StreamingMakeMeDiscoverableDesc:
         "Permet au autres joueurs de regarder ma partie. La connexion se fait en Pair à Pair et uniquement votre partie est diffusée. Le Microphone et la webcam ne seront pas utilisés",

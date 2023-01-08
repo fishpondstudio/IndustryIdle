@@ -1230,7 +1230,10 @@ export const DE = {
     Hotdog: "Hotdog",
     BatchOperationDesc:
         "Diese Aktion kann auf %{number} Gebäude angewendet werden. Vorraussichtliche Baukosten: $%{cost}. Möchtest du fortfahren?",
+    BatchOperationGainDesc:
+        "This will apply to %{number} buildings(s). Estimated refund is $%{gain}. Do you want to continue?",
     BatchOperationResult: "Der Batchbefehl wurde erfolgreich für %{success} Gebäude ausgeführt",
+    BatchOperationGainResult: "Batch operation result: success: %{success}, fail: %{fail}, total earned: $%{gain}",
     StreamingMakeMeDiscoverable: "Mach mich entdeckbar",
     StreamingMakeMeDiscoverableDesc:
         "Erlaube es anderen Spielern, deinem Spiel zuzuschauen. Die Verbindung basiert auf P2P. Es wird nur das Spiel übertragen und weder auf Mikrofon, noch Kamera zugegriffen",

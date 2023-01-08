@@ -1148,7 +1148,10 @@ export const ZH_CN = {
     Sausage: "香肠",
     Hotdog: "热狗",
     BatchOperationDesc: "将应用于 %{number} 座建筑物，确定吗？",
+    BatchOperationGainDesc:
+        "This will apply to %{number} buildings(s). Estimated refund is $%{gain}. Do you want to continue?",
     BatchOperationResult: "你的批量操作在 %{success} 座建筑物上生效了",
+    BatchOperationGainResult: "Batch operation result: success: %{success}, fail: %{fail}, total earned: $%{gain}",
     StreamingMakeMeDiscoverable: "让我可见",
     StreamingMakeMeDiscoverableDesc:
         "允许其他玩家观看你的游戏。链接为点对点（P2P)模式，只有游戏画面会被推流，不会访问麦克风或摄像头。",

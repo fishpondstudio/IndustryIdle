@@ -1220,7 +1220,10 @@ export const PL = {
     Sausage: "Kiełbasa",
     Hotdog: "Hotdog",
     BatchOperationDesc: "To wpłynie na  %{number} budynków. Czy chcesz kontynuować?",
+    BatchOperationGainDesc:
+        "This will apply to %{number} buildings(s). Estimated refund is $%{gain}. Do you want to continue?",
     BatchOperationResult: "Operacja wykonana na %{success} budynkach",
+    BatchOperationGainResult: "Batch operation result: success: %{success}, fail: %{fail}, total earned: $%{gain}",
     StreamingMakeMeDiscoverable: "Uczyń mnie wykrywalnym",
     StreamingMakeMeDiscoverableDesc:
         "Pozwala innym graczom oglądać Twoją rozgrywkę. Połączenie jest bezpośrednie (P2P). Wyświetlana jest tylko Twoja rozgrywka. Mikrofon oraz kamera nie zostaną wykorzystane",

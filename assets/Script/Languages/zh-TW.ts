@@ -1149,7 +1149,10 @@ export const ZH_TW = {
     Sausage: "香腸",
     Hotdog: "熱狗",
     BatchOperationDesc: "這將適用於 %{number} 個建築物。 你要繼續嗎？",
+    BatchOperationGainDesc:
+        "This will apply to %{number} buildings(s). Estimated refund is $%{gain}. Do you want to continue?",
     BatchOperationResult: "您對 %{success} 個建築物的批處理操作已完成",
+    BatchOperationGainResult: "Batch operation result: success: %{success}, fail: %{fail}, total earned: $%{gain}",
     StreamingMakeMeDiscoverable: "讓我被發現",
     StreamingMakeMeDiscoverableDesc:
         "允許其他玩家觀看您的遊戲。 連接是點對點的，只有您的遊戲是流式傳輸的。 將無法訪問麥克風或網絡攝像頭",

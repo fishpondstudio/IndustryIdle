@@ -1231,7 +1231,10 @@ export const IT = {
     Sausage: "Salsicce",
     Hotdog: "Hot dog",
     BatchOperationDesc: "Questa azione verrà solo applicata a %{number} strutture. Vuoi continuare?",
+    BatchOperationGainDesc:
+        "This will apply to %{number} buildings(s). Estimated refund is $%{gain}. Do you want to continue?",
     BatchOperationResult: "La tua operazione ha avuto successo per %{success} strutture",
+    BatchOperationGainResult: "Batch operation result: success: %{success}, fail: %{fail}, total earned: $%{gain}",
     StreamingMakeMeDiscoverable: "Rendimi scopribile",
     StreamingMakeMeDiscoverableDesc:
         "Consenti ad altri giocatori di guardare il tuo gameplay. La connessione è peer to peer e solo la schermata di gioco viene trasmessa. Non avverrà nessun accesso a microfono o telecamera",
