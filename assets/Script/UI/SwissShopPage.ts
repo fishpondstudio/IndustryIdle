@@ -110,7 +110,12 @@ export function SwissShopPage(): m.Comp {
                                 m("div",
                                     m("div", [
                                         m("div", [
-                                            uiHotkey({key: "1", ctrlKey: false, shiftKey: false, altKey: false}, "", " "), 
+                                            uiHotkey(
+                                                {key: "1", ctrlKey: false, shiftKey: false, altKey: false},
+                                                "",
+                                                " ",
+                                                D.persisted.hideHotkeySubmenuLabels
+                                            ), 
                                             t("SwissUpgrade")
                                         ]),
                                         m(".text-desc.text-s", t("SwissUpgradeDesc")),
@@ -130,7 +135,12 @@ export function SwissShopPage(): m.Comp {
                                 m("div",
                                     m("div", [
                                         m("div", [
-                                            uiHotkey({key: "2", ctrlKey: false, shiftKey: false, altKey: false}, "", " "), 
+                                            uiHotkey(
+                                                {key: "2", ctrlKey: false, shiftKey: false, altKey: false},
+                                                "",
+                                                " ",
+                                                D.persisted.hideHotkeySubmenuLabels
+                                            ), 
                                             t("SwissBoost")
                                         ]), 
                                         m(".text-desc.text-s", t("SwissBoostDesc"))

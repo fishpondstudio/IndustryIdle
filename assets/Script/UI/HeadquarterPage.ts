@@ -192,7 +192,12 @@ export function HeadquarterPage(): m.Comp {
                             m(".row.pointer", { "data-shortcut": "2-false-false-false", onclick: () => routeTo("/choose-flag") }, [
                                 m(".f1", 
                                     m("div", [
-                                        uiHotkey({key: "2", ctrlKey: false, shiftKey: false, altKey: false}, "", " "), 
+                                        uiHotkey(
+                                            {key: "2", ctrlKey: false, shiftKey: false, altKey: false},
+                                            "",
+                                            " ",
+                                            D.persisted.hideHotkeySubmenuLabels
+                                        ), 
                                         t("PlayerCountryFlag")
                                     ])
                                 ),
@@ -213,7 +218,12 @@ export function HeadquarterPage(): m.Comp {
                         m(".row.pointer", { "data-shortcut": "3-false-false-false", onclick: () => routeTo("/achievements") }, [
                             m(".f1", [
                                 m("div", [
-                                    uiHotkey({key: "3", ctrlKey: false, shiftKey: false, altKey: false}, "", " "), 
+                                    uiHotkey(
+                                        {key: "3", ctrlKey: false, shiftKey: false, altKey: false},
+                                        "",
+                                        " ",
+                                        D.persisted.hideHotkeySubmenuLabels
+                                    ), 
                                     t("Achievements")
                                 ]),
                                 m(
@@ -232,7 +242,12 @@ export function HeadquarterPage(): m.Comp {
                             m(".row.pointer", { "data-shortcut": "4-false-false-false", onclick: () => routeTo("/leaderboard") }, [
                                 m(".f1", [
                                     m("div", [
-                                        uiHotkey({key: "4", ctrlKey: false, shiftKey: false, altKey: false}, "", " "), 
+                                        uiHotkey(
+                                            {key: "4", ctrlKey: false, shiftKey: false, altKey: false},
+                                            "",
+                                            " ",
+                                            D.persisted.hideHotkeySubmenuLabels
+                                        ), 
                                         t("Leaderboard")
                                     ]), 
                                     m(".text-desc.text-s", t("LeaderboardDescV2"))
@@ -244,7 +259,12 @@ export function HeadquarterPage(): m.Comp {
                         m(".row.pointer", { "data-shortcut": "5-false-false-false", onclick: () => routeTo("/patch-notes") }, [
                             m(".f1", [
                                 m("div", [
-                                    uiHotkey({key: "5", ctrlKey: false, shiftKey: false, altKey: false}, "", " "), 
+                                    uiHotkey(
+                                        {key: "5", ctrlKey: false, shiftKey: false, altKey: false},
+                                        "",
+                                        " ",
+                                        D.persisted.hideHotkeySubmenuLabels
+                                    ), 
                                     t("PatchNotes")
                                 ]), 
                                 m(".text-desc.text-s", t("PatchNotesDesc"))
@@ -255,7 +275,12 @@ export function HeadquarterPage(): m.Comp {
                         m(".row.pointer", { "data-shortcut": "6-false-false-false" ,onclick: () => routeTo("/settings") }, [
                             m(".f1", [
                                 m("div", [
-                                    uiHotkey({key: "6", ctrlKey: false, shiftKey: false, altKey: false}, "", " "), 
+                                    uiHotkey(
+                                        {key: "6", ctrlKey: false, shiftKey: false, altKey: false},
+                                        "",
+                                        " ",
+                                        D.persisted.hideHotkeySubmenuLabels
+                                    ), 
                                     t("GameSetting")
                                 ]), 
                                 m(".text-desc.text-s", t("GameSettingDesc"))

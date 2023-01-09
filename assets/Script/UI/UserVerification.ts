@@ -127,7 +127,12 @@ export function UserVerification(): m.Comp {
                     },
                     [
                         m("div", [
-                            uiHotkey({key: "1", ctrlKey: false, shiftKey: false, altKey: false}, "", " "), 
+                            uiHotkey(
+                                {key: "1", ctrlKey: false, shiftKey: false, altKey: false}, 
+                                "", 
+                                " ",
+                                D.persisted.hideHotkeySubmenuLabels
+                            ), 
                             t("AccountVerification")
                         ]), 
                         m(".mv-10.ml20.blue", iconB("arrow_forward"))

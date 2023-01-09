@@ -21,7 +21,12 @@ export function SettingsPage(): m.Component {
                             [
                                 m(".f1", 
                                     m("div", [
-                                        uiHotkey({key: "1", ctrlKey: false, shiftKey: false, altKey: false}, "", " "),
+                                        uiHotkey(
+                                            {key: "1", ctrlKey: false, shiftKey: false, altKey: false},
+                                            "",
+                                            " ",
+                                            D.persisted.hideHotkeySubmenuLabels
+                                        ),
                                         t("GameSettingAudio")
                                     ])
                                 ),
@@ -37,7 +42,12 @@ export function SettingsPage(): m.Component {
                             [
                                 m(".f1", 
                                     m("div", [
-                                        uiHotkey({key: "2", ctrlKey: false, shiftKey: false, altKey: false}, "", " "),
+                                        uiHotkey(
+                                            {key: "2", ctrlKey: false, shiftKey: false, altKey: false},
+                                            "",
+                                            " ",
+                                            D.persisted.hideHotkeySubmenuLabels
+                                        ),
                                         t("GameSettingDisplay")
                                     ])
                                 ),
@@ -53,7 +63,12 @@ export function SettingsPage(): m.Component {
                             [
                                 m(".f1", 
                                     m("div", [
-                                        uiHotkey({key: "3", ctrlKey: false, shiftKey: false, altKey: false}, "", " "),
+                                        uiHotkey(
+                                            {key: "3", ctrlKey: false, shiftKey: false, altKey: false},
+                                             "",
+                                             " ",
+                                             D.persisted.hideHotkeySubmenuLabels
+                                        ),
                                         t("GameSettingGameplay")
                                     ])
                                 ),
@@ -70,7 +85,12 @@ export function SettingsPage(): m.Component {
                                 [
                                     m(".f1", 
                                         m("div", [
-                                            uiHotkey({key: "4", ctrlKey: false, shiftKey: false, altKey: false}, "", " "),
+                                            uiHotkey(
+                                                {key: "4", ctrlKey: false, shiftKey: false, altKey: false},
+                                                "",
+                                                " ",
+                                                D.persisted.hideHotkeySubmenuLabels
+                                            ),
                                             t("GameSettingInput")
                                         ])
                                     ),

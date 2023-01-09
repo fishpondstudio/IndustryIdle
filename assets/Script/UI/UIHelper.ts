@@ -223,8 +223,8 @@ export function uiBoxRangeSlider(
     );
 }
 
-export function uiHotkey(shortcut: Shortcut, pre = "", post = "") : string {
-    if (D.persisted.hideHotkeySubmenuLabels || isIOS() || isAndroid()) {
+export function uiHotkey(shortcut: Shortcut, pre = "", post = "", isHidden = false) : string {
+    if (isIOS() || isAndroid() || isHidden) {
         return "";
     }
     let finalShortcutOutput: string = "";
