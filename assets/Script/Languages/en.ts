@@ -1577,5 +1577,5 @@ export const EN = {
     FormatTimeAgo: "%{time} ago",
     SafteyLock: "Safety Lock",
     SafteyLockTip: "When enabled, locks the upgrade button to prevent miss-clicks.",
-    SafetyLockToast: "Safety lock is On. Turn off safety lock, located near the top of the UI Panel, to purchase this upgrade.",
+    SafetyLockToast: "Safety lock is on, attempted action blocked.",
 };
