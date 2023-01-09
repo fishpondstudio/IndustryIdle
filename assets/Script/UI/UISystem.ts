@@ -5,6 +5,7 @@ import { SCENES } from "../General/Constants";
 import { G, T } from "../General/GameData";
 import { getDebugUrlParams, hasValue, MINUTE } from "../General/Helper";
 import { t } from "../General/i18n";
+import { OnKeyDown, OnKeyUp } from "../General/KeyboardEventListener";
 import { isSteam, NativeSdk } from "../General/NativeSdk";
 import { initWebRTC } from "../General/WebRTC";
 import { AchievementsPage } from "./AchievementsPage";
@@ -13,6 +14,7 @@ import { BuildPage } from "./BuildPage";
 import { ChatPage } from "./ChatPage";
 import { ChooseFlagPage } from "./ChooseFlagPage";
 import { CityPage } from "./CityPage";
+import { CentralBankPage } from "./CentralBankPage";
 import { ColorThemeEditorPage } from "./ColorThemeEditorPage";
 import { ConglomeratePage } from "./ConglomeratePage";
 import { ConstructionPage } from "./ConstructionPage";
@@ -23,15 +25,20 @@ import { HeadquarterPage } from "./HeadquarterPage";
 import { HudPage } from "./HudPage";
 import { InputSettingsPage } from "./InputSettingsPage";
 import { InspectPage } from "./InspectPage";
+import { LogisticsDepartmentPage } from "./LogisticsDepartmentPage";
 import { LeaderboardPage } from "./LeaderboardPage";
 import { MainPage } from "./MainPage";
 import { PatchNotesPage } from "./PatchNotesPage";
-import { PlayerTradeHistoryPage } from "./PlayerTradeHistoryPage";
 import { PlayerTradePage } from "./PlayerTradePage";
+import { PlayerTradeHistoryPage } from "./PlayerTradeHistoryPage";
+import { PolicyCenterPage } from "./PolicyCenterPage";
 import { SettingsPage } from "./SettingsPage";
-import { OnKeydown } from "./Shortcut";
+import { StatPage } from "./StatPage";
+import { SwissShopPage } from "./SwissShopPage";
 import { SwissBoostPage } from "./SwissBoostPage";
 import { SwissUpgradePage } from "./SwissUpgradePage";
+import { TradeCenterPage } from "./TradeCenterPage";
+import { WholesaleCenterPage } from "./WholesaleCenterPage";
 import { saveAndForcefullyReload, saveAndQuit } from "./UIHelper";
 
 const modalNode = document.createElement("div");
@@ -98,8 +105,10 @@ export function onResize(width: number, height: number) {
 export function StartUI() {
     m.route(modalNode, "/main", UI_ROUTES);
     m.mount(headerNode, HudPage);
-    document.addEventListener("keydown", OnKeydown);
-    cc.game.canvas.addEventListener("keydown", OnKeydown);
+    document.addEventListener("keydown", OnKeyDown);
+    document.addEventListener("keyup", OnKeyUp);
+    cc.game.canvas.addEventListener("keydown", OnKeyDown);
+    cc.game.canvas.addEventListener("keyup", OnKeyUp);
     cc.game.canvas.addEventListener("webglcontextlost", () => {
         showAlert(t("GPUIsBusy"), t("GPUIsBusyDesc"), [
             { name: t("SaveAndReloadGame"), action: saveAndForcefullyReload },
@@ -228,6 +237,13 @@ export const UI_ROUTES = {
     "/input-settings": InputSettingsPage,
     "/conglomerate": ConglomeratePage,
     "/player-trade-history": PlayerTradeHistoryPage,
+    "/swiss-shop": SwissShopPage,
+    "/wholesale-center": WholesaleCenterPage,
+    "/central-bank": CentralBankPage,
+    "/trade-center": TradeCenterPage,
+    "/stats": StatPage,
+    "/policy-center": PolicyCenterPage,
+    "/logistics-department": LogisticsDepartmentPage,
 };
 
 let toastTimeoutId: number = null;
