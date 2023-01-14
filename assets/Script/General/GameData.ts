@@ -10,8 +10,8 @@ import { CHANGELOG } from "../CoreGame/Changelog";
 import { COLORS } from "../CoreGame/ColorThemes";
 import { Grid } from "../CoreGame/GridHelper";
 import { ICrowdfunding } from "../CoreGame/Logic/Crowdfunding";
-import { Entity, EntityDefaultType, PowerBankEntity } from "../CoreGame/Logic/Entity";
-import { getEntityDefault } from "../CoreGame/Logic/EntityDefault";
+import { Entity, PowerBankEntity } from "../CoreGame/Logic/Entity";
+import { EntityDefaultType, getEntityDefault } from "../CoreGame/Logic/EntityDefault";
 import { IOrder, IPolicyInfo, MAP } from "../CoreGame/Logic/Logic";
 import { IMarketNews } from "../CoreGame/MarketNews";
 import { Policy } from "../CoreGame/PolicyDefinitions";
@@ -27,6 +27,7 @@ import { NL } from "../Languages/nl";
 import { PL } from "../Languages/pl";
 import { PT_BR } from "../Languages/pt-BR";
 import { RU } from "../Languages/ru";
+import { TR } from "../Languages/tr";
 import { VN } from "../Languages/vn";
 import { ZH_CN } from "../Languages/zh-CN";
 import { ZH_HK } from "../Languages/zh-HK";
@@ -185,6 +186,7 @@ export const Languages = {
     ZH_CN: ZH_CN,
     ZH_HK: ZH_HK,
     ZH_TW: ZH_TW,
+    TR: TR,
 } as const;
 
 export const BatchModeOptions = {
@@ -211,7 +213,7 @@ export class PersistedData {
     sfxFreeChestVolume = 0.25;
     sfxGoldVolume = 0.25;
     sfxKachingVolume = 0.25;
-    sfxLevelupVolume  = 0.25;
+    sfxLevelupVolume = 0.25;
     sfxPowerupVolume = 0.25;
     panelPosition: PanelPosition = "auto";
     panelHeight: PanelHeight = "60";
@@ -261,8 +263,8 @@ export class PersistedData {
     resourceMovement: ResourceMovement = "show";
     extraBuildingPermit = 0;
     autoClaimTradeOrder = false;
-    disableBuildWarningPowerBank  = false;
-    disableBuildWarningResourceBooster  = false;
+    disableBuildWarningPowerBank = false;
+    disableBuildWarningResourceBooster = false;
     constructor() {
         this.userName = `${this.userId.substr(0, 6).toUpperCase()}`;
         this.panelPosition = isIOS() || isAndroid() ? "auto" : "right";
