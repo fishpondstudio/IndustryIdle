@@ -203,6 +203,12 @@ export function BuildPage(): m.Comp<{ xy: string }> {
                                 if (lastBuilt === b) {
                                     return 1;
                                 }
+                                if (D.persisted.buildingFavs[a] === true && !D.persisted.buildingFavs[b]) {
+                                    return -1;
+                                }
+                                if (D.persisted.buildingFavs[b] === true && !D.persisted.buildingFavs[a]) {
+                                    return 1;
+                                }                                
                                 if (adjacentBuildings[a] && !adjacentBuildings[b]) {
                                     return -1;
                                 }
@@ -232,7 +238,7 @@ export function BuildPage(): m.Comp<{ xy: string }> {
                                 const totalCost = buildingCost + buildingPermitCost;
                                 const mine = isMine(c) || c === "GeothermalPowerPlant";
                                 const powerBank = c === "PowerBank" && isPowerBankWorking(grid);
-                                const highlight = mine || powerBank || c === lastBuilt || adjacentBuildings[c];
+                                const highlight = mine || powerBank || c === lastBuilt || adjacentBuildings[c] || D.persisted.buildingFavs[c];
                                 const tileModifier = getTileModifier(xy, c);
                                 const shortcutKey = mine ? 1 : lastBuilt === c ? 2 : null;
                                 const build = () => {
@@ -381,6 +387,23 @@ export function BuildPage(): m.Comp<{ xy: string }> {
                                                 ]
                                             )
                                         ),
+                                        m(".building-name-sep"),
+                                        m(
+                                            ".pointer",
+                                            {
+                                                onclick: () => {
+                                                    if (!D.persisted.buildingFavs[c]) {
+                                                        D.persisted.buildingFavs[c] = true;
+                                                    }
+                                                    else {
+                                                        delete D.persisted.buildingFavs[c];
+                                                    }
+                                                },
+                                            },
+                                            D.persisted.buildingFavs[c] === true
+                                                ? iconB("check_box", 18, 0, {}, { class: "blue" })
+                                                : iconB("check_box_outline_blank", 18, 0, {}, { class: "text-desc" })
+                                        ),                                         
                                     ]),
                                 ]);
                             }),

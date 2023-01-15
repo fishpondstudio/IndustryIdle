@@ -265,6 +265,7 @@ export class PersistedData {
     autoClaimTradeOrder = false;
     disableBuildWarningPowerBank = false;
     disableBuildWarningResourceBooster = false;
+    buildingFavs: Partial<Record<keyof Buildings, boolean>> = {};
     constructor() {
         this.userName = `${this.userId.substr(0, 6).toUpperCase()}`;
         this.panelPosition = isIOS() || isAndroid() ? "auto" : "right";
