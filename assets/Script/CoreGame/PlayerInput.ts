@@ -209,6 +209,18 @@ export default class PlayerInput extends MapInput {
         cc.tween<PlayerInput>(this).to(0.5, { cameraPosition: hqPos }, { easing: cc.easing.quadInOut }).start();
     }
 
+    public moveCameraTo(position: cc.Vec3) {
+        cc.tween<PlayerInput>(this)
+            .to(
+                0.04,
+                {
+                    cameraPosition: position.clone().clampf(this.minCameraPosition(), this.maxCameraPosition()),
+                },
+                { easing: cc.easing.smooth }
+            )
+            .start();
+    }
+
     public hijackGridSelect(): Promise<cc.Vec3> {
         // Someone else is hijacking!
         if (this.hijackExecutor) {
