@@ -14,7 +14,7 @@ import { D, G } from "../General/GameData";
 import { formatHM, formatPercent, getResourceUrl, HOUR, ifTrue, keysOf, nf } from "../General/Helper";
 import { t } from "../General/i18n";
 import { CrazyGameAdBanner } from "./CrazyGameAdBanner";
-import { iconB, leftOrRight, progressBarWithLabel, switchScene, uiHeaderRoute, uiSwissMoneyBlock } from "./UIHelper";
+import { iconB, leftOrRight, progressBarWithLabel, switchScene, uiHeaderRoute, uiSwissMoneyBlock, uiHotkey } from "./UIHelper";
 import { routeTo } from "./UISystem";
 
 export function SwissShopPage(): m.Comp {
@@ -103,13 +103,21 @@ export function SwissShopPage(): m.Comp {
                         m(
                             ".two-col.pointer",
                             {
+                                "data-shortcut": "1-false-false-false",
                                 onclick: () => routeTo("/swiss-upgrade"),
                             },
                             [
-                                m(
-                                    "div",
+                                m("div",
                                     m("div", [
-                                        m("div", t("SwissUpgrade")),
+                                        m("div", [
+                                            uiHotkey(
+                                                {key: "1", ctrlKey: false, shiftKey: false, altKey: false},
+                                                "",
+                                                " ",
+                                                D.persisted.hideHotkeySubmenuLabels
+                                            ), 
+                                            t("SwissUpgrade")
+                                        ]),
                                         m(".text-desc.text-s", t("SwissUpgradeDesc")),
                                     ])
                                 ),
@@ -120,12 +128,23 @@ export function SwissShopPage(): m.Comp {
                         m(
                             ".two-col.pointer",
                             {
+                                "data-shortcut": "2-false-false-false",
                                 onclick: () => routeTo("/swiss-boost"),
                             },
                             [
-                                m(
-                                    "div",
-                                    m("div", [m("div", t("SwissBoost")), m(".text-desc.text-s", t("SwissBoostDesc"))])
+                                m("div",
+                                    m("div", [
+                                        m("div", [
+                                            uiHotkey(
+                                                {key: "2", ctrlKey: false, shiftKey: false, altKey: false},
+                                                "",
+                                                " ",
+                                                D.persisted.hideHotkeySubmenuLabels
+                                            ), 
+                                            t("SwissBoost")
+                                        ]), 
+                                        m(".text-desc.text-s", t("SwissBoostDesc"))
+                                    ])
                                 ),
                                 m(".ml20.blue", iconB("arrow_forward", 30)),
                             ]

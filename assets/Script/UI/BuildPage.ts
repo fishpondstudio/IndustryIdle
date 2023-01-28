@@ -29,8 +29,7 @@ import { D, dlcLabel, G, hasDLC, T } from "../General/GameData";
 import { forEach, formatPercent, hasValue, ifTrue, keysOf, nf, safeGet } from "../General/Helper";
 import { t } from "../General/i18n";
 import { NativeSdk } from "../General/NativeSdk";
-import { shortcut } from "./Shortcut";
-import { iconB, leftOrRight, uiBoxToggleContent, uiBuildingInputOutput, uiHeaderRoute } from "./UIHelper";
+import { iconB, leftOrRight, uiBoxToggleContent, uiBuildingInputOutput, uiHeaderRoute, uiHotkey } from "./UIHelper";
 import { routeTo, showToast } from "./UISystem";
 
 let lastBuilt: keyof Buildings;
@@ -118,10 +117,10 @@ export function BuildPage(): m.Comp<{ xy: string }> {
                         ".two-col.blue.pointer",
                         {
                             onclick: highlightAll,
-                            "data-shortcut": "a",
+                            "data-shortcut": "0-false-false-false"
                         },
                         [
-                            m("div", [shortcut("A", "", " "), t("HighlightAll", { type: RES[res].name() })]),
+                            m("div", [uiHotkey({key: "0", ctrlKey: false, shiftKey: false, altKey: false} "", " "), t("HighlightAll", { type: RES[res].name() })]),
                             m(".ml20", "🔍"),
                         ]
                     ),
@@ -167,10 +166,11 @@ export function BuildPage(): m.Comp<{ xy: string }> {
                         ),
                         m(".hr"),
                         uiBoxToggleContent(
-                            m("div.two-col", [
-                                m("div.blue.text-m.cursor-help", { style: "margin-right: 4px;", title: t("OnlyShowPositiveModifiersHint") }, "💡"),
-                                m(".text-s.uppercase", t("OnlyShowPositiveModifiers"))
-                            ]),
+                            m(
+                                ".text-s.uppercase",
+                                { title: t("OnlyShowPositiveModifiersHint") },
+                                t("OnlyShowPositiveModifiers")
+                            ),
                             onlyShowPositiveTiles,
                             () => {
                                 onlyShowPositiveTiles = !onlyShowPositiveTiles;
@@ -310,7 +310,7 @@ export function BuildPage(): m.Comp<{ xy: string }> {
                                             ".f1.pointer",
                                             {
                                                 onclick: build,
-                                                "data-shortcut": shortcutKey,
+                                                "data-shortcut": shortcutKey ? shortcutKey.toString()+"-false-false-false" : "",
                                             },
                                             [
                                                 m(
@@ -319,7 +319,7 @@ export function BuildPage(): m.Comp<{ xy: string }> {
                                                         class: highlight ? "orange" : "",
                                                     },
                                                     [
-                                                        shortcutKey ? shortcut(shortcutKey, "", " ") : "",
+                                                        shortcutKey ? uiHotkey({key: shortcutKey.toString(), ctrlKey: false, shiftKey: false, altKey: false}, "", " ") : "",
                                                         BLD[c].name(),
                                                         m(
                                                             "span.text-m.ml5",

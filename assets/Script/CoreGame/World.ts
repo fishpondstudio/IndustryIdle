@@ -1,7 +1,9 @@
+import { Hotkey } from "../General/Hotkey";
 import { D, G, T, TempData } from "../General/GameData";
 import {
     assert,
     forEach,
+    getHotkeyDef,
     hasValue,
     isPointInView,
     isRectInView,
@@ -11,8 +13,9 @@ import {
     srand,
     uuidv4,
 } from "../General/Helper";
-import { OnKeydownEvent } from "../UI/Shortcut";
+import { OnKeyDownEvent, OnKeyUpEvent } from "../General/KeyboardEventListener";
 import { isMapEditMode, routeTo } from "../UI/UISystem";
+import { isMobile, isPanelOnLeft } from "../UI/UIHelper";
 import { Buildings, ResourceNumberMap } from "./Buildings/BuildingDefinitions";
 import { safeSaveToSteamCloud } from "./CloudSave";
 import { DOT_OPACITY_HIGHLIGHT, getCurrentColor } from "./ColorThemes";
@@ -58,6 +61,13 @@ export default class World extends cc.Component {
     private activeBuilderCount = 0;
     private overlayTextQueue: (() => void)[] = [];
     private hasOverlay = false;
+    private _hotkeys: Hotkey[] = [];
+    private _onKeyDownCallBack: Function; 
+    private _onKeyUpCallBack: Function; 
+
+    public get hotkeys() : Hotkey[] {
+        return this._hotkeys;
+    }
 
     protected override onLoad() {
         this.waveManager = new WaveManager(this.monstersPool, this.pathIndicators, this.playerInput.onSelectionChange);
@@ -65,6 +75,10 @@ export default class World extends cc.Component {
     }
 
     protected override start() {
+        if(!isMobile()) {
+                this.initHotkeys();
+        }
+        
         this.createMap();
 
         forEach(D.buildings, (xy, entity) => {
@@ -109,6 +123,13 @@ export default class World extends cc.Component {
         }
     }
 
+    protected override onDestroy(){
+        if(!isMobile()) {
+                this._onKeyDownCallBack.dispose();
+                this._onKeyUpCallBack.dispose();
+        }
+    }
+
     private enableMapEditMode() {
         const storage = cc.sys.localStorage as Storage;
         const storageKey = "MapEditor";
@@ -128,7 +149,7 @@ export default class World extends cc.Component {
             cc.log("Map Editor Data:", data);
             storage.setItem(storageKey, data);
         };
-        OnKeydownEvent.on((e) => {
+        OnKeyDownEvent.on((e) => {
             switch (e.key) {
                 case "w":
                     this.mapOverlay.node.y += 1;
@@ -553,6 +574,127 @@ export default class World extends cc.Component {
         } else {
             return null;
         }
+    }
+
+    public registerHotkeys() : void {    
+        if(hasValue(this._hotkeys)){
+            delete this._hotkeys;
+        }
+        this._hotkeys = new Array();
+
+        this._hotkeys.push(
+            new Hotkey(getHotkeyDef("ui-swiss-shop"), ()=> {
+                    this.playerInput.clearSelection();
+                    routeTo("/swiss-shop");
+            })
+        );
+        this._hotkeys.push(
+            new Hotkey(getHotkeyDef("ui-wholesale-center"), ()=> {
+                    this.playerInput.clearSelection();
+                    routeTo("/wholesale-center");
+                })
+        );
+        this._hotkeys.push(
+            new Hotkey(getHotkeyDef("ui-central-bank"), ()=> {
+                    this.playerInput.clearSelection();
+                    routeTo("/central-bank");
+                })
+        );
+        this._hotkeys.push(
+            new Hotkey(getHotkeyDef("ui-research"), ()=> {
+                    this.playerInput.clearSelection();
+                    this.routeTo(G.researchLab.grid);
+                })
+        );
+        this._hotkeys.push(
+            new Hotkey(getHotkeyDef("ui-hq"), ()=> {
+                    this.playerInput.clearSelection();
+                    routeTo("/hq");
+                })
+        );
+        this._hotkeys.push(
+            new Hotkey(getHotkeyDef("ui-trade-center"), ()=> {
+                    this.playerInput.clearSelection();
+                    routeTo("/trade-center");
+                })
+        );
+        this._hotkeys.push(
+            new Hotkey(getHotkeyDef("ui-player-trade"), ()=> {
+                    this.playerInput.clearSelection();
+                    routeTo("/player-trade");
+                })
+        );
+        this._hotkeys.push(
+            new Hotkey(getHotkeyDef("ui-stats"), ()=> {
+                    this.playerInput.clearSelection();
+                    routeTo("/stats");
+                })
+        );
+        this._hotkeys.push(
+            new Hotkey(getHotkeyDef("ui-policy-center"), ()=> {
+                    this.playerInput.clearSelection();
+                    routeTo("/policy-center");
+                })
+        );
+        this._hotkeys.push(
+            new Hotkey(getHotkeyDef("ui-logistics-department"), ()=> {
+                    this.playerInput.clearSelection();
+                    routeTo("/logistics-department");
+                })
+        );
+        this._hotkeys.push(
+            new Hotkey(getHotkeyDef("camera-moveToHQ"), ()=> {
+                    this.playerInput.goBackToHq();
+                })
+        );
+        this._hotkeys.push(
+            new Hotkey(getHotkeyDef("camera-moveUpEdge"), ()=> {
+                    let newPos: cc.Vec3 = this.playerInput.cameraPosition;
+                    newPos.y = this.playerInput.maxCameraPosition().y;
+                    this.playerInput.moveCameraTo(newPos);
+                })
+        );
+        this._hotkeys.push(
+            new Hotkey(getHotkeyDef("camera-moveDownEdge"), ()=> {
+                    let newPos: cc.Vec3 = this.playerInput.cameraPosition;
+                    newPos.y = -this.playerInput.maxCameraPosition().y;
+                    this.playerInput.moveCameraTo(newPos);
+                })
+        );
+        this._hotkeys.push(
+            new Hotkey(getHotkeyDef("camera-moveLeftEdge"), ()=> {
+                    let newPos: cc.Vec3 = this.playerInput.cameraPosition;
+                    newPos.x = -this.playerInput.maxCameraPosition().x;
+                    this.playerInput.moveCameraTo(newPos);
+                })
+        );
+        this._hotkeys.push(
+            new Hotkey(getHotkeyDef("camera-moveRightEdge"), ()=> {
+                    let newPos: cc.Vec3 = this.playerInput.cameraPosition;
+                    newPos.x = this.playerInput.maxCameraPosition().x;
+                    this.playerInput.moveCameraTo(newPos);
+                })
+        );
+    }
+
+    private initHotkeys() : void {
+        this.registerHotkeys();
+        this._onKeyDownCallBack = OnKeyDownEvent.on((e) => {  
+            for(var i = 0; i < this._hotkeys.length; i++) {
+                if(!this._hotkeys[i].hasExecuted && this._hotkeys[i].key === e.key.toLowerCase() && 
+                    this._hotkeys[i].ctrlKey == e.ctrlKey && this._hotkeys[i].shiftKey == e.shiftKey && 
+                    this._hotkeys[i].altKey == e.altKey) {
+                    this._hotkeys[i].onExecute();
+                }
+            }
+        });
+        this._onKeyUpCallBack = OnKeyUpEvent.on((e) => {
+            for(var i = 0; i < this._hotkeys.length; i++) {
+                if(this._hotkeys[i].hasExecuted) {
+                    this._hotkeys[i].hasExecuted = false;
+                }
+            }
+        });
     }
 }
 function setFuelForMap(map: IMap) {

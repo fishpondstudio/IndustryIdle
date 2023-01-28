@@ -36,6 +36,7 @@ import ResourceLoader from "../UI/ResourceLoader";
 import { AudioController } from "./AudioController";
 import { GAME_DATA_LS_KEY } from "./Constants";
 import { forEach, getDebugUrlParams, hasValue, murmurhash3, sizeOf, uuidv4, xmur3 } from "./Helper";
+import { Shortcut } from "./Hotkey";
 import { t } from "./i18n";
 import { isAndroid, isIOS, NativeSdk, Platform } from "./NativeSdk";
 import { serverNow } from "./ServerClock";
@@ -242,6 +243,7 @@ export class PersistedData {
     hideDiscordBanner = false;
     hideChat = isIOS();
     hideChatMentions = false;
+    hideHotkeySubmenuLabels = false;
     buildingColors: Partial<Record<keyof Buildings, string>> = {};
     dlc: Partial<Record<DownloadableContent, boolean>> = {};
     userId = uuidv4();
@@ -263,9 +265,10 @@ export class PersistedData {
     resourceMovement: ResourceMovement = "show";
     extraBuildingPermit = 0;
     autoClaimTradeOrder = false;
-    disableBuildWarningPowerBank = false;
-    disableBuildWarningResourceBooster = false;
     buildingFavs: Partial<Record<keyof Buildings, boolean>> = {};
+    disableBuildWarningPowerBank  = false;
+    disableBuildWarningResourceBooster  = false;
+    hotkeyOverrides: Record<string, Shortcut> = {};
     constructor() {
         this.userName = `${this.userId.substr(0, 6).toUpperCase()}`;
         this.panelPosition = isIOS() || isAndroid() ? "auto" : "right";
@@ -285,16 +288,14 @@ export const ResourceMovementOptions = {
     line: () => t("ResourceMovementLine"),
     hide: () => t("ResourceMovementHide"),
 } as const;
+export type ResourceMovement = keyof typeof ResourceMovementOptions;
 
 export const PortraitPanelHeightOptions = {
     "80": "80%",
     "60": "60%",
     "40": "40%",
 };
-
 export type PanelHeight = keyof typeof PortraitPanelHeightOptions;
-
-export type ResourceMovement = keyof typeof ResourceMovementOptions;
 
 export function getCurrentVersion() {
     return CHANGELOG[0].version;

@@ -7,6 +7,7 @@ export const CHANGELOG = [
             "QoL: New batch mode action: Downgrade - All/Cluster/Adjacent (by @GrayTheWanderer)",
             "Add Turkish translation (by @Readrift)",
             "Improve Steam Deck support (@FishPond)",
+            "Improve stability of Steam Cloud integration (@FishPond)",
         ],
     },
     {
