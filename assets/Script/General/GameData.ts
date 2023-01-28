@@ -265,6 +265,7 @@ export class PersistedData {
     resourceMovement: ResourceMovement = "show";
     extraBuildingPermit = 0;
     autoClaimTradeOrder = false;
+    buildingFavs: Partial<Record<keyof Buildings, boolean>> = {};
     disableBuildWarningPowerBank  = false;
     disableBuildWarningResourceBooster  = false;
     hotkeyOverrides: Record<string, Shortcut> = {};
