@@ -759,13 +759,26 @@ export function uiSwissUpgradeBoxContent(
     growthBase: number,
     step: number,
     startCost: number,
-    maxValue: number
+    maxValue: number,
+    isLocked: boolean
 ): m.Children {
     const getCost = () => swissUpgradeCost(key, growthBase, step, startCost);
     const cost = getCost();
-    let button = m(".row", [m("div", t("MaxUpgrade")), m(".f1")]);
-    if (D.persisted[key] < maxValue) {
-        button = m(".row", [m("div", action), m(".f1"), m("div", `${t("SwissMoney", { money: nf(cost) })}`)]);
+    let button: m.Children = m(".row", [m("div", t("MaxUpgrade")), m(".f1")]);
+    if(isLocked) {
+         button = m(".row", [
+                m("div.green", iconB("lock", 16, 5)),
+                m("div", action),
+                m(".f1"),
+                m("div", `${t("SwissMoney", { money: nf(cost) })}`),
+        ]);
+    } else if (D.persisted[key] < maxValue) {
+         button = m(".row", [
+                m("div.red", {title: t("SafetyUnlockedTip")}, iconB("lock_open", 16, 5)),
+                m("div", action),
+                m(".f1"),
+                m("div", `${t("SwissMoney", { money: nf(cost) })}`),
+        ]);
     } else {
         // @ts-expect-error
         D.persisted[key] = maxValue;
@@ -776,6 +789,11 @@ export function uiSwissUpgradeBoxContent(
         value,
         button,
         () => {
+            if(isLocked) {
+                G.audio.playClick();
+                showToast(t("SafetyLockToast"));
+                return;
+            }                
             if (D.persisted[key] >= maxValue) {
                 G.audio.playError();
                 showToast(t("MaxUpgradeDesc"));
@@ -805,13 +823,26 @@ export function uiSwissBoostBoxContent(
     growthBase: number,
     step: number,
     startCost: number,
-    maxValue: number
+    maxValue: number,
+    isLocked: boolean
 ): m.Children {
     const getCost = () => swissBoostCost(key, growthBase, step, startCost);
     const cost = getCost();
-    let button = m(".row", [m("div", t("MaxUpgrade")), m(".f1")]);
-    if (D.swissBoosts[key] < maxValue) {
-        button = m(".row", [m("div", action), m(".f1"), m("div", `${t("SwissMoney", { money: nf(cost) })}`)]);
+    let button: m.Children = m(".row", [m("div", t("MaxUpgrade")), m(".f1")]);
+    if(isLocked) {
+         button = m(".row", [
+            m("div.green", iconB("lock", 16, 5)),
+            m("div", action),
+            m(".f1"),
+            m("div", `${t("SwissMoney", { money: nf(cost) })}`),
+        ]);
+    } else if (D.swissBoosts[key] < maxValue) {
+        button = m(".row", [
+            m("div.red", {title: t("SafetyUnlockedTip")}, iconB("lock_open", 16, 5)),
+            m("div", action),
+            m(".f1"),
+            m("div", `${t("SwissMoney", { money: nf(cost) })}`),
+        ]);
     } else {
         D.swissBoosts[key] = maxValue;
     }
@@ -821,6 +852,11 @@ export function uiSwissBoostBoxContent(
         value,
         button,
         () => {
+            if(isLocked) {
+                G.audio.playClick();
+                showToast(t("SafetyLockToast"));
+                return;
+            }
             if (D.swissBoosts[key] >= maxValue) {
                 G.audio.playError();
                 showToast(t("MaxUpgradeDesc"));
@@ -832,7 +868,7 @@ export function uiSwissBoostBoxContent(
                 showToast(t("NotEnoughSwissMoney"));
                 return;
             }
-
+            
             D.persisted.prestigeCurrency -= cost;
             D.swissBoosts[key] += step;
             G.audio.playClick();
@@ -845,33 +881,49 @@ export function uiSwissBoostToggleBox(
     title: m.Children,
     desc: m.Children,
     cost: number,
-    key: BooleanKeyOf<SwissBoosts>
+    key: BooleanKeyOf<SwissBoosts>,
+    isLocked: boolean
 ): m.Children {
-    return m(
-        ".box",
-        m(".two-col", [
-            m("div", [m("div", title), m(".text-desc.text-s", desc)]),
-            D.swissBoosts[key]
-                ? iconB("check_circle", 24, 0, {}, { class: "green" })
-                : m(
-                      ".pointer.nobreak.ml10",
-                      {
-                          onclick: () => {
-                              if (D.persisted.prestigeCurrency < cost) {
-                                  G.audio.playError();
-                                  showToast(t("NotEnoughSwissMoney"));
-                                  return;
-                              }
-                              G.audio.playClick();
-                              D.persisted.prestigeCurrency -= cost;
-                              D.swissBoosts[key] = true;
-                          },
-                          class: D.persisted.prestigeCurrency < cost ? "disabled" : "blue",
-                      },
-                      `${t("SwissMoney", { money: nf(cost) })}`
-                  ),
-        ])
-    );
+    if(D.swissBoosts[key]) {
+        return m(".box",
+            m(".two-col", [
+                m("div", [m("div", title), m(".text-desc.text-s", desc)]),
+                iconB("check_circle", 24, 0, {}, { class: "green" })  
+            ])
+        );
+    } else {
+        return m(
+            ".box",
+            m(".two-col", [
+                m("div", [
+                    m(".two-col", [
+                        isLocked 
+                            ? m("div", iconB("lock", 16, 0, {}, { class: "green" }))
+                            : m("div", iconB("lock_open", 16, 0, {}, { class: "red" })),
+                            m("div", {style: "text-align: left;"}, title)
+                    ]),
+                    m(".text-desc.text-s", desc),
+                ]),
+                m(
+                    ".pointer.nobreak.ml10",
+                    {
+                        onclick: () => {
+                            if (D.persisted.prestigeCurrency < cost) {
+                                G.audio.playError();
+                                showToast(t("NotEnoughSwissMoney"));
+                                return;
+                            }
+                            G.audio.playClick();
+                            D.persisted.prestigeCurrency -= cost;
+                            D.swissBoosts[key] = true;
+                        },
+                        class: D.persisted.prestigeCurrency < cost ? "disabled" : "blue",
+                    },
+                    `${t("SwissMoney", { money: nf(cost) })}`
+                ),
+            ])
+        );
+    }
 }
 
 export const InputOverrideFallbackOptions: Record<InputOverrideFallback, () => string> = {
