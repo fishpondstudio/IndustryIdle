@@ -43,6 +43,7 @@ interface IMessage {
     id?: string;
     time?: number;
     auth?: boolean;
+    isMod?: boolean;
     [k: string]: any;
 }
 
@@ -91,6 +92,7 @@ export class Socket {
     public bestBids: Partial<Record<keyof Resources, number>> = {};
     public bestAsks: Partial<Record<keyof Resources, number>> = {};
     public resourceTrades: Partial<Record<keyof Resources, number>> = {};
+    public isMod = false;
 
     public readonly onChatUpdate = new TypedEvent<void>();
     public readonly onSignalMessage = new TypedEvent<IMessage>();
@@ -224,6 +226,11 @@ export class Socket {
         }
         if (hasValue(message.auth)) {
             authenticated = message.auth;
+        }
+        if (message.isMod) {
+            G.socket.isMod = true;
+        } else {
+            G.socket.isMod = false;
         }
         this._lastMessageAt = serverNow();
         switch (message.type) {

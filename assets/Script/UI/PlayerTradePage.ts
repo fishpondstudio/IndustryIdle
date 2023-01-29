@@ -17,7 +17,7 @@ import {
 } from "../CoreGame/Logic/PlayerTrade";
 import { getPrice } from "../CoreGame/Logic/Price";
 import { Resources } from "../CoreGame/ResourceDefinitions";
-import { D, G, hasAnyDlc, T } from "../General/GameData";
+import { D, G, hasAnyDlc, removeTrade, T } from "../General/GameData";
 import {
     forEach,
     formatPercent,
@@ -883,6 +883,47 @@ export function PlayerTradePage(): m.Comp<{
                                 : m("span.green", t("PlayerTradeAsk")),
                             " · ",
                             m("span", { title: playerName }, truncate(playerName, 12, 6)),
+                            ifTrue(G.socket.isMod && trade.status === "open", () => {
+                                return [
+                                    " · ",
+                                    m(
+                                        "span.red.pointer.text-s",
+                                        {
+                                            onclick: () => {
+                                                showAlert(
+                                                    `Remove ${trade.from}'s Trade as Mod?`,
+                                                    "This cannot be undone. Please only remove a trade that is very suspicious",
+                                                    [
+                                                        {
+                                                            name: "Do Not Remove",
+                                                            action: hideAlert,
+                                                            class: "outline",
+                                                        },
+                                                        {
+                                                            name: "Remove Trade",
+                                                            async action() {
+                                                                const r = await removeTrade(trade.id);
+                                                                if (r.status === 200) {
+                                                                    showToast(
+                                                                        `Successfully removed ${trade.from}'s trade`
+                                                                    );
+                                                                } else {
+                                                                    showToast(
+                                                                        `Failed to remove ${trade.from}'s trade: ${r.status} ${r.statusText}`
+                                                                    );
+                                                                }
+                                                                hideAlert();
+                                                            },
+                                                            class: "outline",
+                                                        },
+                                                    ]
+                                                );
+                                            },
+                                        },
+                                        "Remove"
+                                    ),
+                                ];
+                            }),
                         ]),
                     ]
                 ),

@@ -542,6 +542,13 @@ export function clearTrades(userId: string): Promise<Response> {
     });
 }
 
+export function removeTrade(tradeId: string): Promise<Response> {
+    return fetch(`${API_HOST}/trade/remove?id=${tradeId}`, {
+        method: "post",
+        headers: { "X-User-Id": D.persisted.userId },
+    });
+}
+
 const serverOverride = getDebugUrlParams().server;
 export const API_HOST = serverOverride ? `http://${serverOverride}` : "https://api.fishpondstudio.com";
 
