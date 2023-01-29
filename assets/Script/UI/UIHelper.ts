@@ -192,19 +192,19 @@ export function uiBoxRangeSlider(
     min: number,
     max: number,
     step: number,
-    onInput: () => void,
+    onInput: (e: InputEvent) => void,
     hotkey: string = null
 ) {
-    return m("box", [ 
+    return m("box", [
         [m("div", [hotkey ? shortcut(hotkey, "", " ") : null, title]), m(".text-s.text-desc", desc)],
         m("input", {
             type: "range",
-            id: id;
-            defaultValue: defaultVal;
-            min: min;
-            max: max;
-            step: step;
-            oninput: onInput;
+            id: id,
+            defaultValue: defaultVal,
+            min: min,
+            max: max,
+            step: step,
+            oninput: onInput,
         }),
     ]);
 }
