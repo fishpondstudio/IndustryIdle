@@ -1,6 +1,5 @@
 /* eslint-disable */
 import { D } from "./GameData";
-import { Shortcut } from "./Hotkey";
 import { serverNow } from "./ServerClock";
 
 // prettier-ignore
@@ -34,24 +33,6 @@ const NUMBER_SUFFIX_3 = ["", "thousand", "million", "billion", "trillion", "quad
     "octogintillion", "unoctogintillion", "duooctogintillion", "treoctogintillion", "quattuoroctogintillion", "quinoctogintillion", "sexoctogintillion",
     "septoctogintillion", "octooctogintillion", "novemoctogintillion", "nonagintillion", "unnonagintillion", "duononagintillion", "trenonagintillion",
     "quattuornonagintillion", "quinnonagintillion", "sexnonagintillion", "septnonagintillion", "octononagintillion", "novemnonagintillion", "centillion"];
-
-export const HOTKEY_DEFS: Record<string, Shortcut> = {
-    "ui-research": { key: "a", ctrlKey: false, shiftKey: false, altKey: false },
-    "ui-policy-center": { key: "x", ctrlKey: false, shiftKey: false, altKey: false },
-    "ui-trade-center": { key: "d", ctrlKey: false, shiftKey: false, altKey: false },
-    "ui-player-trade": { key: "d", ctrlKey: false, shiftKey: true, altKey: false },
-    "ui-central-bank": { key: "e", ctrlKey: false, shiftKey: false, altKey: false },
-    "ui-swiss-shop": { key: "q", ctrlKey: false, shiftKey: false, altKey: false },
-    "ui-wholesale-center": { key: "w", ctrlKey: false, shiftKey: false, altKey: false },
-    "ui-hq": { key: "s", ctrlKey: false, shiftKey: false, altKey: false },
-    "ui-stats": { key: "z", ctrlKey: false, shiftKey: false, altKey: false },
-    "ui-logistics-department": { key: "c", ctrlKey: false, shiftKey: false, altKey: false },
-    "camera-moveToHQ": { key: "home", ctrlKey: false, shiftKey: false, altKey: false },
-    "camera-moveUpEdge": { key: "arrowup", ctrlKey: false, shiftKey: false, altKey: false },
-    "camera-moveDownEdge": { key: "arrowdown", ctrlKey: false, shiftKey: false, altKey: false },
-    "camera-moveLeftEdge": { key: "arrowleft", ctrlKey: false, shiftKey: false, altKey: false },
-    "camera-moveRightEdge": { key: "arrowright", ctrlKey: false, shiftKey: false, altKey: false }
-};
 
 export const SECOND = 1000;
 export const MINUTE = SECOND * 60;
@@ -786,11 +767,6 @@ export function permute<T>(input: T[]): T[][] {
 
 export function isEmbeddedIFrame() {
     return window !== window.top;
-}
-
-export function getHotkeyDef(keyofHotkeys: string) : Shortcut {
-    return hasValue(D.persisted.hotkeyOverrides[keyofHotkeys]) ? 
-    D.persisted.hotkeyOverrides[keyofHotkeys] : HOTKEY_DEFS[keyofHotkeys]
 }
 
 export const CountryCode = {

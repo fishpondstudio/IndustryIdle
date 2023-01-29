@@ -2,7 +2,7 @@ import { checkVerification, forceRestoreTradeToken, G } from "../General/GameDat
 import { t } from "../General/i18n";
 import { NativeSdk } from "../General/NativeSdk";
 import { VerificationResult } from "./ImportExport";
-import { iconB, uiHotkey } from "./UIHelper";
+import { iconB } from "./UIHelper";
 
 export function UserVerification(): m.Comp {
     let result: VerificationResult = null;
@@ -107,7 +107,6 @@ export function UserVerification(): m.Comp {
                 m(
                     ".two-col.pointer",
                     {
-                        "data-shortcut": "1-false-false-false",
                         onclick: async () => {
                             G.audio.playClick();
                             const resp = await checkVerification();
@@ -125,18 +124,7 @@ export function UserVerification(): m.Comp {
                             m.redraw();
                         },
                     },
-                    [
-                        m("div", [
-                            uiHotkey(
-                                {key: "1", ctrlKey: false, shiftKey: false, altKey: false}, 
-                                "", 
-                                " ",
-                                D.persisted.hideHotkeySubmenuLabels
-                            ), 
-                            t("AccountVerification")
-                        ]), 
-                        m(".mv-10.ml20.blue", iconB("arrow_forward"))
-                    ]
+                    [m("div", t("AccountVerification")), m(".mv-10.ml20.blue", iconB("arrow_forward"))]
                 ),
                 content,
             ];

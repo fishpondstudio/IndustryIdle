@@ -1,15 +1,7 @@
 import { D, G } from "../General/GameData";
-import { formatPercent, ifTrue, nf } from "../General/Helper";
+import { formatPercent, nf } from "../General/Helper";
 import { t } from "../General/i18n";
-import { 
-    leftOrRight, 
-    uiBoxToggleContent, 
-    uiHeaderActionBack, 
-    uiSwissMoneyBlock, 
-    uiSwissUpgradeBoxContent 
-} from "./UIHelper";
-
-let isSafetyLocked: boolean = true;
+import { leftOrRight, uiHeaderActionBack, uiSwissMoneyBlock, uiSwissUpgradeBoxContent } from "./UIHelper";
 
 export function SwissUpgradePage(): m.Comp {
     return {
@@ -17,21 +9,7 @@ export function SwissUpgradePage(): m.Comp {
             return m(".modal", { class: leftOrRight() }, [
                 uiHeaderActionBack(t("SwissUpgrade"), () => G.world.routeTo(G.swissShop.grid)),
                 m("div.scrollable", [
-                    m(".box", [
-                        uiSwissMoneyBlock(), 
-                        m(".hr.dashed"),
-                        uiBoxToggleContent(
-                            m(".uppercase.text-s.text-desc.cursor-help", {title: t("SafteyLockTip")}, t("SafteyLock")),
-                            isSafetyLocked,
-                            () => {
-                                isSafetyLocked = !isSafetyLocked;
-                            },
-                            { style: { margin: "-10px 0" } },
-                            24
-                        ),
-                        m(".hr"), 
-                        m(".banner.blue.text-m", t("SwissUpgradeDesc")),   
-                    ]),
+                    m(".box", [uiSwissMoneyBlock(), m(".hr"), m(".banner.blue.text-m", t("SwissUpgradeDesc"))]),
                     uiSwissUpgradeBoxContent(
                         t("MaxBuilders"),
                         t("MaxBuildersDesc"),
@@ -41,8 +19,7 @@ export function SwissUpgradePage(): m.Comp {
                         1.75,
                         1,
                         25,
-                        10,
-                        isSafetyLocked 
+                        10
                     ),
                     uiSwissUpgradeBoxContent(
                         t("BuilderMoveSpeed"),
@@ -53,8 +30,7 @@ export function SwissUpgradePage(): m.Comp {
                         2,
                         10,
                         25,
-                        100,
-                        isSafetyLocked
+                        100
                     ),
                     uiSwissUpgradeBoxContent(
                         t("OfflineEarningTime"),
@@ -67,8 +43,7 @@ export function SwissUpgradePage(): m.Comp {
                         1.5,
                         30,
                         50,
-                        24 * 60,
-                        isSafetyLocked
+                        24 * 60
                     ),
                     uiSwissUpgradeBoxContent(
                         t("ProductionMultiplier"),
@@ -79,8 +54,7 @@ export function SwissUpgradePage(): m.Comp {
                         1.75,
                         1,
                         100,
-                        100,
-                        isSafetyLocked
+                        100
                     ),
                     uiSwissUpgradeBoxContent(
                         t("AutoSellCapacityMultiplierV2"),
@@ -91,8 +65,7 @@ export function SwissUpgradePage(): m.Comp {
                         1.75,
                         1,
                         100,
-                        25,
-                        isSafetyLocked
+                        25
                     ),
                     uiSwissUpgradeBoxContent(
                         t("BuildingUpgradeCostDivider"),
@@ -103,8 +76,7 @@ export function SwissUpgradePage(): m.Comp {
                         1.75,
                         1,
                         100,
-                        100,
-                        isSafetyLocked
+                        100
                     ),
                     uiSwissUpgradeBoxContent(
                         t("BuildingPermitCostDivider"),
@@ -115,8 +87,7 @@ export function SwissUpgradePage(): m.Comp {
                         1.75,
                         1,
                         50,
-                        100,
-                        isSafetyLocked
+                        100
                     ),
                     uiSwissUpgradeBoxContent(
                         t("ExtraBuildingPermit"),
@@ -127,8 +98,7 @@ export function SwissUpgradePage(): m.Comp {
                         1.75,
                         1,
                         50,
-                        100,
-                        isSafetyLocked
+                        100
                     ),
                     uiSwissUpgradeBoxContent(
                         t("ExtraTradeQuota"),
@@ -139,8 +109,7 @@ export function SwissUpgradePage(): m.Comp {
                         1.75,
                         1,
                         100,
-                        10,
-                        isSafetyLocked
+                        10
                     ),
                     uiSwissUpgradeBoxContent(
                         t("FuelCostDiscount"),
@@ -151,8 +120,7 @@ export function SwissUpgradePage(): m.Comp {
                         1.75,
                         5,
                         50,
-                        50,
-                        isSafetyLocked
+                        50
                     ),
                     uiSwissUpgradeBoxContent(
                         t("ExtraAdjacentBonus"),
@@ -163,8 +131,7 @@ export function SwissUpgradePage(): m.Comp {
                         1.75,
                         5,
                         50,
-                        50,
-                        isSafetyLocked
+                        50
                     ),
                     uiSwissUpgradeBoxContent(
                         t("SellRefundPercentage"),
@@ -175,8 +142,7 @@ export function SwissUpgradePage(): m.Comp {
                         1.75,
                         5,
                         50,
-                        90,
-                        isSafetyLocked
+                        90
                     ),
                     uiSwissUpgradeBoxContent(
                         t("IndustryZoneMultiplierSwissBoost"),
@@ -187,8 +153,7 @@ export function SwissUpgradePage(): m.Comp {
                         1.5,
                         0.5,
                         50,
-                        100,
-                        isSafetyLocked
+                        100
                     ),
                     uiSwissUpgradeBoxContent(
                         t("SwissBoostCostDivider"),
@@ -199,8 +164,7 @@ export function SwissUpgradePage(): m.Comp {
                         2,
                         1,
                         500,
-                        10,
-                        isSafetyLocked
+                        10
                     ),
                 ]),
             ]);

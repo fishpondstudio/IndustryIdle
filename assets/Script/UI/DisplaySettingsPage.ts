@@ -13,14 +13,14 @@ import {
 import { ifTrue, keysOf, mapOf } from "../General/Helper";
 import { t } from "../General/i18n";
 import { isSteam, NativeSdk, steamworks } from "../General/NativeSdk";
-import { 
-    leftOrRight, 
-    iconB, 
-    isMobile, 
-    reloadGame, 
-    uiBoxToggle, 
-    uiHeaderActionBack, 
-    uiBoxToggleContent 
+import {
+    iconB,
+    leftOrRight,
+    reloadGame,
+    saveAndQuit,
+    uiBoxToggle,
+    uiBoxToggleContent,
+    uiHeaderActionBack,
 } from "./UIHelper";
 import { routeTo, showLoader, showStandby, showToast } from "./UISystem";
 
@@ -307,18 +307,6 @@ export function DisplaySettingsPage(): m.Component {
                                 D.persisted.hideChatMentions = !D.persisted.hideChatMentions;
                             }
                         ),
-                        ifTrue(!isMobile(), () => [
-                            m(".hr"),
-                            uiBoxToggle(
-                                t("GameSettingHideSubmenuHotkey"), 
-                                t("GameSettingHideSubmenuHotkeyDesc"), 
-                                D.persisted.hideHotkeySubmenuLabels, 
-                                () => {
-                                    G.audio.playClick();
-                                    D.persisted.hideHotkeySubmenuLabels = !D.persisted.hideHotkeySubmenuLabels;
-                                }
-                            ),
-                        ]),
                     ]),
                     m(".box.colortheme", [
                         m(".title", t("ColorTheme")),

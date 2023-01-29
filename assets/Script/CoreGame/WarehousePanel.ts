@@ -1,7 +1,8 @@
 import { D, DLC, G, hasDLC } from "../General/GameData";
 import { formatPercent, ifTrue, keysOf, nf, uuidv4 } from "../General/Helper";
 import { t } from "../General/i18n";
-import { iconB, uiHotkey } from "../UI/UIHelper";
+import { shortcut } from "../UI/Shortcut";
+import { iconB } from "../UI/UIHelper";
 import { showToast } from "../UI/UISystem";
 import { gridToString, stringToGrid } from "./GridHelper";
 import { Entity, WarehouseEntity } from "./Logic/Entity";
@@ -132,7 +133,7 @@ export function WarehouseSource(): m.Component<{
                 m(
                     ".action",
                     {
-                        "data-shortcut": shortcutKey+"-false-false-false",
+                        "data-shortcut": shortcutKey,
                         onclick: async () => {
                             if (selecting) {
                                 G.audio.playError();
@@ -177,22 +178,8 @@ export function WarehouseSource(): m.Component<{
                         selecting
                             ? [iconB("highlight_alt", 18, 5), m("div", t("WarehouseTapToSelect"))]
                             : [
-                                iconB("add_circle", 18, 5),
-                                m("div", 
-                                    [
-                                        uiHotkey(
-                                            {
-                                                key: shortcutKey.toString(), 
-                                                ctrlKey: false, 
-                                                shiftKey: false, 
-                                                altKey: false
-                                            },
-                                            "",
-                                            " "
-                                        ), 
-                                        t("WarehouseAddInput")
-                                    ]
-                                ),
+                                  iconB("add_circle", 18, 5),
+                                  m("div", [shortcut(shortcutKey, "", " "), t("WarehouseAddInput")]),
                               ]
                     )
                 ),

@@ -29,7 +29,8 @@ import { D, dlcLabel, G, hasDLC, T } from "../General/GameData";
 import { forEach, formatPercent, hasValue, ifTrue, keysOf, nf, safeGet } from "../General/Helper";
 import { t } from "../General/i18n";
 import { NativeSdk } from "../General/NativeSdk";
-import { iconB, leftOrRight, uiBoxToggleContent, uiBuildingInputOutput, uiHeaderRoute, uiHotkey } from "./UIHelper";
+import { shortcut } from "./Shortcut";
+import { iconB, leftOrRight, uiBoxToggleContent, uiBuildingInputOutput, uiHeaderRoute } from "./UIHelper";
 import { routeTo, showToast } from "./UISystem";
 
 let lastBuilt: keyof Buildings;
@@ -117,10 +118,10 @@ export function BuildPage(): m.Comp<{ xy: string }> {
                         ".two-col.blue.pointer",
                         {
                             onclick: highlightAll,
-                            "data-shortcut": "0-false-false-false"
+                            "data-shortcut": "a",
                         },
                         [
-                            m("div", [uiHotkey({key: "0", ctrlKey: false, shiftKey: false, altKey: false} "", " "), t("HighlightAll", { type: RES[res].name() })]),
+                            m("div", [shortcut("A", "", " "), t("HighlightAll", { type: RES[res].name() })]),
                             m(".ml20", "🔍"),
                         ]
                     ),
@@ -166,11 +167,10 @@ export function BuildPage(): m.Comp<{ xy: string }> {
                         ),
                         m(".hr"),
                         uiBoxToggleContent(
-                            m(
-                                ".text-s.uppercase",
-                                { title: t("OnlyShowPositiveModifiersHint") },
-                                t("OnlyShowPositiveModifiers")
-                            ),
+                            m("div.two-col", [
+                                m("div.blue.text-m.cursor-help", { style: "margin-right: 4px;", title: t("OnlyShowPositiveModifiersHint") }, "💡"),
+                                m(".text-s.uppercase", t("OnlyShowPositiveModifiers"))
+                            ]),
                             onlyShowPositiveTiles,
                             () => {
                                 onlyShowPositiveTiles = !onlyShowPositiveTiles;
@@ -203,12 +203,6 @@ export function BuildPage(): m.Comp<{ xy: string }> {
                                 if (lastBuilt === b) {
                                     return 1;
                                 }
-                                if (D.persisted.buildingFavs[a] === true && !D.persisted.buildingFavs[b]) {
-                                    return -1;
-                                }
-                                if (D.persisted.buildingFavs[b] === true && !D.persisted.buildingFavs[a]) {
-                                    return 1;
-                                }                                
                                 if (adjacentBuildings[a] && !adjacentBuildings[b]) {
                                     return -1;
                                 }
@@ -238,7 +232,7 @@ export function BuildPage(): m.Comp<{ xy: string }> {
                                 const totalCost = buildingCost + buildingPermitCost;
                                 const mine = isMine(c) || c === "GeothermalPowerPlant";
                                 const powerBank = c === "PowerBank" && isPowerBankWorking(grid);
-                                const highlight = mine || powerBank || c === lastBuilt || adjacentBuildings[c] || D.persisted.buildingFavs[c];
+                                const highlight = mine || powerBank || c === lastBuilt || adjacentBuildings[c];
                                 const tileModifier = getTileModifier(xy, c);
                                 const shortcutKey = mine ? 1 : lastBuilt === c ? 2 : null;
                                 const build = () => {
@@ -310,7 +304,7 @@ export function BuildPage(): m.Comp<{ xy: string }> {
                                             ".f1.pointer",
                                             {
                                                 onclick: build,
-                                                "data-shortcut": shortcutKey ? shortcutKey.toString()+"-false-false-false" : "",
+                                                "data-shortcut": shortcutKey,
                                             },
                                             [
                                                 m(
@@ -319,7 +313,7 @@ export function BuildPage(): m.Comp<{ xy: string }> {
                                                         class: highlight ? "orange" : "",
                                                     },
                                                     [
-                                                        shortcutKey ? uiHotkey({key: shortcutKey.toString(), ctrlKey: false, shiftKey: false, altKey: false}, "", " ") : "",
+                                                        shortcutKey ? shortcut(shortcutKey, "", " ") : "",
                                                         BLD[c].name(),
                                                         m(
                                                             "span.text-m.ml5",
@@ -387,23 +381,6 @@ export function BuildPage(): m.Comp<{ xy: string }> {
                                                 ]
                                             )
                                         ),
-                                        m(".building-name-sep"),
-                                        m(
-                                            ".pointer",
-                                            {
-                                                onclick: () => {
-                                                    if (!D.persisted.buildingFavs[c]) {
-                                                        D.persisted.buildingFavs[c] = true;
-                                                    }
-                                                    else {
-                                                        delete D.persisted.buildingFavs[c];
-                                                    }
-                                                },
-                                            },
-                                            D.persisted.buildingFavs[c] === true
-                                                ? iconB("check_box", 18, 0, {}, { class: "blue" })
-                                                : iconB("check_box_outline_blank", 18, 0, {}, { class: "text-desc" })
-                                        ),                                         
                                     ]),
                                 ]);
                             }),

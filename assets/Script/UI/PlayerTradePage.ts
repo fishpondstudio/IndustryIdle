@@ -35,7 +35,7 @@ import { t } from "../General/i18n";
 import { serverNow } from "../General/ServerClock";
 import { CrazyGameAdBanner } from "./CrazyGameAdBanner";
 import { Desktop } from "./HudPage";
-import { getContainerClass, iconB, isMobile, uiHeaderAction, uiHeaderActionBack, uiHotkey } from "./UIHelper";
+import { getContainerClass, iconB, isMobile, uiHeaderAction, uiHeaderActionBack } from "./UIHelper";
 import { hideAlert, routeTo, showAlert, showToast } from "./UISystem";
 
 type ResourceFilter = keyof Resources;
@@ -628,15 +628,10 @@ export function PlayerTradePage(): m.Comp<{
                                 }),
                         ])
                     ),
-                    m(".box.pointer.text-m.uppercase.blue",
-                        { 
-                            "data-shortcut": "0-false-false-false",
-                            onclick: () => routeTo("/player-trade-history") 
-                        },
-                        m("div", [
-                            uiHotkey({key: "0", ctrlKey: false, shiftKey: false, altKey: false}, "", " "),
-                            t("PlayerTradesShowHistory")
-                        ])
+                    m(
+                        ".box.pointer.text-m.uppercase.blue",
+                        { onclick: () => routeTo("/player-trade-history") },
+                        t("PlayerTradesShowHistory")
                     ),
                 ]),
             ]);

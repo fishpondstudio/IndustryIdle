@@ -84,7 +84,7 @@ export function CityPage(): m.Comp<{ city: string }> {
                             }),
                             m(".name", city.name()),
                             m(".close.mi", {
-                                "data-shortcut": "escape-false-false-false",
+                                "data-shortcut": "escape",
                                 onclick: () => routeTo("/main"),
                             }),
                         ]),
@@ -100,7 +100,7 @@ export function CityPage(): m.Comp<{ city: string }> {
                         }),
                         m(".name", city.name()),
                         m(".close.mi", {
-                            "data-shortcut": "escape-false-false-false",
+                            "data-shortcut": "escape",
                             onclick: () => routeTo("/main"),
                         }),
                     ]),
