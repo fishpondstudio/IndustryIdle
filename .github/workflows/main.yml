@@ -13,9 +13,14 @@ jobs:
     - name: "Setup Node"
       uses: actions/setup-node@v3.6.0
       
+    - run: npm install
+      
     - name: "Create Config.ts"
       run: mkdir -p ./assets/Script/Config
     - run: mv ./assets/Script/General/Config.ts.sample ./assets/Script/Config/Config.ts
     
     - name: "Run Compiler"
       run: npx tsc
+    
+    - name: "ESLint"
+      run: npx eslint
