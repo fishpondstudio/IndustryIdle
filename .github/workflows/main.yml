@@ -1,0 +1,17 @@
+on:
+  push:
+  pull_request:
+  
+jobs:
+  tsc:
+    name: "Typescipt Compile"
+    runs-on: ubuntu-latest
+    steps:
+    - name: "Checkout"
+    - uses: actions/checkout@v1
+    
+    - name: "Setup Node"
+    - uses: actions/setup-node@v3.6.0
+    
+    - name: "Run Compiler"
+    - run: npx tsc
