@@ -14,7 +14,8 @@ jobs:
       uses: actions/setup-node@v3.6.0
       
     - name: "Create Config.ts"
-      run: mv ./assets/Script/Config/Config.ts.sample ./assets/Script/Config/Config.ts
+      run: mkdir -p ./assets/Script/Config
+    - run: mv ./assets/Script/General/Config.ts.sample ./assets/Script/Config/Config.ts
     
     - name: "Run Compiler"
       run: npx tsc
