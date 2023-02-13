@@ -1,6 +1,6 @@
 import { buildingHasColor, getBuildingColor, resetBuildingColor, setBuildingColor } from "../CoreGame/ColorThemes";
 import { stringToGrid } from "../CoreGame/GridHelper";
-import { batchApply, batchModeLabel, doBatchDowngrade, doBatchUpgrade, getBatchDowngradeEstimate, getBatchUpgradeEstimate } from "../CoreGame/Logic/BatchMode";
+import { batchApply, batchModeLabel, doBatchDowngrade, doBatchSell, doBatchSellEstimate, doBatchUpgrade, getBatchDowngradeEstimate, getBatchUpgradeEstimate } from "../CoreGame/Logic/BatchMode";
 import { getInput, getOutput, InputBufferTypes, InputCapacityOverrideTypes } from "../CoreGame/Logic/Entity";
 import {
     BLD,
@@ -598,6 +598,54 @@ export function InspectPage(): m.Comp<{ xy: string }> {
                                 m("div", t("BatchUpgradeToLevelX", { level: entity.level })),
                             ]
                         ),
+                        m(".hr"),
+                        m(
+                            ".pointer.blue.one-col",
+                            {
+                                onclick: () => {
+                                    if (T.currentWaveStatus === "inProgress") {
+                                        G.audio.playError();
+                                        showToast(t("WaveInProgressBuildRemoveDisabled"));
+                                        return;
+                                    }
+                                  const { count, gain } = doBatchSellEstimate(entity);
+                                  showAlert(
+                                    `${t("SellBuilding")} ${batchModeLabel()}`,
+                                    t("BatchOperationGainDesc", { number: count, gain: nf(gain) }),
+                                    [
+                                      { name: t("Cancel"), class: "outline" },
+                                      {
+                                        name: t("SellBuilding"),
+                                        class: "outline",
+                                        action: () => {
+                                          const { success, fail, gain } = doBatchSell(entity);
+                                          G.audio.playClick();
+                                          showToast(
+                                            t("BatchOperationGainResult", {
+                                              success,
+                                              fail,
+                                              gain: nf(gain),
+                                            })
+                                          );
+                                          hideAlert();
+                                          routeTo("/main");
+                                        },
+                                      },
+                                    ]
+                                  );
+                                },
+                              },
+                            [
+                                m("div", `${t("SellBuilding")} ${batchModeLabel()}`),
+                            ],
+                        ),
+                        m(".hr"),
+                            m(
+                                ".text-s.condensed.text-desc",
+                                t("SellBuildingDescV2", {
+                                    percent: formatPercent(getSellRefundPercentage()),
+                                })
+                            )
 //dev
                     ]),
                     m(".box", [
