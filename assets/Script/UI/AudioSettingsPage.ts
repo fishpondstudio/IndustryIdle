@@ -40,7 +40,6 @@ export function AudioSettingsPage(): m.Component {
                         uiBoxRangeSlider(
                             t("GameSettingMusicVolume"),
                             t("GameSettingMusicVolumeDesc"),
-                            "musicVolumeSilder",
                             D.persisted.musicVolume * 100,
                             1,
                             100,
@@ -55,7 +54,6 @@ export function AudioSettingsPage(): m.Component {
                         uiBoxRangeSlider(
                             t("GameSettingSFXVolume"),
                             t("GameSettingSFXVolumeDesc"),
-                            "sfxVolumeSilder",
                             D.persisted.sfxVolume * 100,
                             1,
                             100,
@@ -73,7 +71,6 @@ export function AudioSettingsPage(): m.Component {
                             uiBoxRangeSlider(
                                 t("GameSettingSFXBubble"),
                                 t("GameSettingSFXBubbleDesc"),
-                                "bubbleVolumeSilder",
                                 D.persisted.sfxBubbleVolume * 100,
                                 0,
                                 100,
@@ -87,7 +84,6 @@ export function AudioSettingsPage(): m.Component {
                             uiBoxRangeSlider(
                                 t("GameSettingSFXClick"),
                                 t("GameSettingSFXClickDesc"),
-                                "clickVolumeSilder",
                                 D.persisted.sfxClickVolume * 100,
                                 0,
                                 100,
@@ -101,7 +97,6 @@ export function AudioSettingsPage(): m.Component {
                             uiBoxRangeSlider(
                                 t("GameSettingSFXKaching"),
                                 t("GameSettingSFXKachingDesc"),
-                                "kachingVolumeSilder",
                                 D.persisted.sfxKachingVolume * 100,
                                 0,
                                 100,
@@ -115,7 +110,6 @@ export function AudioSettingsPage(): m.Component {
                             uiBoxRangeSlider(
                                 t("GameSettingSFXPowerup"),
                                 t("GameSettingSFXPowerupDesc"),
-                                "powerupVolumeSilder",
                                 D.persisted.sfxPowerupVolume * 100,
                                 0,
                                 100,
@@ -129,7 +123,6 @@ export function AudioSettingsPage(): m.Component {
                             uiBoxRangeSlider(
                                 t("GameSettingSFXCompleted"),
                                 t("GameSettingSFXCompletedDesc"),
-                                "clickVolumeSilder",
                                 D.persisted.sfxCompletedVolume * 100,
                                 0,
                                 100,
@@ -143,7 +136,6 @@ export function AudioSettingsPage(): m.Component {
                             uiBoxRangeSlider(
                                 t("GameSettingSFXFreeChest"),
                                 t("GameSettingSFXFreeChestDesc"),
-                                "freechestVolumeSilder",
                                 D.persisted.sfxFreeChestVolume * 100,
                                 0,
                                 100,
@@ -157,7 +149,6 @@ export function AudioSettingsPage(): m.Component {
                             uiBoxRangeSlider(
                                 t("GameSettingSFXGold"),
                                 t("GameSettingSFXGoldDesc"),
-                                "goldVolumeSilder",
                                 D.persisted.sfxGoldVolume * 100,
                                 0,
                                 100,
@@ -171,7 +162,6 @@ export function AudioSettingsPage(): m.Component {
                             uiBoxRangeSlider(
                                 t("GameSettingSFXError"),
                                 t("GameSettingSFXErrorDesc"),
-                                "errorVolumeSilder",
                                 D.persisted.sfxErrorVolume * 100,
                                 0,
                                 100,
@@ -185,7 +175,6 @@ export function AudioSettingsPage(): m.Component {
                             uiBoxRangeSlider(
                                 t("GameSettingSFXLevelup"),
                                 t("GameSettingSFXLevelupDesc"),
-                                "LevelupVolumeSilder",
                                 D.persisted.sfxLevelupVolume * 100,
                                 0,
                                 100,

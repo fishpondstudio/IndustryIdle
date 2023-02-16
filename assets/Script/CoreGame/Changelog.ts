@@ -7,6 +7,7 @@ export const CHANGELOG = [
             "QoL: New batch mode action: Downgrade - All/Cluster/Adjacent (by @GrayTheWanderer)",
             "Add Turkish translation (by @Readrift)",
             "Improve Steam Deck support (@FishPond)",
+            "QoL: Add support for camera edge pan (@FishPond) - Activate in Settings -> Input",
             "Add support for moderator to remove suspicious player trades. Resources will be refunded for removed trades (@FishPond)",
             "Improve stability of Steam Cloud integration (@FishPond)",
         ],
