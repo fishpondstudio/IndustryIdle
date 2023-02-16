@@ -1578,4 +1578,5 @@ export const EN = {
     PlayerTradeFillBy: "Fill By",
     PlayerTradeCancelled: "Cancelled",
     FormatTimeAgo: "%{time} ago",
+    BatchSellLevelX: "Level %{level} Only",
 };
