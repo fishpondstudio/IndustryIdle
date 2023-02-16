@@ -2,7 +2,7 @@ import { BatchModeOptions, D, G } from "../../General/GameData";
 import { firstKeyOf, forEach, sizeOf } from "../../General/Helper";
 import { gridToString, stringToGrid } from "../GridHelper";
 import { Entity } from "./Entity";
-import { forEachBuildingOfType, getCostForBuilding, getDowngradeCost, getUpgradeCost, getSellRefundPercentage, trySpendCash, refundCash } from "./Logic";
+import { forEachBuildingOfType, getCostForBuilding, getDowngradeCost, getUpgradeCost, getSellRefundPercentage, trySpendCash, refundCash, refundForSellingBuilding, buildingValue } from "./Logic";
 
 export function getAdjacentIncludeSelf(entity: Entity): Record<string, true> {
     const result: Record<string, true> = { [entity.grid]: true };
@@ -118,7 +118,6 @@ export function doBatchDowngrade(entity: Entity, toLevel: number) : { success: n
     });
     return { success, fail, gain };
 }
-
 export function doBatchSellEstimate(entity: Entity): { count: number; gain: number } {
     let count = 0;
     let gain = 0;
