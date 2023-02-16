@@ -600,35 +600,37 @@ export function InspectPage(): m.Comp<{ xy: string }> {
                         ),
                         m(".hr"),
                         m(
-                            ".pointer.blue.one-col",
+                            ".pointer.blue.two-col",
                             {
                                 onclick: () => {
                                     if (T.currentWaveStatus === "inProgress") {
                                         G.audio.playError();
                                         showToast(t("WaveInProgressBuildRemoveDisabled"));
                                         return;
-                                    }
-                                  const { count, gain } = doBatchSellEstimate(entity);
-                                  showAlert(
-                                    `${t("SellBuilding")} ${batchModeLabel()}`,
-                                    t("BatchOperationGainDesc", { number: count, gain: nf(gain) }),
-                                    [
-                                      { name: t("Cancel"), class: "outline" },
-                                      {
-                                        name: t("SellBuilding"),
-                                        class: "outline",
-                                        action: () => {
-                                          const { success, fail, gain } = doBatchSell(entity);
-                                          G.audio.playClick();
-                                          showToast(
-                                            t("BatchOperationGainResult", {
-                                              success,
-                                              fail,
-                                              gain: nf(gain),
-                                            })
-                                          );
-                                          hideAlert();
-                                          routeTo("/main");
+                                      }
+                                    
+                                      const { count, gain } = doBatchSellEstimate(entity);
+                                    
+                                      showAlert(
+                                        `${t("SellBuilding")} ${batchModeLabel()}`,
+                                        t("BatchOperationGainDesc", { number: count, gain: nf(gain) }),
+                                        [
+                                          { name: t("Cancel"), class: "outline" },
+                                          {
+                                            name: t("SellBuilding"),
+                                            class: "outline",
+                                            action: () => {
+                                                const { success, fail, gain } = doBatchSell(entity);
+                                                G.audio.playClick();
+                                              showToast(
+                                                t("BatchOperationGainResult", {
+                                                  success,
+                                                  fail,
+                                                  gain: nf(gain),
+                                                })
+                                              );
+                                              hideAlert();
+                                              routeTo("/main");
                                         },
                                       },
                                     ]
@@ -636,7 +638,8 @@ export function InspectPage(): m.Comp<{ xy: string }> {
                                 },
                               },
                             [
-                                m("div", `${t("SellBuilding")} ${batchModeLabel()}`),
+                                m("div", `${t("Sell")} ${batchModeLabel()}`),
+                                m("div", t("BatchSellLevelX", { level: entity.level })),
                             ],
                         ),
                         m(".hr"),
@@ -1152,12 +1155,15 @@ export function InspectPage(): m.Comp<{ xy: string }> {
                                     }
                                     routeTo("/main");
                                     const b = G.world.removeBuilding(grid);
+                                    console.log(b);
                                     if (b) {
                                         refundForSellingBuilding(b, sellRefund(), getSellRefundPercentage());
                                     }
+
                                 },
                             },
                             [m("div", [shortcut("0", "", " "), t("SellBuilding")]), m("div", `+$${nf(sellRefund())}`)]
+                            
                         ),
                         m(".hr"),
                         m(
