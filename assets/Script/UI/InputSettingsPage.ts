@@ -1,6 +1,7 @@
-import { D,G, ScrollSensitivity, ScrollSensitivityOptions } from "../General/GameData";
+import { D, G, ScrollSensitivity, ScrollSensitivityOptions } from "../General/GameData";
+import { ifTrue } from "../General/Helper";
 import { t } from "../General/i18n";
-import { leftOrRight, uiHeaderActionBack } from "./UIHelper";
+import { leftOrRight, uiBoxRangeSlider, uiBoxToggle, uiHeaderActionBack } from "./UIHelper";
 import { routeTo } from "./UISystem";
 
 export function InputSettingsPage(): m.Component {
@@ -27,7 +28,9 @@ export function InputSettingsPage(): m.Component {
                                     {
                                         onchange: async (e) => {
                                             G.audio.playClick();
-                                            D.persisted.scrollSensitivity = parseFloat(e.target.value) as ScrollSensitivity;
+                                            D.persisted.scrollSensitivity = parseFloat(
+                                                e.target.value
+                                            ) as ScrollSensitivity;
                                         },
                                     },
                                     ScrollSensitivityOptions.map((k) =>
@@ -42,6 +45,46 @@ export function InputSettingsPage(): m.Component {
                                         )
                                     )
                                 )
+                            ),
+                        ]),
+                        m(".hr"),
+                        uiBoxToggle(
+                            t("EnableEdgePan"),
+                            t("EnableEdgePanDesc"),
+                            D.persisted.edgePanEnabled,
+
+                            () => {
+                                G.audio.playClick();
+                                D.persisted.edgePanEnabled = !D.persisted.edgePanEnabled;
+                            }
+                        ),
+                        ifTrue(D.persisted.edgePanEnabled, () => [
+                            m(".hr"),
+                            uiBoxRangeSlider(
+                                t("EdgePanEdgeSize"),
+                                t("EdgePanEdgeSizeDesc"),
+                                D.persisted.edgePanSize,
+                                10,
+                                50,
+                                5,
+                                (e) => {
+                                    D.persisted.edgePanSize = parseInt((e.currentTarget as HTMLInputElement).value, 10);
+                                }
+                            ),
+                            m(".hr"),
+                            uiBoxRangeSlider(
+                                t("EdgePanEdgeSensitivity"),
+                                t("EdgePanEdgeSensitivityDesc"),
+                                D.persisted.edgePanSensitivity,
+                                1,
+                                10,
+                                1,
+                                (e) => {
+                                    D.persisted.edgePanSensitivity = parseInt(
+                                        (e.currentTarget as HTMLInputElement).value,
+                                        10
+                                    );
+                                }
                             ),
                         ]),
                     ]),

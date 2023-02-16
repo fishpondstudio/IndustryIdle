@@ -61,12 +61,39 @@ export default class PlayerInput extends MapInput {
         this.node.on(cc.Node.EventType.TOUCH_CANCEL, this.onTouchEnd, this);
         this.node.on(cc.Node.EventType.MOUSE_DOWN, this.onMouseDown, this);
         this.node.on(cc.Node.EventType.MOUSE_WHEEL, this.onMouseWheel, this);
-        // this.node.on(cc.Node.EventType.MOUSE_MOVE, this.onMouseMove, this);
+        this.node.on(cc.Node.EventType.MOUSE_MOVE, this.onMouseMove, this);
+        cc.game.canvas.addEventListener("mouseleave", this.onMouseLeave.bind(this));
     }
 
-    // private onMouseMove(e: cc.Event.EventMouse) {
-    //     cc.log(this.cameraPosition.toString(), this.camera.getScreenToWorldPoint(e.getLocation()).toString());
-    // }
+    private cameraPanDirection: cc.Vec3 = null;
+
+    private onMouseMove(e: cc.Event.EventMouse) {
+        if (!D.persisted.edgePanEnabled) {
+            return;
+        }
+        const screenPos = e.getLocation();
+        const edge = D.persisted.edgePanSize;
+        const deadEdge = 1;
+        const screenWidth = cc.winSize.width - convertFromUIToGame(T.modalWidth);
+        const startX = T.modalPosition === "left" ? convertFromUIToGame(T.modalWidth) : 0;
+        const endX = T.modalPosition === "right" ? convertFromUIToGame(T.modalWidth) : 0;
+        if (
+            (screenPos.x < startX + edge && screenPos.x > startX + deadEdge) ||
+            (screenPos.x > cc.winSize.width - endX - edge && screenPos.x < cc.winSize.width - endX - deadEdge) ||
+            (screenPos.y < edge && screenPos.y > deadEdge) ||
+            (screenPos.y > cc.winSize.height - this.getHudHeight() - edge &&
+                screenPos.y < cc.winSize.height - this.getHudHeight() - deadEdge)
+        ) {
+            const center = cc.v2(screenWidth / 2, (cc.winSize.height - this.getHudHeight()) / 2);
+            this.cameraPanDirection = cc.v3(screenPos.sub(center).normalizeSelf());
+        } else {
+            this.cameraPanDirection = null;
+        }
+    }
+
+    private onMouseLeave() {
+        this.cameraPanDirection = null;
+    }
 
     private drawGrid() {
         this.gridGraphics.clear();
@@ -254,6 +281,9 @@ export default class PlayerInput extends MapInput {
         if (zoomBeforeUpdate && this._targetCameraZoom === null) {
             this.drawGrid();
             this.drawSelected();
+        }
+        if (this.cameraPanDirection) {
+            this.cameraPosition = this.cameraPosition.add(this.cameraPanDirection.mul(D.persisted.edgePanSensitivity));
         }
     }
 

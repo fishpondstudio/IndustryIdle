@@ -113,11 +113,14 @@ export class Cycle {
     }
 }
 
+export type ModalPosition = "left" | "right" | "hidden";
+
 export class TempData {
     current = new Cycle();
     next = new Cycle();
     lastOrderAt = 0;
     modalWidth = 0;
+    modalPosition: ModalPosition = "hidden";
     buildingCount: BuildingNumberMap = {};
     workingBuildingCount: BuildingNumberMap = {};
     res: ResourceNumberMap = {};
@@ -215,6 +218,9 @@ export class PersistedData {
     sfxKachingVolume = 0.25;
     sfxLevelupVolume = 0.25;
     sfxPowerupVolume = 0.25;
+    edgePanEnabled = true;
+    edgePanSize = 20;
+    edgePanSensitivity = 5;
     panelPosition: PanelPosition = "auto";
     panelHeight: PanelHeight = "60";
     offlineEarningMinutes = 60 * 4;
@@ -268,6 +274,7 @@ export class PersistedData {
     constructor() {
         this.userName = `${this.userId.substr(0, 6).toUpperCase()}`;
         this.panelPosition = isIOS() || isAndroid() ? "auto" : "right";
+        this.edgePanEnabled = !isIOS() && !isAndroid();
     }
 }
 

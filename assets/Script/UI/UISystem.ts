@@ -67,10 +67,6 @@ if (!CC_EDITOR) {
 
 export const OFFLINE_EARNING_MIN_TIME = MINUTE;
 
-function getModalWidth(): number {
-    return modalNode.children?.[0]?.clientWidth ?? 0;
-}
-
 type Orientation = "landscape" | "portrait";
 
 let orientation: Orientation = "landscape";
@@ -107,15 +103,31 @@ export function StartUI() {
     });
     modalNode.addEventListener("mouseenter", (e) => {
         cc.game.canvas.dispatchEvent(new Event("mouseup"));
+        cc.game.canvas.dispatchEvent(new Event("mouseleave"));
     });
     headerNode.addEventListener("mouseenter", (e) => {
         cc.game.canvas.dispatchEvent(new Event("mouseup"));
+        cc.game.canvas.dispatchEvent(new Event("mouseleave"));
+    });
+    G.onRedraw.on(() => {
+        if (modalNode.children[0]) {
+            const rect = modalNode.children[0].getBoundingClientRect();
+            T.modalWidth = rect.width;
+            T.modalPosition = rect.x > 0 ? "right" : "left";
+        } else {
+            T.modalWidth = 0;
+            T.modalPosition = "hidden";
+        }
     });
     // setTimeout(() => {
     //     cc.game.canvas.getContext("webgl").getExtension("WEBGL_lose_context").loseContext();
     // }, 5000);
     initWebRTC();
 }
+
+document.addEventListener("mouseleave", () => {
+    cc.game.canvas.dispatchEvent(new Event("mouseleave"));
+});
 
 function renderAlert(content: m.Children, button: m.Children) {
     m.render(alertNode, m(".alert", m(".container", [content, m(".btns", button)])));
@@ -169,9 +181,6 @@ export function routeTo(r: keyof typeof UI_ROUTES, params: Record<string, string
     if (queryString.length > 0) {
         queryString = "?" + queryString.slice(0, -1);
     }
-    G.onRedraw.on(() => {
-        T.modalWidth = getModalWidth();
-    });
     urlTo(r + queryString);
 }
 

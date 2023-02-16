@@ -1,6 +1,6 @@
 export const JP = {
     Translator: "翻訳者",
-    TranslatorName: "etyucat",
+    TranslatorName: "etyucat、 taku1417",
     Language: "言語",
     ThisLanguage: "日本語",
     OK: "OK",
@@ -96,9 +96,9 @@ export const JP = {
     Change: "変更",
     StatisticsBureau: "統計局",
     LogisticsDepartment: "物流センター",
-    From: "From",
+    From: "輸送元",
     Top20FuelCost: "燃料コストトップ20",
-    To: "To",
+    To: "輸送先",
     TransportTime: "輸送時間",
     Warehouse: "倉庫",
     TradeWarehouse: "貨物倉庫",
@@ -131,8 +131,8 @@ export const JP = {
     Level: "レベル",
     Power: "電力",
     CentralBank: "中央銀行",
-    ResourceInput: "In",
-    ResourceOutput: "Out",
+    ResourceInput: "供給",
+    ResourceOutput: "消費",
     ResourceStorage: "ストレージ",
     ResourceChange: "変化",
     ResourceInOutDesc: "💡数字をクリックすると、対応する消費施設・生産施設がハイライトされます",
@@ -360,7 +360,7 @@ export const JP = {
     Tutorial1:
         "Industry Idleは、工場🏭を建てて、製品📦を生産し、資産を増やす<em>資源管理</em>ゲームです。 <br><br>まず、基本的なコンセプトを紹介しましょう",
     Tutorial2:
-        "すべての施設には電力⚡が必要ですあなたは<em>風力発電</em>で発電しています。<br><br>風力発電は10秒中8秒しか動きません",
+        "すべての施設には電力⚡が必要です。あなたは<em>風力発電</em>で発電しています。<br><br>風力発電は10秒中8秒しか動きません",
     Tutorial3:
         "地図上にはたくさんの<em>資源の鉱脈</em>があります。<br><br>例えば、原油の鉱脈から<em>原油</em>を取り出す<em>油井</em>があります。<br></br>資源の鉱脈は無制限なので、なくなる心配はありません。採掘場以外の施設は、どのタイルにも建てることができます",
     Tutorial5:
@@ -371,7 +371,8 @@ export const JP = {
     WelcomePlayMuted: "ゲーム開始(🔇BGM OFF)",
     Chat: "チャット",
     RestoreFromBackup: "バックアップから復元",
-    RestoreFromBackupFail: "Steam Cloudからのバックアップの復元に失敗しました : 本当にバックアップがありますか？",
+    RestoreFromBackupFail:
+        "Steam Cloudからのバックアップの復元に失敗しました : バックアップが本当にあるかどうか、確認してください。",
     RestoreFromBackupTitle: "よろしいですか？",
     RestoreFromBackupDesc:
         "通常、ローカルでの保存が失われない限り、クラウドバックアップからの復元は必要ありません。クラウドバックアップはローカルセーブより少し古いです",
@@ -948,8 +949,8 @@ export const JP = {
     IndustryZoneMaxBuildingLevel: "最大施設Lv",
     IndustryZoneNotWorkingDesc:
         "隣接するすべての建物がサプライチェーンを形成し、他の産業ゾーンに属していない必要があります",
-    PlayerTradeAutoClaim: "完了トレードの自動受け取り",
-    PlayerTradeAutoClaimDesc: "Automatically claim all filled trades from the player market.",
+    PlayerTradeAutoClaim: "完了したトレードの自動受け取り",
+    PlayerTradeAutoClaimDesc: "プレイヤー間トレードで取引し終わったアイテムを自動で受け取ります。",
     MusifyInc: "Musify Inc",
     WebflixInc: "Webflix Inc",
     CloudStreaming: "クラウドストリーミング",
@@ -1190,7 +1191,7 @@ export const JP = {
     BatchOperationGainDesc:
         "This will apply to %{number} buildings(s). Estimated refund is $%{gain}. Do you want to continue?",
     BatchOperationResult: "%{success}個の一括操作は成功しました",
-    BatchOperationGainResult: "Batch operation result: success: %{success}, fail: %{fail}, total earned: $%{gain}",
+    BatchOperationGainResult: "一括操作の結果:  %{success}件成功、%{fail}件失敗  total earned: $%{gain}",
     StreamingMakeMeDiscoverable: "他の人から画面を視聴可能にする",
     StreamingMakeMeDiscoverableDesc:
         "あなたのゲームプレイを他のプレイヤーから視聴できるようにします。peer to peerの形式であなたのゲームプレイを配信するために接続され、マイクやウェブカメラは使用しません",
@@ -1232,12 +1233,12 @@ export const JP = {
     BatchModeCluster: "まとまり",
     BatchUpgradeToLevelX: "レベル%{level}へ",
     ApplyToBatch: "%{batch}に適応",
-    BatteryRecycler: "Battery Recycler",
-    BatteryShell: "Battery Shell",
-    StartInANewCity: "Start In A New City",
-    StartInANewCityFinePrint: "(Or Restart Your Current City)",
+    BatteryRecycler: "バッテリーリサイクラー",
+    BatteryShell: "空のバッテリー",
+    StartInANewCity: "新しい街で始める",
+    StartInANewCityFinePrint: "(またはこの街でやり直す)",
     BatteryFuelDesc:
-        "💡 After batteries are used as fuel, they will become battery shells. You can build Battery Recyclers to recycle or recharge them",
+        "💡バッテリーを燃料として利用すると、空のバッテリーになります。バッテリーリサイクラーを建てることで空のバッテリーをリサイクルやリチャージすることが出来ます。",
     FriedChicken: "Fried Chicken",
     Coffee: "Coffee",
     Cocoa: "Cocoa",
@@ -1268,7 +1269,7 @@ export const JP = {
     Biofuel: "Biofuel",
     RioDeJaneiro: "Rio de Janeiro",
     RioDeJaneiroBonus:
-        "<li>Unique fuel: Biofuel</li><li>Pig, cow and chicken farms produces extra biofuel</li><li>Unique building: Biofuel Power Plant</li><li>Unique building: Cristo Redentor</li><li>Resource boosters can boost pig, cow and chicken farms</li><li>Logging camps produce 2x wood</li><li>Lumber mills have 2x capacity</li><li>Frozen chicken, frozen pork and canned beef have 2x trading quota</li>",
+        "<li>Unique fuel: Biofuel</li><li>Pig, cow and chicken farms produces extra biofuel</li><li>Unique building: Biofuel Power Plant</li><li>Unique building: Cristo Redentor</li><li>Resource boosters can boost pig, cow and chicken farms</li><li>Logging camps produce 2x wood</li><li>Lumber mills have 2x capacity</li><li>Frozen chicken, frozen pork and canned beef have 2x player trade production-based tax credit</li>",
     BiofuelPowerPlant: "Biofuel Power Plant",
     CristoRedentor: "Cristo Redentor",
     CristoRedentorBanner:
@@ -1350,7 +1351,7 @@ export const JP = {
     BuyFromTradeCenter: "トレードセンターから購入する",
     BuyFromTradeCenterBestBid: "プレイヤー間取引での最高入札価格",
     BuyFromTradeCenterBestAsk: "プレイヤー間取引での最高提示価格",
-    BuyFromTradeCenterAveragePrice: "Average %{price}",
+    BuyFromTradeCenterAveragePrice: "平均 %{price}",
     PlayerTradesAvailable: "%{number}件の取引が有効です",
     SettingsShowInToolbar: "ツールバーに表示",
     AccountVerification: "アカウントの検証",
@@ -1396,8 +1397,8 @@ export const JP = {
     FineDiningRestaurant: "Fine Dining Restaurant",
     Sushi: "Sushi",
     Pastry: "Pastry",
-    HappyMeal: "Happy Meal",
-    Whopper: "Whopper",
+    HappyMeal: "Joyful Meal",
+    Whopper: "Whopping Burger",
     DrinkFactory: "Drink Factory",
     SoftDrink: "Soft Drink",
     Alcohol: "Alcohol",
@@ -1421,10 +1422,10 @@ export const JP = {
     AllowPortraitModeDesc:
         "縦画面モードを有効化します(実験的機能)。画面はスマートフォンのセンサーと設定に基づいて回転します",
     IndustryZoneProductivityBoostDesc:
-        "Every tier or every 10 level of an Industry Zone provide 10% output boost to buildings in it",
+        "Every tier or every 10 level of an Industry Zone provide 10% output boost to buildings in it - require all buildings in the zone to be working",
     Auckland: "Auckland",
     AucklandBonus:
-        "<li>All deposits are found in a New Zealand shaped area at the center of the map</li><li>Unique Building: Hydro Power Plant</li><li>Unique Policy: Mine Booster</li><li>Unique Policy: Electric Fish Pond</li><li>Fish ponds can be built on any tiles</li>",
+        "<li>All deposits are found in a New Zealand shaped area at the center of the map</li><li>Unique Building: Hydro Power Plant</li><li>Unique Policy: Mine Booster</li><li>Unique Policy: Electric Fish Pond</li><li>Unique Policy: Hydro Farming</li><li>Fish ponds can be built on any tiles</li>",
     MineBooster: "Mine Booster",
     MineBoosterDesc:
         "A working mine provides 100% capacity boost to adjacent mines or factories that consume the deposit",
@@ -1440,8 +1441,8 @@ export const JP = {
         "Chicken farms, pig farms, cow farms, fish ponds and fodder factories have 2x capacity but uses 2x power",
     HydroFarming: "Hydro Farming",
     HydroFarmingDesc: "Each working hydro dam provides 20% capacity boost to all farmlands and greenhouses on the map",
-    ExtraTradeQuota: "Extra Player Trade Quota",
-    ExtraTradeQuotaDesc: "Initial player trade quota is 1% of your market cap - this will grant extra percentage",
+    ExtraTradeQuota: "Extra Player Trade Market Cap-Based Tax Credit",
+    ExtraTradeQuotaDesc: "Market cap-based tax credit is 1% of your market cap - this will grant extra percentage",
     ProduceAllCrops: "Produce All Crops",
     ProduceAllCropsDesc: "Farmlands and greenhouses can produce all crops, including the ones that are not on the map",
     ResearchAgreement: "Research Agreement",
@@ -1450,11 +1451,11 @@ export const JP = {
     NewsEffectx2DescV2: "All market news are 50% more effective",
     AutoSellCapacityMultiplierV2: "Extra Auto Sell Capacity",
     AutoSellCapacityMultiplierDescV2: "This will give extra auto sell capacity on top of your existing capacity",
-    AutoSellCapacity: "自動売却量",
+    AutoSellCapacity: "自動売却の量",
     AutoSellCapacityDescV2:
-        "Max amount of resources auto sell can handle per second, per resource, measured as the percentage of your total production of that resource",
-    AutoSellCapacityExtraPercentageFromSwiss: "Extra Percentage from Swiss Upgrade and Boost: %{n}%",
-    BaselineAutoSellCapacity: "Baseline auto sell capacity: %{amount}",
+        "自動売却で1秒あたり、各資源ごとに売却できる資源の最大量。その資源の総生産量の割合として測定されます",
+    AutoSellCapacityExtraPercentageFromSwiss: "スイスアップグレードとブーストによる追加のパーセント:%{n}%",
+    BaselineAutoSellCapacity: "自動売却出来る最大量: %{amount}",
     AchievementAuckland100: "Hoiho",
     AchievementAuckland100Desc: "Earn 100 Swiss Money in Auckland in a single run",
     AchievementAuckland500: "Whio",
@@ -1559,4 +1560,10 @@ export const JP = {
     PlayerTradeFillBy: "Fill By",
     PlayerTradeCancelled: "Cancelled",
     FormatTimeAgo: "%{time} ago",
+    EnableEdgePan: "Enable Edge Pan",
+    EnableEdgePanDesc: "Moving your cursor to the edge of the screen to pan camera in that direction",
+    EdgePanEdgeSize: "Edge Pan Size",
+    EdgePanEdgeSizeDesc: "The size (in pixels) of the edge that will activate edge pan",
+    EdgePanEdgeSensitivity: "Edge Pan Sensitivity",
+    EdgePanEdgeSensitivityDesc: "The sensitivity of camera pan - the bigger the number, the more sensitivity",
 };
