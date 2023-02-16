@@ -118,6 +118,7 @@ export function doBatchDowngrade(entity: Entity, toLevel: number) : { success: n
     });
     return { success, fail, gain };
 }
+
 export function doBatchSellEstimate(entity: Entity): { count: number; gain: number } {
     let count = 0;
     let gain = 0;
