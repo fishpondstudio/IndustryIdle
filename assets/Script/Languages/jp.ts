@@ -75,8 +75,7 @@ export const JP = {
     Rocket: "ロケット",
     RocketFactory: "ロケット工場",
     BuildingPermit: "建築許可証",
-    BuildingPermitDesc: 
-        "建築許可証 : %{amount} / 建築済み : %{amountBuilt} / 残り : %{amountLeft}",
+    BuildingPermitDesc: "建築許可証 : %{amount} / 建築済み : %{amountBuilt} / 残り : %{amountLeft}",
     BuildingLocked: "建てるにはリサーチラボでアンロックしてください",
     MaxBuilders: "同時建築数",
     MaxBuildersDesc: "同時に建築できる施設の数",
@@ -372,7 +371,8 @@ export const JP = {
     WelcomePlayMuted: "ゲーム開始(🔇BGM OFF)",
     Chat: "チャット",
     RestoreFromBackup: "バックアップから復元",
-    RestoreFromBackupFail: "Steam Cloudからのバックアップの復元に失敗しました : バックアップが本当にあるかどうか、確認してください。",
+    RestoreFromBackupFail:
+        "Steam Cloudからのバックアップの復元に失敗しました : バックアップが本当にあるかどうか、確認してください。",
     RestoreFromBackupTitle: "よろしいですか？",
     RestoreFromBackupDesc:
         "通常、ローカルでの保存が失われない限り、クラウドバックアップからの復元は必要ありません。クラウドバックアップはローカルセーブより少し古いです",
@@ -1560,4 +1560,10 @@ export const JP = {
     PlayerTradeFillBy: "Fill By",
     PlayerTradeCancelled: "Cancelled",
     FormatTimeAgo: "%{time} ago",
+    EnableEdgePan: "Enable Edge Pan",
+    EnableEdgePanDesc: "Moving your cursor to the edge of the screen to pan camera in that direction",
+    EdgePanEdgeSize: "Edge Pan Size",
+    EdgePanEdgeSizeDesc: "The size (in pixels) of the edge that will activate edge pan",
+    EdgePanEdgeSensitivity: "Edge Pan Sensitivity",
+    EdgePanEdgeSensitivityDesc: "The sensitivity of camera pan - the bigger the number, the more sensitivity",
 };

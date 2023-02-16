@@ -1617,4 +1617,10 @@ export const RU = {
     PlayerTradeFillBy: "Заполнено",
     PlayerTradeCancelled: "Отменено",
     FormatTimeAgo: "%{time} назад",
+    EnableEdgePan: "Enable Edge Pan",
+    EnableEdgePanDesc: "Moving your cursor to the edge of the screen to pan camera in that direction",
+    EdgePanEdgeSize: "Edge Pan Size",
+    EdgePanEdgeSizeDesc: "The size (in pixels) of the edge that will activate edge pan",
+    EdgePanEdgeSensitivity: "Edge Pan Sensitivity",
+    EdgePanEdgeSensitivityDesc: "The sensitivity of camera pan - the bigger the number, the more sensitivity",
 };
