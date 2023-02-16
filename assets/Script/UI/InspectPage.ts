@@ -1155,15 +1155,12 @@ export function InspectPage(): m.Comp<{ xy: string }> {
                                     }
                                     routeTo("/main");
                                     const b = G.world.removeBuilding(grid);
-                                    console.log(b);
                                     if (b) {
                                         refundForSellingBuilding(b, sellRefund(), getSellRefundPercentage());
                                     }
-
                                 },
                             },
                             [m("div", [shortcut("0", "", " "), t("SellBuilding")]), m("div", `+$${nf(sellRefund())}`)]
-                            
                         ),
                         m(".hr"),
                         m(
