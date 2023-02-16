@@ -122,30 +122,36 @@ export function doBatchDowngrade(entity: Entity, toLevel: number) : { success: n
 export function doBatchSellEstimate(entity: Entity): { count: number; gain: number } {
     let count = 0;
     let gain = 0;
+    const { type, level } = entity;
     batchApply(entity, (e) => {
-        if (e.type === entity.type) {
-            count++;
-            gain += getCostForBuilding(entity.type, e.level) * getSellRefundPercentage();
-        }
+      if (e.type === type && e.level === level) {
+        const bv = buildingValue(entity);
+        const sellRefund = () => Math.min(D.cashSpent, getSellRefundPercentage() * bv);
+        count++;
+        gain += sellRefund();
+      }
     });
     return { count, gain };
-}
-
-export function doBatchSell(entity: Entity): { success: number; fail: number; gain: number } {
+  }
+  
+  export function doBatchSell(entity: Entity): { success: number; fail: number; gain: number } {
     let success = 0;
-    let fail = 0;
     let gain = 0;
+    let fail = 0;
+    const { type, level } = entity;
     batchApply(entity, (e) => {
-        if (e.type === entity.type) {
-            const refund = getCostForBuilding(e.type, e.level) * getSellRefundPercentage();
+      if (e.type === type && e.level === level) {
+       const bv = buildingValue(e);
+       const sellRefund = () => Math.min(D.cashSpent, getSellRefundPercentage() * bv);
+        refundForSellingBuilding(G.world.removeBuilding(stringToGrid(e.grid)), sellRefund(), getSellRefundPercentage());
+        if (sellRefund() > 0) {
             success++;
-            gain += refund;
-            refundCash(refund);
+            gain += sellRefund();
             delete D.buildings[e.grid];
-            G.world.removeBuilding(stringToGrid(e.grid));
         } else {
-            fail++;
+            fail++
         }
+      }
     });
     return { success, fail, gain };
 }
