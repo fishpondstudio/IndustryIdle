@@ -17,6 +17,7 @@ import {
     getUpgradeCost,
     isMineCorrectlyPlaced,
     levelToNextMultiplier,
+    NoEfficiency,
     profitMargin,
     refundCash,
     refundForSellingBuilding,
@@ -44,7 +45,7 @@ import { allAffectingNews } from "../CoreGame/MarketNews";
 import { Resources } from "../CoreGame/ResourceDefinitions";
 import { getTips, nextTips } from "../CoreGame/Tips";
 import { D, DLC, G, hasDLC, T } from "../General/GameData";
-import { formatHMS, formatPercent, getOrSet, ifTrue, keysOf, nf, numberSign, SECOND, sizeOf } from "../General/Helper";
+import { formatHMS, formatPercent, getOrSet, ifTrue, keysOf, nf, numberSign, safeGet, SECOND, sizeOf } from "../General/Helper";
 import { t } from "../General/i18n";
 import { BuildingInputPanel } from "./BuildingInputPanel";
 import { CrazyGameAdBanner } from "./CrazyGameAdBanner";
@@ -222,6 +223,11 @@ export function InspectPage(): m.Comp<{ xy: string }> {
                                 },
                             },
                             [m("div", t("Level")), m("div", entity.level)]
+                        ),
+                        m(".hr"),
+                        m(
+                            ".two-col",
+                            [m("div", t("NumberOfBuildings")), m("div", safeGet(T.buildingCount, entity.type, 0))]
                         ),
                         ifTrue(!building.hideUpgradeMultiplier, () => [
                             m(".hr"),
@@ -472,6 +478,11 @@ export function InspectPage(): m.Comp<{ xy: string }> {
                         renderOutput(),
                     ]),
                     building.panel ? m(building.panel, { entity: entity }) : null,
+                    ifTrue(NoEfficiency[entity.type], () => [
+                        m(".box", [
+                            m(".banner.box.text-m", t("NoEfficiencyDesc") + " " + (ifTrue(hasDLC(DLC[1]),() => t("AdjacentBonusOnlyOutput") + "/" + t("TileModifierOutputOnly"))) + (ifTrue(hasDLC(DLC[1]),() => "/" + t("IndustryZoneProductivityBoost"))))
+                        ])
+                    ]
                     m(".box", [
                         m(".two-col.text-s.uppercase", [
                             m("div", t("BatchMode")),
