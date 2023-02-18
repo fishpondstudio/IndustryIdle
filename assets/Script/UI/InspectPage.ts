@@ -482,7 +482,8 @@ export function InspectPage(): m.Comp<{ xy: string }> {
                         m(".box", [
                             m(".banner.box.text-m", t("NoEfficiencyDesc") + " " + (ifTrue(hasDLC(DLC[1]),() => t("AdjacentBonusOnlyOutput") + "/" + t("TileModifierOutputOnly"))) + (ifTrue(hasDLC(DLC[1]),() => "/" + t("IndustryZoneProductivityBoost"))))
                         ])
-                    ]
+                    ],
+                    ),
                     m(".box", [
                         m(".two-col.text-s.uppercase", [
                             m("div", t("BatchMode")),
