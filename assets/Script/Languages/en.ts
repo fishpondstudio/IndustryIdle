@@ -1584,4 +1584,5 @@ export const EN = {
     EdgePanEdgeSizeDesc: "The size (in pixels) of the edge that will activate edge pan",
     EdgePanEdgeSensitivity: "Edge Pan Sensitivity",
     EdgePanEdgeSensitivityDesc: "The sensitivity of camera pan - the bigger the number, the more sensitivity",
+    NoEfficiencyDesc: "This building cannot get bonuses from policies:"
 };
