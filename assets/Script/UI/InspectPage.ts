@@ -480,7 +480,7 @@ export function InspectPage(): m.Comp<{ xy: string }> {
                     building.panel ? m(building.panel, { entity: entity }) : null,
                     ifTrue(NoEfficiency[entity.type], () => [
                         m(".box", [
-                            m(".banner.box.text-m", t("NoEfficiencyDesc") + " " + (ifTrue(hasDLC(DLC[1]),() => t("AdjacentBonusOnlyOutput") + "/" + t("TileModifierOutputOnly"))) + (ifTrue(hasDLC(DLC[1]),() => "/" + t("IndustryZoneProductivityBoost"))))
+                            m(".banner.box.text-m", t("NoEfficiencyDesc") + " " + (ifTrue(hasDLC(DLC[0]),() => t("AdjacentBonusOnlyOutput") + "/" + t("TileModifierOutputOnly"))) + (ifTrue(hasDLC(DLC[1]),() => "/" + t("IndustryZoneProductivityBoost"))))
                         ])
                     ],
                     ),
