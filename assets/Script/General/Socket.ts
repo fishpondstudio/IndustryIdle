@@ -10,8 +10,8 @@ import { KR } from "../Languages/kr";
 import { RU } from "../Languages/ru";
 import { Streaming } from "../UI/StreamingPage";
 import { showAlert, showToast } from "../UI/UISystem";
-import { D, G, getCurrentVersion, T } from "./GameData";
-import { forEach, getAlphaNumeric, getDebugUrlParams, hasValue, selectOf, sizeOf } from "./Helper";
+import { API_HOST, D, G, getCurrentVersion, T } from "./GameData";
+import { forEach, getAlphaNumeric, getDebugUrlParams, hasValue, SECOND, selectOf, sizeOf } from "./Helper";
 import { t } from "./i18n";
 import { isSteam, NativeSdk, steamworks } from "./NativeSdk";
 import { serverNow, setServerClock } from "./ServerClock";
@@ -39,7 +39,7 @@ interface ITradeMessage extends IMessage {
 }
 
 interface IMessage {
-    type: "join" | "chat" | "trade" | "tick" | "logout" | "pledge" | "export" | "signal" | "streaming";
+    type: "join" | "chat" | "trade" | "tick" | "logout" | "pledge" | "export" | "signal" | "streaming" | "tradeFine";
     id?: string;
     time?: number;
     auth?: boolean;
@@ -84,10 +84,17 @@ const TICK_FREQ = 60 * 1000;
 const MAX_MESSAGES = 100;
 export const BLOCKED_USERS: Record<string, true> = {};
 
+export interface ITradeFine {
+    playerName: string;
+    numberOfTrades: number;
+    profit: number;
+}
+
 export class Socket {
     public chatMessages: IChatMessage[] = [];
     public myTrades: Record<string, ILocalTrade> = {};
     public activeTrades: Record<string, ITrade> = {};
+    public pendingTradeFines: ITradeFine[] = [];
     public pledge: Record<string, number> = {};
     public bestBids: Partial<Record<keyof Resources, number>> = {};
     public bestAsks: Partial<Record<keyof Resources, number>> = {};
@@ -111,52 +118,12 @@ export class Socket {
         if (T.tickCount <= 1) {
             return;
         }
-        if (serverNow() - this._lastMessageAt >= TICK_FREQ) {
+        if (serverNow() - this._lastMessageAt > TICK_FREQ + 10 * SECOND) {
             // This should force retry
             this._ws.close();
             return;
         }
-        const resources = selectOf(T.res, (_, v) => v > 0);
-        // Rewind trades
-        forEach(G.socket.myTrades, (id, trade) => {
-            if (trade.side === "buy") {
-                if (!resources.Cash) {
-                    resources.Cash = 0;
-                }
-                resources.Cash += trade.amount * trade.price;
-            }
-            if (trade.side === "sell") {
-                if (!resources[trade.resource]) {
-                    resources[trade.resource] = 0;
-                }
-                resources[trade.resource] += trade.amount;
-            }
-        });
-        // Rewind crowdfunding
-        forEach(D.crowdfunding, (_, cf) => {
-            if (!resources.Cash) {
-                resources.Cash = 0;
-            }
-            resources.Cash += cf.value;
-        });
-        this.send({
-            type: "tick",
-            prestigeCurrency: D.persisted.prestigeCurrency,
-            allPrestigeCurrency: D.persisted.allPrestigeCurrency,
-            cash: getCash(),
-            resourceValuation: allResourcesValue(),
-            resourceValuationForReference: allResourcesValueForReference(),
-            buildingValuation: D.cashSpent,
-            map: D.map,
-            price: D.price,
-            mapCreatedAt: D.mapCreatedAt,
-            buildingCount: sizeOf(D.buildings),
-            dlc: sizeOf(D.persisted.dlc),
-            flag: D.persisted.flag,
-            userName: D.persisted.userName,
-            res: resources,
-            optOut: D.persisted.leaderboardOptOut,
-        }).catch((e) => cc.error(e));
+        this.send({ type: "tick", ...getTickMessage() }).catch((e) => cc.error(e));
     }
 
     public isConnected(): boolean {
@@ -258,6 +225,9 @@ export class Socket {
             case "streaming":
                 this.handleStreaming(message);
                 break;
+            case "tradeFine":
+                this.handleTradeFine(message);
+                break;
             default:
                 cc.warn("Unknown message:", message);
         }
@@ -275,6 +245,12 @@ export class Socket {
         }
         if (message.token) {
             Streaming.token = message.token;
+        }
+    }
+
+    private handleTradeFine(message: IMessage) {
+        if (message.fines) {
+            G.socket.pendingTradeFines = message.fines;
         }
     }
 
@@ -442,3 +418,57 @@ export const CHAT_CHANNEL = {
         name: KR.ThisLanguage,
     },
 };
+
+export function getTickMessage() {
+    const resources = selectOf(T.res, (_, v) => v > 0);
+    // Rewind trades
+    forEach(G.socket.myTrades, (id, trade) => {
+        if (trade.side === "buy") {
+            if (!resources.Cash) {
+                resources.Cash = 0;
+            }
+            resources.Cash += trade.amount * trade.price;
+        }
+        if (trade.side === "sell") {
+            if (!resources[trade.resource]) {
+                resources[trade.resource] = 0;
+            }
+            resources[trade.resource] += trade.amount;
+        }
+    });
+    // Rewind crowdfunding
+    forEach(D.crowdfunding, (_, cf) => {
+        if (!resources.Cash) {
+            resources.Cash = 0;
+        }
+        resources.Cash += cf.value;
+    });
+    return {
+        prestigeCurrency: D.persisted.prestigeCurrency,
+        allPrestigeCurrency: D.persisted.allPrestigeCurrency,
+        cash: getCash(),
+        resourceValuation: allResourcesValue(),
+        resourceValuationForReference: allResourcesValueForReference(),
+        buildingValuation: D.cashSpent,
+        map: D.map,
+        price: D.price,
+        mapCreatedAt: D.mapCreatedAt,
+        buildingCount: sizeOf(D.buildings),
+        dlc: sizeOf(D.persisted.dlc),
+        flag: D.persisted.flag,
+        userName: D.persisted.userName,
+        res: resources,
+        optOut: D.persisted.leaderboardOptOut,
+    } as const;
+}
+
+export function resolveTradeFine(tradeFine: ITradeFine): Promise<Response> {
+    return fetch(`${API_HOST}/trade/resolve-fine`, {
+        method: "post",
+        headers: { "X-User-Id": D.persisted.userId, "Content-Type": "application/json" },
+        body: JSON.stringify({
+            tradeFine,
+            tick: getTickMessage(),
+        }),
+    });
+}

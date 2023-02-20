@@ -1,4 +1,4 @@
-import { canTradeWithPlayers, getCash, RES, resourcesBeingProduced } from "../CoreGame/Logic/Logic";
+import { canTradeWithPlayers, getCash, RES, resourcesBeingProduced, tryDeductCash } from "../CoreGame/Logic/Logic";
 import {
     acceptTrade,
     addTrade,
@@ -33,6 +33,7 @@ import {
 } from "../General/Helper";
 import { t } from "../General/i18n";
 import { serverNow } from "../General/ServerClock";
+import { resolveTradeFine } from "../General/Socket";
 import { CrazyGameAdBanner } from "./CrazyGameAdBanner";
 import { Desktop } from "./HudPage";
 import { getContainerClass, iconB, isMobile, uiHeaderAction, uiHeaderActionBack } from "./UIHelper";
@@ -318,6 +319,51 @@ export function PlayerTradePage(): m.Comp<{
                             ]
                         ),
                     ]),
+                    ifTrue(G.socket.pendingTradeFines.length > 0, () => {
+                        return m(".box", [
+                            m(".title", t("PlayerTradePendingFine")),
+                            G.socket.pendingTradeFines.map((tf) => [
+                                m(".hr"),
+                                m(
+                                    ".text-m",
+                                    t("PlayerTradePendingFineDesc", {
+                                        profit: nf(tf.profit),
+                                        count: tf.numberOfTrades,
+                                        player: tf.playerName,
+                                    })
+                                ),
+                                m(".sep5"),
+                                m(
+                                    ".text-m.uppercase.blue.pointer.text-right",
+                                    {
+                                        onclick: async () => {
+                                            if (tryDeductCash(tf.profit)) {
+                                                G.socket.pendingTradeFines = G.socket.pendingTradeFines.filter(
+                                                    (f) => f !== tf
+                                                );
+                                                const resp = await resolveTradeFine(tf);
+                                                if (resp.status === 200) {
+                                                    showToast(t("GeneralServerSuccessMessage"));
+                                                    G.socket.pendingTradeFines = await resp.json();
+                                                } else {
+                                                    G.audio.playError();
+                                                    showToast(
+                                                        t("GeneralServerErrorMessage", {
+                                                            error: resp.status + " " + resp.statusText,
+                                                        })
+                                                    );
+                                                }
+                                            } else {
+                                                G.audio.playError();
+                                                showToast(t("NotEnoughCash"));
+                                            }
+                                        },
+                                    },
+                                    t("PlayerTradePendingFineAction", { profit: nf(tf.profit) })
+                                ),
+                            ]),
+                        ]);
+                    }),
                     m(".box", [
                         m(".row", [
                             m(".f1"),
