@@ -7,6 +7,7 @@ export const CHANGELOG = [
             "QoL: New batch mode action: Downgrade - All/Cluster/Adjacent (by @GrayTheWanderer)",
             "Add Turkish translation (by @Readrift)",
             "Improve Steam Deck support (@FishPond)",
+            "QoL: Add support for game controllers: use left joystick to move camera, right joystick to move cursor, trigger buttons to zoom/scroll, right shoulder button and X button to click. Joystick sensitivity can be adjusted in settings",
             "QoL: Add support for camera edge pan (@FishPond) - Activate in Settings -> Input",
             "Add support for moderator to remove suspicious player trades. Resources will be refunded for removed trades (@FishPond)",
             "Improve stability of Steam Cloud integration (@FishPond)",

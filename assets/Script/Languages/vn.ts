@@ -1588,4 +1588,12 @@ export const VN = {
     EdgePanEdgeSizeDesc: "The size (in pixels) of the edge that will activate edge pan",
     EdgePanEdgeSensitivity: "Edge Pan Sensitivity",
     EdgePanEdgeSensitivityDesc: "The sensitivity of camera pan - the bigger the number, the more sensitivity",
+    GameControllerSupport: "Game Controller Support",
+    GameControllerSupportDesc: "Enable game controller support - you should generally leave this on",
+    GameControllerCameraSensitivity: "Game Controller Camera Sensitivity",
+    GameControllerCameraSensitivityDesc: "Use your left joystick to move camera - this adjusts its sensitivity",
+    GameControllerCursorSensitivity: "Game Controller Cursor Sensitivity",
+    GameControllerCursorSensitivityDesc: "Use your right joystick to move cursor - this adjusts its sensitivity",
+    GameControllerScrollSensitivity: "Game Controller Scroll/Zoom Sensitivity",
+    GameControllerScrollSensitivityDesc: "Use your left/right trigger to scroll or zoom - this adjusts its sensitivity",
 };
