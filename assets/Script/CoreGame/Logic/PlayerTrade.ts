@@ -125,6 +125,7 @@ export async function addTrade(trade: ILocalTrade) {
     //////////////////////////////////
     try {
         trade.createdAt = serverNow();
+        G.socket.tick();
         await G.socket.send(signTrade(trade));
         useTaxCredit(tradeBeforeTax);
     } catch (err) {
@@ -170,6 +171,7 @@ export async function acceptTrade(trade: ITrade) {
         request.status = "filled";
         request.fillBy = D.persisted.userName;
 
+        G.socket.tick();
         await G.socket.send(signTrade(request));
         useTaxCredit(tradeBeforeTax);
         if (D.tradeAmountPerPlayer[trade.fromUserHash]) {
@@ -357,7 +359,6 @@ export function taxCalculation(params: ITaxCalculable) {
         amountAfterTax,
     };
 }
-
 
 export const Claimed = {};
 export function onMyTradesUpdate(myOldTrades: Record<string, ILocalTrade>, myNewTrades: Record<string, ILocalTrade>) {

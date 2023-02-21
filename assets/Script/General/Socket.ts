@@ -114,7 +114,7 @@ export class Socket {
         setInterval(this.tick.bind(this), TICK_FREQ);
     }
 
-    private tick() {
+    public tick(): void {
         if (T.tickCount <= 1) {
             return;
         }
