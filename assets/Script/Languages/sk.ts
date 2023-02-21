@@ -1591,4 +1591,8 @@ export const SK = {
     GameControllerCursorSensitivityDesc: "Use your right joystick to move cursor - this adjusts its sensitivity",
     GameControllerScrollSensitivity: "Game Controller Scroll/Zoom Sensitivity",
     GameControllerScrollSensitivityDesc: "Use your left/right trigger to scroll or zoom - this adjusts its sensitivity",
+    PlayerTradePendingFine: "Pending Player Trade Issues",
+    PlayerTradePendingFineDesc:
+        "You have made $%{profit} profits from %{count} trade(s) with a cheating player %{player}. You need to return the profit before you can trade again",
+    PlayerTradePendingFineAction: "Return $%{profit} Profits",
 };

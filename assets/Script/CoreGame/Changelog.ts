@@ -2,7 +2,7 @@ export const CHANGELOG = [
     {
         version: "0.20.3",
         content: [
-            "New anti-cheat mechanism: previously repeated trades with cheating account will result in an anti-cheat ban. This process involves a lot of investigation and takes a lot of effort. Now this will result in a trade suspension - you can resume trading after returning all the profits made from trades with the cheating account. This can be resolved automatically in Player Trade UI",
+            "New anti-cheat mechanism: previously repeated trades with cheating account will result in an anti-cheat ban. This process involves a lot of investigation and takes a lot of effort. Now this will result in a trade suspension - you can resume trading after returning all the profits made from trades with the cheating account. This can be resolved automatically in Player Trade UI (@FishPond)",
             "Add a page showing past player trades (by @FishPond)",
             "QoL: New settings menu (by @GrayTheWanderer)",
             "QoL: New batch mode action: Downgrade - All/Cluster/Adjacent (by @GrayTheWanderer)",
