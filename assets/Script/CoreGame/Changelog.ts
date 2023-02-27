@@ -1,5 +1,13 @@
 export const CHANGELOG = [
     {
+        version: "0.20.4",
+        content: [
+            "Allow returning trade profit by paying resources (@FishPond)",
+            "Showing the existing trades that offers better profits in Player Trade UI when adding a new trade (@FishPond)",
+            "Bugfix: Fix disabling controller support does not work (@FishPond)",
+        ],
+    },
+    {
         version: "0.20.3",
         content: [
             "New anti-cheat mechanism: previously repeated trades with cheating account will result in an anti-cheat ban. This process involves a lot of investigation and takes a lot of effort. Now this will result in a trade suspension - you can resume trading after returning all the profits made from trades with the cheating account. This can be resolved automatically in Player Trade UI (@FishPond)",

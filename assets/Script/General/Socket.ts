@@ -462,8 +462,9 @@ export function getTickMessage() {
     } as const;
 }
 
-export function resolveTradeFine(tradeFine: ITradeFine): Promise<Response> {
-    return fetch(`${API_HOST}/trade/resolve-fine`, {
+export async function resolveTradeFine(tradeFine: ITradeFine): Promise<void> {
+    G.socket.pendingTradeFines = G.socket.pendingTradeFines.filter((f) => f !== tradeFine);
+    const resp = await fetch(`${API_HOST}/trade/resolve-fine`, {
         method: "post",
         headers: { "X-User-Id": D.persisted.userId, "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -471,4 +472,7 @@ export function resolveTradeFine(tradeFine: ITradeFine): Promise<Response> {
             tick: getTickMessage(),
         }),
     });
+    if (resp.status !== 200) {
+        throw new Error(resp.status + " " + resp.statusText);
+    }
 }

@@ -1635,4 +1635,8 @@ export const RU = {
     PlayerTradePendingFineDesc:
         "You have made $%{profit} profits from %{count} trade(s) with a cheating player %{player}. You need to return the profit before you can trade again",
     PlayerTradePendingFineAction: "Return $%{profit} Profits",
+    PlayerTradePendingFineActionDesc: "You can either return profits by paying cash or resources",
+    PlayerTradePendingFineReturnCash: "Pay Cash",
+    PlayerTradePendingFineReturnResources: "Pay Resources",
+    PlayerTradePendingFineNotEnough: "Insufficient",
 };

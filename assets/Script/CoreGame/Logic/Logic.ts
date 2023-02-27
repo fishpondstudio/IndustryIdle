@@ -568,6 +568,32 @@ export function addResourceTo(entity: Entity, res: keyof Resources, value: numbe
     }
 }
 
+export function getResourcesForCash(cash: number): { amountLeft: number; resources: ResourceNumberMap } {
+    let amountLeft = cash;
+    const result: ResourceNumberMap = {};
+    const resource = keysOf(T.usableRes)
+        .map((f) => {
+            return { resource: f, amount: T.usableRes[f] };
+        })
+        .sort((a, b) => D.price[b.resource].price - D.price[a.resource].price);
+    for (let i = 0; i < resource.length; i++) {
+        const r = resource[i];
+        if (r.amount <= 0 || !canPrice(r.resource)) {
+            continue;
+        }
+        const price = D.price[r.resource].price;
+        const value = r.amount * price;
+        if (value >= Math.ceil(amountLeft / price) * price) {
+            result[r.resource] = Math.ceil(amountLeft / price);
+            return { amountLeft: 0, resources: result };
+        } else {
+            amountLeft -= r.amount * price;
+            result[r.resource] = r.amount;
+        }
+    }
+    return { amountLeft: amountLeft, resources: result };
+}
+
 export function deductFromAssertEnough(entity: Entity, res: keyof Resources, value: number, writeToIO = false): void {
     if (value <= 0) {
         cc.error(`You try to deduct 0 ${res} from ${entity.type}(${entity.grid})`);

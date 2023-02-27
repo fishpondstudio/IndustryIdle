@@ -627,6 +627,10 @@ input[type="range"] {
     overflow: hidden;
 }
 
+.box.no-margin {
+    margin: 0;
+}
+
 .box .action {
     border-top: 1px solid rgba(var(--foreground), 0.1);
     color: rgb(var(--color-hq));

@@ -1,4 +1,14 @@
-import { canTradeWithPlayers, getCash, RES, resourcesBeingProduced, tryDeductCash } from "../CoreGame/Logic/Logic";
+import { ResourceSet } from "../CoreGame/Buildings/BuildingDefinitions";
+import {
+    canTradeWithPlayers,
+    getCash,
+    getResourcesForCash,
+    hasEnoughCash,
+    RES,
+    resourcesBeingProduced,
+    tryDeductCash,
+    tryDeductResources,
+} from "../CoreGame/Logic/Logic";
 import {
     acceptTrade,
     addTrade,
@@ -39,7 +49,6 @@ import { Desktop } from "./HudPage";
 import { getContainerClass, iconB, isMobile, uiHeaderAction, uiHeaderActionBack } from "./UIHelper";
 import { hideAlert, routeTo, showAlert, showToast } from "./UISystem";
 
-type ResourceFilter = keyof Resources;
 type SideFilter = OrderSide | "";
 
 let lastAcceptTradeAt = 0;
@@ -53,7 +62,7 @@ const PriceFilters: Record<PriceFilter, () => string> = {
     BestPriceOnly: () => t("PlayerTradeFilterBestPrice"),
 };
 let draftTrade: ILocalTrade;
-let resourceFilter: Partial<Record<ResourceFilter, true>> = {};
+let resourceFilter: ResourceSet = {};
 let showResourceFilter = false;
 let showPriceFilter = false;
 
@@ -115,7 +124,7 @@ export function PlayerTradePage(): m.Comp<{
             if (!draftTrade.resource || !resources.includes(draftTrade.resource)) {
                 setTradeResource(resources[0]);
             }
-            const allResourceFilters: Partial<Record<ResourceFilter, true>> = {};
+            const allResourceFilters: ResourceSet = {};
             forEach(activeTrades, (_, t) => {
                 allResourceFilters[t.resource] = true;
             });
@@ -158,6 +167,21 @@ export function PlayerTradePage(): m.Comp<{
             const tax = taxCalculation(draftTrade);
             const minPrice = D.price[draftTrade.resource].price / 5;
             const maxPrice = D.price[draftTrade.resource].price * 5;
+
+            let numberOfBetterTrades = 0;
+
+            for (const key in G.socket.activeTrades) {
+                const trade = G.socket.activeTrades[key];
+                const betterPriceAvailable =
+                    // I want to buy, but there's already a sell order that offers lower price
+                    (draftTrade.side === "buy" && trade.side === "sell" && trade.price <= draftTrade.price) ||
+                    // I want to sell, but there's already a buy order that offers higher price
+                    (draftTrade.side === "sell" && trade.side === "buy" && trade.price >= draftTrade.price);
+                if (trade.resource === draftTrade.resource && betterPriceAvailable) {
+                    numberOfBetterTrades++;
+                }
+            }
+
             return m("div", { class: getContainerClass(vnode.attrs.docked) }, [
                 header,
                 m("div.scrollable", [
@@ -267,6 +291,26 @@ export function PlayerTradePage(): m.Comp<{
                             price: draftTrade.price,
                         }),
                         m(".hr"),
+                        ifTrue(numberOfBetterTrades > 0, () => [
+                            m(".text-m.banner", [
+                                m("div", t("PlayerTradeBetterTradesAvailable", { count: numberOfBetterTrades })),
+                                m(".hr.dotted"),
+                                m(
+                                    ".row.text-m.uppercase.pointer",
+                                    {
+                                        onclick: () => {
+                                            sideFilter = draftTrade.side === "buy" ? "sell" : "buy";
+                                            resourceFilter = { [draftTrade.resource]: true };
+                                        },
+                                    },
+                                    [
+                                        m(".f1", t("PlayerTradeBetterTradesAvailableAction")),
+                                        iconB("arrow_forward", 18, 0, { margin: "-10px 0 -10px 10px" }),
+                                    ]
+                                ),
+                            ]),
+                            m(".hr"),
+                        ]),
                         m(
                             ".row.blue.pointer",
                             {
@@ -336,27 +380,82 @@ export function PlayerTradePage(): m.Comp<{
                                 m(
                                     ".text-m.uppercase.blue.pointer.text-right",
                                     {
-                                        onclick: async () => {
-                                            if (tryDeductCash(tf.profit)) {
-                                                G.socket.pendingTradeFines = G.socket.pendingTradeFines.filter(
-                                                    (f) => f !== tf
-                                                );
-                                                const resp = await resolveTradeFine(tf);
-                                                if (resp.status === 200) {
-                                                    showToast(t("GeneralServerSuccessMessage"));
-                                                    G.socket.pendingTradeFines = await resp.json();
-                                                } else {
-                                                    G.audio.playError();
-                                                    showToast(
-                                                        t("GeneralServerErrorMessage", {
-                                                            error: resp.status + " " + resp.statusText,
-                                                        })
-                                                    );
-                                                }
-                                            } else {
-                                                G.audio.playError();
-                                                showToast(t("NotEnoughCash"));
-                                            }
+                                        onclick: () => {
+                                            const { amountLeft, resources } = getResourcesForCash(tf.profit);
+                                            const enoughCash = hasEnoughCash(tf.profit);
+                                            showAlert(
+                                                t("PlayerTradePendingFineAction", { profit: nf(tf.profit) }),
+                                                m("div", [
+                                                    m("div", t("PlayerTradePendingFineActionDesc")),
+                                                    m(".sep10"),
+                                                    m(".box.no-margin.text-m", [
+                                                        m("div", [
+                                                            t("PlayerTradePendingFineReturnCash"),
+                                                            ": ",
+                                                            enoughCash
+                                                                ? "$" + nf(tf.profit)
+                                                                : t("PlayerTradePendingFineNotEnough"),
+                                                        ]),
+                                                        m(".hr.dashed"),
+                                                        m("div", [
+                                                            t("PlayerTradePendingFineReturnResources"),
+                                                            ": ",
+                                                            amountLeft <= 0
+                                                                ? keysOf(resources)
+                                                                      .map(
+                                                                          (r) => `${RES[r].name()} x${nf(resources[r])}`
+                                                                      )
+                                                                      .join(", ")
+                                                                : t("PlayerTradePendingFineNotEnough"),
+                                                        ]),
+                                                    ]),
+                                                ]),
+                                                [
+                                                    { name: t("Cancel"), class: "outline" },
+                                                    {
+                                                        name: t("PlayerTradePendingFineReturnResources"),
+                                                        class: amountLeft <= 0 ? "outline" : "outline grey",
+                                                        action: async () => {
+                                                            if (tryDeductResources(resources)) {
+                                                                hideAlert();
+                                                                try {
+                                                                    await resolveTradeFine(tf);
+                                                                } catch (error) {
+                                                                    showToast(
+                                                                        t("GeneralServerErrorMessage", {
+                                                                            error: error,
+                                                                        })
+                                                                    );
+                                                                }
+                                                            } else {
+                                                                G.audio.playError();
+                                                                showToast(t("NotEnoughResources"));
+                                                            }
+                                                        },
+                                                    },
+                                                    {
+                                                        name: t("PlayerTradePendingFineReturnCash"),
+                                                        class: enoughCash ? "outline" : "outline grey",
+                                                        action: async () => {
+                                                            if (tryDeductCash(tf.profit)) {
+                                                                hideAlert();
+                                                                try {
+                                                                    await resolveTradeFine(tf);
+                                                                } catch (error) {
+                                                                    showToast(
+                                                                        t("GeneralServerErrorMessage", {
+                                                                            error: error,
+                                                                        })
+                                                                    );
+                                                                }
+                                                            } else {
+                                                                G.audio.playError();
+                                                                showToast(t("NotEnoughCash"));
+                                                            }
+                                                        },
+                                                    },
+                                                ]
+                                            );
                                         },
                                     },
                                     t("PlayerTradePendingFineAction", { profit: nf(tf.profit) })

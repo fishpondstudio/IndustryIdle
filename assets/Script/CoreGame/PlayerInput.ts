@@ -304,7 +304,14 @@ export default class PlayerInput extends MapInput {
         if (this.cameraPanDirection) {
             this.cameraPosition = this.cameraPosition.add(this.cameraPanDirection.mul(D.persisted.edgePanSensitivity));
         }
+        this.handleGameController();
+    }
 
+    private handleGameController() {
+        if (!D.persisted.gameControllerEnabled) {
+            this.hasActiveGamepad = false;
+            return;
+        }
         const gamepads = navigator.getGamepads();
         for (let i = 0; i < gamepads.length; i++) {
             const gamepad = gamepads[i];
