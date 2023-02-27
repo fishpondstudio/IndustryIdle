@@ -1617,6 +1617,7 @@ export const DE = {
     EdgePanEdgeSizeDesc: "The size (in pixels) of the edge that will activate edge pan",
     EdgePanEdgeSensitivity: "Edge Pan Sensitivity",
     EdgePanEdgeSensitivityDesc: "The sensitivity of camera pan - the bigger the number, the more sensitivity",
+    BatchSellLevelX: "Level %{level} Only",
     GameControllerSupport: "Game Controller Support",
     GameControllerSupportDesc: "Enable game controller support - you should generally leave this on",
     GameControllerCameraSensitivity: "Game Controller Camera Sensitivity",
@@ -1633,4 +1634,7 @@ export const DE = {
     PlayerTradePendingFineReturnCash: "Pay Cash",
     PlayerTradePendingFineReturnResources: "Pay Resources",
     PlayerTradePendingFineNotEnough: "Insufficient",
+    PlayerTradeBetterTradesAvailable:
+        "There are %{count} open trades that offers better profit - you should fill those first",
+    PlayerTradeBetterTradesAvailableAction: "Show Me Those Trades",
 };
