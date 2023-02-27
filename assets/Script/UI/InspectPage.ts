@@ -1,6 +1,15 @@
 import { buildingHasColor, getBuildingColor, resetBuildingColor, setBuildingColor } from "../CoreGame/ColorThemes";
 import { stringToGrid } from "../CoreGame/GridHelper";
-import { batchApply, batchModeLabel, doBatchDowngrade, doBatchSell, doBatchSellEstimate, doBatchUpgrade, getBatchDowngradeEstimate, getBatchUpgradeEstimate } from "../CoreGame/Logic/BatchMode";
+import {
+    batchApply,
+    batchModeLabel,
+    doBatchDowngrade,
+    doBatchSell,
+    doBatchSellEstimate,
+    doBatchUpgrade,
+    getBatchDowngradeEstimate,
+    getBatchUpgradeEstimate,
+} from "../CoreGame/Logic/BatchMode";
 import { getInput, getOutput, InputBufferTypes, InputCapacityOverrideTypes } from "../CoreGame/Logic/Entity";
 import {
     BLD,
@@ -13,6 +22,7 @@ import {
     getBuildingPermitCost,
     getCash,
     getCostForBuilding,
+    getSellRefund,
     getSellRefundPercentage,
     getUpgradeCost,
     isMineCorrectlyPlaced,
@@ -152,7 +162,6 @@ export function InspectPage(): m.Comp<{ xy: string }> {
             const tileModifier = getTileModifier(entity.grid, entity.type);
             const downgradeRefund = () =>
                 Math.min(D.cashSpent, getCostForBuilding(entity.type, entity.level) * getSellRefundPercentage());
-            const sellRefund = () => Math.min(D.cashSpent, getSellRefundPercentage() * bv);
             const adjacentBonus = getAdjacentCount(xy) * getAdjacentBonus() * 100;
             const eAdjacentBonus = getAdjacentBonus();
             const pm = profitMargin(visual);
@@ -366,7 +375,7 @@ export function InspectPage(): m.Comp<{ xy: string }> {
                                 },
                                 [
                                     m(".f1", [
-                                        m("div", t("BuildingProfit")+" ("+t("AutoSell")+")"),
+                                        m("div", t("BuildingProfit") + " (" + t("AutoSell") + ")"),
                                         m(
                                             ".text-s.blue",
                                             showProfitBreakdown ? t("HideBreakdown") : t("ShowBreakdown")
@@ -600,56 +609,53 @@ export function InspectPage(): m.Comp<{ xy: string }> {
                         ),
                         m(".hr"),
                         m(
-                            ".pointer.blue.two-col",
+                            ".pointer.blue",
                             {
                                 onclick: () => {
                                     if (T.currentWaveStatus === "inProgress") {
                                         G.audio.playError();
                                         showToast(t("WaveInProgressBuildRemoveDisabled"));
                                         return;
-                                      }
-                                    
-                                      const { count, gain } = doBatchSellEstimate(entity);
-                                    
-                                      showAlert(
+                                    }
+
+                                    const { count, gain } = doBatchSellEstimate(entity);
+
+                                    showAlert(
                                         `${t("SellBuilding")} ${batchModeLabel()}`,
                                         t("BatchOperationGainDesc", { number: count, gain: nf(gain) }),
                                         [
-                                          { name: t("Cancel"), class: "outline" },
-                                          {
-                                            name: t("SellBuilding"),
-                                            class: "outline",
-                                            action: () => {
-                                                const { success, fail, gain } = doBatchSell(entity);
-                                                G.audio.playClick();
-                                              showToast(
-                                                t("BatchOperationGainResult", {
-                                                  success,
-                                                  fail,
-                                                  gain: nf(gain),
-                                                })
-                                              );
-                                              hideAlert();
-                                              routeTo("/main");
-                                        },
-                                      },
-                                    ]
-                                  );
+                                            { name: t("Cancel"), class: "outline" },
+                                            {
+                                                name: t("SellBuilding"),
+                                                class: "outline",
+                                                action: () => {
+                                                    const { success, fail, gain } = doBatchSell(entity);
+                                                    G.audio.playClick();
+                                                    showToast(
+                                                        t("BatchOperationGainResult", {
+                                                            success,
+                                                            fail,
+                                                            gain: nf(gain),
+                                                        })
+                                                    );
+                                                    hideAlert();
+                                                    routeTo("/main");
+                                                },
+                                            },
+                                        ]
+                                    );
                                 },
-                              },
-                            [
-                                m("div", `${t("Sell")} ${batchModeLabel()}`),
-                                m("div", t("BatchSellLevelX", { level: entity.level })),
-                            ],
+                            },
+                            `${t("Sell")} ${batchModeLabel()}`
                         ),
                         m(".hr"),
-                            m(
-                                ".text-s.condensed.text-desc",
-                                t("SellBuildingDescV2", {
-                                    percent: formatPercent(getSellRefundPercentage()),
-                                })
-                            )
-//dev
+                        m(
+                            ".text-s.condensed.text-desc",
+                            t("SellBuildingDescV2", {
+                                percent: formatPercent(getSellRefundPercentage()),
+                            })
+                        ),
+                        //dev
                     ]),
                     m(".box", [
                         m(".title", t("ProductionSettings")),
@@ -1156,11 +1162,14 @@ export function InspectPage(): m.Comp<{ xy: string }> {
                                     routeTo("/main");
                                     const b = G.world.removeBuilding(grid);
                                     if (b) {
-                                        refundForSellingBuilding(b, sellRefund(), getSellRefundPercentage());
+                                        refundForSellingBuilding(b, getSellRefund(entity), getSellRefundPercentage());
                                     }
                                 },
                             },
-                            [m("div", [shortcut("0", "", " "), t("SellBuilding")]), m("div", `+$${nf(sellRefund())}`)]
+                            [
+                                m("div", [shortcut("0", "", " "), t("SellBuilding")]),
+                                m("div", `+$${nf(getSellRefund(entity))}`),
+                            ]
                         ),
                         m(".hr"),
                         m(

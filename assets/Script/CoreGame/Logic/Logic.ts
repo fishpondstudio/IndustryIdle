@@ -1196,6 +1196,10 @@ export function getSellRefundPercentage(): number {
     return D.persisted.sellRefundPercentage * 0.01;
 }
 
+export function getSellRefund(entity: Entity): number {
+    return Math.min(D.cashSpent, getSellRefundPercentage() * buildingValue(entity));
+}
+
 export function getMaxAdjacentCount(): number {
     return MAP[D.map].gridType === "hex" ? 6 : 4;
 }

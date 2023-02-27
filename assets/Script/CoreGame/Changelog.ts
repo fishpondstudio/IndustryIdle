@@ -5,6 +5,7 @@ export const CHANGELOG = [
             "Allow returning trade profit by paying resources (@FishPond)",
             "Showing the existing trades that offers better profits in Player Trade UI when adding a new trade (@FishPond)",
             "Bugfix: Fix disabling controller support does not work (@FishPond)",
+            "QoL: Batch sell of buildings (@WingedLeo)",
         ],
     },
     {
