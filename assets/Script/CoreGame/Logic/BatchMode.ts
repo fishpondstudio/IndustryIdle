@@ -2,7 +2,7 @@ import { BatchModeOptions, D, G } from "../../General/GameData";
 import { firstKeyOf, forEach, sizeOf } from "../../General/Helper";
 import { gridToString, stringToGrid } from "../GridHelper";
 import { Entity } from "./Entity";
-import { forEachBuildingOfType, getCostForBuilding, getDowngradeCost, getUpgradeCost, getSellRefundPercentage, trySpendCash, refundCash } from "./Logic";
+import { forEachBuildingOfType, getCostForBuilding, getDowngradeCost, getUpgradeCost, getSellRefundPercentage, trySpendCash, refundCash, refundForSellingBuilding, buildingValue } from "./Logic";
 
 export function getAdjacentIncludeSelf(entity: Entity): Record<string, true> {
     const result: Record<string, true> = { [entity.grid]: true };
@@ -115,6 +115,43 @@ export function doBatchDowngrade(entity: Entity, toLevel: number) : { success: n
             gain += toRefund;
             e.level = toLevel;
         }
+    });
+    return { success, fail, gain };
+}
+
+export function doBatchSellEstimate(entity: Entity): { count: number; gain: number } {
+    let count = 0;
+    let gain = 0;
+    const { type, level } = entity;
+    batchApply(entity, (e) => {
+      if (e.type === type && e.level === level) {
+        const bv = buildingValue(entity);
+        const sellRefund = () => Math.min(D.cashSpent, getSellRefundPercentage() * bv);
+        count++;
+        gain += sellRefund();
+      }
+    });
+    return { count, gain };
+  }
+  
+  export function doBatchSell(entity: Entity): { success: number; fail: number; gain: number } {
+    let success = 0;
+    let gain = 0;
+    let fail = 0;
+    const { type, level } = entity;
+    batchApply(entity, (e) => {
+      if (e.type === type && e.level === level) {
+       const bv = buildingValue(e);
+       const sellRefund = () => Math.min(D.cashSpent, getSellRefundPercentage() * bv);
+        refundForSellingBuilding(G.world.removeBuilding(stringToGrid(e.grid)), sellRefund(), getSellRefundPercentage());
+        if (sellRefund() > 0) {
+            success++;
+            gain += sellRefund();
+            delete D.buildings[e.grid];
+        } else {
+            fail++
+        }
+      }
     });
     return { success, fail, gain };
 }
