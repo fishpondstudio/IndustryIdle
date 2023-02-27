@@ -2,11 +2,13 @@ export const CHANGELOG = [
     {
         version: "0.20.3",
         content: [
+            "New anti-cheat mechanism: previously repeated trades with cheating account will result in an anti-cheat ban. This process involves a lot of investigation and takes a lot of effort. Now this will result in a trade suspension - you can resume trading after returning all the profits made from trades with the cheating account. This can be resolved automatically in Player Trade UI (@FishPond)",
             "Add a page showing past player trades (by @FishPond)",
             "QoL: New settings menu (by @GrayTheWanderer)",
             "QoL: New batch mode action: Downgrade - All/Cluster/Adjacent (by @GrayTheWanderer)",
             "Add Turkish translation (by @Readrift)",
             "Improve Steam Deck support (@FishPond)",
+            "QoL: Add support for game controllers: use left joystick to move camera, right joystick to move cursor, trigger buttons to zoom/scroll, right shoulder button and X button to click. Joystick sensitivity can be adjusted in settings",
             "QoL: Add support for camera edge pan (@FishPond) - Activate in Settings -> Input",
             "Add support for moderator to remove suspicious player trades. Resources will be refunded for removed trades (@FishPond)",
             "Improve stability of Steam Cloud integration (@FishPond)",

@@ -437,7 +437,7 @@ export function getDowngradeCost(
     downgradeCostFunction: (level: number) => number
 ): number {
     let cost = 0;
-    for (let i = 0; i <= numberOfLevels; i++) {
+    for (let i = 0; i < numberOfLevels; i++) {
         cost += downgradeCostFunction(currentLevel - i);
     }
     return cost;

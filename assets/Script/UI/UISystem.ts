@@ -43,6 +43,10 @@ const toastNode = document.createElement("div");
 toastNode.classList.add("toast-container");
 toastNode.style.display = "none";
 
+const pointerNode = document.createElement("div");
+pointerNode.classList.add("virtual-pointer");
+pointerNode.style.display = "none";
+
 const loaderNode = document.createElement("div");
 const headerNode = document.createElement("div");
 const alertNode = document.createElement("div");
@@ -54,12 +58,17 @@ const ONE_DAY = ONE_HOUR * 24;
 
 export const tabHeight = (cc.view.getFrameSize().height * 100) / cc.winSize.height;
 
+export function getVirtualPointer() {
+    return pointerNode;
+}
+
 if (!CC_EDITOR) {
     document.body.appendChild(modalNode);
     document.body.appendChild(headerNode);
     document.body.appendChild(alertNode);
     document.body.appendChild(loaderNode);
     document.body.appendChild(toastNode);
+    document.body.appendChild(pointerNode);
     fetch("https://play.industryidle.com/banner.html")
         .then((r) => r.text())
         .then((t) => (G.banner = t));

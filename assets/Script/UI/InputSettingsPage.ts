@@ -1,6 +1,7 @@
 import { D, G, ScrollSensitivity, ScrollSensitivityOptions } from "../General/GameData";
-import { ifTrue } from "../General/Helper";
+import { getResourceUrl, ifTrue } from "../General/Helper";
 import { t } from "../General/i18n";
+import { NativeSdk } from "../General/NativeSdk";
 import { leftOrRight, uiBoxRangeSlider, uiBoxToggle, uiHeaderActionBack } from "./UIHelper";
 import { routeTo } from "./UISystem";
 
@@ -81,6 +82,73 @@ export function InputSettingsPage(): m.Component {
                                 1,
                                 (e) => {
                                     D.persisted.edgePanSensitivity = parseInt(
+                                        (e.currentTarget as HTMLInputElement).value,
+                                        10
+                                    );
+                                }
+                            ),
+                        ]),
+                        m(".hr"),
+                        uiBoxToggle(
+                            t("GameControllerSupport"),
+                            t("GameControllerSupportDesc"),
+                            D.persisted.gameControllerEnabled,
+                            () => {
+                                G.audio.playClick();
+                                D.persisted.gameControllerEnabled = !D.persisted.gameControllerEnabled;
+                            }
+                        ),
+                        ifTrue(D.persisted.gameControllerEnabled, () => [
+                            m(".hr.dashed"),
+                            m(
+                                "div",
+                                { style: { textAlign: "center" } },
+                                m("img.pointer", {
+                                    onclick: () => NativeSdk.openUrl(getResourceUrl("images/Controller.png")),
+                                    src: getResourceUrl("images/Controller.png"),
+                                    style: { width: "90%" },
+                                })
+                            ),
+                            m(".hr"),
+                            uiBoxRangeSlider(
+                                t("GameControllerCameraSensitivity"),
+                                t("GameControllerCameraSensitivityDesc"),
+                                D.persisted.gameControllerCameraSensitivity,
+                                5,
+                                25,
+                                1,
+                                (e) => {
+                                    D.persisted.gameControllerCameraSensitivity = parseInt(
+                                        (e.currentTarget as HTMLInputElement).value,
+                                        10
+                                    );
+                                }
+                            ),
+                            m(".hr"),
+                            uiBoxRangeSlider(
+                                t("GameControllerCursorSensitivity"),
+                                t("GameControllerCursorSensitivityDesc"),
+                                D.persisted.gameControllerCursorSensitivity,
+                                5,
+                                25,
+                                1,
+                                (e) => {
+                                    D.persisted.gameControllerCursorSensitivity = parseInt(
+                                        (e.currentTarget as HTMLInputElement).value,
+                                        10
+                                    );
+                                }
+                            ),
+                            m(".hr"),
+                            uiBoxRangeSlider(
+                                t("GameControllerScrollSensitivity"),
+                                t("GameControllerScrollSensitivityDesc"),
+                                D.persisted.gameControllerScrollSensitivity,
+                                10,
+                                60,
+                                5,
+                                (e) => {
+                                    D.persisted.gameControllerScrollSensitivity = parseInt(
                                         (e.currentTarget as HTMLInputElement).value,
                                         10
                                     );

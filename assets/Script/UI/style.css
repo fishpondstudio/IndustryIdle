@@ -1537,3 +1537,13 @@ select {
     border-radius: 10px;
     overflow: hidden;
 }
+
+.virtual-pointer {
+    width: 22px;
+    height: 22px;
+    border-radius: 22px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    position: fixed;
+    pointer-events: none;
+}
