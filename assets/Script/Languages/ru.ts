@@ -1638,11 +1638,11 @@ export const RU = {
     PlayerTradePendingFineDesc:
         "Вы получили $%{profit} прибыли от %{count} сделки(ок) с читером %{player}. Вы должны вернуть прибыль, прежде чем сможете торговать снова",
     PlayerTradePendingFineAction: "Вернуть прибыль $%{profit}",
-    PlayerTradePendingFineActionDesc: "You can either return profits by paying cash or resources",
-    PlayerTradePendingFineReturnCash: "Pay Cash",
-    PlayerTradePendingFineReturnResources: "Pay Resources",
-    PlayerTradePendingFineNotEnough: "Insufficient",
+    PlayerTradePendingFineActionDesc: "Вы можете вернуть прибыль, заплатив деньги или ресурсы",
+    PlayerTradePendingFineReturnCash: "Заплатить деньги",
+    PlayerTradePendingFineReturnResources: "Заплатить ресурсы",
+    PlayerTradePendingFineNotEnough: "Недостаточно",
     PlayerTradeBetterTradesAvailable:
-        "There are %{count} open trades that offers better profit - you should fill those first",
-    PlayerTradeBetterTradesAvailableAction: "Show Me Those Trades",
+        "Есть %{count} открытых сделок, которые предлагают лучшую прибыль - их следует заполнить в первую очередь",
+    PlayerTradeBetterTradesAvailableAction: "Показать мне эти сделки",
 };
