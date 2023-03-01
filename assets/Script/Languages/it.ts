@@ -1624,7 +1624,6 @@ export const IT = {
     EdgePanEdgeSizeDesc: "La dimensione (in pixel) del bordo che attiva il pan",
     EdgePanEdgeSensitivity: "Sensitività del pan ai bordi",
     EdgePanEdgeSensitivityDesc: "La sensibilità del pan ai bordi - più grande il numero, più sensibile il pan",
-    BatchSellLevelX: "Level %{level} Only",
     GameControllerSupport: "Supporto per in controller",
     GameControllerSupportDesc: "Attiva il supporto per il controller - generalmente dovrebbe essere attivo",
     GameControllerCameraSensitivity: "Sensibiltà telecamera con controller",

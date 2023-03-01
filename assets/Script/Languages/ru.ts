@@ -1623,7 +1623,6 @@ export const RU = {
     EdgePanEdgeSizeDesc: "Размер (в пикселях) края, который активирует краевую прокрутку",
     EdgePanEdgeSensitivity: "Чувствительность краевой прокрутки",
     EdgePanEdgeSensitivityDesc: "Чувствительность перемещения камеры - чем выше число, тем выше чувствительность",
-    BatchSellLevelX: "Level %{level} Only",
     GameControllerSupport: "Поддержка геймпада",
     GameControllerSupportDesc: "Включить поддержку геймпада - в целом рекомендуется оставить эту опцию включенной",
     GameControllerCameraSensitivity: "Чувствительность геймпада для камеры",
