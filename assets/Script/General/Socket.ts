@@ -11,7 +11,7 @@ import { RU } from "../Languages/ru";
 import { Streaming } from "../UI/StreamingPage";
 import { showAlert, showToast } from "../UI/UISystem";
 import { API_HOST, D, G, getCurrentVersion, T } from "./GameData";
-import { forEach, getAlphaNumeric, getDebugUrlParams, hasValue, SECOND, selectOf, sizeOf } from "./Helper";
+import { forEach, getAlphaNumeric, getDebugUrlParams, hasValue, mapTo, SECOND, selectOf, sizeOf } from "./Helper";
 import { t } from "./i18n";
 import { isSteam, NativeSdk, steamworks } from "./NativeSdk";
 import { serverNow, setServerClock } from "./ServerClock";
@@ -451,7 +451,7 @@ export function getTickMessage() {
         resourceValuationForReference: allResourcesValueForReference(),
         buildingValuation: D.cashSpent,
         map: D.map,
-        price: D.price,
+        price: mapTo(D.price, (_, v) => v.price),
         mapCreatedAt: D.mapCreatedAt,
         buildingCount: sizeOf(D.buildings),
         dlc: sizeOf(D.persisted.dlc),
