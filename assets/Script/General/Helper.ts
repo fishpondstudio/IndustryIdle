@@ -450,6 +450,14 @@ export function mapOf<K extends string, V, T>(
     return result;
 }
 
+export function mapTo<K extends string, V, T>(obj: Partial<Record<K, V>>, func: (key: K, value: V) => T): Record<K, T> {
+    const result: Partial<Record<K, T>> = {};
+    forEach(obj, (k, v) => {
+        result[k] = func(k, v);
+    });
+    return result as Record<K, T>;
+}
+
 export function groupBy<T>(xs: T[], keyGetter: (k: T) => string): Record<string, T[]> {
     return xs.reduce((rv, x) => {
         (rv[keyGetter(x)] = rv[keyGetter(x)] || []).push(x);

@@ -437,7 +437,7 @@ export function getDowngradeCost(
     downgradeCostFunction: (level: number) => number
 ): number {
     let cost = 0;
-    for (let i = 0; i <= numberOfLevels; i++) {
+    for (let i = 0; i < numberOfLevels; i++) {
         cost += downgradeCostFunction(currentLevel - i);
     }
     return cost;
@@ -566,6 +566,32 @@ export function addResourceTo(entity: Entity, res: keyof Resources, value: numbe
         T.next.io[res][1] += value;
         safeAdd(D.producedRes, res, value);
     }
+}
+
+export function getResourcesForCash(cash: number): { amountLeft: number; resources: ResourceNumberMap } {
+    let amountLeft = cash;
+    const result: ResourceNumberMap = {};
+    const resource = keysOf(T.usableRes)
+        .map((f) => {
+            return { resource: f, amount: T.usableRes[f] };
+        })
+        .sort((a, b) => D.price[b.resource].price - D.price[a.resource].price);
+    for (let i = 0; i < resource.length; i++) {
+        const r = resource[i];
+        if (r.amount <= 0 || !canPrice(r.resource)) {
+            continue;
+        }
+        const price = D.price[r.resource].price;
+        const value = r.amount * price;
+        if (value >= Math.ceil(amountLeft / price) * price) {
+            result[r.resource] = Math.ceil(amountLeft / price);
+            return { amountLeft: 0, resources: result };
+        } else {
+            amountLeft -= r.amount * price;
+            result[r.resource] = r.amount;
+        }
+    }
+    return { amountLeft: amountLeft, resources: result };
 }
 
 export function deductFromAssertEnough(entity: Entity, res: keyof Resources, value: number, writeToIO = false): void {
@@ -1168,6 +1194,10 @@ export function tradeCenterRes(res: keyof Resources) {
 
 export function getSellRefundPercentage(): number {
     return D.persisted.sellRefundPercentage * 0.01;
+}
+
+export function getSellRefund(entity: Entity): number {
+    return Math.min(D.cashSpent, getSellRefundPercentage() * buildingValue(entity));
 }
 
 export function getMaxAdjacentCount(): number {

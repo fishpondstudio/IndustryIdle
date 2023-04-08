@@ -1584,4 +1584,23 @@ export const DK = {
     EdgePanEdgeSizeDesc: "The size (in pixels) of the edge that will activate edge pan",
     EdgePanEdgeSensitivity: "Edge Pan Sensitivity",
     EdgePanEdgeSensitivityDesc: "The sensitivity of camera pan - the bigger the number, the more sensitivity",
+    GameControllerSupport: "Game Controller Support",
+    GameControllerSupportDesc: "Enable game controller support - you should generally leave this on",
+    GameControllerCameraSensitivity: "Game Controller Camera Sensitivity",
+    GameControllerCameraSensitivityDesc: "Use your left joystick to move camera - this adjusts its sensitivity",
+    GameControllerCursorSensitivity: "Game Controller Cursor Sensitivity",
+    GameControllerCursorSensitivityDesc: "Use your right joystick to move cursor - this adjusts its sensitivity",
+    GameControllerScrollSensitivity: "Game Controller Scroll/Zoom Sensitivity",
+    GameControllerScrollSensitivityDesc: "Use your left/right trigger to scroll or zoom - this adjusts its sensitivity",
+    PlayerTradePendingFine: "Pending Player Trade Issues",
+    PlayerTradePendingFineDesc:
+        "You have made $%{profit} profits from %{count} trade(s) with a cheating player %{player}. You need to return the profit before you can trade again",
+    PlayerTradePendingFineAction: "Return $%{profit} Profits",
+    PlayerTradePendingFineActionDesc: "You can either return profits by paying cash or resources",
+    PlayerTradePendingFineReturnCash: "Pay Cash",
+    PlayerTradePendingFineReturnResources: "Pay Resources",
+    PlayerTradePendingFineNotEnough: "Insufficient",
+    PlayerTradeBetterTradesAvailable:
+        "There are %{count} open trades that offers better profit - you should fill those first",
+    PlayerTradeBetterTradesAvailableAction: "Show Me Those Trades",
 };

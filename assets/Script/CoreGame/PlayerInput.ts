@@ -4,7 +4,7 @@ import { convertFromUIToGame, debounce, forEach } from "../General/Helper";
 import { isGD, NativeSdk } from "../General/NativeSdk";
 import { TypedEvent } from "../General/TypedEvent";
 import { isPanelOnLeft } from "../UI/UIHelper";
-import { isMapEditMode, onResize, routeTo } from "../UI/UISystem";
+import { getVirtualPointer, isMapEditMode, onResize, routeTo } from "../UI/UISystem";
 import { getCurrentColor } from "./ColorThemes";
 import EntityVisual from "./EntityVisual";
 import { gridToString, HIGHLIGHT_EXTRA_WIDTH, stringToPosition } from "./GridHelper";
@@ -38,6 +38,25 @@ export default class PlayerInput extends MapInput {
     private _selectedGrid: cc.Vec3 = null;
     private _inCutSceneMode = false;
     private _grid = G.grid;
+    private _gamepadButtons: GamepadButton[];
+
+    private _hasActiveGamepad = false;
+    public get hasActiveGamepad() {
+        return this._hasActiveGamepad;
+    }
+    public set hasActiveGamepad(value) {
+        if (this._hasActiveGamepad === false && value === true) {
+            const vp = getVirtualPointer();
+            vp.style.display = "block";
+            const rect = vp.getBoundingClientRect();
+            vp.style.top = document.documentElement.clientHeight / 2 - rect.height / 2 + "px";
+            vp.style.left = document.documentElement.clientWidth / 2 - rect.width / 2 + "px";
+        }
+        if (this._hasActiveGamepad === true && value === false) {
+            getVirtualPointer().style.display = "none";
+        }
+        this._hasActiveGamepad = value;
+    }
 
     public get selectedGrid(): cc.Vec3 {
         return this._selectedGrid;
@@ -284,6 +303,185 @@ export default class PlayerInput extends MapInput {
         }
         if (this.cameraPanDirection) {
             this.cameraPosition = this.cameraPosition.add(this.cameraPanDirection.mul(D.persisted.edgePanSensitivity));
+        }
+        this.handleGameController();
+    }
+
+    private handleGameController() {
+        if (!D.persisted.gameControllerEnabled) {
+            this.hasActiveGamepad = false;
+            return;
+        }
+        const gamepads = navigator.getGamepads();
+        for (let i = 0; i < gamepads.length; i++) {
+            const gamepad = gamepads[i];
+            if (!gamepad || gamepad.mapping !== "standard") {
+                continue;
+            }
+            this.hasActiveGamepad = true;
+            if (Math.abs(gamepad.axes[0]) > 0.01 || Math.abs(gamepad.axes[1]) > 0.01) {
+                this.cameraPosition = this.cameraPosition.add(
+                    cc.v3(
+                        D.persisted.gameControllerCursorSensitivity * gamepad.axes[0],
+                        -D.persisted.gameControllerCursorSensitivity * gamepad.axes[1]
+                    )
+                );
+            }
+            const doc = document.documentElement;
+            if (Math.abs(gamepad.axes[2]) > 0.01 || Math.abs(gamepad.axes[3]) > 0.01) {
+                const vp = getVirtualPointer();
+                const rect = vp.getBoundingClientRect();
+                const left = rect.left;
+                const top = rect.top;
+                vp.style.left =
+                    cc.misc.clampf(
+                        left + gamepad.axes[2] * D.persisted.gameControllerCursorSensitivity,
+                        -rect.width / 2,
+                        doc.clientWidth - vp.clientWidth / 2
+                    ) + "px";
+                vp.style.top =
+                    cc.misc.clampf(
+                        top + gamepad.axes[3] * D.persisted.gameControllerCursorSensitivity,
+                        -rect.height / 2,
+                        doc.clientHeight - vp.clientHeight / 2
+                    ) + "px";
+            }
+            if (this._gamepadButtons) {
+                this.handleControllerButton(gamepad);
+            }
+            this._gamepadButtons = gamepad.buttons.map((b) => {
+                return { pressed: b.pressed, touched: b.touched, value: b.value };
+            });
+            // gamepad.buttons.forEach((b, index) => {
+            //     if (b.pressed) {
+            //         console.log(`Button [${index}] Pressed!`);
+            //     }
+            //     if (b.touched) {
+            //         console.log(`Button [${index}] Touched!`);
+            //     }
+            //     if (b.value > 0) {
+            //         console.log(`Button [${index}] = ${b.value}!`);
+            //     }
+            // });
+        }
+    }
+
+    private handleControllerButton(gamepad: Gamepad) {
+        const doc = document.documentElement;
+        const vp = getVirtualPointer();
+        const rect = vp.getBoundingClientRect();
+        const screenX = rect.x + rect.width / 2;
+        const screenY = rect.y + rect.height / 2;
+        // Primary click
+        if (
+            (this._gamepadButtons[0].pressed === false && gamepad.buttons[0].pressed === true) ||
+            (this._gamepadButtons[5].pressed === false && gamepad.buttons[5].pressed === true)
+        ) {
+            const elements = document.elementsFromPoint(screenX, screenY);
+            for (let i = 0; i < elements.length; i++) {
+                const element = elements[i];
+                if (element !== cc.game.canvas) {
+                    if (element instanceof HTMLSelectElement) {
+                        element.selectedIndex = (element.selectedIndex + 1) % element.options.length;
+                        element.dispatchEvent(new Event("change"));
+                    } else if (element instanceof HTMLInputElement && element.type === "range") {
+                        const value = parseInt(element.value, 10);
+                        const max = parseInt(element.max, 10);
+                        if (value >= max) {
+                            element.value = element.min;
+                        } else {
+                            element.stepUp();
+                        }
+                        element.dispatchEvent(new Event("input"));
+                    } else {
+                        (element as HTMLElement).click();
+                    }
+                    return;
+                }
+                if (element === cc.game.canvas) {
+                    break;
+                }
+            }
+            const x = screenX * (cc.winSize.width / doc.clientWidth);
+            const y = (doc.clientHeight - screenY) * (cc.winSize.height / doc.clientHeight);
+            const pos = this.camera.getScreenToWorldPoint(cc.v2(x, y));
+            const grid = this._grid.positionToGrid(pos);
+            if (grid) {
+                this.onGridSelected(
+                    grid,
+                    isPanelOnLeft(() => x > cc.winSize.width / 2)
+                );
+            }
+        }
+        // D-pad up
+        if (this._gamepadButtons[12].pressed === false && gamepad.buttons[12].pressed === true) {
+            this.onGridSelected(
+                this.selectedGrid
+                    .add(cc.v3(0, 1))
+                    .clampf(cc.v3(0, 0), cc.v3(G.grid.getMaxTile() - 1, G.grid.getMaxTile() - 1)),
+                isPanelOnLeft(() => screenX * (cc.winSize.width / doc.clientWidth) > cc.winSize.width / 2)
+            );
+        }
+        // D-pad down
+        if (this._gamepadButtons[13].pressed === false && gamepad.buttons[13].pressed === true) {
+            this.onGridSelected(
+                this.selectedGrid
+                    .add(cc.v3(0, -1))
+                    .clampf(cc.v3(0, 0), cc.v3(G.grid.getMaxTile() - 1, G.grid.getMaxTile() - 1)),
+                isPanelOnLeft(() => screenX * (cc.winSize.width / doc.clientWidth) > cc.winSize.width / 2)
+            );
+        }
+        // D-pad left
+        if (this._gamepadButtons[14].pressed === false && gamepad.buttons[14].pressed === true) {
+            this.onGridSelected(
+                this.selectedGrid
+                    .add(cc.v3(-1, 0))
+                    .clampf(cc.v3(0, 0), cc.v3(G.grid.getMaxTile() - 1, G.grid.getMaxTile() - 1)),
+                isPanelOnLeft(() => screenX * (cc.winSize.width / doc.clientWidth) > cc.winSize.width / 2)
+            );
+        }
+        // D-pad right
+        if (this._gamepadButtons[15].pressed === false && gamepad.buttons[15].pressed === true) {
+            this.onGridSelected(
+                this.selectedGrid
+                    .add(cc.v3(1, 0))
+                    .clampf(cc.v3(0, 0), cc.v3(G.grid.getMaxTile() - 1, G.grid.getMaxTile() - 1)),
+                isPanelOnLeft(() => screenX * (cc.winSize.width / doc.clientWidth) > cc.winSize.width / 2)
+            );
+        }
+        // Scroll up
+        if (gamepad.buttons[6].value > 0) {
+            const elements = document.elementsFromPoint(screenX, screenY);
+            for (let i = 0; i < elements.length; i++) {
+                const element = elements[i];
+                if (element === cc.game.canvas) {
+                    break;
+                }
+                (element as HTMLElement).scrollBy(
+                    0,
+                    -D.persisted.gameControllerScrollSensitivity * gamepad.buttons[6].value
+                );
+            }
+            if (elements[0] === cc.game.canvas) {
+                this.cameraZoom += gamepad.buttons[6].value * 0.01;
+            }
+        }
+        // Scroll down
+        if (gamepad.buttons[7].value > 0) {
+            const elements = document.elementsFromPoint(screenX, screenY);
+            for (let i = 0; i < elements.length; i++) {
+                const element = elements[i];
+                if (element === cc.game.canvas) {
+                    break;
+                }
+                (element as HTMLElement).scrollBy(
+                    0,
+                    D.persisted.gameControllerScrollSensitivity * gamepad.buttons[7].value
+                );
+            }
+            if (elements[0] === cc.game.canvas) {
+                this.cameraZoom -= gamepad.buttons[7].value * 0.01;
+            }
         }
     }
 

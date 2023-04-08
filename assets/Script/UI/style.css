@@ -627,6 +627,10 @@ input[type="range"] {
     overflow: hidden;
 }
 
+.box.no-margin {
+    margin: 0;
+}
+
 .box .action {
     border-top: 1px solid rgba(var(--foreground), 0.1);
     color: rgb(var(--color-hq));
@@ -1536,4 +1540,14 @@ select {
     margin: -10px 10px -10px 0;
     border-radius: 10px;
     overflow: hidden;
+}
+
+.virtual-pointer {
+    width: 22px;
+    height: 22px;
+    border-radius: 22px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    position: fixed;
+    pointer-events: none;
 }

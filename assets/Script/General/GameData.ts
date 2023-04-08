@@ -218,9 +218,13 @@ export class PersistedData {
     sfxKachingVolume = 0.25;
     sfxLevelupVolume = 0.25;
     sfxPowerupVolume = 0.25;
-    edgePanEnabled = true;
+    edgePanEnabled = false;
     edgePanSize = 20;
     edgePanSensitivity = 5;
+    gameControllerEnabled = true;
+    gameControllerCursorSensitivity = 10;
+    gameControllerCameraSensitivity = 10;
+    gameControllerScrollSensitivity = 20;
     panelPosition: PanelPosition = "auto";
     panelHeight: PanelHeight = "60";
     offlineEarningMinutes = 60 * 4;

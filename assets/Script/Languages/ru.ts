@@ -1617,10 +1617,32 @@ export const RU = {
     PlayerTradeFillBy: "Заполнено",
     PlayerTradeCancelled: "Отменено",
     FormatTimeAgo: "%{time} назад",
-    EnableEdgePan: "Enable Edge Pan",
-    EnableEdgePanDesc: "Moving your cursor to the edge of the screen to pan camera in that direction",
-    EdgePanEdgeSize: "Edge Pan Size",
-    EdgePanEdgeSizeDesc: "The size (in pixels) of the edge that will activate edge pan",
-    EdgePanEdgeSensitivity: "Edge Pan Sensitivity",
-    EdgePanEdgeSensitivityDesc: "The sensitivity of camera pan - the bigger the number, the more sensitivity",
+    EnableEdgePan: "Включить краевую прокрутку",
+    EnableEdgePanDesc: "При перемещении курсора к краю экрана происходит перемещение камеры в этом направлении",
+    EdgePanEdgeSize: "Размер краевой прокрутки",
+    EdgePanEdgeSizeDesc: "Размер (в пикселях) края, который активирует краевую прокрутку",
+    EdgePanEdgeSensitivity: "Чувствительность краевой прокрутки",
+    EdgePanEdgeSensitivityDesc: "Чувствительность перемещения камеры - чем выше число, тем выше чувствительность",
+    GameControllerSupport: "Поддержка геймпада",
+    GameControllerSupportDesc: "Включить поддержку геймпада - в целом рекомендуется оставить эту опцию включенной",
+    GameControllerCameraSensitivity: "Чувствительность геймпада для камеры",
+    GameControllerCameraSensitivityDesc:
+        "Используйте левый джойстик для перемещения камеры - это настраивает ее чувствительность",
+    GameControllerCursorSensitivity: "Чувствительность геймпада для курсора",
+    GameControllerCursorSensitivityDesc:
+        "Используйте правый джойстик для перемещения курсора - это настраивает его чувствительность",
+    GameControllerScrollSensitivity: "Чувствительность геймпада для прокрутки/масштабирования",
+    GameControllerScrollSensitivityDesc:
+        "Используйте левый или правый триггер для прокрутки или масштабирования - это настраивает их чувствительность",
+    PlayerTradePendingFine: "Ожидающие проблемы с торговлей игроков",
+    PlayerTradePendingFineDesc:
+        "Вы получили $%{profit} прибыли от %{count} сделки(ок) с читером %{player}. Вы должны вернуть прибыль, прежде чем сможете торговать снова",
+    PlayerTradePendingFineAction: "Вернуть прибыль $%{profit}",
+    PlayerTradePendingFineActionDesc: "Вы можете вернуть прибыль, заплатив деньги или ресурсы",
+    PlayerTradePendingFineReturnCash: "Заплатить деньги",
+    PlayerTradePendingFineReturnResources: "Заплатить ресурсы",
+    PlayerTradePendingFineNotEnough: "Недостаточно",
+    PlayerTradeBetterTradesAvailable:
+        "Есть %{count} открытых сделок, которые предлагают лучшую прибыль - их следует заполнить в первую очередь",
+    PlayerTradeBetterTradesAvailableAction: "Показать мне эти сделки",
 };

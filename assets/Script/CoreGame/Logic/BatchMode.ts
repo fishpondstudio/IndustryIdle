@@ -2,7 +2,17 @@ import { BatchModeOptions, D, G } from "../../General/GameData";
 import { firstKeyOf, forEach, sizeOf } from "../../General/Helper";
 import { gridToString, stringToGrid } from "../GridHelper";
 import { Entity } from "./Entity";
-import { forEachBuildingOfType, getCostForBuilding, getDowngradeCost, getUpgradeCost, getSellRefundPercentage, trySpendCash, refundCash } from "./Logic";
+import {
+    forEachBuildingOfType,
+    getCostForBuilding,
+    getDowngradeCost,
+    getSellRefund,
+    getSellRefundPercentage,
+    getUpgradeCost,
+    refundCash,
+    refundForSellingBuilding,
+    trySpendCash,
+} from "./Logic";
 
 export function getAdjacentIncludeSelf(entity: Entity): Record<string, true> {
     const result: Record<string, true> = { [entity.grid]: true };
@@ -78,7 +88,9 @@ export function getBatchDowngradeEstimate(entity: Entity, toLevel: number): { co
     batchApply(entity, (e) => {
         if (e.type === entity.type && e.level > toLevel) {
             count++;
-            gain += getDowngradeCost(e.level, e.level - toLevel, (l) => Math.min(D.cashSpent, getCostForBuilding(e.type, l) * getSellRefundPercentage()));
+            gain += getDowngradeCost(e.level, e.level - toLevel, (l) =>
+                Math.min(D.cashSpent, getCostForBuilding(e.type, l) * getSellRefundPercentage())
+            );
         }
     });
     return { count, gain };
@@ -103,17 +115,50 @@ export function doBatchUpgrade(entity: Entity, toLevel: number): { success: numb
     return { success, fail, cost };
 }
 
-export function doBatchDowngrade(entity: Entity, toLevel: number) : { success: number; fail: number; gain: number } {
+export function doBatchDowngrade(entity: Entity, toLevel: number): { success: number; fail: number; gain: number } {
     let success = 0;
     let fail = 0;
     let gain = 0;
     batchApply(entity, (e) => {
-        if (e.type === entity.type && e.level > toLevel) {            
-            const toRefund = getDowngradeCost(e.level, e.level - toLevel, (l) => Math.min(D.cashSpent, getCostForBuilding(entity.type, l) * getSellRefundPercentage()));
+        if (e.type === entity.type && e.level > toLevel) {
+            const toRefund = getDowngradeCost(e.level, e.level - toLevel, (l) =>
+                Math.min(D.cashSpent, getCostForBuilding(entity.type, l) * getSellRefundPercentage())
+            );
             refundCash(toRefund);
             success++;
             gain += toRefund;
             e.level = toLevel;
+        }
+    });
+    return { success, fail, gain };
+}
+
+export function doBatchSellEstimate(entity: Entity): { count: number; gain: number } {
+    let count = 0;
+    let gain = 0;
+    batchApply(entity, (e) => {
+        count++;
+        gain += getSellRefund(e);
+    });
+    return { count, gain };
+}
+
+export function doBatchSell(entity: Entity): { success: number; fail: number; gain: number } {
+    let success = 0;
+    let gain = 0;
+    let fail = 0;
+    batchApply(entity, (e) => {
+        const refund = getSellRefund(e);
+        const b = G.world.removeBuilding(stringToGrid(e.grid));
+        if (b) {
+            refundForSellingBuilding(b, refund, getSellRefundPercentage());
+        }
+        if (refund > 0) {
+            success++;
+            gain += refund;
+            delete D.buildings[e.grid];
+        } else {
+            fail++;
         }
     });
     return { success, fail, gain };
