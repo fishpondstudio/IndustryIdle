@@ -1603,4 +1603,6 @@ export const EL = {
     PlayerTradeBetterTradesAvailable:
         "There are %{count} open trades that offers better profit - you should fill those first",
     PlayerTradeBetterTradesAvailableAction: "Show Me Those Trades",
+    BuildingCount: "Count",
+    NoEfficiencyDesc: "This building does not benefit from following policies:",
 };

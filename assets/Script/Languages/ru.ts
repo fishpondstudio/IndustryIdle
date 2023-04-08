@@ -1645,4 +1645,6 @@ export const RU = {
     PlayerTradeBetterTradesAvailable:
         "Есть %{count} открытых сделок, которые предлагают лучшую прибыль - их следует заполнить в первую очередь",
     PlayerTradeBetterTradesAvailableAction: "Показать мне эти сделки",
+    BuildingCount: "Count",
+    NoEfficiencyDesc: "This building does not benefit from following policies:",
 };
