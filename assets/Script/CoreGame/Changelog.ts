@@ -1,5 +1,15 @@
 export const CHANGELOG = [
     {
+        version: "0.20.5",
+        content: [
+            "Added Turkish and Bahasa language in chat (@FishPond)",
+            "Hide Produce All Crops Swiss Boost if the game does not have Expansion Pack 2 (@FishPond)",
+            "Bugfix: Activating Electric Fish Pond policy without Hydro Power Plant will cause Fish Pond to malfunction (@FishPond)",
+            "QoL: Add building count in building panel (@WingedLeo)",
+            "QoL: Add a warning if a building does not benefit from certain policies (@WingedLeo)",
+        ],
+    },
+    {
         version: "0.20.4",
         content: [
             "Allow returning trade profit by paying resources (@FishPond)",

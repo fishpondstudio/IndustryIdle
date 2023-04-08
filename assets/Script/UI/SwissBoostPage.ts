@@ -1,4 +1,4 @@
-import { D, G } from "../General/GameData";
+import { D, G, hasDLC } from "../General/GameData";
 import { formatPercent, nf } from "../General/Helper";
 import { t } from "../General/i18n";
 import {
@@ -111,7 +111,9 @@ export function SwissBoostPage(): m.Comp {
                         100,
                         "resourceExplorerAllDeposits"
                     ),
-                    uiSwissBoostToggleBox(t("ProduceAllCrops"), t("ProduceAllCropsDesc"), 100, "produceAllCrops"),
+                    hasDLC("dlc2")
+                        ? uiSwissBoostToggleBox(t("ProduceAllCrops"), t("ProduceAllCropsDesc"), 100, "produceAllCrops")
+                        : null,
                     uiSwissBoostToggleBox(t("ResearchAgreement"), t("ResearchAgreementDesc"), 100, "researchAgreement"),
                 ]),
             ]);

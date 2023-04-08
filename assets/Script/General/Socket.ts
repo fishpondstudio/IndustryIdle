@@ -417,6 +417,12 @@ export const CHAT_CHANNEL = {
     kr: {
         name: KR.ThisLanguage,
     },
+    id: {
+        name: "Bahasa",
+    },
+    tr: {
+        name: "Türkçe",
+    },
 };
 
 export function getTickMessage() {

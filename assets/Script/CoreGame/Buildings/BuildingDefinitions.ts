@@ -1,5 +1,5 @@
 import { D, DLC, DownloadableContent, T } from "../../General/GameData";
-import { formatPercent, NOOP } from "../../General/Helper";
+import { NOOP, formatPercent } from "../../General/Helper";
 import { t } from "../../General/i18n";
 import { CentralBankPage } from "../../UI/CentralBankPage";
 import { HeadquarterPage } from "../../UI/HeadquarterPage";
@@ -12,7 +12,7 @@ import { WholesaleCenterPage } from "../../UI/WholesaleCenterPage";
 import { WormholePage } from "../../UI/WormholePage";
 import EntityVisual from "../EntityVisual";
 import { Entity, getOutput } from "../Logic/Entity";
-import { isBuildingLevelTooHigh, isOctober, Item, MAP, requireDeposit } from "../Logic/Logic";
+import { Item, MAP, isBuildingLevelTooHigh, isOctober, requireDeposit } from "../Logic/Logic";
 import { addBoostAmount, getGenericBoostPercentage as getBoostPercentage } from "../Logic/Production";
 import { isPolicyActive } from "../Logic/SelfContained";
 import { CAPACITOR_SIZE, Resources } from "../ResourceDefinitions";
@@ -1297,14 +1297,9 @@ export class Buildings {
         tick: (v) => {
             tickGeneral(v);
             if (isPolicyActive("ElectricFishPond")) {
-                addBoostAmount(T.next.boosts, v.entity.grid, v.entity.type, [
-                    0.2 * T.workingBuildingCount.HydroPowerPlant,
-                    0.2 * T.workingBuildingCount.HydroPowerPlant,
-                ]);
-                addBoostAmount(T.next.boostsStable, v.entity.grid, v.entity.type, [
-                    0.2 * T.buildingCount.HydroPowerPlant,
-                    0.2 * T.buildingCount.HydroPowerPlant,
-                ]);
+                const count = T.buildingCount.HydroPowerPlant ?? 0;
+                addBoostAmount(T.next.boosts, v.entity.grid, v.entity.type, [0.2 * count, 0.2 * count]);
+                addBoostAmount(T.next.boostsStable, v.entity.grid, v.entity.type, [0.2 * count, 0.2 * count]);
             }
         },
     };
