@@ -1025,8 +1025,8 @@ export const RU = {
         "Склады имеют 2-х кратную вместимость и на 50% более высокую скорость транспортировки на/со склада, но потребляют в 2 раза больше энергии",
     IndustryZoneMultiplierDesc: "Бонус промышленной зоны",
     IndustryZoneMultiplierSwissBoost: "Бонус мощности промышленной зоны",
-    EarningPerMinuteV2: "оффлайн-доход",
-    OfflineResearchPoint: "Точка автономного исследования",
+    EarningPerMinuteV2: "Оффлайн-доход",
+    OfflineResearchPoint: "Оффлайн очки исследования",
     WholesaleCenterOrderFasterV2: "Более быстрая оптовая торговля",
     OfflineResearchSwissBoost: "Исследование в оффлайне",
     OfflineResearchSwissBoostDesc:
@@ -1645,6 +1645,6 @@ export const RU = {
     PlayerTradeBetterTradesAvailable:
         "Есть %{count} открытых сделок, которые предлагают лучшую прибыль - их следует заполнить в первую очередь",
     PlayerTradeBetterTradesAvailableAction: "Показать мне эти сделки",
-    BuildingCount: "Count",
-    NoEfficiencyDesc: "This building does not benefit from following policies:",
+    BuildingCount: "Количество",
+    NoEfficiencyDesc: "На это здание не действуют следующие политики:",
 };
