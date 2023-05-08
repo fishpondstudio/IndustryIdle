@@ -1604,4 +1604,7 @@ export const SK = {
     PlayerTradeBetterTradesAvailableAction: "Show Me Those Trades",
     BuildingCount: "Count",
     NoEfficiencyDesc: "This building does not benefit from following policies:",
+    AuthenticationSendSuccess: "Your authentication request is successfully sent",
+    AuthenticationSendFail: "Failed to send authentication request: %{message}",
+    Authenticate: "Authenticate Your Account",
 };
