@@ -1,5 +1,11 @@
 [
     {
+        "version": "0.20.6",
+        "content": [
+            "QoL: The game will try to renew authentication if it expires. There's also a new button in Headquarter to manually renew authentication (@FishPond)"
+        ]
+    },
+    {
         "version": "0.20.5",
         "content": [
             "Added Turkish and Bahasa language in chat (@FishPond)",

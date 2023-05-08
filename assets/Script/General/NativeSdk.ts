@@ -148,7 +148,7 @@ export class DefaultNativeSdk {
     async restorePurchases(): Promise<string[]> {
         const params = new URLSearchParams(window.location.search);
         const token = params.get("token");
-        let result: Record<string, true> = {};
+        const result: Record<string, true> = {};
         if (token) {
             try {
                 const r = await fetch(`${API_HOST}/steam/verify?token=${token}&userId=${D.persisted.userId}`);
