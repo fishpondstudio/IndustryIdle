@@ -10,10 +10,9 @@ import { KR } from "../Languages/kr";
 import { RU } from "../Languages/ru";
 import { Streaming } from "../UI/StreamingPage";
 import { showAlert, showToast } from "../UI/UISystem";
-import { API_HOST, D, G, getCurrentVersion, T } from "./GameData";
+import { API_HOST, D, G, getAuthQueryString, T } from "./GameData";
 import { forEach, getAlphaNumeric, getDebugUrlParams, hasValue, mapTo, SECOND, selectOf, sizeOf } from "./Helper";
 import { t } from "./i18n";
-import { isSteam, NativeSdk, steamworks } from "./NativeSdk";
 import { serverNow, setServerClock } from "./ServerClock";
 import { TypedEvent } from "./TypedEvent";
 
@@ -140,20 +139,14 @@ export class Socket {
     }
 
     public async connect(): Promise<void> {
-        const ticket = await NativeSdk.getAuthTicket();
-        const appId = isSteam() ? `&appId=${await steamworks.getAppId()}` : "";
         if (!this._connecting) {
+            const query = await getAuthQueryString();
             this._connecting = new Promise((resolve, reject) => {
                 this.disconnect();
                 try {
-                    const token = ticket ? `&token=${ticket}` : "";
                     const serverOverride = getDebugUrlParams().server;
                     const url = serverOverride ? `ws://${serverOverride}` : "wss://api.fishpondstudio.com/";
-                    this._ws = new WebSocket(
-                        `${url}?user=${
-                            D.persisted.userId
-                        }${token}&platform=${NativeSdk.name().toLowerCase()}${appId}&version=${getCurrentVersion()}`
-                    );
+                    this._ws = new WebSocket(`${url}?${query}`);
                     this._ws.onopen = (e) => {
                         this._connecting = null;
                         this._retryCount = 0;
@@ -192,6 +185,9 @@ export class Socket {
             setServerClock(message.time);
         }
         if (hasValue(message.auth)) {
+            if (authenticated && !message.auth) {
+                // resend authentication;
+            }
             authenticated = message.auth;
         }
         if (message.isMod) {

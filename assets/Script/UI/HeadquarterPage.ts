@@ -13,6 +13,7 @@ import { BAD_WORDS } from "../General/Badwords";
 import { BUILD_NUMBER } from "../General/BuildNumber";
 import {
     API_HOST,
+    authenticatePlayer,
     clearTrades,
     D,
     DLC,
@@ -22,10 +23,11 @@ import {
     hasDLC,
     syncPurchases,
 } from "../General/GameData";
-import { getFlagUrl, getResourceUrl, hasValue, HOUR, ifTrue, nf, resolveIn, sizeOf } from "../General/Helper";
+import { getFlagUrl, getResourceUrl, hasValue, HOUR, ifTrue, MINUTE, nf, resolveIn, sizeOf } from "../General/Helper";
 import { t } from "../General/i18n";
 import { hasSteamWebSignIn, isAndroid, isIOS, isSteam, isSteamWebSignedIn, NativeSdk } from "../General/NativeSdk";
 import { serverNow } from "../General/ServerClock";
+import { isAuthenticated } from "../General/Socket";
 import { CrazyGameAdBanner } from "./CrazyGameAdBanner";
 import { ExpansionPackPanel } from "./ExpansionPacks";
 import { ImportExportPanel } from "./ImportExport";
@@ -36,9 +38,11 @@ import { routeTo, showAlert, showLoader, showToast } from "./UISystem";
 import { UserVerification } from "./UserVerification";
 
 const NAME_CHANGE_COOLDOWN_HOUR = 24;
-let minimizeHighlightAll: boolean = false;
-let minimizeBuildingPermit: boolean = false;
-let minimizeExpansionPacks: boolean = false;
+let minimizeHighlightAll = false;
+let minimizeBuildingPermit = false;
+let minimizeExpansionPacks = false;
+
+let lastAuthenticateAt = 0;
 
 export function startWebLogin() {
     const popup = window.open(`${API_HOST}/steam`, "_blank", "popup");
@@ -250,13 +254,38 @@ export function HeadquarterPage(): m.Comp {
                                     m(".ml10", iconB("login")),
                                 ]
                             ),
-                        ])
+                        ]),
+                        ifTrue(
+                            !isAuthenticated() &&
+                                (isIOS() || isAndroid() || isSteam()) &&
+                                Date.now() - lastAuthenticateAt > 5 * MINUTE,
+                            () => [
+                                m(".hr"),
+                                m(
+                                    ".row.pointer.blue",
+                                    {
+                                        onclick: async () => {
+                                            lastAuthenticateAt = Date.now();
+                                            const resp = await authenticatePlayer();
+                                            if (resp.status == 200) {
+                                                showToast(t("AuthenticationSendSuccess"));
+                                            } else {
+                                                G.audio.playError();
+                                                showToast(t("AuthenticationSendFail", { message: await resp.text() }));
+                                            }
+                                        },
+                                    },
+                                    [m(".f1", t("Authenticate")), m(".ml10", iconB("login"))]
+                                ),
+                            ]
+                        )
                     ),
                     m(StreamingPage),
                     m(".box", [
                         m(".title", [
                             m(".two-col", [
-                                m("div",
+                                m(
+                                    "div",
                                     m(
                                         "td.pointer",
                                         {
@@ -266,20 +295,14 @@ export function HeadquarterPage(): m.Comp {
                                         },
                                         minimizeHighlightAll
                                             ? iconB("add_circle_outline", 18, 0, {}, { class: "blue mv-10" })
-                                            : iconB(
-                                                  "remove_circle_outline",
-                                                  18,
-                                                  0,
-                                                  {},
-                                                  { class: "text-desc mv-10" }
-                                              )
-                                    ),
+                                            : iconB("remove_circle_outline", 18, 0, {}, { class: "text-desc mv-10" })
+                                    )
                                 ),
-                                m("div", {style: "margin-left: 8px;"}, t("HighlightBuildings")),
-                                m("div", " ")
-                            ])
+                                m("div", { style: "margin-left: 8px;" }, t("HighlightBuildings")),
+                                m("div", " "),
+                            ]),
                         ]),
-                        ifTrue(!minimizeHighlightAll,  () => [
+                        ifTrue(!minimizeHighlightAll, () => [
                             m(".hr"),
                             m(
                                 ".two-col.pointer",
@@ -303,7 +326,10 @@ export function HeadquarterPage(): m.Comp {
                                         G.audio.playClick();
                                         showToast(
                                             t("NBuildingsAreHighlighted", {
-                                                n: G.world.highlightBuildings((v) => v.entity.inputBuffer === "auto", []),
+                                                n: G.world.highlightBuildings(
+                                                    (v) => v.entity.inputBuffer === "auto",
+                                                    []
+                                                ),
                                             })
                                         );
                                     },
@@ -363,7 +389,10 @@ export function HeadquarterPage(): m.Comp {
                                         G.audio.playClick();
                                         showToast(
                                             t("NBuildingsAreHighlighted", {
-                                                n: G.world.highlightBuildings((v) => hasValue(v.entity.construction), []),
+                                                n: G.world.highlightBuildings(
+                                                    (v) => hasValue(v.entity.construction),
+                                                    []
+                                                ),
                                             })
                                         );
                                     },
@@ -429,7 +458,8 @@ export function HeadquarterPage(): m.Comp {
                     m(".box", [
                         m(".title", [
                             m(".two-col", [
-                                m("div",
+                                m(
+                                    "div",
                                     m(
                                         "td.pointer",
                                         {
@@ -439,20 +469,14 @@ export function HeadquarterPage(): m.Comp {
                                         },
                                         minimizeBuildingPermit
                                             ? iconB("add_circle_outline", 18, 0, {}, { class: "blue mv-10" })
-                                            : iconB(
-                                                  "remove_circle_outline",
-                                                  18,
-                                                  0,
-                                                  {},
-                                                  { class: "text-desc mv-10" }
-                                              )
-                                    ),
+                                            : iconB("remove_circle_outline", 18, 0, {}, { class: "text-desc mv-10" })
+                                    )
                                 ),
-                                m("div", {style: "margin-left: 8px;"}, t("BuildingPermit")),
-                                m("div", " ")
-                            ])
+                                m("div", { style: "margin-left: 8px;" }, t("BuildingPermit")),
+                                m("div", " "),
+                            ]),
                         ]),
-                        ifTrue(!minimizeBuildingPermit,  () => [
+                        ifTrue(!minimizeBuildingPermit, () => [
                             m(".hr"),
                             m(".two-col", [
                                 m("div", [m("div", t("MaxBuilders")), m(".text-desc.text-s", t("MaxBuildersDesc"))]),
@@ -510,7 +534,8 @@ export function HeadquarterPage(): m.Comp {
                     m(".box", [
                         m(".title", [
                             m(".two-col", [
-                                m("div",
+                                m(
+                                    "div",
                                     m(
                                         "td.pointer",
                                         {
@@ -520,20 +545,14 @@ export function HeadquarterPage(): m.Comp {
                                         },
                                         minimizeExpansionPacks
                                             ? iconB("add_circle_outline", 18, 0, {}, { class: "blue mv-10" })
-                                            : iconB(
-                                                  "remove_circle_outline",
-                                                  18,
-                                                  0,
-                                                  {},
-                                                  { class: "text-desc mv-10" }
-                                              )
-                                    ),
+                                            : iconB("remove_circle_outline", 18, 0, {}, { class: "text-desc mv-10" })
+                                    )
                                 ),
-                                m("div", {style: "margin-left: 8px;"}, t("ExpansionPacks")),
-                                m("div", " ")
-                            ])
+                                m("div", { style: "margin-left: 8px;" }, t("ExpansionPacks")),
+                                m("div", " "),
+                            ]),
                         ]),
-                        ifTrue(!minimizeExpansionPacks,  () => [
+                        ifTrue(!minimizeExpansionPacks, () => [
                             m(".hr"),
                             m(".two-col", [
                                 m("div", t("ExpansionPack1")),

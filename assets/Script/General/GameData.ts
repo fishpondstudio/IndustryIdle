@@ -37,7 +37,7 @@ import { AudioController } from "./AudioController";
 import { GAME_DATA_LS_KEY } from "./Constants";
 import { forEach, getDebugUrlParams, hasValue, murmurhash3, sizeOf, uuidv4, xmur3 } from "./Helper";
 import { t } from "./i18n";
-import { isAndroid, isIOS, NativeSdk, Platform } from "./NativeSdk";
+import { isAndroid, isIOS, isSteam, NativeSdk, Platform, steamworks } from "./NativeSdk";
 import { serverNow } from "./ServerClock";
 import { CHAT_CHANNEL, Socket } from "./Socket";
 import { TypedEvent } from "./TypedEvent";
@@ -229,7 +229,7 @@ export class PersistedData {
     panelHeight: PanelHeight = "60";
     offlineEarningMinutes = 60 * 4;
     batchMode: BatchMode = "all";
-    allowPortrait: boolean = false;
+    allowPortrait = false;
     prestigeCurrency = 0;
     allPrestigeCurrency = 0;
     lastTickAt = serverNow();
@@ -283,10 +283,10 @@ export class PersistedData {
 }
 
 export const FontSizeScalingOptions = ["0.9", "1", "1.1", "1.2", "1.3", "1.4", "1.5"] as const;
-export type FontSizeScaling = typeof FontSizeScalingOptions[number];
+export type FontSizeScaling = (typeof FontSizeScalingOptions)[number];
 
 export const ScrollSensitivityOptions = [0.1, 0.2, 0.5, 1, 2, 5, 10] as const;
-export type ScrollSensitivity = typeof ScrollSensitivityOptions[number];
+export type ScrollSensitivity = (typeof ScrollSensitivityOptions)[number];
 
 export const ResourceMovementOptions = {
     show: () => t("ResourceMovementShow"),
@@ -455,7 +455,7 @@ export function dlcDesc(dlc: DownloadableContent): string {
 }
 
 export const DLC = ["dlc1", "dlc2"] as const;
-export type DownloadableContent = typeof DLC[number];
+export type DownloadableContent = (typeof DLC)[number];
 export const PlatformSKUs: Partial<Record<Platform, Record<string, DownloadableContent>>> = {
     iOS: {
         ep1: DLC[0],
@@ -550,6 +550,22 @@ export function clearTrades(userId: string): Promise<Response> {
     return fetch(`${API_HOST}/trade/clear`, {
         method: "post",
         headers: { "X-User-Id": userId },
+    });
+}
+
+export async function getAuthQueryString(): Promise<string> {
+    const appId = isSteam() ? `&appId=${await steamworks.getAppId()}` : "";
+    const ticket = await NativeSdk.getAuthTicket();
+    const token = ticket ? `&token=${ticket}` : "";
+    return `user=${
+        D.persisted.userId
+    }${token}&platform=${NativeSdk.name().toLowerCase()}${appId}&version=${getCurrentVersion()}`;
+}
+
+export async function authenticatePlayer(): Promise<Response> {
+    return fetch(`${API_HOST}/user/authentication?${await getAuthQueryString()}`, {
+        method: "post",
+        headers: { "X-User-Id": D.persisted.userId },
     });
 }
 
