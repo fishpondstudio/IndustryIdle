@@ -137,7 +137,7 @@ export class Maps {
         tick: () => {
             scaleProduction("CarFactory", ["staticInput", "staticOutput"], 2);
             scaleProduction("EngineFactory", ["staticOutput"], 2);
-            scaleProduction("TrainFactory", ["staticOutput", "staticOutput"], 2);
+            scaleProduction("TrainFactory", ["staticInput", "staticOutput"], 2);
             RES.Car.fuelCost = 0;
             BLD.CarFactory.staticInput.Gas = BLD.CarFactory.staticInput.Petrol;
             delete BLD.CarFactory.staticInput.Petrol;
