@@ -1647,7 +1647,7 @@ export const RU = {
     PlayerTradeBetterTradesAvailableAction: "Показать мне эти сделки",
     BuildingCount: "Количество",
     NoEfficiencyDesc: "На это здание не действуют следующие политики:",
-    AuthenticationSendSuccess: "Your authentication request is successfully sent",
-    AuthenticationSendFail: "Failed to send authentication request: %{message}",
-    Authenticate: "Authenticate Your Account",
+    AuthenticationSendSuccess: "Ваш запрос аутентификации успешно отправлен",
+    AuthenticationSendFail: "Не удалось отправить запрос на аутентификацию: %{message}",
+    Authenticate: "Аутентифицировать свой аккаунт",
 };
