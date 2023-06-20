@@ -1446,8 +1446,8 @@ export const KR = {
     AutoSellCapacity: "자동 판매 용량",
     AutoSellCapacityDescV2:
         "Max amount of resources auto sell can handle per second, per resource, measured as the percentage of your total production of that resource",
-    AutoSellCapacityExtraPercentageFromSwiss: "Extra Percentage from Swiss Upgrade and Boost: %{n}%",
-    BaselineAutoSellCapacity: "Baseline auto sell capacity: %{amount}",
+    AutoSellCapacityExtraPercentageFromSwiss: "스위스 업그레이드와 부스트로 인한 추가 퍼센트: %{n}%",
+    BaselineAutoSellCapacity: "기본 자동 판매 용량: %{amount}",
     AchievementAuckland100: "Hoiho",
     AchievementAuckland100Desc: "Earn 100 Swiss Money in Auckland in a single run",
     AchievementAuckland500: "Whio",
