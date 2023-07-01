@@ -4,7 +4,7 @@ import { GD_GAME_ID } from "../Config/Config";
 import { idbDel, idbGet, idbSet } from "../UI/Lib/idb-keyval";
 import { AD_EVENT_CANCELLED, AD_EVENT_COMPLETED, AD_EVENT_ERROR } from "./ANEvents";
 import { API_HOST, D, DLC, PlatformSKUs } from "./GameData";
-import { forEach, hasValue, keysOf, resolveIn, uuidv4 } from "./Helper";
+import { forEach, hasValue, keysOf, uuidv4 } from "./Helper";
 
 const SECOND = 1000;
 export const MINUTE = SECOND * 60;
@@ -658,7 +658,6 @@ export class SteamNativeSdk extends DefaultNativeSdk {
         if (sku === DLC[0]) {
             const url = `https://store.steampowered.com/app/${sku}`;
             this.openUrl(url);
-            steamworks.activateGameOverlayToWebPage(url);
         }
         return Promise.resolve([]);
     }
@@ -676,9 +675,7 @@ export class SteamNativeSdk extends DefaultNativeSdk {
             return steamAuthTicket;
         }
         if (!steamAuthTicket) {
-            steamAuthTicket = (
-                await Promise.race([steamworks.getAuthSessionTicket(), resolveIn(5, { ticket: steamAuthTicket })])
-            ).ticket;
+            steamAuthTicket = await steamworks.getAuthSessionTicket();
         }
         return steamAuthTicket;
     }
@@ -710,10 +707,6 @@ export class SteamNativeSdk extends DefaultNativeSdk {
 export const steamworks = {
     getSteamId: () => window.ipcRenderer.invoke<any>("getSteamId"),
     isDLCInstalled: (id: number) => window.ipcRenderer.invoke<boolean>("isDLCInstalled", id),
-    getDLCCount: () => window.ipcRenderer.invoke<number>("getDLCCount"),
-    getDLCDataByIndex: (idx: number) => window.ipcRenderer.invoke<ISteamDLC>("getDLCDataByIndex", idx),
-    activateGameOverlay: (option: string) => window.ipcRenderer.invoke<void>("activateGameOverlay", option),
-    activateGameOverlayToWebPage: (url: string) => window.ipcRenderer.invoke<void>("activateGameOverlayToWebPage", url),
     openUrl: (url: string) => window.ipcRenderer.invoke<void>("openUrl", url),
     getAppId: () => window.ipcRenderer.invoke<number>("getAppId"),
     saveTextToFile: (name: string, content: string) => window.ipcRenderer.invoke<void>("saveTextToFile", name, content),
@@ -721,7 +714,7 @@ export const steamworks = {
     saveTextToLocalFile: (name: string, content: string) =>
         window.ipcRenderer.invoke<void>("saveTextToLocalFile", name, content),
     readTextFromLocalFile: (name: string) => window.ipcRenderer.invoke<string>("readTextFromLocalFile", name),
-    getAuthSessionTicket: () => window.ipcRenderer.invoke<{ ticket: string; handle: number }>("getAuthSessionTicket"),
+    getAuthSessionTicket: () => window.ipcRenderer.invoke<string>("getAuthSessionTicket"),
     activateAchievement: (name: string) => window.ipcRenderer.invoke<void>("activateAchievement", name),
     setNativeTheme: (theme: "dark" | "light" | "system") => window.ipcRenderer.invoke<void>("setNativeTheme", theme),
     setFullScreen: (fullscreen: boolean) => window.ipcRenderer.invoke<void>("setFullScreen", fullscreen),
@@ -740,12 +733,10 @@ export const steamworks = {
 };
 
 async function getAllSteamDLCs(): Promise<ISteamDLC[]> {
-    const result: ISteamDLC[] = [];
-    const count = await steamworks.getDLCCount();
-    for (let i = 0; i < count; i++) {
-        result.push(await steamworks.getDLCDataByIndex(i));
-    }
-    return result;
+    return [
+        { name: "Expansion Pack 1", available: true, appId: 1577540 },
+        { name: "Expansion Pack 2", available: true, appId: 1807800 },
+    ];
 }
 
 export function isSteam(): boolean {
