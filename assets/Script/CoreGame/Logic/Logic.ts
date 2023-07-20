@@ -768,9 +768,10 @@ export function getResDiff(r: keyof Resources) {
     return series[series.length - 1] - series[series.length - 2];
 }
 
-export function allResourcesValue() {
+export function allResourcesValue(rewindTrade = false) {
     let result = keysOf(T.res).reduce((prev, k) => {
-        const val = cashForBuyOrSell(k, -T.res[k]);
+        const tradeAmount = rewindTrade ? safeGet(D.tradeEffect, k, 0) : 0;
+        const val = cashForBuyOrSell(k, -(T.res[k] - tradeAmount));
         return prev + val;
     }, 0);
 
@@ -1097,12 +1098,12 @@ export function addPrestigeCurrency(p: number): void {
 
 const MIN_PRESTIGE_CURRENCY = 10;
 
-export function getMarketCap() {
-    return getValuation() * D.stockRating;
+export function getMarketCap(rewindTrade = false) {
+    return getValuation(rewindTrade) * D.stockRating;
 }
 
-export function getValuation() {
-    return allResourcesValue() + D.cashSpent;
+export function getValuation(rewindTrade = false) {
+    return allResourcesValue(rewindTrade) + D.cashSpent;
 }
 
 export function getPrestigeCurrency(marketCap = getMarketCap()): number {

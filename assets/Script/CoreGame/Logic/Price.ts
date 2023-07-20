@@ -1,14 +1,14 @@
 import { D, G, IPrice, T } from "../../General/GameData";
 import {
+    HOUR,
+    SECOND,
     clearGaussian,
     extrapolate,
     forEach,
     getMedian,
     hasValue,
-    HOUR,
     keysOf,
     randomGaussian,
-    SECOND,
     sizeOf,
     srand,
 } from "../../General/Helper";
@@ -17,17 +17,17 @@ import { ResourceNumberMap } from "../Buildings/BuildingDefinitions";
 import { depositsToPercentage } from "../MapDefinitions";
 import { Resources } from "../ResourceDefinitions";
 import {
-    activeInputOutput,
-    averageDepositPrice,
-    canPrice,
     CROP,
     DEP,
     MAP,
     ORIGINAL_BLD,
     ORIGINAL_RES,
+    activeInputOutput,
+    averageDepositPrice,
+    canPrice,
     stableInputOutput,
 } from "./Logic";
-import { getAutoSellAmountFor, getSwissMultiplier, PRODUCTION_SCALER } from "./Production";
+import { PRODUCTION_SCALER, getAutoSellAmountFor, getSwissMultiplier } from "./Production";
 
 export function priceUpdateInterval(): number {
     if (D.map === "HongKong") {
@@ -191,6 +191,7 @@ export function tickPrice(debugRandom?: () => number, ignoreMap = false) {
         D.producedRes = {};
         D.producedTicks = 0;
         D.tradeAmount = 0;
+        D.tradeEffect = {};
     }
 }
 

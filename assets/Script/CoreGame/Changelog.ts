@@ -2,6 +2,7 @@ export const CHANGELOG = [
     {
         version: "0.20.6",
         content: [
+            "Balance: When calculating market-cap based trade quota, trades since the last market update will be excluded",
             "QoL: The game will try to renew authentication if it expires. There's also a new button in Headquarter to manually renew authentication (@FishPond)",
             "Upgrade game engine and runtime frameworks - this should help improve compatibility",
         ],

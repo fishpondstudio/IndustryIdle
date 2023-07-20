@@ -358,6 +358,7 @@ export class GameData {
     policies: Partial<Record<keyof Policy, IPolicyInfo>> = {};
     producedRes: ResourceNumberMap = {};
     tradedRes: ResourceNumberMap = {};
+    tradeEffect: ResourceNumberMap = {};
     producedTicks = 0;
     hideResourcesInTopBar: ResourceSet = {};
     tickCount = 0;

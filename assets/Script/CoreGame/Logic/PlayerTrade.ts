@@ -156,6 +156,8 @@ export async function acceptTrade(trade: ITrade) {
             throw new Error(t("NotEnoughCash"));
         }
         tc[tradeBeforeTax.resource] += trade.amount;
+        safeAdd(D.tradeEffect, tradeBeforeTax.resource, trade.amount);
+        safeAdd(D.tradeEffect, "Cash", -tradeBeforeTax.amount * tradeBeforeTax.price);
     }
     if (tradeBeforeTax.side === "buy") {
         if (!tryDeductResource(tradeBeforeTax.resource, tradeBeforeTax.amount)) {
@@ -163,6 +165,8 @@ export async function acceptTrade(trade: ITrade) {
             throw new Error(t("NotEnoughResources"));
         }
         addCash(trade.amount * trade.price);
+        safeAdd(D.tradeEffect, tradeBeforeTax.resource, -trade.amount);
+        safeAdd(D.tradeEffect, "Cash", tradeBeforeTax.amount * tradeBeforeTax.price);
     }
     //////////////////////////////////
     try {
@@ -187,10 +191,14 @@ export async function acceptTrade(trade: ITrade) {
         if (tradeBeforeTax.side === "sell") {
             addCash(tradeBeforeTax.amount * tradeBeforeTax.price);
             tc[tradeBeforeTax.resource] -= trade.amount;
+            safeAdd(D.tradeEffect, tradeBeforeTax.resource, -trade.amount);
+            safeAdd(D.tradeEffect, "Cash", tradeBeforeTax.amount * tradeBeforeTax.price);
         }
         if (tradeBeforeTax.side === "buy") {
             assert(tryDeductCash(trade.amount * trade.price), "We should have enough cash here!");
             refundResource(tradeBeforeTax.resource, tradeBeforeTax.amount);
+            safeAdd(D.tradeEffect, tradeBeforeTax.resource, trade.amount);
+            safeAdd(D.tradeEffect, "Cash", -tradeBeforeTax.amount * tradeBeforeTax.price);
         }
         throw new Error(t("AcceptTradeFail") + _errorMessage(err));
     }
@@ -208,10 +216,14 @@ export async function claimTrade(trade: ILocalTrade) {
         await G.socket.send(signTrade(newTrade));
         if (trade.side === "sell") {
             addCash(trade.amount * trade.price);
+            safeAdd(D.tradeEffect, trade.resource, -trade.amount);
+            safeAdd(D.tradeEffect, "Cash", trade.amount * trade.price);
         }
         if (trade.side === "buy") {
             const tc = tradeCenterRes(trade.resource);
             tc[trade.resource] += trade.amount;
+            safeAdd(D.tradeEffect, trade.resource, trade.amount);
+            safeAdd(D.tradeEffect, "Cash", -trade.amount * trade.price);
         }
     } catch (err) {
         throw new Error(t("ClaimTradeFail") + _errorMessage(err));
@@ -261,7 +273,7 @@ export function getMarketCapTaxCreditPercent() {
 }
 
 export function getMarketCapBasedTaxCredit(): [number, number] {
-    return [getMarketCap() * getMarketCapTaxCreditPercent(), D.tradeAmount];
+    return [getMarketCap(true) * getMarketCapTaxCreditPercent(), D.tradeAmount];
 }
 
 export function getTaxRate(res: keyof Resources, price: number): number {
@@ -276,10 +288,6 @@ export function getTaxRate(res: keyof Resources, price: number): number {
         taxRate = 0.5 + 2 * (diff - 0.75);
     }
     return cc.misc.clamp01(taxRate);
-}
-
-export function hasTradedTooMuchWith(userId: string, valueOfTrade: number): boolean {
-    return (D.tradeAmountPerPlayer[userId] ?? 0) + valueOfTrade > 0.1 * getMarketCap();
 }
 
 export function getProductionBasedTaxCredit(resource: keyof Resources, price: number): [number, number] {
