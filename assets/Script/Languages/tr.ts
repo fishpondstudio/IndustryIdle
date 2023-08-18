@@ -1603,11 +1603,14 @@ export const TR = {
     GameControllerSupport: "Oyun Kumandası Desteği",
     GameControllerSupportDesc: "Oyun kumandası desteğini etkinleştirin - genellikle bunu açık bırakmalısınız",
     GameControllerCameraSensitivity: "Oyun Kumandası Kamera Hassasiyeti",
-    GameControllerCameraSensitivityDesc: "Kamerayı hareket ettirmek için sol joystick'inizi kullanın - bu hassasiyetini ayarlar",
+    GameControllerCameraSensitivityDesc:
+        "Kamerayı hareket ettirmek için sol joystick'inizi kullanın - bu hassasiyetini ayarlar",
     GameControllerCursorSensitivity: "Oyun Kumandası İmleç Hassasiyeti",
-    GameControllerCursorSensitivityDesc: "İmleci hareket ettirmek için sağ joystick'inizi kullanın - bu hassasiyetini ayarlar",
+    GameControllerCursorSensitivityDesc:
+        "İmleci hareket ettirmek için sağ joystick'inizi kullanın - bu hassasiyetini ayarlar",
     GameControllerScrollSensitivity: "Oyun Kumandası Kaydırma/Yakınlaştırma Hassasiyeti",
-    GameControllerScrollSensitivityDesc: "Kaydırmak veya yakınlaştırmak için sol/sağ tetiği kullanın - bu hassasiyetini ayarlar",
+    GameControllerScrollSensitivityDesc:
+        "Kaydırmak veya yakınlaştırmak için sol/sağ tetiği kullanın - bu hassasiyetini ayarlar",
     PlayerTradePendingFine: "Bekleyen Oyuncu Takas Sorunları",
     PlayerTradePendingFineDesc:
         "Hile yapan bir oyuncu %{player} ile %{count} ticaretten %{profit} $ kâr elde ettiniz. Tekrar işlem yapabilmeniz için karı iade etmeniz gerekiyor",
@@ -1624,4 +1627,5 @@ export const TR = {
     AuthenticationSendSuccess: "Doğrulama isteğiniz başarıyla gönderildi",
     AuthenticationSendFail: "Doğrulama isteği gönderilemedi: %{message}",
     Authenticate: "Hesabınızı Doğrulayın",
+    FreeWeeklyCityDesc: "%{city} is free for all players this week regardless of expansion packs!",
 };

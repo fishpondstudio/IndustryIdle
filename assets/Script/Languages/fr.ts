@@ -1642,4 +1642,5 @@ export const FR = {
     AuthenticationSendSuccess: "Your authentication request is successfully sent",
     AuthenticationSendFail: "Failed to send authentication request: %{message}",
     Authenticate: "Authenticate Your Account",
+    FreeWeeklyCityDesc: "%{city} is free for all players this week regardless of expansion packs!",
 };

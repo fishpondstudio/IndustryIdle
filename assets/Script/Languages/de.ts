@@ -1649,4 +1649,5 @@ export const DE = {
     AuthenticationSendSuccess: "Deine Authentifizierungsanfrage wurde erfolgreich versendet.",
     AuthenticationSendFail: "Authentifizierungsanfrage fehlgeschlagen: %{message}",
     Authenticate: "Verifiziere dein Konto",
+    FreeWeeklyCityDesc: "%{city} is free for all players this week regardless of expansion packs!",
 };
