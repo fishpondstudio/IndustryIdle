@@ -191,7 +191,7 @@ export function tickPrice(debugRandom?: () => number, ignoreMap = false) {
         D.producedRes = {};
         D.producedTicks = 0;
         D.tradeAmount = 0;
-        D.tradeEffect = {};
+        D.tradeProfit = 0;
     }
 }
 

@@ -454,7 +454,8 @@ export const DE = {
     ProductionMultiplierDesc:
         "Steigerung der Produktionskapazität aller Gebäude (einschließlich Minen, Fabriken, Kraftwerken, Wissenschafts- und Kulturgebäuden).",
     FuelCostDiscount: "Kraftstoffkostenrabatt",
-    FuelCostDiscountDesc: "Du erhältst einen Rabatt auf die Kraftstoffkosten, die für den Ressourcentransport anfallen.",
+    FuelCostDiscountDesc:
+        "Du erhältst einen Rabatt auf die Kraftstoffkosten, die für den Ressourcentransport anfallen.",
     BuildingPermitCostDivider: "Kostenteiler für Baugenehmigungen",
     BuildingPermitCostDividerDesc: "Teilt die Baugenehmigungskosten durch diesen Teiler.",
     ExtraAdjacentBonus: "Zusätzlicher Benachbarungsbonus",
@@ -549,7 +550,8 @@ export const DE = {
     LoggingCamp2xOutputDesc: "Forstbetriebe produzieren 2x Holz und die Transportkosten werden verdoppelt.",
     PowerBankLeft: "Energiespeicher",
     ColorThemeEditor: "Farbschema bearbeiten",
-    ColorThemeEditorDesc: "Du kannst im aktuellen Schema Farben überschreiben. Du hast aktuell %{num} Farben überschrieben.",
+    ColorThemeEditorDesc:
+        "Du kannst im aktuellen Schema Farben überschreiben. Du hast aktuell %{num} Farben überschrieben.",
     ColorThemeEditorSave: "Speichern",
     ColorThemeEditorReset: "Zurücksetzen",
     ColorThemeEditorResetAll: "Alle zurücksetzen",
@@ -604,7 +606,8 @@ export const DE = {
     ProductionSettings: "Produktionseinstellungen",
     PlayerTradePartialFillTitle: "Wähle Füllprozentsatz",
     PlayerTradeAmountNotValidV2: "Der Handelsbetrag muss mind. 1 sein.",
-    PlayerTradeOptOut: "Du hast dich von der Bestenliste abgemeldet und kannst nicht mehr mit anderen Spielern handeln.",
+    PlayerTradeOptOut:
+        "Du hast dich von der Bestenliste abgemeldet und kannst nicht mehr mit anderen Spielern handeln.",
     FirstTimeReadGuide:
         "💡 Benötigst du ein bisschen Hilfe beim Spielen? Tippe hier, um den Anfängerleitfaden zu lesen!",
     ReadSteamGuideV2: "Spielanleitungen",
@@ -1233,12 +1236,14 @@ export const DE = {
     BatchOperationGainDesc:
         "Diese Aktion wird auf %{number} Gebäude angewendet. Voraussichtliche Rückerstattung: $%{gain}. Möchtest du fortfahren?",
     BatchOperationResult: "Der Batchbefehl wurde erfolgreich für %{success} Gebäude ausgeführt.",
-    BatchOperationGainResult: "Batchbefehl Ergebnis: Erfolg: %{success}, Fehlgeschlagen: %{fail}, Gesamtrückerstattung: $%{gain}",
+    BatchOperationGainResult:
+        "Batchbefehl Ergebnis: Erfolg: %{success}, Fehlgeschlagen: %{fail}, Gesamtrückerstattung: $%{gain}",
     StreamingMakeMeDiscoverable: "Mach mich entdeckbar",
     StreamingMakeMeDiscoverableDesc:
         "Erlaube es anderen Spielern, deinem Spiel zuzuschauen. Die Verbindung basiert auf P2P. Es wird nur das Spiel übertragen und weder auf Mikrofon, noch Kamera zugegriffen.",
     StreamAutoApprove: "Öffentliche Übertragung",
-    StreamAutoApproveDesc: "Erlaubt es Spielern, deine Übertragung anzuschauen ohne individuelle Anfragen annehmen zu müssen.",
+    StreamAutoApproveDesc:
+        "Erlaubt es Spielern, deine Übertragung anzuschauen ohne individuelle Anfragen annehmen zu müssen.",
     StreamingWatch: "Zuschauen",
     StreamingStop: "Stop",
     StreamingPlayerDisconnected: "%{player} hat deine Übertragung verlassen",
@@ -1554,7 +1559,8 @@ export const DE = {
     ClearTradesNo: "Nicht löschen",
     ClearTradesYes: "Handel löschen",
     OnlyShowPositiveModifiers: "Nur positive Zellmodifikatoren anzeigen",
-    OnlyShowPositiveModifiersHint: "Aktiviere das Kontrollkästchen links neben dem Gebäude, um Zellmodifikatoren auf der Karte anzuzeigen.",
+    OnlyShowPositiveModifiersHint:
+        "Aktiviere das Kontrollkästchen links neben dem Gebäude, um Zellmodifikatoren auf der Karte anzuzeigen.",
     ClearMyTradesV2: "Handel wirklich löschen!",
     OpenSource: "Bring dich ein!",
     OpenSourceDesc: "Industry Idle ist jetzt Open Source. Du kannst auf Github aktiv mitentwickeln.",
@@ -1581,11 +1587,9 @@ export const DE = {
     GameSettingSFXVolumeDesc: "Stellt die Lautstärke der Soundeffekte ein.",
     GameSettingSFXEnableOverride: "Enable SFX volume overrides",
     GameSettingSFXClick: "Klick",
-    GameSettingSFXClickDesc:
-        "Beeinflusst das Geräusch, das ertönt, wenn du etwas anklickst.",
+    GameSettingSFXClickDesc: "Beeinflusst das Geräusch, das ertönt, wenn du etwas anklickst.",
     GameSettingSFXCompleted: "Handel abgeschlossen",
-    GameSettingSFXCompletedDesc:
-        "Das Geräusch, das ertönt, wenn ein neuer Handel auf dem Markt verfügbar ist.",
+    GameSettingSFXCompletedDesc: "Das Geräusch, das ertönt, wenn ein neuer Handel auf dem Markt verfügbar ist.",
     GameSettingSFXFreeChest: "Offlineeinnahmen beanspruchen",
     GameSettingSFXFreeChestDesc:
         "Lautstärkeregelung für den anfänglichen Soundeffekt, der beim Beanspruchen von Offlineeinkommen zu hören ist.",
@@ -1599,7 +1603,8 @@ export const DE = {
     GameSettingSFXKachingDesc:
         "Lautstärkeregelung für den Soundeffekt, der in einer Vielzahl von Kontexten zu hören ist. Am häufigsten beim Beanspruchen von Gewinnen aus CrowdFunding, Spielerhandel und dem Großhandelszentrum.",
     GameSettingSFXLevelup: "Erfolg freigeschaltet",
-    GameSettingSFXLevelupDesc: "Lautstärkeregelung für den Soundeffekt, der zu hören ist, wenn du einen Erfolg freischaltest.",
+    GameSettingSFXLevelupDesc:
+        "Lautstärkeregelung für den Soundeffekt, der zu hören ist, wenn du einen Erfolg freischaltest.",
     GameSettingSFXPowerup: "Neue Großhandelsbestellung",
     GameSettingSFXPowerupDesc:
         "Lautstärkeregelung für den Soundeffekt, der zu hören ist, wenn du eine neue Großhandelsbestellung erhältst.",
@@ -1612,7 +1617,8 @@ export const DE = {
     PlayerTradeCancelled: "Abgebrochen",
     FormatTimeAgo: "vor %{time}",
     EnableEdgePan: "Kantenverschiebung aktivieren",
-    EnableEdgePanDesc: "Bewegst du deinen Cursor an den Rand des Bildschirms, wird die Kamera in diese Richtung verschoben.",
+    EnableEdgePanDesc:
+        "Bewegst du deinen Cursor an den Rand des Bildschirms, wird die Kamera in diese Richtung verschoben.",
     EdgePanEdgeSize: "Edge Pan Size",
     EdgePanEdgeSizeDesc: "The size (in pixels) of the edge that will activate edge pan",
     EdgePanEdgeSensitivity: "Empfindlichkeit der Kantenverschiebung",
@@ -1620,9 +1626,11 @@ export const DE = {
     GameControllerSupport: "Controllerunterstützung",
     GameControllerSupportDesc: "Aktiviere Controllerunterstützung - Es gibt keinen Grund dafür, dies auszuschalten.",
     GameControllerCameraSensitivity: "Game Controller Camera Sensitivity",
-    GameControllerCameraSensitivityDesc: "Verwende deinen linken Joystick, um die Kamera zu bewegen - dies passt ihre Empfindlichkeit an.",
+    GameControllerCameraSensitivityDesc:
+        "Verwende deinen linken Joystick, um die Kamera zu bewegen - dies passt ihre Empfindlichkeit an.",
     GameControllerCursorSensitivity: "Empfindlichkeit des Controller-Cursors",
-    GameControllerCursorSensitivityDesc: "Verwende deinen rechten Joystick, um den Cursor zu bewegen - dies passt seine Empfindlichkeit an.",
+    GameControllerCursorSensitivityDesc:
+        "Verwende deinen rechten Joystick, um den Cursor zu bewegen - dies passt seine Empfindlichkeit an.",
     GameControllerScrollSensitivity: "Scroll- und Zoomempfindlichkeit",
     GameControllerScrollSensitivityDesc: "Use your left/right trigger to scroll or zoom - this adjusts its sensitivity",
     PlayerTradePendingFine: "Ausstehende Probleme beim Spielerhandel",

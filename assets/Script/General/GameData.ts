@@ -358,7 +358,7 @@ export class GameData {
     policies: Partial<Record<keyof Policy, IPolicyInfo>> = {};
     producedRes: ResourceNumberMap = {};
     tradedRes: ResourceNumberMap = {};
-    tradeEffect: ResourceNumberMap = {};
+    tradeProfit = 0;
     producedTicks = 0;
     hideResourcesInTopBar: ResourceSet = {};
     tickCount = 0;
@@ -392,9 +392,9 @@ function convertSKUsToDLCs(purchases: string[]): Partial<Record<DownloadableCont
     });
     // Handle debug
     if (CC_DEBUG) {
-        DLC.forEach((d) => {
-            dlc[d] = true;
-        });
+        // DLC.forEach((d) => {
+        //     dlc[d] = true;
+        // });
     }
     return dlc;
 }

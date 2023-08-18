@@ -156,8 +156,7 @@ export async function acceptTrade(trade: ITrade) {
             throw new Error(t("NotEnoughCash"));
         }
         tc[tradeBeforeTax.resource] += trade.amount;
-        safeAdd(D.tradeEffect, tradeBeforeTax.resource, trade.amount);
-        safeAdd(D.tradeEffect, "Cash", -tradeBeforeTax.amount * tradeBeforeTax.price);
+        D.tradeProfit += trade.amount * D.price[trade.resource].price - trade.amount * trade.price;
     }
     if (tradeBeforeTax.side === "buy") {
         if (!tryDeductResource(tradeBeforeTax.resource, tradeBeforeTax.amount)) {
@@ -165,8 +164,7 @@ export async function acceptTrade(trade: ITrade) {
             throw new Error(t("NotEnoughResources"));
         }
         addCash(trade.amount * trade.price);
-        safeAdd(D.tradeEffect, tradeBeforeTax.resource, -trade.amount);
-        safeAdd(D.tradeEffect, "Cash", tradeBeforeTax.amount * tradeBeforeTax.price);
+        D.tradeProfit += trade.amount * trade.price - trade.amount * D.price[trade.resource].price;
     }
     //////////////////////////////////
     try {
@@ -191,15 +189,14 @@ export async function acceptTrade(trade: ITrade) {
         if (tradeBeforeTax.side === "sell") {
             addCash(tradeBeforeTax.amount * tradeBeforeTax.price);
             tc[tradeBeforeTax.resource] -= trade.amount;
-            safeAdd(D.tradeEffect, tradeBeforeTax.resource, -trade.amount);
-            safeAdd(D.tradeEffect, "Cash", tradeBeforeTax.amount * tradeBeforeTax.price);
+            D.tradeProfit -= trade.amount * D.price[trade.resource].price - trade.amount * trade.price;
         }
         if (tradeBeforeTax.side === "buy") {
             assert(tryDeductCash(trade.amount * trade.price), "We should have enough cash here!");
             refundResource(tradeBeforeTax.resource, tradeBeforeTax.amount);
-            safeAdd(D.tradeEffect, tradeBeforeTax.resource, trade.amount);
-            safeAdd(D.tradeEffect, "Cash", -tradeBeforeTax.amount * tradeBeforeTax.price);
+            D.tradeProfit -= trade.amount * trade.price - trade.amount * D.price[trade.resource].price;
         }
+        D.tradeProfit -= trade.amount * (trade.price - D.price[trade.resource].price);
         throw new Error(t("AcceptTradeFail") + _errorMessage(err));
     }
 }
@@ -216,14 +213,12 @@ export async function claimTrade(trade: ILocalTrade) {
         await G.socket.send(signTrade(newTrade));
         if (trade.side === "sell") {
             addCash(trade.amount * trade.price);
-            safeAdd(D.tradeEffect, trade.resource, -trade.amount);
-            safeAdd(D.tradeEffect, "Cash", trade.amount * trade.price);
+            D.tradeProfit += trade.amount * trade.price - trade.amount * D.price[trade.resource].price;
         }
         if (trade.side === "buy") {
             const tc = tradeCenterRes(trade.resource);
             tc[trade.resource] += trade.amount;
-            safeAdd(D.tradeEffect, trade.resource, trade.amount);
-            safeAdd(D.tradeEffect, "Cash", -trade.amount * trade.price);
+            D.tradeProfit += trade.amount * D.price[trade.resource].price - trade.amount * trade.price;
         }
     } catch (err) {
         throw new Error(t("ClaimTradeFail") + _errorMessage(err));

@@ -1444,8 +1444,7 @@ export const ZH_CN = {
     TVStudioPlus: "电视台+",
     SetAsDefault: "设为默认",
     ClearTradesTitle: "清空我的交易",
-    ClearTradesDescription:
-        "不会退还现金和资源 - 只在您在服务器上有卡住的过时交易时使用",
+    ClearTradesDescription: "不会退还现金和资源 - 只在您在服务器上有卡住的过时交易时使用",
     ClearTradesNo: "不要清空",
     ClearTradesYes: "清空我的交易",
     OnlyShowPositiveModifiers: "只显示正面的地块修正",
@@ -1463,11 +1462,9 @@ export const ZH_CN = {
     GameSettingGameplay: "游戏",
     GameSettingSinglePlayerMode: "单人模式",
     GameSettingBuildWarningPowerBank: "关闭警告：电池组",
-    GameSettingBuildWarningPowerBankDesc:
-        "关闭试图放置未紧邻发电站的电池组时的警告",
+    GameSettingBuildWarningPowerBankDesc: "关闭试图放置未紧邻发电站的电池组时的警告",
     GameSettingBuildWarningResourceBooster: "关闭警告：资源加速器",
-    GameSettingBuildWarningResourceBoosterDesc:
-        "关闭试图放置未紧邻矿场的资源加速器时的警告",
+    GameSettingBuildWarningResourceBoosterDesc: "关闭试图放置未紧邻矿场的资源加速器时的警告",
     GameSettingVolumeControl: "音量控制",
     GameSettingMusicVolume: "音乐音量",
     GameSettingMusicVolumeDesc: "控制播放背景音乐的音量",
@@ -1476,28 +1473,21 @@ export const ZH_CN = {
     GameSettingSFXVolumeDesc: "控制播放音效的音量",
     GameSettingSFXEnableOverride: "打开 SFX 音量覆盖",
     GameSettingSFXClick: "点击",
-    GameSettingSFXClickDesc:
-        "控制点击不同物品时音效的音量",
+    GameSettingSFXClickDesc: "控制点击不同物品时音效的音量",
     GameSettingSFXCompleted: "交易失败",
-    GameSettingSFXCompletedDesc:
-        "控制交易失败时音效的音量",
+    GameSettingSFXCompletedDesc: "控制交易失败时音效的音量",
     GameSettingSFXFreeChest: "获取离线收益",
-    GameSettingSFXFreeChestDesc:
-        "控制获取离线收益时音效的音量",
+    GameSettingSFXFreeChestDesc: "控制获取离线收益时音效的音量",
     GameSettingSFXGold: "硬币翻滚",
-    GameSettingSFXGoldDesc:
-        "控制获取离线收益后硬币翻滚音效的音量",
+    GameSettingSFXGoldDesc: "控制获取离线收益后硬币翻滚音效的音量",
     GameSettingSFXError: "错误",
-    GameSettingSFXErrorDesc:
-        "控制发生错误音效的音量",
+    GameSettingSFXErrorDesc: "控制发生错误音效的音量",
     GameSettingSFXKaching: "哗啦",
-    GameSettingSFXKachingDesc:
-        "控制经常听到的哗啦音效的音量",
+    GameSettingSFXKachingDesc: "控制经常听到的哗啦音效的音量",
     GameSettingSFXLevelup: "解锁成就",
     GameSettingSFXLevelupDesc: "控制获得成就时音效的音量",
     GameSettingSFXPowerup: "新的批发订单",
-    GameSettingSFXPowerupDesc:
-        "控制出现新的批发订单时音效的音量",
+    GameSettingSFXPowerupDesc: "控制出现新的批发订单时音效的音量",
     GameSettingSFXBubble: "聊天时被提到",
     GameSettingSFXBubbleDesc: "控制在聊天中被提到（@）时音效的音量",
     GameSettingInput: "输入",

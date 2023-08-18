@@ -1159,8 +1159,7 @@ export const JP = {
     SugarRefinery: "Sugar Refinery",
     RefinedSugar: "Refined Sugar",
     ShowSupplyChain: "Show Supply Chain",
-    ShowSupplyChainDesc:
-        "ビルをハイライトすると、上流から下流まですべてのビルに至るサプライチェーン全体を表示する",
+    ShowSupplyChainDesc: "ビルをハイライトすると、上流から下流まですべてのビルに至るサプライチェーン全体を表示する",
     Cake: "Cake",
     ChooseARecipe: "Choose A Recipe",
     ChickenFarm: "チキン工場",

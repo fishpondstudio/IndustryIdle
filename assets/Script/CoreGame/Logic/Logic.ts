@@ -11,6 +11,7 @@ import {
 } from "../../General/GameData";
 import {
     assert,
+    DAY,
     firstKeyOf,
     forEach,
     getOrSet,
@@ -770,8 +771,7 @@ export function getResDiff(r: keyof Resources) {
 
 export function allResourcesValue(rewindTrade = false) {
     let result = keysOf(T.res).reduce((prev, k) => {
-        const tradeAmount = rewindTrade ? safeGet(D.tradeEffect, k, 0) : 0;
-        const val = cashForBuyOrSell(k, -(T.res[k] - tradeAmount));
+        const val = cashForBuyOrSell(k, -T.res[k]);
         return prev + val;
     }, 0);
 
@@ -782,6 +782,10 @@ export function allResourcesValue(rewindTrade = false) {
     forEach(D.crowdfunding, (_, cf) => {
         result += cf.value;
     });
+
+    if (rewindTrade) {
+        result -= D.tradeProfit;
+    }
 
     return result;
 }
@@ -1078,6 +1082,14 @@ export async function prestige(map: keyof typeof MAP, prestigeCurrency: number):
         addPrestigeCurrency(-prestigeCurrency);
         throw error;
     }
+}
+
+export function getWeeklyFreeCity(): keyof typeof MAP {
+    const premiumCities = keysOf(MAP)
+        .filter((k) => !!MAP[k].dlc)
+        .sort();
+    const id = Math.floor(Date.now() / (DAY * 7));
+    return premiumCities[id % premiumCities.length];
 }
 
 export function getOfflineResearch(tick: number): number {

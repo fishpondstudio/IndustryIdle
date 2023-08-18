@@ -4,6 +4,7 @@ import {
     getMarketCap,
     getPrestigeCurrency,
     getValuation,
+    getWeeklyFreeCity,
     MAP,
     minMarketCapForPrestige,
     RES,
@@ -26,6 +27,8 @@ export function SwissShopPage(): m.Comp {
             const prestigeCurrency = getPrestigeCurrency(marketCap);
             const timePlayed = Date.now() - D.mapCreatedAt;
             const activeMinutesPlayed = D.tickCount / 60;
+            const freeCity = getWeeklyFreeCity();
+
             return m("div.modal", { class: leftOrRight() }, [
                 uiHeaderRoute(t("SwissShop"), "/main"),
                 m("div.scrollable", [
@@ -84,6 +87,7 @@ export function SwissShopPage(): m.Comp {
                     ]),
                     ifTrue(D.isFirstSession, () => m(".box.banner.blue.text-m", t("RestartDesc"))),
                     ifTrue(hasPendingCrowdfunding(), () => m(".box.banner.text-m", t("CrowdfundingCashInWarning"))),
+                    m(".box.banner.blue.text-m", t("FreeWeeklyCityDesc", { city: MAP[freeCity].name() })),
                     m(
                         ".new-city.pointer",
                         {

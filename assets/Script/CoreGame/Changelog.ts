@@ -1,10 +1,18 @@
 export const CHANGELOG = [
     {
+        version: "0.20.7",
+        content: [
+            "Introducing weekly free premium city roster: every week, a city in either of the expansion packs will be free for all players regardless of expansion pack ownership",
+            "Bugfix: In previous patch, the trade quota calculation is incorrect. This patch corrects the calculation: profits result from trading will be excluded when calculating market cap-based quota",
+        ],
+    },
+    {
         version: "0.20.6",
         content: [
-            "Balance: When calculating market-cap based trade quota, trades since the last market update will be excluded",
+            "Update translations",
+            "Balance: When calculating market-cap based trade quota, trades since the last market update will be excluded (@FishPond)",
             "QoL: The game will try to renew authentication if it expires. There's also a new button in Headquarter to manually renew authentication (@FishPond)",
-            "Upgrade game engine and runtime frameworks - this should help improve compatibility",
+            "Upgrade game engine and runtime frameworks - this should help improve compatibility (@FishPond)",
         ],
     },
     {

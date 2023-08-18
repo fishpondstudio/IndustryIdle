@@ -1,8 +1,8 @@
-import { getPrestigeCurrency, MAP, prestige, RES } from "../CoreGame/Logic/Logic";
+import { getPrestigeCurrency, getWeeklyFreeCity, MAP, prestige, RES } from "../CoreGame/Logic/Logic";
 import { hasActiveTrades } from "../CoreGame/Logic/PlayerTrade";
 import { depositsToPercentage } from "../CoreGame/MapDefinitions";
 import { dlcDesc, dlcLabel, G, hasDLC } from "../General/GameData";
-import { formatPercent, getResourceUrl, keysOf, nf } from "../General/Helper";
+import { formatPercent, getResourceUrl, ifTrue, keysOf, nf } from "../General/Helper";
 import { t } from "../General/i18n";
 import { iconB, leftOrRight } from "./UIHelper";
 import { hideAlert, hideLoader, routeTo, showAlert, showLoader, showToast } from "./UISystem";
@@ -28,7 +28,8 @@ export function CityPage(): m.Comp<{ city: string }> {
                 },
                 m("div", [iconB("lock", 24, 5), dlcLabel(city.dlc)])
             );
-            if (hasDLC(city.dlc)) {
+            const freeCity = getWeeklyFreeCity();
+            if (hasDLC(city.dlc) || freeCity == key) {
                 action = m(".action.filled", [
                     m(
                         "div",
@@ -104,6 +105,9 @@ export function CityPage(): m.Comp<{ city: string }> {
                             onclick: () => routeTo("/main"),
                         }),
                     ]),
+                    ifTrue(freeCity == key, () =>
+                        m(".box.banner.blue.text-m", t("FreeWeeklyCityDesc", { city: MAP[freeCity].name() }))
+                    ),
                     m(".box", [
                         m(".two-col", [m("div", t("CitySize")), m("div", `${city.size}x${city.size}`)]),
                         m(".hr"),
