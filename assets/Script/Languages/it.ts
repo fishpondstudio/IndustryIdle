@@ -1651,5 +1651,7 @@ export const IT = {
     AuthenticationSendSuccess: "La tua richiesta di autenticazione è stata inviata con successo",
     AuthenticationSendFail: "Errore nel'invio della richiesta di autenticazione: %{message}",
     Authenticate: "Autentica il tuo account",
+    PlatformCheck: "Account Connected",
+    PlatformCheckDesc: "Your account has already connected to another game profile",
     FreeWeeklyCityDesc: "%{city} is free for all players this week regardless of expansion packs!",
 };

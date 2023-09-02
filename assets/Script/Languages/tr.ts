@@ -1627,5 +1627,7 @@ export const TR = {
     AuthenticationSendSuccess: "Doğrulama isteğiniz başarıyla gönderildi",
     AuthenticationSendFail: "Doğrulama isteği gönderilemedi: %{message}",
     Authenticate: "Hesabınızı Doğrulayın",
+    PlatformCheck: "Account Connected",
+    PlatformCheckDesc: "Your account has already connected to another game profile",
     FreeWeeklyCityDesc: "%{city} is free for all players this week regardless of expansion packs!",
 };

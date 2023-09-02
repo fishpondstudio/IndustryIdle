@@ -1582,5 +1582,7 @@ export const KR = {
     AuthenticationSendSuccess: "Your authentication request is successfully sent",
     AuthenticationSendFail: "Failed to send authentication request: %{message}",
     Authenticate: "Authenticate Your Account",
+    PlatformCheck: "Account Connected",
+    PlatformCheckDesc: "Your account has already connected to another game profile",
     FreeWeeklyCityDesc: "%{city} is free for all players this week regardless of expansion packs!",
 };

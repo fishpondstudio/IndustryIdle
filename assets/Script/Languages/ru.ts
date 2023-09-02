@@ -1650,5 +1650,7 @@ export const RU = {
     AuthenticationSendSuccess: "Ваш запрос аутентификации успешно отправлен",
     AuthenticationSendFail: "Не удалось отправить запрос на аутентификацию: %{message}",
     Authenticate: "Аутентифицировать свой аккаунт",
+    PlatformCheck: "Account Connected",
+    PlatformCheckDesc: "Your account has already connected to another game profile",
     FreeWeeklyCityDesc: "%{city} is free for all players this week regardless of expansion packs!",
 };
