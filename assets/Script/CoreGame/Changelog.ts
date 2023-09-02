@@ -3,6 +3,7 @@ export const CHANGELOG = [
         version: "0.20.7",
         content: [
             "Introducing weekly free premium city roster: every week, a city in either of the expansion packs will be free for all players regardless of expansion pack ownership",
+            "Previously, if your account has connected to another game profile, it will fail authentication silently. Now the game will show 'Account Connected' check in Headquarter",
             "Bugfix: In previous patch, the trade quota calculation is incorrect. This patch corrects the calculation: profits result from trading will be excluded when calculating market cap-based quota",
         ],
     },
