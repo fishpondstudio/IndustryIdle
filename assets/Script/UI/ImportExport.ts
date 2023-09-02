@@ -175,4 +175,5 @@ export interface VerificationResult {
     rightToTradeCooldown: number;
     trusted: boolean;
     passAntiCheat: boolean;
+    passPlatformIdCheck: boolean;
 }
