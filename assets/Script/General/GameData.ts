@@ -21,6 +21,7 @@ import { DE } from "../Languages/de";
 import { EN } from "../Languages/en";
 import { ES } from "../Languages/es";
 import { FR } from "../Languages/fr";
+import { HU } from "../Languages/hu";
 import { JP } from "../Languages/jp";
 import { KR } from "../Languages/kr";
 import { NL } from "../Languages/nl";
@@ -190,6 +191,7 @@ export const Languages = {
     ZH_HK: ZH_HK,
     ZH_TW: ZH_TW,
     TR: TR,
+    HU: HU,
 } as const;
 
 export const BatchModeOptions = {

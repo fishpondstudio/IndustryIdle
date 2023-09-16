@@ -277,7 +277,8 @@ export const HU = {
     InputStrategyFar: "Távolabbi",
     InputStrategyFarDesc: "Előnyben részesíti a legtávolabbi raktárt, amelynek elegendő erőforrása van",
     InputStrategyAmount: "Mennyiség",
-    InputStrategyAmountDesc: "Előnyben részesíti a legnagyobb mennyiségű erőforrásokat tartalmazó raktárt, függetlenül a távolságtól",
+    InputStrategyAmountDesc:
+        "Előnyben részesíti a legnagyobb mennyiségű erőforrásokat tartalmazó raktárt, függetlenül a távolságtól",
     FuelCostSave: "Üzemanyag Költség Megtakarítás",
     FuelCostSaveDescV2:
         "A raktárak meghatározott százaléknyi üzemanyagot takarítanak meg erőforrások szállításakor más épületekhez képest, minél magasabb a szint, annál többet takarítanak meg",
@@ -313,7 +314,8 @@ export const HU = {
     NewOrder: "Érkezett egy új rendelés %{from} részéről, kérlek ellenőrizd a Nagykereskedelmi Központban",
     Policies: "Irányelvek",
     PolicyNotEnoughTime: "Nincs elég irányelv pontod ehhez az irányelvhez",
-    WholesaleCenterOrderFasterDesc: "A Nagykereskedelmi Központ 2x gyorsabban kap rendeléseket, és a rendelések mérete 2x nagyobb",
+    WholesaleCenterOrderFasterDesc:
+        "A Nagykereskedelmi Központ 2x gyorsabban kap rendeléseket, és a rendelések mérete 2x nagyobb",
     PolicyOilWellPowerx2: "Szuperolajfúró",
     PolicyOilWellPowerx2Desc: "Az olajfúrók 2x több olajat termelnek, és 2x több energiát használnak",
     HalfTransportSpeed: "Lassítsunk Le A Takarékosság Érdekében",
@@ -375,7 +377,8 @@ export const HU = {
     WelcomePlayMuted: "Játék (🔇Zene)",
     Chat: "Csevegés",
     RestoreFromBackup: "Visszaállítás biztonsági másolatból",
-    RestoreFromBackupFail: "Nem sikerült visszaállítani a Steam Cloud biztonsági másolatból: biztos vagy benne, hogy van biztonsági másolat?",
+    RestoreFromBackupFail:
+        "Nem sikerült visszaállítani a Steam Cloud biztonsági másolatból: biztos vagy benne, hogy van biztonsági másolat?",
     RestoreFromBackupTitle: "Biztos vagy benne?",
     RestoreFromBackupDesc:
         "Normális körülmények között nem szükséges visszaállítani a felhőből készült biztonsági másolatot, hacsak a helyi mentésed nem veszett el. A felhőből készült biztonsági másolatok kicsit régebbiek, mint a helyi mentésed.",
@@ -406,7 +409,8 @@ export const HU = {
     OptIn: "Alaphelyzetbe állítás és engedélyezés",
     LeaderboardOptOut: "Ranglista Kilépés",
     LeaderboardOptIn: "Alaphelyzetbe állítás és ranglista engedélyezése",
-    LeaderboardOptInDesc: "Az adatokat ALAPH. kell állítani, mielőtt újra engedélyezheted a ranglistát, biztos vagy benne?",
+    LeaderboardOptInDesc:
+        "Az adatokat ALAPH. kell állítani, mielőtt újra engedélyezheted a ranglistát, biztos vagy benne?",
     RewardAdsFailed: "A jutalomvideó nem lett befejezve",
     OfflineEarningDoubleSuccess: "Duplázod az offline jövedelmed",
     FPS30Desc:
@@ -415,7 +419,6 @@ export const HU = {
     HighlightInput: "🔍 Kiemelés %{type} Bemenet",
     HighlightOutput: "🔍 Kiemelés %{type} Kimenet",
     RunOutIn: "Elfogy %{time}",
-
     SwissBank: "Svájci Bank",
     SwissMoney: "%{money} 💵",
     PrestigeDesc: "Ha egy új városban kezdesz, %{money} 💵-t kapsz",
@@ -438,7 +441,8 @@ export const HU = {
     PurchaseSteamContinue: "Kérjük, fejezd be a vásárlást a Steamen",
     PurchaseSuccess: "A vásárlás befejeződött, köszönjük a támogatást",
     PrestigeCurrency: "Svájci Pénz 💵",
-    RestartDesc: "💡 Csak újra szeretnéd kezdeni? Koppints a 'Kezdj el egy új várost' fülre fent, és válaszd ki jelenlegi városodat",
+    RestartDesc:
+        "💡 Csak újra szeretnéd kezdeni? Koppints a 'Kezdj el egy új várost' fülre fent, és válaszd ki jelenlegi városodat",
     PrestigeGoBack: "Vissza",
     ProductionMultiplier: "Termelési Szorzó",
     ProductionMultiplierDesc:
@@ -452,14 +456,14 @@ export const HU = {
     PrestigeAlertTitle: "Biztos vagy benne?",
     PrestigeAlertContent:
         "Cégedet felszámolják. %{amount} svájci pénzt kapsz, és új céget alapíthatsz %{city} városban",
-    PrestigeCurrencyDesc:
-        "Ez a pénz a titkos svájci bankszámládon van, magaddal viheted, amikor új városban indulsz",
+    PrestigeCurrencyDesc: "Ez a pénz a titkos svájci bankszámládon van, magaddal viheted, amikor új városban indulsz",
     Prestige: "Beváltás",
     Cancel: "Mégse",
     SaveFileCorrupted: "Mentett fájl sérült",
     LoadGameError: "A játék betöltése sikertelen",
     LoadGameErrorMessage: "Hibaüzenet: %{message}",
-    LoadGameErrorDesc: "Kérlek, ellenőrizd az internetkapcsolatodat. Ha a probléma továbbra is fennáll, lépj kapcsolatba a támogatással",
+    LoadGameErrorDesc:
+        "Kérlek, ellenőrizd az internetkapcsolatodat. Ha a probléma továbbra is fennáll, lépj kapcsolatba a támogatással",
     ExpansionPackIncompatible:
         "Egy olyan mentést importálsz, amely bővítményeket használ, de a játékodnak nincsenek meg a szükséges bővítmények",
     CashIn: "Beváltás",
@@ -530,11 +534,13 @@ export const HU = {
     SiliconMine2xOutputDesc:
         "A szilícium bányák 2x szilíciumot termelnek, de 50%-kal több energiát használnak, és a szilícium szállítása 50%-kal több üzemanyagot igényel",
     CoalMine2xOutput: "Ipari Forradalom",
-    CoalMine2xOutputDesc: "A szénbányák 2x szénkitermelést produkálnak, de 50%-kal több energiát használnak, és a szén szállítása 50%-kal több üzemanyagot igényel",
+    CoalMine2xOutputDesc:
+        "A szénbányák 2x szénkitermelést produkálnak, de 50%-kal több energiát használnak, és a szén szállítása 50%-kal több üzemanyagot igényel",
     AlMine2xOutput: "Alumínium Olvasztás",
     AlMine2xOutputDesc: "Az alumínium bányák 2x alumíniumot termelnek, és 2x annyi energiát használnak",
     LoggingCamp2xOutput: "Erdőirtás",
-    LoggingCamp2xOutputDesc: "Az erdőirtások 2x fa kitermelést produkálnak, és a fa szállítása 2x annyi üzemanyagot igényel",
+    LoggingCamp2xOutputDesc:
+        "Az erdőirtások 2x fa kitermelést produkálnak, és a fa szállítása 2x annyi üzemanyagot igényel",
     PowerBankLeft: "Maradt Energia",
     ColorThemeEditor: "Szín Téma Szerkesztő",
     ColorThemeEditorDesc: "Saját színek felülírása az aktuális színtémában. Jelenleg %{num} felülírásod van",
@@ -555,15 +561,18 @@ export const HU = {
     Surplus: "Többlet",
     Production: "Termelés",
     Consumption: "Fogyasztás",
-    WarehouseInputCapacityDescV2: "Az összes bejövő szállítás teljes kapacitása, egyenlően elosztva az összes útvonal között",
+    WarehouseInputCapacityDescV2:
+        "Az összes bejövő szállítás teljes kapacitása, egyenlően elosztva az összes útvonal között",
     PlayerCountryFlag: "Játékos Zászlaja",
     PlayerCountryChooseFlag: "Országkódok ABC sorrendben",
     WindTurbineAlwaysWork: "A Szél Fúj",
-    WindTurbineAlwaysWorkDesc: "A szélturbinák mindig 100%-os hatékonysággal működnek, de 30%-kal kevesebb energiát termelnek",
+    WindTurbineAlwaysWorkDesc:
+        "A szélturbinák mindig 100%-os hatékonysággal működnek, de 30%-kal kevesebb energiát termelnek",
     BookPublisherScience: "Tudományos Irodalom",
     BookPublisherScienceDesc: "A könyvkiadók tudományt termelnek a kultúra helyett",
     BatteryFuelEconomy: "Tölthető Akkumulátor",
-    BatteryFuelEconomyDesc: "Az akkumulátor üzemanyag-felhasználása 100%-kal javul (azaz 50%-kal kevesebb üzemanyagköltség)",
+    BatteryFuelEconomyDesc:
+        "Az akkumulátor üzemanyag-felhasználása 100%-kal javul (azaz 50%-kal kevesebb üzemanyagköltség)",
     ShowTheoreticalInputOutputCapacity: "Mutassa a elméleti bemeneti/kimeneti kapacitást",
     SpecialTransportCost: "Eszközök különleges szállítási költséggel",
     FreeTransportCost: "Eszközök ingyenes szállítási költséggel",
@@ -586,14 +595,16 @@ export const HU = {
     AcceptTradeSuccessV2: "Ezt a kereskedelmet elfogadtad: %{cashOrResource}",
     ResourceExplorer: "Erőforrás Felfedező",
     ResourceExplorerDesc: "Lehetővé teszi az erőforrások kinyerését egy üres térképi csempről",
-    ResourceExplorerDescLong: "💡 Az Erőforrás Felfedezőknek nincs szomszédos bónuszuk. Az energiafelhasználás erőforrásonként változik",
+    ResourceExplorerDescLong:
+        "💡 Az Erőforrás Felfedezőknek nincs szomszédos bónuszuk. Az energiafelhasználás erőforrásonként változik",
     ProductionSettings: "Termelési Beállítások",
     PlayerTradePartialFillTitle: "Válassza ki a Kitöltési Százalékot",
     PlayerTradeAmountNotValidV2: "A megengedett minimális kereskedelmi mennyiség 1",
     PlayerTradeOptOut: "Lejelentkeztél a ranglista alól, nem kereskedhetsz más játékosokkal",
     FirstTimeReadGuide: "💡 Szükséged van egy kis segítségre a játékhoz? Koppints ide az útmutató elolvasásához!",
     ReadSteamGuideV2: "Játék Útmutatók",
-    ReadSteamGuideV2Desc: "Olvashatsz a Steamen készült közösség által létrehozott útmutatókat - és sajátot is létrehozhatsz",
+    ReadSteamGuideV2Desc:
+        "Olvashatsz a Steamen készült közösség által létrehozott útmutatókat - és sajátot is létrehozhatsz",
     ChatMessageTooLong: "A chat üzenet túl hosszú, meghaladja a megengedett karakterek számát",
     ChatPlaceholderV2: "Írja be üzenetét: max %{length} karakter",
     ProfitBreakdownOutput: "%{res} Kibocsátás",
@@ -604,7 +615,8 @@ export const HU = {
     SteamLogin: "Bejelentkezés a Steamen keresztül",
     SteamLoginDialogDesc:
         "A helyi mentésedben engedélyezve van a Bővítmény Csomag, be kell jelentkezned a Steamen keresztül a folytatáshoz. Vagy törölheted a helyi mentésedet és újrakezdheted a játékot",
-    SteamLoginDesc: "Ha rendelkezel bővítmény csomagokkal a Steamen, bejelentkezhetsz és játszhatsz bővítményekkel a weben",
+    SteamLoginDesc:
+        "Ha rendelkezel bővítmény csomagokkal a Steamen, bejelentkezhetsz és játszhatsz bővítményekkel a weben",
     SteamLoginYes: "Bejelentkezés",
     SteamLoginNo: "Törlés és Újrakezdés",
     KungFuDojo: "Kung-Fu Edzőterem",
@@ -736,8 +748,7 @@ export const HU = {
     ResourceExplorer2: "Erőforrás Felfedező 2.0",
     ConstructionCancel: "Mégse",
     PolicyBlueprint: "Tervezet",
-    PolicyBlueprintDesc:
-        "Az épületek építése nem indul automatikusan - azt kézzel kell indítani (INGYENES IRÁNYELV)",
+    PolicyBlueprintDesc: "Az épületek építése nem indul automatikusan - azt kézzel kell indítani (INGYENES IRÁNYELV)",
     HighlightUnderConstruction: "...amelyek még nem épültek meg",
     HighlightUnderLevel10: "...amelyek 10. szint alatt vannak",
     HighlightUnderLevel20: "...amelyek 20. szint alatt vannak",
@@ -838,7 +849,8 @@ export const HU = {
     SpaceColonyInc: "Űr Kolónia Kft.",
     ProjectVostok: "Vosztok Projekt",
     AdjacentBonusSquare: "Szomszédos Bónusz Téglalap",
-    AdjacentBonusSquareDesc: "A szomszédos bónusz 50% hatékonyabb, de a csempék módosítói -15% és +15% között változnak",
+    AdjacentBonusSquareDesc:
+        "A szomszédos bónusz 50% hatékonyabb, de a csempék módosítói -15% és +15% között változnak",
     ResourceBoosterSquare: "Erőforrás Fokozó Téglalap",
     ResourceBoosterSquareDesc:
         "Az erőforrás fokozók 25%-kal több fokozást biztosítanak, de a tudomány bemenetük és az energiafelhasználásuk is 25%-kal növekszik",
@@ -892,7 +904,8 @@ export const HU = {
     AchievementVancouver1000: "Kanada Hódítója",
     AchievementVancouver1000Desc: "Szerezz 1000 svájci frankot Vancouverben egyetlen futás alatt",
     BarbariansAtTheGate: "Barbárok a Kapunál",
-    BarbariansAtTheGateDesc: "Használj fel 1 billió értékű piaci kapcsolatalapú játékoskereskedelmi adókedvezményt a piaci frissítések között",
+    BarbariansAtTheGateDesc:
+        "Használj fel 1 billió értékű piaci kapcsolatalapú játékoskereskedelmi adókedvezményt a piaci frissítések között",
     DiversifiedProductions: "Diverzifikált Termelés",
     DiversifiedProductionsDesc: "Építs 100 különböző típusú épületet egyetlen térképen",
     RealEstateTycoon: "Ingatlanmágnás",
@@ -943,8 +956,10 @@ export const HU = {
     ResourceMovementHighlight: "Kiemeléskor",
     ResourceMovementLine: "Csak Vonal",
     ResourceMovement: "Erőforrás Mozgás",
-    ResourceMovementDesc: "Kiválaszthatod, mikor mutatod az erőforrás mozgását (pontokat). Az elrejtése javíthatja a teljesítményt",
-    CrowdfundingCashInWarning: "Függőben lévő közösségi finanszírozási ígéreteid vannak - új város kezdetével elvesznek",
+    ResourceMovementDesc:
+        "Kiválaszthatod, mikor mutatod az erőforrás mozgását (pontokat). Az elrejtése javíthatja a teljesítményt",
+    CrowdfundingCashInWarning:
+        "Függőben lévő közösségi finanszírozási ígéreteid vannak - új város kezdetével elvesznek",
     ResourceBoosterBannerDescV2:
         "💡 Jelenleg %{number} erőforrás fokozód van - minden egyes fokozó tudománybemenete a jelenlegi erőforrásfokozók számához igazodik",
     CrowdfundingId: "Közösségi Finanszírozás %{id}",
@@ -958,9 +973,11 @@ export const HU = {
     TimePlayed: "Játékidő",
     ValuationPerHour: "Értékelés Óránként",
     HighPowerPriority: "Magas Energia Prioritás",
-    HighPowerPriorityDesc: "Ez bekapcsolva azt jelenti, hogy az épület először energiát fog felvenni más épületek előtt",
+    HighPowerPriorityDesc:
+        "Ez bekapcsolva azt jelenti, hogy az épület először energiát fog felvenni más épületek előtt",
     IndustryZone: "Ipari Zóna",
-    IndustryZoneDesc: "Az olyan egymás mellett lévő épületek kombinációja, amelyek ellátási láncot alkotnak, és építési engedélyeket takaríthatnak meg",
+    IndustryZoneDesc:
+        "Az olyan egymás mellett lévő épületek kombinációja, amelyek ellátási láncot alkotnak, és építési engedélyeket takaríthatnak meg",
     IndustryZoneMaxBuildingLevel: "Maximális Épület Szint",
     IndustryZoneNotWorkingDesc:
         "Az összes szomszédos épületnek ellátási láncot kell alkotnia, maximális szintűnek kell lennie (%{level}), és nem szabad más ipari zónák részeinek lennie",
@@ -988,7 +1005,8 @@ export const HU = {
     MultiplierSwissUpgrade: "Svájci Fejlesztés (Végleges)",
     MultiplierSwissBoost: "Svájci Fokozás (Ez a Futás)",
     SwissBoostCostDivider: "Svájci Fokozás Költség Osztozó",
-    SwissBoostCostDividerDesc: "Oszd el a svájci fokozás költségét ezzel az osztozóval - csak a szorzó/osztó frissítésekre vonatkozik",
+    SwissBoostCostDividerDesc:
+        "Oszd el a svájci fokozás költségét ezzel az osztozóval - csak a szorzó/osztó frissítésekre vonatkozik",
     AirForceCommand: "Légierő Parancsnokság",
     AirForce: "Légierő",
     StealthFighterFactory: "Láthatatlanság Harci Repülőgép Gyár",
@@ -996,14 +1014,16 @@ export const HU = {
     ArmyCommand: "Hadsereg Parancsnokság",
     Army: "Hadsereg",
     GreenPeacekeeper: "Zöld Békefenntartó",
-    GreenPeacekeeperDesc: "Hadsereg, haditengerészet, légierő vagy űrhadsereg csak megújuló energiatermelő üzemekkel (szél/napelem) készítése",
+    GreenPeacekeeperDesc:
+        "Hadsereg, haditengerészet, légierő vagy űrhadsereg csak megújuló energiatermelő üzemekkel (szél/napelem) készítése",
     DotComTycoon: "DotCom Tőzsde",
     DotComTycoonDesc:
         "Hozz létre egy 10. szintű Social Network Inc-et, 10. szintű Search Engine Company-t, 10. szintű SkyNet Inc-et és 10. szintű Musify Inc-et ugyanabban a városban",
     ConstructionNotResearched: "Nem Kutatott",
     OfflineEarningDescV2: "Az offline jövedelem a jelenlegi kutatásoktól, termeléstől és automatikus eladástól függ",
     HighSpeedWarehouse: "Magas Sebességű Raktár",
-    HighSpeedWarehouseDesc: "A raktárak 2x kapacitással és 50% gyorsabb szállítási sebességgel rendelkeznek, de 2x energiát használnak",
+    HighSpeedWarehouseDesc:
+        "A raktárak 2x kapacitással és 50% gyorsabb szállítási sebességgel rendelkeznek, de 2x energiát használnak",
     IndustryZoneMultiplierDesc: "Ipari Zóna Bónusz",
     IndustryZoneMultiplierSwissBoost: "Ipari Zóna Kapacitás Fokozó",
     EarningPerMinuteV2: "Offline Jövedelem Aránya",
@@ -1109,7 +1129,8 @@ export const HU = {
     RandomIsland: "Véletlenszerű Sziget",
     RandomIslandBonus:
         "<li>A térkép minden indításkor véletlenszerű</li><li>A térképméret, rács típusa, erőforrás előfordulások és egyedi bónuszok mind véletlenszerűen generálódnak</li><li>5 perces visszahűlési idő van - a újragenerálás csak 5 perces időközönként történik</li>",
-    RandomIslandBonusDesc: "A Véletlenszerű Szigeten található egyedi bónusz minden egyes térkép indításakor újra generálódik",
+    RandomIslandBonusDesc:
+        "A Véletlenszerű Szigeten található egyedi bónusz minden egyes térkép indításakor újra generálódik",
     RandomIslandBonusCapacity: "%{building} %{multiplier}x kapacitással rendelkezik",
     RandomIslandBonusProductivity: "%{building} %{multiplier}x termelékenységgel rendelkezik",
     RandomIslandBonusResources: "Ezen a térképen található erőforrás előfordulások: %{deposits}",
@@ -1152,7 +1173,8 @@ export const HU = {
     FarmlandOfflineFarming: "Offline Gazdálkodás",
     FarmlandOfflineFarmingDesc:
         "A termőföld az online mód nélkül is termel, ha természetes vízforrás felett van. Az offline jövedelem időtől függ és a svájci fejlesztések is érvényesek rá",
-    FarmlandProductionDesc: "💡 A termőföldek csak minden 10 másodpercben 5 másodpercig működnek - minden ciklus összehangolt",
+    FarmlandProductionDesc:
+        "💡 A termőföldek csak minden 10 másodpercben 5 másodpercig működnek - minden ciklus összehangolt",
     WaterPump: "Vízszivattyú",
     Greenhouse: "Üvegház",
     GreenhouseDesc: "Választhatsz növényt termelésre",
@@ -1162,7 +1184,8 @@ export const HU = {
     CapacitorFactory: "Kondenzátor Gyár",
     Capacitor: "Kondenzátor",
     OfflineProduction: "Offline Termelés",
-    OfflineProductionDesc: "A kondenzátorok szállítása erre az épületre lehetővé teszi, hogy akkor is működjön, amikor offline vagy",
+    OfflineProductionDesc:
+        "A kondenzátorok szállítása erre az épületre lehetővé teszi, hogy akkor is működjön, amikor offline vagy",
     Moderator: "Moderátor",
     FlourMill: "Liszt Malmi",
     Flour: "Liszt",
@@ -1214,7 +1237,8 @@ export const HU = {
     StreamingMakeMeDiscoverableDesc:
         "Engedd meg más játékosoknak, hogy nézhessék a játékmeneted. A kapcsolat peer to peer, és csak a játékmenedék van streamelve. A mikrofont vagy a webkamerát nem használjuk.",
     StreamAutoApprove: "Nyilvános Stream",
-    StreamAutoApproveDesc: "Lehetővé teszi a játékosoknak, hogy csatlakozzanak a streamedhez anélkül, hogy minden egyes kérelmet jóvá kellene hagynod",
+    StreamAutoApproveDesc:
+        "Lehetővé teszi a játékosoknak, hogy csatlakozzanak a streamedhez anélkül, hogy minden egyes kérelmet jóvá kellene hagynod",
     StreamingWatch: "Nézés",
     StreamingStop: "Leállítás",
     StreamingPlayerDisconnected: "%{player} szakadt le a streamről",
@@ -1268,7 +1292,8 @@ export const HU = {
     LoadGameErrorRetry: "Újra",
     LoadGameErrorHardReset: "Kemény Visszaállítás",
     FontSizeScaling: "Betűméret Skálázása",
-    FontSizeScalingDesc: "Változtasd meg az UI betűméret skáláját. Néhány UI elem lehet, hogy helytelenül jelenik meg. ÚJRA BETÖLTÉS SZÜKSÉGES",
+    FontSizeScalingDesc:
+        "Változtasd meg az UI betűméret skáláját. Néhány UI elem lehet, hogy helytelenül jelenik meg. ÚJRA BETÖLTÉS SZÜKSÉGES",
     FrozenVegetable: "Fagyasztott Zöldség",
     MilkPowder: "Tejpor",
     CannedFish: "Konzerv Hal",
@@ -1279,7 +1304,8 @@ export const HU = {
     FoodProcessingPlant: "Élelmiszer Feldolgozó Gyár",
     KansasCityBonus:
         "<li>Farmlands és üvegházak 2x kukoricát termelnek</li><li>Ingyenes kukorica szállítás</li><li>Minden szinten a vízerőművek 5%-os növekedést adnak a szomszédos farmlandsnek</li><li>Minden 2 farmland ingyenes építési engedélyt ad</li><li>Az 'A Nap Soha Nem Nyugszik' politika lehetővé teszi a farmlandek folyamatos működését (offline is)</li><li>2x játékoskereskedelmi termelési alapú adókedvezmény a termények kereskedéséhez</li><li>Elérhetővé válnak az élelmiszerfeldolgozó gyárak</li><li>Gyorséttermi láncok (összes recepttel) 2x kapacitással rendelkeznek</li>",
-    KansasCityHydroDamBoost: "Kansas City egyedi bónusz: ennek a vízerőműnek %{boost} boostja van a szomszédos farmlandshez",
+    KansasCityHydroDamBoost:
+        "Kansas City egyedi bónusz: ennek a vízerőműnek %{boost} boostja van a szomszédos farmlandshez",
     PerthGeothermalPowerPlantBoost:
         "Perth egyedi bónusz: ennek a geotermikus erőműnek %{boost} boostja van a termelő acélhoz szomszédos épületeknek",
     PerthBonus:
@@ -1431,11 +1457,13 @@ export const HU = {
     IndustryZoneHelp: "Hogyan Működik az Ipari Zóna?",
     IndustryZoneProductivityBoost: "Ipari Zóna Plusz",
     ExtraBuildingPermit: "További Építési Engedély",
-    ExtraBuildingPermitDesc: "Adj hozzá további építési engedélyeket a jelenlegi térképedhez - ez nem növeli az árküszöböt",
+    ExtraBuildingPermitDesc:
+        "Adj hozzá további építési engedélyeket a jelenlegi térképedhez - ez nem növeli az árküszöböt",
     PanelPositionDescV2:
         "Mutass oldalsó panelt balra, jobbra vagy automatikusan (a kiválasztott mezőtől függően). Csak vízszintes módban működik",
     PanelHeight: "Panel Magasság",
-    PanelHeightDesc: "Válaszd ki a panel magasságát. Csak függőleges módban működik mobil eszközökön. ÚJRA BETÖLTÉST IGÉNYEL",
+    PanelHeightDesc:
+        "Válaszd ki a panel magasságát. Csak függőleges módban működik mobil eszközökön. ÚJRA BETÖLTÉST IGÉNYEL",
     AllowPortraitMode: "Álló Mód Engedélyezése",
     AllowPortraitModeDesc:
         "Ez engedélyezi az álló módot (kísérleti), a képernyő az okostelefon szenzora és beállításai alapján fog elfordulni",
@@ -1453,16 +1481,20 @@ export const HU = {
     AccountLimitedDescV2: "A fiókod nem felel meg a platform követelményeinek",
     AccountLimitedActionV2: "Olvass FAQ-ot a Korlátozott Fiókról",
     CropOutputx2: "Modern Műtrágya",
-    CropOutputx2Desc: "A gazdaságok és üvegházak 2x termést termelnek, de a termény szállítási költsége 2x üzemanyagot igényel",
+    CropOutputx2Desc:
+        "A gazdaságok és üvegházak 2x termést termelnek, de a termény szállítási költsége 2x üzemanyagot igényel",
     MeatProductionx2: "Élőállat Szteroid",
     MeatProductionx2Desc:
         "Csirkefarmok, disznófarmok, tehéntenyésztő farmok, halastavak és takarmánygyárak 2x kapacitással rendelkeznek, de 2x energiát fogyasztanak",
     HydroFarming: "Hidro Mezőgazdaság",
-    HydroFarmingDesc: "Minden működő vízerőmű 20% kapacitásbónuszt nyújt az összes gazdasági területnek és üvegháznak a térképen",
+    HydroFarmingDesc:
+        "Minden működő vízerőmű 20% kapacitásbónuszt nyújt az összes gazdasági területnek és üvegháznak a térképen",
     ExtraTradeQuota: "Extra Játékos Kereskedelmi Piaci Kapacitás-Alapú Adókedvezmény",
-    ExtraTradeQuotaDesc: "A piaci kapacitás alapú adókedvezmény a piaci kapitalizációd 1%-a - ez extra százalékot biztosít",
+    ExtraTradeQuotaDesc:
+        "A piaci kapacitás alapú adókedvezmény a piaci kapitalizációd 1%-a - ez extra százalékot biztosít",
     ProduceAllCrops: "Összes Termény Termelése",
-    ProduceAllCropsDesc: "A gazdaságok és üvegházak bármilyen terményt termelhetnek, beleértve azokat is, amelyek nincsenek a térképen",
+    ProduceAllCropsDesc:
+        "A gazdaságok és üvegházak bármilyen terményt termelhetnek, beleértve azokat is, amelyek nincsenek a térképen",
     ResearchAgreement: "Kutatási Megállapodás",
     ResearchAgreementDesc: "Minden egyedi játékossal kötött kereskedelem 10 perc kutatási pont termelést eredményez",
     NewsEffectx2V2: "Sajtótájékoztató",
@@ -1521,7 +1553,8 @@ export const HU = {
     ClearTradesNo: "Ne Törölje",
     ClearTradesYes: "Kereskedelmeim Törlése",
     OnlyShowPositiveModifiers: "Csak pozitív mezőmódosítók megjelenítése",
-    OnlyShowPositiveModifiersHint: "Jelöld be a mezőmódosítók térképen való megjelenítéséhez a bal oldali épület mellett",
+    OnlyShowPositiveModifiersHint:
+        "Jelöld be a mezőmódosítók térképen való megjelenítéséhez a bal oldali épület mellett",
     ClearMyTradesV2: "Kereskedelmeim Törlése",
     OpenSource: "Hozzájárulás",
     OpenSourceDesc: "Az Industry Idle mostantól nyílt forráskódú. Hozzájárulhatsz a fejlesztéshez a Githubon keresztül",
@@ -1548,11 +1581,10 @@ export const HU = {
     GameSettingSFXVolumeDesc: "A hanghatások hangerőszabályozása.",
     GameSettingSFXEnableOverride: "Hanghatás hangerőszabályozás engedélyezése",
     GameSettingSFXClick: "Kattintás",
-    GameSettingSFXClickDesc:
-        "Hangerőszabályzás a kattintáskor hallható hanghatás számára.",
+    GameSettingSFXClickDesc: "Hangerőszabályzás a kattintáskor hallható hanghatás számára.",
     GameSettingSFXCompleted: "Kereskedelem Teljesítve",
     GameSettingSFXCompletedDesc:
-    "A hanghatás, amit hallasz, amikor új igényelhető kereskedést kapsz a játékos piactól.",
+        "A hanghatás, amit hallasz, amikor új igényelhető kereskedést kapsz a játékos piactól.",
     GameSettingSFXFreeChest: "Offline Jövedelem Igénylése",
     GameSettingSFXFreeChestDesc:
         "Hangerőszabályzás az első hanghatáshoz, amit hallasz, amikor offline jövedelmet igényelsz.",
@@ -1587,11 +1619,14 @@ export const HU = {
     GameControllerSupport: "Játékvezérlő Támogatás",
     GameControllerSupportDesc: "Játékvezérlő támogatás engedélyezése - általában érdemes ezt bekapcsolva hagyni",
     GameControllerCameraSensitivity: "Játékvezérlő Kamera Érzékenység",
-    GameControllerCameraSensitivityDesc: "Használd a bal karját a kamera mozgatásához - ezzel állíthatod az érzékenységét",
+    GameControllerCameraSensitivityDesc:
+        "Használd a bal karját a kamera mozgatásához - ezzel állíthatod az érzékenységét",
     GameControllerCursorSensitivity: "Játékvezérlő Kurzor Érzékenység",
-    GameControllerCursorSensitivityDesc: "Használd a jobb karját a kurzor mozgatásához - ezzel állíthatod az érzékenységét",
+    GameControllerCursorSensitivityDesc:
+        "Használd a jobb karját a kurzor mozgatásához - ezzel állíthatod az érzékenységét",
     GameControllerScrollSensitivity: "Játékvezérlő Görgetés/Nagyítás Érzékenység",
-    GameControllerScrollSensitivityDesc: "Használd a bal/jobb ravaszt a görgetéshez vagy nagyításhoz - ezzel állíthatod az érzékenységét",
+    GameControllerScrollSensitivityDesc:
+        "Használd a bal/jobb ravaszt a görgetéshez vagy nagyításhoz - ezzel állíthatod az érzékenységét",
     PlayerTradePendingFine: "Függőben Lévő Játékos Kereskedési Kötelemények",
     PlayerTradePendingFineDesc:
         "Olyan játékossal tettél $%{profit} profitot %{count} kereskedelemmel, aki csalt. Meg kell adnod a profitot, mielőtt újra kereskedhetsz.",
