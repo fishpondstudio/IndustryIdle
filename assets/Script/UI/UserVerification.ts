@@ -129,6 +129,7 @@ export function UserVerification(): m.Comp {
                             if (resp.status !== 200) {
                                 result = {
                                     authenticated: false,
+                                    passPlatformIdCheck: false,
                                     rightToTrade: false,
                                     rightToTradeCooldown: 0,
                                     trusted: false,
