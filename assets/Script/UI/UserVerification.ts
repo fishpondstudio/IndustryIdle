@@ -26,22 +26,6 @@ export function UserVerification(): m.Comp {
                                 m(".ml20", iconB("check_circle", 16)),
                             ])
                         );
-                        content.push(m(".hr.dashed"));
-                        if (result.passPlatformIdCheck) {
-                            content.push(
-                                m(".two-col.green", [
-                                    m(".text-m", t("PlatformCheck")),
-                                    m(".ml20", iconB("check_circle", 16)),
-                                ])
-                            );
-                        } else {
-                            content.push(
-                                m(".two-col.red", [
-                                    m(".text-m", [t("PlatformCheck"), m(".text-desc.text-s", t("PlatformCheckDesc"))]),
-                                    m(".ml20", iconB("cancel", 16)),
-                                ])
-                            );
-                        }
                     } else {
                         content.push(m(".hr.dashed"));
                         content.push(
@@ -60,6 +44,22 @@ export function UserVerification(): m.Comp {
                                         t("AccountLimitedActionV2")
                                     ),
                                 ]),
+                                m(".ml20", iconB("cancel", 16)),
+                            ])
+                        );
+                    }
+                    content.push(m(".hr.dashed"));
+                    if (result.passPlatformIdCheck) {
+                        content.push(
+                            m(".two-col.green", [
+                                m(".text-m", t("PlatformCheck")),
+                                m(".ml20", iconB("check_circle", 16)),
+                            ])
+                        );
+                    } else {
+                        content.push(
+                            m(".two-col.red", [
+                                m(".text-m", [t("PlatformCheck"), m(".text-desc.text-s", t("PlatformCheckDesc"))]),
                                 m(".ml20", iconB("cancel", 16)),
                             ])
                         );
