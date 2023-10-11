@@ -1653,4 +1653,8 @@ export const RU = {
     PlatformCheck: "Аккаунт подключен",
     PlatformCheckDesc: "Ваш аккаунт уже подключен к другому игровому профилю",
     FreeWeeklyCityDesc: "%{city} бесплатен для всех игроков на этой неделе, независимо от пакета разширения!",
+    HideCivIdleBanner: "Hide CivIdle Banner",
+    HideCivIdleBannerDesc: "Hide CivIdle banner in the headquarter",
+    MobileAdDLCOwner:
+        "If you own either expansion packs, you can double your offline earning without watching a reward video",
 };

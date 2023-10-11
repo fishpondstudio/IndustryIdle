@@ -1540,4 +1540,8 @@ export const ZH_TW = {
     PlatformCheck: "Account Connected",
     PlatformCheckDesc: "Your account has already connected to another game profile",
     FreeWeeklyCityDesc: "%{city} is free for all players this week regardless of expansion packs!",
+    HideCivIdleBanner: "Hide CivIdle Banner",
+    HideCivIdleBannerDesc: "Hide CivIdle banner in the headquarter",
+    MobileAdDLCOwner:
+        "If you own either expansion packs, you can double your offline earning without watching a reward video",
 };

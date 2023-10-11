@@ -1,5 +1,13 @@
 [
     {
+        "version": "0.20.8",
+        "content": [
+            "If you own either expansion packs, you can double your offline earning without watching a reward video (iOS & Android only)",
+            "Bugfix: When Factory Mining policy is active, wholesale orders will not contain natural deposits (reported by @jgestiot, fixed by @FishPond)",
+            "Add a banner and link in Headquarter about CivIdle: Industry Idle's spiritual successor. The banner can be turned off in settings"
+        ]
+    },
+    {
         "version": "0.20.7",
         "content": [
             "Introducing weekly free premium city roster: every week, a city in either of the expansion packs will be free for all players regardless of expansion pack ownership",
