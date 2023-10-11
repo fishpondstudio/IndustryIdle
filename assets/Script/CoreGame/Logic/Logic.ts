@@ -905,6 +905,9 @@ export function generateOrder(): IOrder {
     if (isPolicyActive("WholesaleCenterProducingOnly")) {
         availableResources = availableResources.slice(Math.floor(availableResources.length / 2));
     }
+    if (isPolicyActive("FactoryMining")) {
+        availableResources = availableResources.filter((r) => !DEP[r]);
+    }
     let seconds = cc.randi(30, 60 * 2);
     if (D.swissBoosts.wholesaleUpgrade1) {
         seconds *= 2;

@@ -83,6 +83,21 @@ export function HeadquarterPage(): m.Comp {
             return m("div.modal", { class: leftOrRight() }, [
                 uiHeaderRoute(t("Headquarter"), "/main"),
                 m(".scrollable", [
+                    m(
+                        ".row.pointer",
+                        {
+                            style: {
+                                display: D.persisted.hideCivIdleBanner ? "none" : "block",
+                            },
+                            onclick: () => NativeSdk.openUrl("https://www.cividle.com/"),
+                        },
+                        [
+                            m("img", {
+                                style: { width: "100%" },
+                                src: getResourceUrl("images/CivIdle.png"),
+                            }),
+                        ]
+                    ),
                     m(CrazyGameAdBanner),
                     m(
                         ".discord.row.pointer",

@@ -6,7 +6,7 @@ import {
     RES,
     stockRating,
 } from "../CoreGame/Logic/Logic";
-import { D, G } from "../General/GameData";
+import { D, G, hasAnyDlc } from "../General/GameData";
 import { findComponent, formatPercent, ifTrue, mapOf, MINUTE, nf, numberSign, sizeOf } from "../General/Helper";
 import { t } from "../General/i18n";
 import { isAndroid, isIOS, NativeSdk } from "../General/NativeSdk";
@@ -18,13 +18,14 @@ import { leftOrRight, uiHeaderRoute } from "./UIHelper";
 import { hideLoader, showLoader, showToast } from "./UISystem";
 
 export function CentralBankPage(): m.Comp {
-    let canShowAd = isIOS() || isAndroid();
+    // let canShowAd = isIOS() || isAndroid();
+    const canShowAd = true;
     return {
         view: () => {
             const entity = D.buildings[m.route.param("xy")];
             const rv = allResourcesValue();
             const v = D.cashSpent + rv;
-            NativeSdk.canShowRewardVideo().then((can) => (canShowAd = can));
+            // NativeSdk.canShowRewardVideo().then((can) => (canShowAd = can));
             return m("div.modal", { class: leftOrRight() }, [
                 uiHeaderRoute(t("CentralBank"), "/main"),
                 m("div.scrollable", [
@@ -93,6 +94,9 @@ export function CentralBankPage(): m.Comp {
                                     })
                                 ),
                             ]),
+                            ifTrue(isIOS() || isAndroid(), () => {
+                                return [m(".hr"), m(".text-s.orange", t("MobileAdDLCOwner"))];
+                            }),
                             m(".action.filled", [
                                 m(
                                     "div",
@@ -117,6 +121,10 @@ export function CentralBankPage(): m.Comp {
                                             display: !canShowAd || D.persisted.hideRewardAd ? "none" : "flex",
                                         },
                                         onclick: async () => {
+                                            if (hasAnyDlc()) {
+                                                doubleOfflineEarning();
+                                                return;
+                                            }
                                             const can = await NativeSdk.canShowRewardVideo();
                                             if (!can) {
                                                 showToast(t("RewardAdsFailed"));
@@ -126,15 +134,19 @@ export function CentralBankPage(): m.Comp {
                                                 showLoader();
                                                 await NativeSdk.showRewardVideo();
                                                 hideLoader();
+                                                doubleOfflineEarning();
+                                            } catch (error) {
+                                                hideLoader();
+                                                showToast(t("RewardAdsFailed"));
+                                            }
+
+                                            function doubleOfflineEarning() {
                                                 showToast(t("OfflineEarningDoubleSuccess"));
                                                 D.offlineEarnings = D.offlineEarnings.filter((oe) => oe !== o);
                                                 findComponent(GoldAnimation).play(
                                                     () => addCash((2 * o.cashPerMinute * effectiveMinutes) / 10),
                                                     10
                                                 );
-                                            } catch (error) {
-                                                hideLoader();
-                                                showToast(t("RewardAdsFailed"));
                                             }
                                         },
                                     },

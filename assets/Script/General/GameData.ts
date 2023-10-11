@@ -252,6 +252,7 @@ export class PersistedData {
     showSupplyChain = false;
     fullscreen = false;
     hideDiscordBanner = false;
+    hideCivIdleBanner = false;
     hideChat = isIOS();
     hideChatMentions = false;
     buildingColors: Partial<Record<keyof Buildings, string>> = {};

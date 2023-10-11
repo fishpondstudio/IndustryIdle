@@ -280,6 +280,16 @@ export function DisplaySettingsPage(): m.Component {
                         ]),
                         m(".hr"),
                         uiBoxToggle(
+                            t("HideCivIdleBanner"),
+                            m("div", t("HideCivIdleBannerDesc")),
+                            D.persisted.hideCivIdleBanner,
+                            () => {
+                                G.audio.playClick();
+                                D.persisted.hideCivIdleBanner = !D.persisted.hideCivIdleBanner;
+                            }
+                        ),
+                        m(".hr"),
+                        uiBoxToggle(
                             t("HideChat"),
                             [
                                 t("HideChatDescV2"),
