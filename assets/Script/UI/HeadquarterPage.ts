@@ -74,7 +74,6 @@ export function HeadquarterPage(): m.Comp {
         view: (vnode) => {
             if (!hasAnyDlc()) {
                 D.persisted.hideDiscordBanner = false;
-                D.persisted.hideRewardAd = false;
             }
             const buildingCount = getBuildingCount();
             const buildingPermit = getBuildingPermit();

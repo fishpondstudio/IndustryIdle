@@ -249,21 +249,6 @@ export function DisplaySettingsPage(): m.Component {
                         ifTrue(hasAnyDlc(), () => [
                             m(".hr"),
                             uiBoxToggle(
-                                t("HideRewardAd"),
-                                [m("div", t("HideRewardAdDesc")), m(".orange", t("RequireAnyExpansionPack"))],
-                                D.persisted.hideRewardAd,
-                                () => {
-                                    if (hasAnyDlc()) {
-                                        G.audio.playClick();
-                                        D.persisted.hideRewardAd = !D.persisted.hideRewardAd;
-                                    } else {
-                                        G.audio.playError();
-                                        showToast(t("RequireAnyExpansionPackDesc"));
-                                    }
-                                }
-                            ),
-                            m(".hr"),
-                            uiBoxToggle(
                                 t("HideDiscordBanner"),
                                 [m("div", t("HideDiscordBannerDesc")), m(".orange", t("RequireAnyExpansionPack"))],
                                 D.persisted.hideDiscordBanner,

@@ -18,14 +18,13 @@ import { leftOrRight, uiHeaderRoute } from "./UIHelper";
 import { hideLoader, showLoader, showToast } from "./UISystem";
 
 export function CentralBankPage(): m.Comp {
-    // let canShowAd = isIOS() || isAndroid();
-    const canShowAd = true;
+    let canShowAd = isIOS() || isAndroid();
     return {
         view: () => {
             const entity = D.buildings[m.route.param("xy")];
             const rv = allResourcesValue();
             const v = D.cashSpent + rv;
-            // NativeSdk.canShowRewardVideo().then((can) => (canShowAd = can));
+            NativeSdk.canShowRewardVideo().then((can) => (canShowAd = can));
             return m("div.modal", { class: leftOrRight() }, [
                 uiHeaderRoute(t("CentralBank"), "/main"),
                 m("div.scrollable", [
@@ -118,7 +117,7 @@ export function CentralBankPage(): m.Comp {
                                     "div",
                                     {
                                         style: {
-                                            display: !canShowAd || D.persisted.hideRewardAd ? "none" : "flex",
+                                            display: canShowAd || hasAnyDlc() ? "flex" : "none",
                                         },
                                         onclick: async () => {
                                             if (hasAnyDlc()) {

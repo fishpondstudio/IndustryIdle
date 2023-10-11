@@ -247,7 +247,6 @@ export class PersistedData {
     extraTradeQuota = 0;
     sellRefundPercentage = 50;
     fuelDiscount = 0;
-    hideRewardAd = false;
     yAxisStartsFromZero = true;
     showSupplyChain = false;
     fullscreen = false;
