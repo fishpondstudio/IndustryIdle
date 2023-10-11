@@ -413,8 +413,6 @@ export const ZH_HK = {
     RequireExpansionPack1Desc: "呢個淨係用喺擴展包1",
     RequireAnyExpansionPack: "獨家擴展包",
     RequireAnyExpansionPackDesc: "呢個功能要您至少有一個擴展包",
-    HideRewardAd: "收埋獎勵廣告",
-    HideRewardAdDesc: "全部喺遊戲入面嘅廣告都係有得揀嘅獎勵廣告。呢個會喺遊戲度收埋晒佢哋嘅選項。",
     HideDiscordBanner: "收埋Discord橫幅",
     HideDiscordBannerDesc: "收埋總部嘅Discord同舖頭橫幅",
     HideChat: "收埋傾偈訊息",

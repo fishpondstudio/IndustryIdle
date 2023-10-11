@@ -423,9 +423,6 @@ export const JP = {
     RequireExpansionPack1Desc: "この機能は拡張パック1が必要です",
     RequireAnyExpansionPack: "拡張パック専用",
     RequireAnyExpansionPackDesc: "この機能を利用するには、少なくとも1つの拡張パックを所有している必要があります",
-    HideRewardAd: "リワード広告を隠す",
-    HideRewardAdDesc:
-        "ゲーム内の広告はすべてオプションのリワード広告です。これにより、ゲーム内のリワード広告オプションがすべて非表示になります",
     HideDiscordBanner: "ディスコードバナーを隠す",
     HideDiscordBannerDesc: "本部でDiscordとストアフロントのバナーを隠す",
     HideChat: "チャットメッセージを隠す",

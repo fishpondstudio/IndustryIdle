@@ -427,9 +427,6 @@ export const DK = {
     RequireExpansionPack1Desc: "This is only available for Expansion Pack 1",
     RequireAnyExpansionPack: "Expansion Packs Exclusive",
     RequireAnyExpansionPackDesc: "This feature requires you to own at least one of the expansion packs",
-    HideRewardAd: "Hide Rewarded Ads",
-    HideRewardAdDesc:
-        "All in-game ads are optional rewarded ads. This will hide all the rewarded ad options from game.",
     HideDiscordBanner: "Hide Discord Banner",
     HideDiscordBannerDesc: "Hide Discord and storefront banner in the headquarter",
     HideChat: "Hide Chat Message",

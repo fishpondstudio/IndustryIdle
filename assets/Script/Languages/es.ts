@@ -438,9 +438,6 @@ export const ES = {
     RequireExpansionPack1Desc: "Esto solo está disponible para Expansion Pack 1",
     RequireAnyExpansionPack: "Paquetes de expansión exclusivos",
     RequireAnyExpansionPackDesc: "Esta función requiere que tengas al menos uno de los paquetes de expansión.",
-    HideRewardAd: "Ocultar anuncios recompensados",
-    HideRewardAdDesc:
-        "Todos los anuncios del juego son anuncios recompensados opcionales. Esto ocultará todas las opciones de anuncios recompensados del juego..",
     HideDiscordBanner: "Ocultar estandarte de discordia",
     HideDiscordBannerDesc: "Ocultar Discord y banner de escaparate en la sede",
     HideChat: "Ocultar mensaje de chat",

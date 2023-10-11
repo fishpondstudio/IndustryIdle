@@ -437,9 +437,6 @@ export const DE = {
     RequireExpansionPack1Desc: "Dies ist nur mit dem Erweiterungspaket 1 verfügbar",
     RequireAnyExpansionPack: "Erfordert den Erwerb eines Erweiterungspaketes.",
     RequireAnyExpansionPackDesc: "Für diese Funktion musst du mindestens eines der Erweiterungspakete besitzen.",
-    HideRewardAd: "Belohnungsanzeigen ausblenden",
-    HideRewardAdDesc:
-        "Alle Werbeanzeigen sind optionale Belohnungsanzeigen. Hiermit werden alle Belohnungsanzeigen im Spiel ausgeblendet.",
     HideDiscordBanner: "Discordbanner ausblenden",
     HideDiscordBannerDesc: "Ausblenden der Discord- und Shopbanner im Hauptquartier",
     HideChat: "Chatnachrichten ausblenden",

@@ -426,9 +426,6 @@ export const VN = {
     RequireExpansionPack1Desc: "Hành động này cần có Bản mở rộng 1",
     RequireAnyExpansionPack: "Dành riêng cho Bản mở rộng",
     RequireAnyExpansionPackDesc: "Tính năng này cần bạn sở hữu ít nhất một Bản mở rộng",
-    HideRewardAd: "Tắt quảng cáo",
-    HideRewardAdDesc:
-        "Tất cả quảng cáo trong trò chơi đều không bắt buộc. Tính năng này sẽ tắt tất cả quảng cáo trong trò chơi.",
     HideDiscordBanner: "Giấu thẻ Discord",
     HideDiscordBannerDesc: "Che thẻ Discord trong trụ sở",
     HideChat: "Giấu khung chat",

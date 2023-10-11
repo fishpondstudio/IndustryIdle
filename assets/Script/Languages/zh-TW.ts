@@ -414,8 +414,6 @@ export const ZH_TW = {
     RequireExpansionPack1Desc: "僅適用於擴充包 1",
     RequireAnyExpansionPack: "擴充包限定",
     RequireAnyExpansionPackDesc: "此功能要求您至少擁有一個擴充包",
-    HideRewardAd: "隱藏獎勵廣告",
-    HideRewardAdDesc: "所有遊戲內廣告都是可選的獎勵廣告。這將從遊戲中隱藏所有獎勵廣告選項。",
     HideDiscordBanner: "隱藏 Discord 橫幅",
     HideDiscordBannerDesc: "隱藏總部的 Discord 和商店橫幅",
     HideChat: "隱藏聊天訊息",

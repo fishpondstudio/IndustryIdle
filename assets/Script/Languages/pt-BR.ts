@@ -431,9 +431,6 @@ export const PT_BR = {
     RequireExpansionPack1Desc: "Somente disponível pelo pacote de expansão 1",
     RequireAnyExpansionPack: "Pacotes de expansão exclusivos",
     RequireAnyExpansionPackDesc: "Este recurso requer que você tenha pelo menos um dos pacotes de expansão",
-    HideRewardAd: "Ocultar recompensas de propagandas",
-    HideRewardAdDesc:
-        "Todos os anúncios no jogo são anúncios premiados opcionais. Isso ocultará todas as opções de anúncios premiados do jogo.",
     HideDiscordBanner: "Esconder banner do Discord",
     HideDiscordBannerDesc: "Oculta o banner do Discord no quartel general",
     HideChat: "Esconder bate-papo",

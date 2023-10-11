@@ -421,9 +421,6 @@ export const KR = {
     RequireExpansionPack1Desc: "확장팩 1에서만 사용할 수 있습니다",
     RequireAnyExpansionPack: "확장팩 전용",
     RequireAnyExpansionPackDesc: "이 기능을 사용하려면 확장팩 중 하나 이상을 소유해야합니다",
-    HideRewardAd: "보상형 광고 숨기기",
-    HideRewardAdDesc:
-        "모든 게임 내 광고는 선택적인 보상형 광고입니다. 이것은 게임에서 모든 보상형 광고 옵션을 숨깁니다.",
     HideDiscordBanner: "Discord 배너 숨기기",
     HideDiscordBannerDesc: "본부에서 Discord 배너 및 상점 배너 숨기기",
     HideChat: "채팅 메시지 숨기기",

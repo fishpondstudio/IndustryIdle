@@ -429,9 +429,6 @@ export const NL = {
     RequireExpansionPack1Desc: "Dit is enkel beschikbaar voor Uitbreidings Pakket 1",
     RequireAnyExpansionPack: "Uitbreidingspakket Exclusief",
     RequireAnyExpansionPackDesc: "Om dit te gebruiken heb je minstens 1 uitbreidingspakket nodig",
-    HideRewardAd: "Verberg toegewezen advertenties",
-    HideRewardAdDesc:
-        "Alle advertenties in het spel zijn optionele belonings advertenties. Dit verbergt alle beloningsopties in het spel.",
     HideDiscordBanner: "Verberg Discord Banner",
     HideDiscordBannerDesc: "Verberg Discord en de winkelbanner in het hoofdkwartier",
     HideChat: "Verberg Chat Bericht",

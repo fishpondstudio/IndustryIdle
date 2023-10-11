@@ -436,9 +436,6 @@ export const IT = {
     RequireExpansionPack1Desc: "Disponibile solo con il pacchetto espansione 1",
     RequireAnyExpansionPack: "Pacchetto espansione esclusivo",
     RequireAnyExpansionPackDesc: "Questa funzionalità richiede almeno un pacchetto espansione",
-    HideRewardAd: "Nascondi la pubblicità con ricompense",
-    HideRewardAdDesc:
-        "Aggiunge video pubblicitari con ricompense al gioco. Questa opzione nasconderà tutti i video con ricompense dal gioco.",
     HideDiscordBanner: "Nascondi il banner di discord",
     HideDiscordBannerDesc: "Nascondi il banner di discord dalla sede centrale",
     HideChat: "Nascondi i messaggi della chat",

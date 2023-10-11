@@ -441,9 +441,6 @@ export const FR = {
     RequireExpansionPack1Desc: "Ceci n'est disponible que pour le pack d'extension 1",
     RequireAnyExpansionPack: "Packs d'extension exclusifs",
     RequireAnyExpansionPackDesc: "Cette fonctionnalité vous oblige à posséder au moins un des packs d'extension",
-    HideRewardAd: "Masquer les annonces avec récompense",
-    HideRewardAdDesc:
-        "Toutes les publicités dans le jeu sont des publicités avec récompense facultatives. Cela masquera toutes les options publicitaires récompensées du jeu.",
     HideDiscordBanner: "Masquer la bannière Discord",
     HideDiscordBannerDesc: "Masquer Discord et la bannière de la vitrine dans le siège social",
     HideChat: "Masquer les messages du chat",

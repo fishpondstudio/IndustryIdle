@@ -432,9 +432,6 @@ export const RU = {
     RequireExpansionPack1Desc: "Доступно только для пакета расширения 1",
     RequireAnyExpansionPack: "Эксклюзивный пакет расширения",
     RequireAnyExpansionPackDesc: "Эта функция требует, чтобы у вас был хотя бы один пакет расширения",
-    HideRewardAd: "Скрыть рекламу с вознаграждением",
-    HideRewardAdDesc:
-        "Вся внутриигровая реклама с вознаграждением является необязательной. Это позволит скрыть все варианты рекламы из игры.",
     HideDiscordBanner: "Скрыть баннер Discord ",
     HideDiscordBannerDesc: "Скрыть Discord и баннер витрины магазина в центральном офисе",
     HideChat: "Скрыть сообщения чата",

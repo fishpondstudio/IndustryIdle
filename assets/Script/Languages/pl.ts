@@ -432,9 +432,6 @@ export const PL = {
     RequireExpansionPack1Desc: "Jest to dostępne tylko dla dodatku Expansion Pack 1",
     RequireAnyExpansionPack: "Ekskluzywne pakiety rozszerzeń",
     RequireAnyExpansionPackDesc: "Ta funkcja wymaga posiadania co najmniej jednego z dodatków",
-    HideRewardAd: "Ukryj reklamy z nagrodą",
-    HideRewardAdDesc:
-        "Wszystkie reklamy w grze są opcjonalnymi reklamami z nagrodą. Spowoduje to ukrycie wszystkich opcji reklam z nagrodą w grze.",
     HideDiscordBanner: "Ukryj baner z Discorda",
     HideDiscordBannerDesc: "Ukryj Discord i baner sklepu w centrali",
     HideChat: "Ukryj wiadomość czatu",

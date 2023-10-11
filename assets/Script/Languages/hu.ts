@@ -431,9 +431,6 @@ export const HU = {
     RequireExpansionPack1Desc: "Ez csak a Bővítő Csomag 1 tulajdonosainak elérhető",
     RequireAnyExpansionPack: "Bővítő Csomagok Exkluzív",
     RequireAnyExpansionPackDesc: "Ehhez a funkcióhoz legalább egy bővítő csomaggal kell rendelkezned",
-    HideRewardAd: "Jutalomvideók elrejtése",
-    HideRewardAdDesc:
-        "Az összes játékbeli hirdetés opcionális jutalomhirdetés. Ez elrejti az összes jutalomhirdetési lehetőséget a játékban.",
     HideDiscordBanner: "Discord Bannner Elrejtése",
     HideDiscordBannerDesc: "Elrejti a Discord és a bolt előtti banner-t a központból",
     HideChat: "Csevegés Elrejtése",

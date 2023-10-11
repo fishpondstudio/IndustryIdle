@@ -428,9 +428,6 @@ export const TR = {
     RequireExpansionPack1Desc: "Bu yalnızca Genişletme Paketi 1 için kullanılabilir",
     RequireAnyExpansionPack: "Genişletme Paketine Özel",
     RequireAnyExpansionPackDesc: "Bu özellik, genişletme paketlerinden en az birine sahip olmanızı gerektirir.",
-    HideRewardAd: "Reklamları gizle",
-    HideRewardAdDesc:
-        "Tüm oyun içi reklamlar isteğe bağlı ödüllü reklamlardır. Bu, tüm ödüllü reklam seçeneklerini oyundan gizleyecektir.",
     HideDiscordBanner: "Discord Afişini Gizle",
     HideDiscordBannerDesc: "Discord'u ve genel merkezdeki vitrin afişini gizle",
     HideChat: "Sohbet Mesajını Gizle",
