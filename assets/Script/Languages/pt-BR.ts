@@ -1647,4 +1647,8 @@ export const PT_BR = {
     HideCivIdleBannerDesc: "Hide CivIdle banner in the headquarter",
     MobileAdDLCOwner:
         "If you own either expansion packs, you can double your offline earning without watching a reward video",
+    AutumnEvent: "Autumn event is going on: Harvest your pumpkins and make pumpkin pies and pumpkin spice latte!",
+    HalloweenEvent: "Halloween event is going on: there are a few new spooky ways to use your harvested pumpkins!",
+    ChristmasEvent: "Christmas event is going on: Santa and reindeers are bringing you new surprises!",
+    LunarNewYearEvent: "Lunar New Year event is going on: make lanterns and lights up the dark sky!",
 };
