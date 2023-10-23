@@ -6,6 +6,7 @@ export const CHANGELOG = [
             "Bugfix: When Factory Mining policy is active, wholesale orders will not contain natural deposits (reported by @jgestiot, fixed by @FishPond)",
             "Add in-game notification about seasonal events in Policy Center",
             "Add a banner and link in Headquarter about CivIdle: Industry Idle's spiritual successor. The banner can be turned off in settings",
+            "Add back support for Windows 7/8/8.1",
         ],
     },
     {
