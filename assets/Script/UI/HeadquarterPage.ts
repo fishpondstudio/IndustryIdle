@@ -279,13 +279,19 @@ export function HeadquarterPage(): m.Comp {
                                     ".row.pointer.blue",
                                     {
                                         onclick: async () => {
-                                            lastAuthenticateAt = Date.now();
-                                            const resp = await authenticatePlayer();
-                                            if (resp.status == 200) {
-                                                showToast(t("AuthenticationSendSuccess"));
-                                            } else {
-                                                G.audio.playError();
-                                                showToast(t("AuthenticationSendFail", { message: await resp.text() }));
+                                            try {
+                                                lastAuthenticateAt = Date.now();
+                                                const resp = await authenticatePlayer();
+                                                if (resp.status == 200) {
+                                                    showToast(t("AuthenticationSendSuccess"));
+                                                } else {
+                                                    G.audio.playError();
+                                                    showToast(
+                                                        t("AuthenticationSendFail", { message: await resp.text() })
+                                                    );
+                                                }
+                                            } catch (error) {
+                                                showToast(t("GeneralServerErrorMessage", { error: error }));
                                             }
                                         },
                                     },
