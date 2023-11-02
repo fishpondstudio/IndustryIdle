@@ -1650,12 +1650,13 @@ export const RU = {
     PlatformCheck: "Аккаунт подключен",
     PlatformCheckDesc: "Ваш аккаунт уже подключен к другому игровому профилю",
     FreeWeeklyCityDesc: "%{city} бесплатен для всех игроков на этой неделе, независимо от пакета разширения!",
-    HideCivIdleBanner: "Hide CivIdle Banner",
-    HideCivIdleBannerDesc: "Hide CivIdle banner in the headquarter",
+    HideCivIdleBanner: "Скрыть баннер CivIdle",
+    HideCivIdleBannerDesc: "Скрыть баннер CivIdle в центральном офисе",
     MobileAdDLCOwner:
-        "If you own either expansion packs, you can double your offline earning without watching a reward video",
-    AutumnEvent: "Autumn event is going on: Harvest your pumpkins and make pumpkin pies and pumpkin spice latte!",
-    HalloweenEvent: "Halloween event is going on: there are a few new spooky ways to use your harvested pumpkins!",
-    ChristmasEvent: "Christmas event is going on: Santa and reindeers are bringing you new surprises!",
-    LunarNewYearEvent: "Lunar New Year event is going on: make lanterns and lights up the dark sky!",
+        "Если вы владеете одним из пакетов расширения, вы можете удвоить свой оффлайн-заработок без просмотра видеоролика с вознаграждением",
+    AutumnEvent:
+        "Осеннее мероприятние наступает: Соберите урожай тыквы и готовьте тыквенные пироги и тыквенно-пряный латте!",
+    HalloweenEvent: "Хеллоуин наступает: Есть новые жуткие способы использования собранных тыкв!",
+    ChristmasEvent: "Рождество наступает: Санта и северные олени принесут вам новые подарки!",
+    LunarNewYearEvent: "Лунный Новый Год наступает: Изготовьте фонари и осветите темное небо!",
 };

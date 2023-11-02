@@ -1,6 +1,16 @@
 import { Entity } from "../CoreGame/Logic/Entity";
 import { findByType } from "../CoreGame/Logic/Find";
-import { getPolicyCost, getResDiff, isAvailable, isOctober, MAP, POLICY } from "../CoreGame/Logic/Logic";
+import {
+    getPolicyCost,
+    getResDiff,
+    isAvailable,
+    isChristmas,
+    isHalloween,
+    isLunarNewYear,
+    isOctober,
+    MAP,
+    POLICY,
+} from "../CoreGame/Logic/Logic";
 import { isPolicyActive } from "../CoreGame/Logic/SelfContained";
 import { D, dlcLabel, G, hasDLC } from "../General/GameData";
 import { formatHMS, hasValue, ifTrue, keysOf, nf, safeGet } from "../General/Helper";
@@ -23,6 +33,9 @@ export function PolicyCenterPage(): m.Comp<{ entity: Entity }> {
                         m(".box.banner.blue.text-m", t("PolicyPointNoCopperDesc"))
                     ),
                     ifTrue(isOctober(), () => m(".box.banner.text-m", t("AutumnEvent"))),
+                    ifTrue(isHalloween(), () => m(".box.banner.text-m", t("HalloweenEvent"))),
+                    ifTrue(isChristmas(), () => m(".box.banner.text-m", t("ChristmasEvent"))),
+                    ifTrue(isLunarNewYear(), () => m(".box.banner.text-m", t("LunarNewYearEvent"))),
                     uiBuildingBasicInfo(entity),
                     m(".box.banner.blue.text-m", t("PolicyPointDesc")),
                     m(".box", [

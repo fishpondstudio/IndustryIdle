@@ -538,12 +538,13 @@ export class IOSNativeSdk extends DefaultNativeSdk {
         });
     }
     override canPurchase(): Promise<boolean> {
-        return new Promise<boolean>((resolve, reject) => {
-            window.webkit.messageHandlers.native.postMessage({
-                name: "canPurchase",
-                id: addToBridge(resolve, reject),
-            });
-        });
+        return Promise.resolve(true);
+        // return new Promise<boolean>((resolve, reject) => {
+        //     window.webkit.messageHandlers.native.postMessage({
+        //         name: "canPurchase",
+        //         id: addToBridge(resolve, reject),
+        //     });
+        // });
     }
     override queryProducts(sku: readonly string[]): Promise<IProductInfo[]> {
         return new Promise<IProductInfo[]>((resolve, reject) => {

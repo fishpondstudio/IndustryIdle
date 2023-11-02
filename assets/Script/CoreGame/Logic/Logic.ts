@@ -979,6 +979,9 @@ export function resourcesCanBeProduced(): ResourceSet {
             result[k] = true;
         });
     }
+    if (isOctober() || isHalloween()) {
+        result.Pmpk = true;
+    }
     return result;
 }
 
@@ -1173,17 +1176,16 @@ export function unlockableBuildings() {
         if (k === "FishPond" && !MAP[D.map].deposits.Water) {
             return;
         }
-        if (
-            keysOf(v.staticInput).every((res) => {
-                if (!canPrice(res)) {
-                    return true;
-                }
-                if (D.map === "HongKong") {
-                    return resources[res] || T.usableRes[res] > 0;
-                }
-                return resources[res];
-            })
-        ) {
+        const canBeResearched = keysOf(v.staticInput).every((res) => {
+            if (!canPrice(res)) {
+                return true;
+            }
+            if (D.map === "HongKong") {
+                return resources[res] || T.usableRes[res] > 0;
+            }
+            return resources[res];
+        });
+        if (canBeResearched) {
             result.push(k);
         }
     });

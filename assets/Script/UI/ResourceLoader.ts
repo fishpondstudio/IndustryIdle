@@ -12,7 +12,6 @@ import { AudioController } from "../General/AudioController";
 import { BUILD_NUMBER } from "../General/BuildNumber";
 import { SCENES } from "../General/Constants";
 import {
-    authenticatePlayer,
     clearTrades,
     D,
     DLC,
@@ -117,7 +116,6 @@ export default class ResourceLoader extends cc.Component {
                 initColorTheme();
                 // Set allowed orientation
                 NativeSdk.allowPortrait(D.persisted.allowPortrait);
-                setTimeout(authenticatePlayer, 5000);
                 const promises = [connectToSocket(), G.audio.load()];
                 if (!getDebugUrlParams().fastload) {
                     promises.unshift(loadDeposits());
