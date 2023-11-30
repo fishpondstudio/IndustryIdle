@@ -1,6 +1,6 @@
 export const EN = {
     Translator: "Oversetter",
-    TranslatorName: "Sigurd E. H. Vie (MrCenny)!",
+    TranslatorName: "Sigurd E. H. Vie (MrCenny)",
     Language: "Språk",
     ThisLanguage: "Norsk",
     OK: "OK",
