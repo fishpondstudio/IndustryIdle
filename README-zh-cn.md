@@ -29,13 +29,13 @@ Industry Idle 是一款集工厂建设、资源管理和市场交易于一体的
 
 要制作游戏，您需要:
 
--   Cocos Creator [2.4.x](https://www.cocos.com/en/creator/download). Check [here](https://github.com/fishpondstudio/IndustryIdle/blob/main/project.json) for the version used by the game. Please get this exact version as different versions of Cocos Creator often introduce incompatibilities.
+-   Cocos Creator [2.4.x](https://www.cocos.com/en/creator/download). 查看[此处]。(https://github.com/fishpondstudio/IndustryIdle/blob/main/project.json) 为游戏使用的版本。由于不同版本的 Cocos Creator 经常会出现不兼容的情况，因此请获取准确的版本。
 
 -   Node.js 16 LTS 和 TypeScript
 -   ESlint 和 Prettier
 -   我们支持VSCode当编辑器/IDE 但你也可以自由使用你自己的
 
-这里有两个子模块在这个仓库 - they contain private modules - 你不需要用他们开发. However, you do need to create a config file in `assets/Script/Config/Config.ts`. (You need to create the `Config` folder). A sample content has been provided [here](https://github.com/fishpondstudio/IndustryIdle/blob/main/assets/Script/General/Config.ts.sample)。
+这里有两个子模块在这个仓库 - 它们包含私有模块 - 你不需要用他们开发. 不过，您确实需要在`assets/Script/Config/Config.ts`。 (您需要创建 `Config` 文件夹). 已提供内容示例 [这里](https://github.com/fishpondstudio/IndustryIdle/blob/main/assets/Script/General/Config.ts.sample)。
 
 你应该会在Cocos Creator打开这个项目和运行这个游戏（吧？）. 大部分游戏逻辑在 `assets/Script/` 文件夹. 游戏美术在 `assets/resources/` 文件夹.
 
@@ -47,10 +47,10 @@ Industry Idle 是一款集工厂建设、资源管理和市场交易于一体的
 
 ## 关于服务器反作弊
 
-To make development easy, the development code can connect to the game's trading server. However, the account will not be "authenticated" (meaning certain trading restrictions apply). Please also refrain from submitting test trades to the server as it will most likely causes anti-cheat flag.
+为了方便开发，开发代码可以连接到游戏的交易服务器。不过，账户将不会通过 "验证"（即适用某些交易限制）。此外，请不要向服务器提交测试交易，因为这很可能会引起反作弊标记。
 
-# License
+# 许可证
 
--   Game's source code is licensed under GNU General Public License v3.0.
--   Third party libraries are licensed under their corresponding licenses.
--   Game's artworks and assets are included in this repository. However, due to the complications of the original licenses, please do not redistribute them.
+- 游戏源代码采用 GNU General Public License v3.0 许可。
+- 第三方库根据其相应的许可证进行许可。
+- 本资源库包含游戏的美术作品和资产。但是，由于原始许可证的复杂性，请不要对其进行再分发。
