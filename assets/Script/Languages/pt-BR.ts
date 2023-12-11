@@ -1581,8 +1581,7 @@ export const PT_BR = {
     GameSettingSFXEnableOverride: "Ativar substituições de volume de SFX.",
     GameSettingSFXClick: "Clique",
     GameSettingSFXClickDesc:
-        "Controle de volume para o efeito sonoro que pode ser ouvido ao clicar em diferentes elementos.
-        .",
+        "Controle de volume para o efeito sonoro que pode ser ouvido ao clicar em diferentes elementos.",
     GameSettingSFXCompleted: "Troca completa",
     GameSettingSFXCompletedDesc:
         "The sound effect that can be heard when you receive a new claimable trade via the player market.",
