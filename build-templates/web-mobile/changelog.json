@@ -1,5 +1,11 @@
 [
     {
+        "version": "0.20.9",
+        "content": [
+            "Update Norwegian, Czech, Portuguese (Brazil) and Chinese translation (@FishPond)"
+        ]
+    },
+    {
         "version": "0.20.8",
         "content": [
             "If you own either expansion packs, you can double your offline earning without watching a reward video (iOS & Android only)",
