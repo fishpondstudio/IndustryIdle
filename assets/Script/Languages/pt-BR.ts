@@ -1553,7 +1553,8 @@ export const PT_BR = {
     ClearTradesNo: "Não limpar ",
     ClearTradesYes: "Limpar as trocas",
     OnlyShowPositiveModifiers: "Mostrar apenas modificadores de edifícios positivos.",
-    OnlyShowPositiveModifiersHint: "Marque a caixa de seleção à esquerda do edifício para mostrar os modificadores de edifício no mapa.",
+    OnlyShowPositiveModifiersHint:
+        "Marque a caixa de seleção à esquerda do edifício para mostrar os modificadores de edifício no mapa.",
     ClearMyTradesV2: "Limpar minhas trocas",
     OpenSource: "Contribuir",
     OpenSourceDesc: "Industry Idle agora é de código aberto. Você pode contribuir para o desenvolvimento no Github.",

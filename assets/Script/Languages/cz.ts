@@ -1,4 +1,4 @@
-export const EN = {
+export const CZ = {
     Translator: "Překladatel",
     TranslatorName: "Kedron",
     Language: "Jazyk",
@@ -75,8 +75,7 @@ export const EN = {
     Rocket: "Raketa",
     RocketFactory: "Továrna pro rakety",
     BuildingPermit: "Stavební povolení",
-    BuildingPermitDesc:
-       "Máš povolení pro %{amount} budov, už jsi postavil %{amountBuilt} a zbývá ti %{amountLeft}",
+    BuildingPermitDesc: "Máš povolení pro %{amount} budov, už jsi postavil %{amountBuilt} a zbývá ti %{amountLeft}",
     BuildingLocked: "Budova není ještě k dispozici, musíš ji vyzkoumat v laboratoři",
     MaxBuilders: "Max. Stavitelů",
     MaxBuildersDesc: "Počet budov, které můžeš postavit najednou",
@@ -415,7 +414,6 @@ export const EN = {
     HighlightInput: "🔍 Highlight %{type} Input",
     HighlightOutput: "🔍 Highlight %{type} Output",
     RunOutIn: "Out in %{time}",
-
     SwissBank: "Swiss Bank",
     SwissMoney: "%{money} 💵",
     PrestigeDesc: "If you start in a new city, you will get %{money} 💵",

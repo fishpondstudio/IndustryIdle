@@ -1,4 +1,4 @@
-export const EN = {
+export const NO = {
     Translator: "Oversetter",
     TranslatorName: "Sigurd E. H. Vie (MrCenny)",
     Language: "Språk",
@@ -415,7 +415,6 @@ export const EN = {
     HighlightInput: "🔍 Highlight %{type} Input",
     HighlightOutput: "🔍 Highlight %{type} Output",
     RunOutIn: "Out in %{time}",
-
     SwissBank: "Swiss Bank",
     SwissMoney: "%{money} 💵",
     PrestigeDesc: "If you start in a new city, you will get %{money} 💵",

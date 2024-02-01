@@ -1,7 +1,7 @@
 export const ZH_CN = {
     Translator: "译者",
     TranslatorName:
-        "LazySu, snewpeap, Orange233, YinTingChow, HagridThick, Kx1672, WUTONK, CarrlangCha, SonodaHanami, 5tanL, TOM1024,以及感谢Github上贡献翻译的诸多玩家",
+        "LazySu, snewpeap, Orange233, YinTingChow, HagridThick, Kx1672, WUTONK, CarrlangCha, SonodaHanami, 5tanL, TOM1024, 感谢Github上贡献翻译的诸多玩家",
     Language: "语言",
     ThisLanguage: "简体中文",
     OK: "好的",
@@ -1146,8 +1146,7 @@ export const ZH_CN = {
     Sausage: "香肠",
     Hotdog: "热狗",
     BatchOperationDesc: "将应用于 %{number} 座建筑物，确定吗？",
-    BatchOperationGainDesc:
-        "这将应用于 %{number} 建筑物. 预计退款为 $%{gain}. 您想继续吗？",
+    BatchOperationGainDesc: "这将应用于 %{number} 建筑物. 预计退款为 $%{gain}. 您想继续吗？",
     BatchOperationResult: "你的批量操作在 %{success} 座建筑物上生效了",
     BatchOperationGainResult: "批量操作结果：成功： %{success}, 失败: %{fail}, 总收入： $%{gain}",
     StreamingMakeMeDiscoverable: "让我可见",
@@ -1373,8 +1372,7 @@ export const ZH_CN = {
     AucklandBonus:
         "<li>新西兰所有矿场所有矿场都位于地图中心区域</li><li>独特建筑:水力发电厂</li><li>独特的政策:矿场加速器</li><li>独特政策:电动鱼池</li><li>鱼池可以建在任何瓷砖上</li>",
     MineBooster: "挖掘加速器",
-    MineBoosterDesc:
-        "工作中的矿场可为消耗矿藏的邻近矿场或工厂提供 100% 的产能提升",
+    MineBoosterDesc: "工作中的矿场可为消耗矿藏的邻近矿场或工厂提供 100% 的产能提升",
     HydroPowerPlant: "水力发电厂",
     ElectricFishPond: "水电益鱼",
     ElectricFishPondDesc: "每个正在运行的水力发电厂为地图上的所有鱼塘提供 20% 的容量提升",
@@ -1407,8 +1405,7 @@ export const ZH_CN = {
     AchievementAuckland1000: "Kiwi",
     AchievementAuckland1000Desc: "单次在奥克兰赚取1000瑞士货币",
     ExternalManageYourSave: "导入和导出保存",
-    ExternalManageYourSaveDesc:
-        "由于技术限制，必须从游戏官方网站导入和导出您的保存数据。",
+    ExternalManageYourSaveDesc: "由于技术限制，必须从游戏官方网站导入和导出您的保存数据。",
     MREPlant: "即食植物餐",
     PlayerTradeTaxCreditProduction: "税收减免:生产",
     PlayerTradeTaxCreditProductionDescV2:
@@ -1432,7 +1429,7 @@ export const ZH_CN = {
     InputBufferTypeStockpile: "库存",
     InputBuffer: "资源输入缓冲",
     InputBufferDesc:
-        "在该建筑不再运输输入资源之前，在存储区内保留该资源的最长周期。\"自动\"是指使用预测来保持最低限度的缓冲，以便能够持续生产。储存是指无论输入资源在仓库中的数量多少，都将始终进行运输。",
+        '在该建筑不再运输输入资源之前，在存储区内保留该资源的最长周期。"自动"是指使用预测来保持最低限度的缓冲，以便能够持续生产。储存是指无论输入资源在仓库中的数量多少，都将始终进行运输。',
     InputCapacityOverride: "输入容量超限",
     InputCapacityOverrideDesc: "每个生产周期运输 %{percent} 的生产所需的资源",
     PumpkinSpiceLatte: "南瓜香料拿铁",
@@ -1516,8 +1513,7 @@ export const ZH_CN = {
     PlayerTradePendingFineReturnCash: "支付现金",
     PlayerTradePendingFineReturnResources: "支付资源",
     PlayerTradePendingFineNotEnough: "不足",
-    PlayerTradeBetterTradesAvailable:
-        "有 %{count} 更好的交易能带来更好的利润 - 您应首先完成这些交易",
+    PlayerTradeBetterTradesAvailable: "有 %{count} 更好的交易能带来更好的利润 - 您应首先完成这些交易",
     PlayerTradeBetterTradesAvailableAction: "显示我的交易",
     BuildingCount: "计数",
     NoEfficiencyDesc: "本楼不享受以下政策:",
@@ -1529,8 +1525,7 @@ export const ZH_CN = {
     FreeWeeklyCityDesc: "%{city} 本周对所有玩家免费，无论是否拥有此扩展包!",
     HideCivIdleBanner: "隐藏 CivIdle 横幅",
     HideCivIdleBannerDesc: "在总部隐藏 CivIdle 旗帜",
-    MobileAdDLCOwner:
-        "如果您拥有这两个扩展包，则无需观看广告视频即可将离线收入翻倍",
+    MobileAdDLCOwner: "如果您拥有这两个扩展包，则无需观看广告视频即可将离线收入翻倍",
     AutumnEvent: "秋季活动正在进行：收获南瓜，制作南瓜派和南瓜拿铁咖啡!",
     HalloweenEvent: "万圣节活动正在进行：使用收获的南瓜有几种新的诡异方法!",
     ChristmasEvent: "圣诞活动正在进行：圣诞老人和驯鹿为您带来新惊喜!",
