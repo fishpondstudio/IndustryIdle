@@ -183,6 +183,8 @@ export class DefaultNativeSdk {
             await stream.write(content);
             await stream.close();
         } catch (error) {
+            if(error instanceof AbortError)
+                throw error;
             downloadFile(content, suggestedName);
         }
     }
