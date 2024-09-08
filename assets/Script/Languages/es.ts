@@ -778,7 +778,7 @@ export const ES = {
         "You can change your fuel type in the <em>logistics department🚦</em> - on this map, you can also use <em>natural gas</em> as fuel.<br><br>The logistics department also shows your transportation routes that burns most fuel - you'll want to keep an eye on it.<br><br>Remember to <em>make sure your fuel production is above consumption</em> otherwise your production will halt when you run out of fuel.<br><br>If that happens, don't worry, you can buy some emergency fuel from the trade center or from other players",
     Tutorial5P2:
         "<em>The statistics bureau📊</em> provides a good overview of your production. You can see a detailed breakdown of your resource input and output.<br><br>There are also lots of useful charts📈 - you'll want to refer to them when you balance your production.<br></br>Your <em>cash💰, power surplus⚡ and fuel surplus⛽</em> numbers are also shown on the top left corner - if any of them turns red, you should investigate what's going on.",
-    MusicProducer: "Productora Musical",
+    MusicProducer: "Productora de música",
     PlasticFiber: "Plastic Fiber",
     PlasticFiberDesc: "Fiber factories use 50% more plastics but 50% less glass",
     SellRefundPercentage: "Sell/Downgrade Refund",
@@ -1031,8 +1031,8 @@ export const ES = {
     BitcoinMiner: "Bitcoin Miner",
     GalvanicBatteryFactory: "Galvanic Battery Factory",
     BaseProductionMultiplier: "Base Production",
-    ShowBreakdown: "Mostrar desglose",
-    HideBreakdown: "Ocultar desglose",
+    ShowBreakdown: "Mostrar detalle",
+    HideBreakdown: "Ocultar detalle",
     IndustryZoneMultiplierSwissBoostDescV2:
         "Each tier of production chain inside an industry zone provides this capacity boost to all the buildings in the same zone",
     IndustryZoneBuildingPermitDesc:
