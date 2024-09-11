@@ -380,8 +380,8 @@ export function uiBuildingBasicInfo(entity: Entity) {
                     onclick: () => {
                         G.audio.playClick();
                         if (entity.level > 1) {
-                            entity.level--;
                             refundCash(downgradeRefund());
+                            entity.level--;
                         }
                     },
                 },

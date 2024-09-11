@@ -175,18 +175,16 @@ export class DefaultNativeSdk {
     }
     allowPortrait(allow: boolean): void {}
     async saveFile(suggestedName: string, content: string): Promise<void> {
-        try {
-            const handle = await window.showSaveFilePicker({
-                suggestedName,
-            });
-            const stream = await handle.createWritable();
-            await stream.write(content);
-            await stream.close();
-        } catch (error) {
-            if(error instanceof AbortError)
-                throw error;
-            downloadFile(content, suggestedName);
+        if (typeof window.showSaveFilePicker === "undefined") {
+            downloadFile(suggestedName, content);
+            return;
         }
+        const handle = await window.showSaveFilePicker({
+            suggestedName,
+        });
+        const stream = await handle.createWritable();
+        await stream.write(content);
+        await stream.close();
     }
     async readFile(): Promise<string> {
         if (!window.showOpenFilePicker) {
