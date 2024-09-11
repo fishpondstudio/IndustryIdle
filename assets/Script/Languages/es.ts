@@ -1516,7 +1516,8 @@ export const ES = {
     InputBufferDesc:
         "Los ciclos máximos de recursos de entrada que se deben mantener en el almacenamiento antes de que este edificio ya no transporte ese recurso. Automático significa usar la predicción para mantener un búfer mínimo que permita la producción continua. Acumulación significa transportar siempre recursos de entrada independientemente de la cantidad en el almacenamiento",
     InputCapacityOverride: "Ajuste capacidad de entrada",
-    InputCapacityOverrideDesc: "Para cada ciclo de producción, transporte el %{percent} de los recursos necesarios para la producción",
+    InputCapacityOverrideDesc:
+        "Para cada ciclo de producción, transporte el %{percent} de los recursos necesarios para la producción",
     PumpkinSpiceLatte: "Pumpkin Spice Latte",
     PumpkinPie: "Pumpkin Pie",
     QuantumComputerLab: "Quantum Computer Lab",

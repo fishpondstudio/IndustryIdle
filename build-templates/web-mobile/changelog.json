@@ -1,5 +1,13 @@
 [
     {
+        "version": "1.0.0",
+        "content": [
+            "Bugfix: Do not transfer trading right when cancel a save transfer",
+            "Bugfix: Downgrade Research Lab gives less cash than it should",
+            "Update translations"
+        ]
+    },
+    {
         "version": "0.20.9",
         "content": [
             "Update Norwegian, Czech, Portuguese (Brazil) and Chinese translation (@FishPond)"
