@@ -142,7 +142,7 @@ export function SwissUpgradePage(): m.Comp {
                         1.75,
                         5,
                         50,
-                        90
+                        100
                     ),
                     uiSwissUpgradeBoxContent(
                         t("IndustryZoneMultiplierSwissBoost"),
