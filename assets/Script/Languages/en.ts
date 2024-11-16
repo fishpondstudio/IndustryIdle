@@ -1077,8 +1077,8 @@ export const EN = {
     ImportSave: "Import Save",
     SaveVersionTooNew:
         "Your save is from %{saveVersion} but your game is %{gameVersion}. Please update your game first",
-    LeaderboardByFlag: "Tabluation By Player Flag",
-    LeaderboardByMap: "Tabluation By Map",
+    LeaderboardByFlag: "Tabulation By Player Flag",
+    LeaderboardByMap: "Tabulation By Map",
     LeaderboardByFlagPlayerFlag: "Flag",
     LeaderboardByFlagPayerCount: "#",
     LeaderboardByFlagPayerValuationPerHour: "V/H",
