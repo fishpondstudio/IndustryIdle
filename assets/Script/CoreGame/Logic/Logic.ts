@@ -130,7 +130,7 @@ export const NoPrice: ResourceSet = {
     Ltrn: true,
     BatSl: true,
     GV: true,
-    Biofl: true,
+    //Biofl: true,
     Dmg: true,
 };
 
@@ -169,6 +169,7 @@ export const NoLocalTrade: ResourceSet = {
     ...CROP,
     ...FoodThatNeedsProcessing,
     Cap: true,
+    Biofl: true,
 } as const;
 
 export const NoPlayerTrade: ResourceSet = {
