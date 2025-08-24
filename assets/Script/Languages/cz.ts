@@ -121,7 +121,7 @@ export const CZ = {
     MovieStudio: "Filmové studio",
     Sitcom: "Sitcom",
     TVStudio: "TV studio",
-    PC: "PC",
+    PC: "Počítač",
     GameStudio: "Herní studio",
     Game: "Hra",
     ComputerFactory: "Továrna na počítače",
