@@ -117,7 +117,7 @@ export const CZ = {
     SolarPanel: "Solární panel",
     SolarPanelDesc: "💡 Solární panely fungují jenom 5 vteřin z každých 10 vteřin - všechny cykly jsou vyrovnané",
     WindTurbineDesc: "💡 Větrné turbíny fungují jenom 8 vteřin z každých 10 vteřin - cykly nejsou vyrovnané.",
-    Movie: "Movie",
+    Movie: "Film",
     MovieStudio: "Filmové studio",
     Sitcom: "Sitcom",
     TVStudio: "TV studio",
