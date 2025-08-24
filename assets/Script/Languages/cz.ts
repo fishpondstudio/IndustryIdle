@@ -135,7 +135,7 @@ export const CZ = {
     ResourceOutput: "Výstup",
     ResourceStorage: "Sklad",
     ResourceChange: "Výměna",
-    ResourceInOutDesc: "💡 Klikni na Výstupová-Vstupová čísla nahoře abys osvětlil na odpovídající výstupní a vstupní budovy",
+    ResourceInOutDesc: "💡 Klikni na Výstupní-Vstupní čísla nahoře pro zvýraznění odpovídajících výstupních a vstupních budov",
     MarketUpdateIn: "Obchod se aktualizuje za %{time}",
     Semiconductor: "Polovodič",
     SemiconductorFactory: "Továrna na polovodiče",
