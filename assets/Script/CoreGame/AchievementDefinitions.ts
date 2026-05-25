@@ -524,7 +524,7 @@ export class Achievements {
 function hasOnlyRenewable(): boolean {
     let result = true;
     forEach(D.buildings, (xy, v) => {
-        if (BLD[v.type].power > 0 && v.type !== "WindTurbine" && v.type !== "SolarPanel") {
+        if (BLD[v.type].power > 0 && v.type !== "WindTurbine" && v.type !== "SolarPanel" && v.type !== "Dam") {
             result = false;
             return true;
         }
